@@ -8,6 +8,7 @@ import { ThemeProvider } from '@mui/material';
 import theme from './utils/theme';
 import { AuthProvider } from './contexts/authContext';
 import RequireAuth from './components/RequireAuth/RequireAuth';
+import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
 
 import './App.css';
 
@@ -17,7 +18,7 @@ function App() {
       <div className="App">
         <AuthProvider>
           <BrowserRouter>
-            <p>Header</p>
+            <HeaderContainer />
             <Routes>
               <Route path="/" element={<p>accueil</p>} />
               <Route path="contact" element={<p>contact</p>} />
