@@ -1,12 +1,15 @@
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import theme from './utils/theme';
 import './App.css';
+import SignUp from './components/SignupPage/index'
+
+
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        SALUT
+        <SignUp />
       </div>
     </ThemeProvider>
   );

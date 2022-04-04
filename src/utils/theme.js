@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
@@ -11,7 +11,7 @@ const theme = createTheme({
   },
 
   typography: {
-    fontFamily: ['Roboto'].join(','),
+    fontFamily: '"Segoe UI"',
 
     h1: {
       fontSize: 14,
@@ -21,6 +21,7 @@ const theme = createTheme({
       fontSize: 12,
       fontWeight: 600,
     },
+
     h3: {
       fontSize: 10,
       fontWeight: 500,
@@ -32,7 +33,7 @@ const theme = createTheme({
     },
 
     button: {
-      fontSize: '1.5rem',
+      fontSize: '1rem',
     },
   },
 
