@@ -7,8 +7,11 @@ import logo from '../../assets/images/logo.jpg';
 
 export default function Header() {
   return (
+<<<<<<< HEAD
     <Box>
       
+=======
+>>>>>>> fb5b1e66bd4bd54f9964024825e5be42c7f7743b
       <ButtonGroup
         size="small"
         variant="contained"
@@ -27,7 +30,10 @@ export default function Header() {
           Se connecter
         </Button>
       </ButtonGroup>
+<<<<<<< HEAD
     </Box>
+=======
+>>>>>>> fb5b1e66bd4bd54f9964024825e5be42c7f7743b
 
 
   );
