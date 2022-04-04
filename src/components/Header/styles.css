@@ -1,0 +1,9 @@
+.header{
+  height: 20% ;
+  /* background-color: #1ba2ac; */
+}
+
+.header__box {
+  display: flex;
+  justify-content: center;
+}
