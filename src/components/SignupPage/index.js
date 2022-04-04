@@ -1,12 +1,48 @@
 import React from "react";
-import { useRef, useState, useEffect } from "react";
-import { TextField, Typography, Grid, Button } from "@mui/material";
+import { useState } from "react";
+import { TextField, Typography, Grid, Button, Paper } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import { Box } from "@mui/system";
+import axios from '../../apis/axios'
 
-function SignUp() {
+
+const SignUp = () => {
+const url="";
+const [data, setData] = useState({
+  email:"",
+  pseudo:"",
+  password:"",
+  confirmPassword:"",
+});
+
+// warning, pensez au CORS de Chrome
+
+function Submit(e){
+  e.preventDefault();
+  axios.post(url,{
+    email:data.email,
+    pseudo:data.pseudo,
+    password:data.password,
+    confirmPassword:data.confirmPassword
+  }).then(res=>{
+    console.log(res.data);
+  })
+}
+
+function handle(e){
+const newData={...data}
+newData[e.target.name]=e.target.value
+setData(newData)
+console.log(newData);
+};
+
+
+
   return (
-<Box sx={{ border: 2, width:'400px', borderColor:'primary' } }>
+<Box 
+component="form"
+sx={{ border: 2, width:'400px', borderColor:'primary' } }>
+
 
     <Grid
       container
@@ -20,14 +56,40 @@ function SignUp() {
         <h1>Inscription</h1>
       </Typography>
 
-      <TextField name="email" label="Email" variant="outlined" />
+{/* donnée dynamique a changer avec l'API DEF */}
 
-      <TextField name="pseudo" label="Pseudo" variant="outlined" />
+      <TextField 
+      onChange={(e)=> handle(e)}
+      required 
+      name="email" 
+      label='email'
+      value={data.email}
+      variant="outlined"
+      aria-errormessage="email should be with an @" 
+      />
 
-      <TextField name="Mot de passe" label="Mot de passe" variant="outlined" />
+      <TextField 
+      required
+      onChange={(e)=> handle(e)} 
+      value={data.pseudo}
+      name="pseudo" 
+      label="Pseudo" 
+      variant="outlined" />
+
+      <TextField 
+      required
+      onChange={(e)=> handle(e)}
+      value={data.password}
+      name="password"
+      type='password' 
+      label="Mot de passe" 
+      variant="outlined" />
 
       <TextField
-        name="Confirmation Mot de passe"
+      required
+        onChange={(e)=> handle(e)}
+        value={data.confirmPassword}
+        name="confirmPassword"
         label="Confirmation Mot de passe"
         variant="outlined"
       />
@@ -37,9 +99,8 @@ function SignUp() {
       <Button
         type="valider"
         variant="contained"
-        onClick={() => {
-          alert("ca appuie fort!");
-        }}
+    onSubmit={(e)=> Submit(e)
+    }
       >
         valider
       </Button>
