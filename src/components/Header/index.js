@@ -34,6 +34,7 @@ export default function Header() {
     </Link>,
     <Typography
       color="primary"
+      key="3"
     >
       Page d'Inscription
     </Typography>,
