@@ -10,8 +10,6 @@ import { AuthProvider } from './contexts/authContext';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
 
-import './App.css';
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
