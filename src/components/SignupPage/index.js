@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { TextField, Typography, Grid, Button, Paper } from "@mui/material";
+import { TextField, Typography, Grid, Button, FormGroup, FormControlLabel } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import { Box } from "@mui/system";
 import axios from '../../apis/axios'
@@ -10,10 +10,13 @@ const SignUp = () => {
 const url="";
 const [data, setData] = useState({
   email:"",
-  pseudo:"",
+  pseudonym:"",
   password:"",
   confirmPassword:"",
 });
+
+  // gestion des erreurs a mettre en place
+  // error:"",
 
 // warning, pensez au CORS de Chrome
 
@@ -21,8 +24,9 @@ function Submit(e){
   e.preventDefault();
   axios.post(url,{
     email:data.email,
-    pseudo:data.pseudo,
+    pseudonym:data.pseudonym,
     password:data.password,
+    // check en front à réaliser
     confirmPassword:data.confirmPassword
   }).then(res=>{
     console.log(res.data);
@@ -71,8 +75,8 @@ sx={{ border: 2, width:'400px', borderColor:'primary' } }>
       <TextField 
       required
       onChange={(e)=> handle(e)} 
-      value={data.pseudo}
-      name="pseudo" 
+      value={data.pseudonym}
+      name="pseudonym" 
       label="Pseudo" 
       variant="outlined" />
 
@@ -93,8 +97,9 @@ sx={{ border: 2, width:'400px', borderColor:'primary' } }>
         label="Confirmation Mot de passe"
         variant="outlined"
       />
-
-<Checkbox required label="j'accepte les conditions générales"/>
+<FormGroup>
+<FormControlLabel required control={<Checkbox />} label="j'accepte les conditions générales" />
+</FormGroup>
 
       <Button
         type="valider"
