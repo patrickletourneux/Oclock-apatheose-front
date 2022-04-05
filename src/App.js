@@ -18,6 +18,7 @@ function App() {
           <BrowserRouter>
             <HeaderContainer />
             <Routes>
+              {/* TODO make const file with urls */}
               <Route path="/" element={<p>accueil</p>} />
               <Route path="contact" element={<p>contact</p>} />
               <Route path="mentions-legales" element={<p>mentions-legales</p>} />
