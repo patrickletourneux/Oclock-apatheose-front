@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import * as React from 'react';
 import {
   Avatar,
   TextField,
@@ -14,50 +14,50 @@ import DoneOutlineOutlinedIcon from '@mui/icons-material/DoneOutlineOutlined';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 
 export default function Login() {
-  const [value, setValue] = React.useState('');
+  // const [value, setValue] = React.useState('');
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setValue(event.target.value);
+  // };
 
   return (
     <Box
       sx={{
         width: 450,
         height: 700,
-        p: 2,
+        p: 4,
         border: '1px solid grey',
         display: 'flex',
         flexDirection: 'column',
-        // justifyContent: 'space-evenly',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
       }}
-
     >
-      <Avatar id="login__avatar"><AccountCircleOutlinedIcon /></Avatar>
+      <Avatar
+      ><AccountCircleOutlinedIcon />
+      </Avatar
+      >
       <h2>Se connecter</h2>
-      <Typography variant="body">
+      <Typography
+        variant="body">
         Vous n'avez pas encore de compte?
         <Link href="#"> Inscrivez-vous!</Link>
       </Typography>
       <TextField
-        id="login__textfield"
         label="Email"
         fullWidth
         margin="normal"
-        value={value}
+        // value={value}
         onChange={() => console.log('email')}
       />
       <TextField
         label="Password"
         fullWidth
         margin="normal"
-        value={value}
+        // value={value}
         onChange={() => console.log('password')}
       />
-      <FormGroup
-        margin="normal"
-      >
+      <FormGroup>
         <Typography
           variant="body"
           id="typo"
