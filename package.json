@@ -52,7 +52,8 @@
           "func-names": "off",
           "object-shorthand": "off",
           "react/jsx-uses-react": "off",
-          "react/react-in-jsx-scope": "off"
+          "react/react-in-jsx-scope": "off",
+          "nonblock-statement-body-position": "off"
         }
       }
     ]
