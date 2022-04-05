@@ -6,22 +6,15 @@ import {
 import { ThemeProvider } from '@mui/material';
 
 import theme from './utils/theme';
-<<<<<<< HEAD
-import './App.css';
-import Header from './components/Header';
-=======
+
 import { AuthProvider } from './contexts/authContext';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
->>>>>>> dev
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-<<<<<<< HEAD
-        <Header />
-=======
         <AuthProvider>
           <BrowserRouter>
             <HeaderContainer />
@@ -77,7 +70,6 @@ function App() {
             <p>Footer</p>
           </BrowserRouter>
         </AuthProvider>
->>>>>>> dev
       </div>
     </ThemeProvider>
   );
