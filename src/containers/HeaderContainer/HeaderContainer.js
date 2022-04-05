@@ -7,7 +7,7 @@ import authContext from '../../contexts/authContext';
 export default function HeaderContainer() {
   const { authed } = useContext(authContext);
 
-  return authed === false
+  return authed === true
     ? <HeaderLogged />
     : <Header />;
 }

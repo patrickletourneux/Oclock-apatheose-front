@@ -1,11 +1,15 @@
 /* eslint-disable no-console */
-import { Typography } from '@mui/material';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Typography,
+  ButtonGroup,
+  Button,
+  Breadcrumbs,
+  Link,
+  Stack,
+} from '@mui/material';
 
 // function handleClick(event) {
 //   event.preventDefault();
@@ -41,52 +45,55 @@ export default function Header() {
   ];
   return (
     <>
-      <Box sx={{
-        width: '100%',
-        maxWidth: 450,
-        p: 2,
-        border: '1px dashed grey',
-        display: 'flex',
-        justifyContent: 'space-between',
-      }}
+      <AppBar
+        sx={{
+          width: 450,
+        }}
+        color="primary"
+        position="fixed"
       >
-        <Typography
-          variant="h1"
-          component="h1"
-          href="#"
-          sx={{
-            my: 'auto',
-            fontSize: 20,
-          }}
-          color="secondary"
-        >
-          C du prop's
-        </Typography>
-        <ButtonGroup
-          size="small"
-          variant="contained"
-          orientation="vertical"
-        >
-          <Button
-            color="secondary"
-            size="small"
+        <Toolbar>
+          <Typography
+            variant="h1"
+            component="h1"
             href="#"
-            sx={{ mt: 1 }}
-            onClick={() => console.log('inscription')}
+            sx={{
+              flexGrow: 1,
+              color: 'white',
+            }}
           >
-            S'inscrire
-          </Button>
-          <Button
-            color="secondary"
-            size="small"
-            href="#"
-            sx={{ mt: 1 }}
-            onClick={() => console.log('connexion')}
+            C du Prop's
+          </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
           >
-            Se connecter
-          </Button>
-        </ButtonGroup>
-      </Box>
+            <ButtonGroup
+              size="small"
+              variant="contained"
+              orientation="horizontal"
+              sx={{
+                color: 'white',
+                border: 1,
+              }}
+            >
+              <Button
+                href="#"
+              >
+                S'inscrire
+              </Button>
+              <Button
+                href="#"
+              >
+                Se connecter
+              </Button>
+            </ButtonGroup>
+          </Box>
+        </Toolbar>
+      </AppBar>
       <Stack spacing={2}>
         <Breadcrumbs
           separator="›"
@@ -100,6 +107,5 @@ export default function Header() {
         </Breadcrumbs>
       </Stack>
     </>
-
   );
 }
