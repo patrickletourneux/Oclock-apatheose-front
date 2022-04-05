@@ -17,6 +17,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <SignUp />
+       
         <AuthProvider>
           <BrowserRouter>
             <HeaderContainer />

@@ -5,9 +5,11 @@ import Checkbox from "@mui/material/Checkbox";
 import { Box } from "@mui/system";
 import axios from '../../apis/axios'
 
+const emailValidator = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const passwordValidator = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
 
 const SignUp = () => {
-const url="";
 const [data, setData] = useState({
   email:"",
   pseudonym:"",
@@ -15,10 +17,6 @@ const [data, setData] = useState({
   confirmPassword:"",
 });
 
-  // gestion des erreurs a mettre en place
-  // error:"",
-
-// warning, pensez au CORS de Chrome
 
 function Submit(e){
   e.preventDefault();
@@ -56,9 +54,7 @@ sx={{ border: 2, width:'400px', borderColor:'primary' } }>
       alignItems="center"
 	  variant='outlined'
     >
-      <Typography>
-        <h1>Inscription</h1>
-      </Typography>
+      <Typography variant="h1">Inscription</Typography>
 
 {/* donnée dynamique a changer avec l'API DEF */}
 
@@ -69,7 +65,6 @@ sx={{ border: 2, width:'400px', borderColor:'primary' } }>
       label='email'
       value={data.email}
       variant="outlined"
-      aria-errormessage="email should be with an @" 
       />
 
       <TextField 
@@ -97,6 +92,7 @@ sx={{ border: 2, width:'400px', borderColor:'primary' } }>
         label="Confirmation Mot de passe"
         variant="outlined"
       />
+
 <FormGroup>
 <FormControlLabel required control={<Checkbox />} label="j'accepte les conditions générales" />
 </FormGroup>
@@ -104,13 +100,12 @@ sx={{ border: 2, width:'400px', borderColor:'primary' } }>
       <Button
         type="valider"
         variant="contained"
-    onSubmit={(e)=> Submit(e)
-    }
+    onSubmit={(e)=> Submit(e)}
       >
-        valider
+      valider
       </Button>
 
-	  <Button href="#text-buttons" color="secondary" size='small'>Revenir à la page d'accueil</Button>
+	  <Button href="/" color="secondary" size='small'>Revenir à la page d'accueil</Button>
 
     </Grid>
 	</Box>
