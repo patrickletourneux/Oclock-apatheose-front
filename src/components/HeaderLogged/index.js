@@ -37,7 +37,7 @@ export default function HeaderLogged() {
             border: 1,
           }}
           variant="outlined"
-          href="#"
+          href="/"
           size="small"
           color="secondary"
         >

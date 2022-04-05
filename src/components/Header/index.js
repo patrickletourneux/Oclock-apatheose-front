@@ -31,7 +31,7 @@ export default function Header() {
       underline="hover"
       key="2"
       color="secondary"
-      href="/"
+      href="/inscription"
       onClick={() => console.log('inscription')}
     >
       Inscription
@@ -56,7 +56,7 @@ export default function Header() {
           <Typography
             variant="h1"
             component="h1"
-            href="#"
+            href="/"
             sx={{
               flexGrow: 1,
               color: 'white',
@@ -81,12 +81,12 @@ export default function Header() {
               }}
             >
               <Button
-                href="#"
+                href="/inscription"
               >
                 S'inscrire
               </Button>
               <Button
-                href="#"
+                href="/connexion"
               >
                 Se connecter
               </Button>

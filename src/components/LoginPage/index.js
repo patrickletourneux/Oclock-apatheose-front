@@ -41,7 +41,7 @@ export default function Login() {
       <Typography
         variant="body">
         Vous n'avez pas encore de compte?
-        <Link href="#"> Inscrivez-vous!</Link>
+        <Link href="/inscription"> Inscrivez-vous!</Link>
       </Typography>
       <TextField
         label="Email"
