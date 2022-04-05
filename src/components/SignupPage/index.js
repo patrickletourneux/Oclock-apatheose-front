@@ -1,115 +1,142 @@
 import React from "react";
-import { useState } from "react";
-import { TextField, Typography, Grid, Button, FormGroup, FormControlLabel } from "@mui/material";
+import { useState, useEffect } from "react";
+import {
+  TextField,
+  Typography,
+  Grid,
+  Button,
+  FormGroup,
+  FormControlLabel,
+} from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import { Box } from "@mui/system";
-import axios from '../../apis/axios'
+import {addUser} from "../../apis/api/users";
 
-const emailValidator = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const passwordValidator = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-
+const MAX_LENGTH = 5;
 
 const SignUp = () => {
-const [data, setData] = useState({
-  email:"",
-  pseudonym:"",
-  password:"",
-  confirmPassword:"",
-});
+  const [data, setData] = useState({
+    email: "",
+    pseudonym: "",
+    password: "",
+    confirmPassword: "",
+  });
 
+  const [errorMessage, setErrorMessage] = useState("");
 
-function Submit(e){
-  e.preventDefault();
-  axios.post(url,{
-    email:data.email,
-    pseudonym:data.pseudonym,
-    password:data.password,
-    // check en front à réaliser
-    confirmPassword:data.confirmPassword
-  }).then(res=>{
-    console.log(res.data);
-  })
-}
+  // useEffect(() => {
+  //   // Set errorMessage only if text is equal or bigger than MAX_LENGTH
+  //   if (data.length >= MAX_LENGTH) {
+  //     setErrorMessage(
+  //       "The input has exceeded the maximum number of characters"
+  //     );
+  //   }
+  // }, [data]);
 
-function handle(e){
-const newData={...data}
-newData[e.target.name]=e.target.value
-setData(newData)
-console.log(newData);
-};
+  function Submit(e) {
+    e.preventDefault();
+    axios.post('http://54.37.154.200:10000/api/v1/', { addUser } )
+    .then(res=>{
+      console.log(res.data);
+    })
+  }
 
+  function handle(e) {
+    // const test = (event) => {
+    //   if (event.target.value >= MAX_LENGTH) {
+    //     setErrorMessage(
+    //       "The input has exceeded the maximum number of characters"
+    //     );
+    //   } else {
+    //     setErrorText("invalid format");
+    //   }
+    // };
 
+    const newData = { ...data };
+    newData[e.target.name] = e.target.value;
+    setData(newData);
+    console.log(newData);
+  }
 
   return (
-<Box 
-component="form"
-sx={{ border: 2, width:'400px', borderColor:'primary' } }>
-
-
-    <Grid
-      container
-      gap={3}
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-	  variant='outlined'
+    <Box
+      component="form"
+      sx={{ border: 2, width: "400px", borderColor: "primary" }}
     >
-      <Typography variant="h1">Inscription</Typography>
+      <form onSubmit={(e) => Submit(e)}>
+        <Grid
+          container
+          gap={3}
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          variant="outlined"
+        >
+          <Typography variant="h1">Inscription</Typography>
 
-{/* donnée dynamique a changer avec l'API DEF */}
+          <TextField
+            onChange={(e) => handle(e)}
+            required
+            name="email"
+            label="email"
+            value={data.email}
+            variant="outlined"
+            helperText={errorMessage}
+          />
 
-      <TextField 
-      onChange={(e)=> handle(e)}
-      required 
-      name="email" 
-      label='email'
-      value={data.email}
-      variant="outlined"
-      />
+          <TextField
+            required
+            onChange={(e) => handle(e)}
+            value={data.pseudonym}
+            name="pseudonym"
+            label="Pseudo"
+            variant="outlined"
+          />
 
-      <TextField 
-      required
-      onChange={(e)=> handle(e)} 
-      value={data.pseudonym}
-      name="pseudonym" 
-      label="Pseudo" 
-      variant="outlined" />
+          <TextField
+            required
+            onChange={(e) => handle(e)}
+            value={data.password}
+            name="password"
+            type="password"
+            label="Mot de passe"
+            variant="outlined"
+          />
 
-      <TextField 
-      required
-      onChange={(e)=> handle(e)}
-      value={data.password}
-      name="password"
-      type='password' 
-      label="Mot de passe" 
-      variant="outlined" />
+          <TextField
+            required
+            onChange={(e) => handle(e)}
+            value={data.confirmPassword}
+            type="password"
+            name="confirmPassword"
+            label="Confirmation Mot de passe"
+            variant="outlined"
+      // check en front à réaliser password ===confirmPassword
+          />
 
-      <TextField
-      required
-        onChange={(e)=> handle(e)}
-        value={data.confirmPassword}
-        name="confirmPassword"
-        label="Confirmation Mot de passe"
-        variant="outlined"
-      />
+          <FormGroup>
+            <FormControlLabel
+              required
+              control={<Checkbox />}
+              label="j'accepte les conditions générales"
+            />
+          </FormGroup>
 
-<FormGroup>
-<FormControlLabel required control={<Checkbox />} label="j'accepte les conditions générales" />
-</FormGroup>
+          <Button
+            type="valider"
+            variant="contained"
+            // onSubmit={(e)=> Submit(e)}
+          >
+            valider
+          </Button>
 
-      <Button
-        type="valider"
-        variant="contained"
-    onSubmit={(e)=> Submit(e)}
-      >
-      valider
-      </Button>
-
-	  <Button href="/" color="secondary" size='small'>Revenir à la page d'accueil</Button>
-
-    </Grid>
-	</Box>
+          <Button href="/" color="secondary" size="small">
+            Revenir à la page d'accueil
+          </Button>
+        </Grid>
+      </form>
+    </Box>
   );
-}
+};
 
 export default SignUp;
