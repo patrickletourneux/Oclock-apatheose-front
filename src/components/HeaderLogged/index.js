@@ -3,12 +3,11 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  // IconButton,
+  IconButton,
   Button,
   Menu,
   MenuItem,
   Link,
-  Box,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -22,83 +21,74 @@ export default function HeaderLogged() {
     setAnchorEl(null);
   };
   return (
-    <AppBar
-      sx={{
-        width: 450,
-      }}
-      color="primary"
-      position="fixed"
-    >
-      <Toolbar
-      >
-        <div sx={{ width: 230 }}>
-          <MenuIcon
-            id="basic-button"
-            aria-controls={open ? 'basic-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
-          />
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button',
-            }}
-          >
-            <MenuItem onClick={handleClose}>
-              <Link
-                href="/"
-                component="button"
-                variant="body1"
-                underline="none"
-              >
-                Accueil
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link
-                href="/tableau-de-bord"
-                component="button"
-                variant="body1"
-                underline="none"
-              >
-                Tableau de bord
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link
-                href="/mes-taches"
-                component="button"
-                variant="body1"
-                underline="none"
-              >
-                Mes taĉhes
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link
-                href="/classement"
-                component="button"
-                variant="body1"
-                underline="none"
-              >
-                Classement
-              </Link>
-            </MenuItem>
-          </Menu>
-        </div>
-        {/* <IconButton
-          sx={{ color: 'white' }}
+    <AppBar>
+      <Toolbar>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          sx={{ mr: 2 }}
+          onClick={handleClick}
         >
-          <MenuIcon />
-        </IconButton> */}
+          <MenuIcon
+            color="secondary.light"
+          />
+        </IconButton>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+        >
+          <MenuItem onClick={handleClose}>
+            <Link
+              href="/"
+              component="button"
+              variant="body1"
+              underline="none"
+            >
+              Accueil
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link
+              href="/tableau-de-bord"
+              component="button"
+              variant="body1"
+              underline="none"
+            >
+              Tableau de bord
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link
+              href="/mes-taches"
+              component="button"
+              variant="body1"
+              underline="none"
+            >
+              Mes taĉhes
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link
+              href="/classement"
+              component="button"
+              variant="body1"
+              underline="none"
+            >
+              Classement
+            </Link>
+          </MenuItem>
+        </Menu>
         <Typography
           sx={{
             flexGrow: 1,
-            color: 'white',
+            textAlign: 'center',
           }}
           variant="h6"
         >
@@ -117,7 +107,6 @@ export default function HeaderLogged() {
           Déconnexion
         </Button>
       </Toolbar>
-
-    </AppBar >
+    </AppBar>
   );
 }
