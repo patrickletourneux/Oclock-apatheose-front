@@ -42,7 +42,9 @@ console.log(resData);
 
   const [errorPseudonym, setErrorPseudonym] = useState("");
 
-function validatePseudonym(e){
+  // MANAGE PSEUDO ERROR 
+
+const  validatePseudonym = (e) => {
 const longueur = data.pseudonym.length;
 
 if (longueur <= 5)
@@ -52,6 +54,9 @@ setErrorPseudonym('Vous avez un champs mal fait idiot !')
 
 }}
 
+  // MANAGE EMAIL ERROR 
+
+
 const [emailError, setEmailError] = useState('')
 const validateEmail = (e) => {
   var email = e.target.value
@@ -60,6 +65,18 @@ const validateEmail = (e) => {
     setEmailError('')
   } else {
     setEmailError('Fais un effort svp :) ')
+  }
+}
+
+// CONST CONFIRMPASSWORD ERROR
+const [confirmPasswordError, setConfirmPasswordError]= useState('')
+const validateConfirmPassword = (e)=>{
+  var pwd = e.target.value
+
+  if (pwd != data.password){
+    setConfirmPasswordError('Il faut le mêêême')
+  } else{setConfirmPasswordError('')
+
   }
 }
 
@@ -126,6 +143,7 @@ const validateEmail = (e) => {
 
           <TextField
             required
+            error={confirmPasswordError}
             autoComplete='false'
             onChange={(e) => handle(e)}
             value={data.confirmPassword}
@@ -133,8 +151,10 @@ const validateEmail = (e) => {
             name="confirmPassword"
             label="Confirmation Mot de passe"
             variant="outlined"
-      // check en front à réaliser password ===confirmPassword
-          />
+            helperText={confirmPasswordError}
+            onBlur={validateConfirmPassword}
+
+/>
 
           <FormGroup>
             <FormControlLabel
