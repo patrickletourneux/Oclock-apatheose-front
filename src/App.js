@@ -16,7 +16,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <SignUp />
        
         <AuthProvider>
           <BrowserRouter>
@@ -26,7 +25,7 @@ function App() {
               <Route path="/" element={<p>accueil</p>} />
               <Route path="contact" element={<p>contact</p>} />
               <Route path="mentions-legales" element={<p>mentions-legales</p>} />
-              <Route path="inscription" element={<p>inscription</p>} />
+              <Route path="inscription" element={<SignUp />} />
               <Route path="connexion" element={<p>connexion</p>} />
               <Route
                 path="tableau-de-bord"

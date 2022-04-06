@@ -1,20 +1,24 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   TextField,
   Typography,
   Grid,
   Button,
+  form,
   FormGroup,
   FormControlLabel,
 } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import { Box } from "@mui/system";
 import {addUser} from "../../apis/api/users";
+import { Link } from "react-router-dom";
 
 const MAX_LENGTH = 5;
 
 const SignUp = () => {
+  console.log('signup');
+  // quid de gerer un state par champs?
   const [data, setData] = useState({
     email: "",
     pseudonym: "",
@@ -22,7 +26,7 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorPseudonym, setErrorPseudonym] = useState("");
 
   // useEffect(() => {
   //   // Set errorMessage only if text is equal or bigger than MAX_LENGTH
@@ -33,25 +37,35 @@ const SignUp = () => {
   //   }
   // }, [data]);
 
+  function createUser(resData) {
+console.log(resData);
+  };
+  
+  function createUserError(resError) {
+    console.log(resError);
+      };
+
   function Submit(e) {
     e.preventDefault();
-    axios.post('http://54.37.154.200:10000/api/v1/', { addUser } )
-    .then(res=>{
-      console.log(res.data);
-    })
+  console.log('SubmitForm');
+    addUser({
+    email: data.email,
+    password: data.password,
+    pseudonym: data.pseudonym}, createUser, createUserError)
   }
 
-  function handle(e) {
-    // const test = (event) => {
-    //   if (event.target.value >= MAX_LENGTH) {
-    //     setErrorMessage(
-    //       "The input has exceeded the maximum number of characters"
-    //     );
-    //   } else {
-    //     setErrorText("invalid format");
-    //   }
-    // };
+  function blurPseudonym(e){
+// Verifier si le champs respecte les conditons de validite et si non afficher l'erreur realisé
+const longueur = data.pseudonym.length;
 
+if (longueur <= 5)
+{setErrorPseudonym("")}
+else{
+  setErrorPseudonym('Vous avez un champs mal fait idiot !')
+
+}}
+
+  function handle(e) {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
     setData(newData);
@@ -61,9 +75,10 @@ const SignUp = () => {
   return (
     <Box
       component="form"
+      onSubmit={Submit}
       sx={{ border: 2, width: "400px", borderColor: "primary" }}
     >
-      <form onSubmit={(e) => Submit(e)}>
+       
         <Grid
           container
           gap={3}
@@ -76,25 +91,29 @@ const SignUp = () => {
 
           <TextField
             onChange={(e) => handle(e)}
+            autoComplete='false'
             required
             name="email"
             label="email"
             value={data.email}
             variant="outlined"
-            helperText={errorMessage}
           />
 
           <TextField
+          error={errorPseudonym}
             required
-            onChange={(e) => handle(e)}
+            onChange={handle}
             value={data.pseudonym}
             name="pseudonym"
             label="Pseudo"
             variant="outlined"
+            helperText={errorPseudonym}
+            onBlur={blurPseudonym}
           />
 
           <TextField
             required
+            autoComplete='false'
             onChange={(e) => handle(e)}
             value={data.password}
             name="password"
@@ -105,6 +124,7 @@ const SignUp = () => {
 
           <TextField
             required
+            autoComplete='false'
             onChange={(e) => handle(e)}
             value={data.confirmPassword}
             type="password"
@@ -123,18 +143,17 @@ const SignUp = () => {
           </FormGroup>
 
           <Button
-            type="valider"
+            type="submit"
             variant="contained"
-            // onSubmit={(e)=> Submit(e)}
           >
             valider
           </Button>
-
-          <Button href="/" color="secondary" size="small">
+          <Link to="/">
+          <Button color="secondary" size="small">
             Revenir à la page d'accueil
           </Button>
+          </Link>
         </Grid>
-      </form>
     </Box>
   );
 };
