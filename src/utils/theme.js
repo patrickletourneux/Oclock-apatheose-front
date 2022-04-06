@@ -17,7 +17,7 @@ const theme = createTheme({
   },
 
   typography: {
-    fontFamily: ['Segoe UI'],
+    fontFamily: ['helvetica'],
 
     h1: {
       fontSize: 30,
