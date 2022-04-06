@@ -10,6 +10,7 @@ import {
   Link,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function HeaderLogged() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -104,7 +105,11 @@ export default function HeaderLogged() {
           size="small"
           color="secondary"
         >
-          Déconnexion
+          <RouterLink
+            to="/"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >Déconnexion
+          </RouterLink>
         </Button>
       </Toolbar>
     </AppBar>
