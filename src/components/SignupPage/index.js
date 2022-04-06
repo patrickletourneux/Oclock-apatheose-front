@@ -14,7 +14,7 @@ import { Box } from "@mui/system";
 import { addUser } from "../../apis/api/users";
 import { Link } from "react-router-dom";
 import validator from "validator";
-import bgclean from "../../assets/images/bgclean.jpg"
+import bgclean from "../../assets/images/bgclean.jpg";
 
 const styles = {
   paperContainer: {
@@ -24,7 +24,7 @@ const styles = {
     backgroundRepeat: 'no-repeat',
     width:"100%"
   }
-  };
+};
 
 const SignUp = () => {
   // quid de gerer un state par champs?
@@ -85,7 +85,6 @@ const SignUp = () => {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
     setData(newData);
-    console.log(newData);
   };
 
   function Submit(e) {
@@ -103,106 +102,106 @@ const SignUp = () => {
   }
 
   return (
-<>
-<Box
-	style={styles.paperContainer}
-  sx={{width:"100%",
-  padding:"40px"}}
->
-    
-    <Box
-      component="form"
-      onSubmit={Submit}
-      sx={{ 
-        bgcolor:'white', 
-        border: 2, 
-        width: "500px", 
-        borderColor: "#009688", 
-        margin: "auto ", 
-        padding:"30px",
-        boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
-      }}
-
-    >
-      <Grid
-        container
-        gap={4}
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        variant="outlined"
+    <>
+      <Box
+        style={styles.paperContainer}
+        sx={{ width: "100%", padding: "40px" }}
       >
-        <Typography sx={{ padding: "50px"}} variant="h1">Inscription</Typography>
+        <Box
+          component="form"
+          onSubmit={Submit}
+          sx={{
+            bgcolor: "white",
+            border: 2,
+            width: "500px",
+            borderColor: "#009688",
+            margin: "auto ",
+            padding: "30px",
+            boxShadow:
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+          }}
+        >
+          <Grid
+            container
+            gap={4}
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            variant="outlined"
+          >
+            <Typography sx={{ padding: "50px" }} variant="h1">
+              Inscription
+            </Typography>
 
-        <TextField
-          error={emailError}
-          onChange={(e) => handle(e)}
-          autoComplete="false"
-          required
-          name="email"
-          label="email"
-          value={data.email}
-          variant="outlined"
-          helperText={emailError}
-          onBlur={validateEmail}
-        />
+            <TextField
+              error={emailError}
+              onChange={(e) => handle(e)}
+              autoComplete="false"
+              required
+              name="email"
+              label="email"
+              value={data.email}
+              variant="outlined"
+              helperText={emailError}
+              onBlur={validateEmail}
+            />
 
-        <TextField
-          error={errorPseudonym}
-          required
-          onChange={handle}
-          value={data.pseudonym}
-          name="pseudonym"
-          label="Pseudo"
-          variant="outlined"
-          helperText={errorPseudonym}
-          onBlur={validatePseudonym}
-        />
+            <TextField
+              error={errorPseudonym}
+              required
+              onChange={handle}
+              value={data.pseudonym}
+              name="pseudonym"
+              label="Pseudo"
+              variant="outlined"
+              helperText={errorPseudonym}
+              onBlur={validatePseudonym}
+            />
 
-        <TextField
-          required
-          autoComplete="false"
-          onChange={(e) => handle(e)}
-          value={data.password}
-          name="password"
-          type="password"
-          label="Mot de passe"
-          variant="outlined"
-        />
+            <TextField
+              required
+              autoComplete="false"
+              onChange={(e) => handle(e)}
+              value={data.password}
+              name="password"
+              type="password"
+              label="Mot de passe"
+              variant="outlined"
+            />
 
-        <TextField
-          required
-          error={confirmPasswordError}
-          autoComplete="false"
-          onChange={(e) => handle(e)}
-          value={data.confirmPassword}
-          type="password"
-          name="confirmPassword"
-          label="Confirmation Mot de passe"
-          variant="outlined"
-          helperText={confirmPasswordError}
-          onBlur={validateConfirmPassword}
-        />
+            <TextField
+              required
+              error={confirmPasswordError}
+              autoComplete="false"
+              onChange={(e) => handle(e)}
+              value={data.confirmPassword}
+              type="password"
+              name="confirmPassword"
+              label="Confirmation Mot de passe"
+              variant="outlined"
+              helperText={confirmPasswordError}
+              onBlur={validateConfirmPassword}
+            />
 
-        <FormGroup>
-          <FormControlLabel
-            required
-            control={<Checkbox />}
-            label="j'accepte les conditions générales"
-          />
-        </FormGroup>
+            <FormGroup>
+              <FormControlLabel
+                required
+                control={<Checkbox />}
+                label="j'accepte les conditions générales"
+              />
+            </FormGroup>
 
-        <Button type="submit" variant="contained">
-          valider
-        </Button>
-        <Link to="/">
-          <Button color="secondary" size="small">
-            Revenir à la page d'accueil
-          </Button>
-        </Link>
-      </Grid>
-    </Box>
-    </Box>
+            <Button type="submit" variant="contained">
+              valider
+            </Button>
+            <Link to="/">
+              <Button color="secondary" size="small">
+                Revenir à la page d'accueil
+              </Button>
+            </Link>
+          </Grid>
+        </Box>
+      </Box>
     </>
   );
 };
