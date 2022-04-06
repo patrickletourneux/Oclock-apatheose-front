@@ -53,7 +53,7 @@ export default function Header() {
               <Link
                 to="/connexion"
                 style={{ textDecoration: 'none', color: 'white' }}
-              >S'inscrire
+              >Se connecter
               </Link>
             </Button>
           </ButtonGroup>
