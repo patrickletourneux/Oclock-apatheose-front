@@ -7,6 +7,7 @@ import {
   ButtonGroup,
   Button,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -41,15 +42,19 @@ export default function Header() {
               border: 1,
             }}
           >
-            <Button
-              component="Link"
-              to="/inscription"
-            >S'inscrire
+            <Button>
+              <Link
+                to="/inscription"
+                style={{ textDecoration: 'none', color: 'white' }}
+              >S'inscrire
+              </Link>
             </Button>
-            <Button
-              href="/connexion"
-            >
-              Se connecter
+            <Button>
+              <Link
+                to="/connexion"
+                style={{ textDecoration: 'none', color: 'white' }}
+              >S'inscrire
+              </Link>
             </Button>
           </ButtonGroup>
         </Box>
