@@ -99,6 +99,7 @@ const SignUp = () => {
       createUser,
       createUserError
     );
+    // si succes mettre une redirection sur connexion
   }
 
   return (
@@ -194,7 +195,7 @@ const SignUp = () => {
         <Button type="submit" variant="contained">
           valider
         </Button>
-        <Link to="/connexion">
+        <Link to="/">
           <Button color="secondary" size="small">
             Revenir à la page d'accueil
           </Button>
