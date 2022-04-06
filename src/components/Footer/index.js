@@ -4,12 +4,12 @@ import {
   Link,
   Box,
 } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function Footer() {
   return (
     <Box
       sx={{
-        width: '450px',
         height: '50px',
         display: 'flex',
         justifyContent: 'space-evenly',
@@ -30,19 +30,24 @@ export default function Footer() {
         )}
       >
         <Link
-          href="/mentions-légales"
           underline="hover"
           color="secondary.light"
-
         >
-          Mentions légales
+          <RouterLink
+            to="/mentions-legales"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >Mentions légales
+          </RouterLink>
         </Link>
         <Link
-          href="/contact"
           underline="hover"
           color="secondary.light"
         >
-          Contact
+          <RouterLink
+            to="/contact"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >Contact
+          </RouterLink>
         </Link>
       </Stack>
     </Box>

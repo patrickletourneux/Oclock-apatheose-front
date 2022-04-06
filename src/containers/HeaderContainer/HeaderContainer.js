@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import HeaderLogged from '../../components/HeaderLogged';
+import Footer from '../../components/Footer';
 // import Login from '../../components/Login';
 
 import authContext from '../../contexts/authContext';
@@ -8,8 +8,8 @@ export default function HeaderContainer() {
   const { authed } = useContext(authContext);
 
   return authed === true
-    ? <HeaderLogged />
-    : <HeaderLogged />;
+    ? <Footer />
+    : <Footer />;
   // ? <Login />
   // : <Login />;
 }
