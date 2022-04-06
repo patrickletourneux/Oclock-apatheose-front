@@ -8,9 +8,11 @@ import {
 import { ThemeProvider } from '@mui/material';
 
 import theme from './utils/theme';
+
 import { AuthProvider } from './contexts/authContext';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -69,7 +71,7 @@ function App() {
               />
               <Route path="*" element={<p>404</p>} />
             </Routes>
-            <p>Footer</p>
+            <Footer />
           </BrowserRouter>
         </AuthProvider>
       </div>
