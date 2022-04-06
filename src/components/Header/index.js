@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import {
   AppBar,
   Toolbar,
@@ -24,7 +23,11 @@ export default function Header() {
             color: 'white',
           }}
         >
-          C du Prop's
+          <Link
+            to="/"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >C du Prop's
+          </Link>
         </Typography>
         <Box
           sx={{
