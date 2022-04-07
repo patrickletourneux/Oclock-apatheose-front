@@ -64,7 +64,6 @@ export default function Login() {
   }
 
   return (
-    // mettre image background + box guillaume
     <Box
       style={styles.paperContainer}
       sx={{
@@ -100,7 +99,7 @@ export default function Login() {
           <Typography
             variant="body1"
           >
-            Vous n'avez pas encore de compte?
+            Vous n'avez pas encore de compte ?&nbsp;
             <Link
               to="/inscription"
               style={{ textDecoration: 'none', color: '#1ba2ac' }}
@@ -133,26 +132,21 @@ export default function Login() {
             to="/"
             style={{ textDecoration: 'none' }}
           >
-            {/* <Button
+            <Button
               type="submit"
               variant="contained"
               endIcon={<ClearOutlinedIcon />}
             >
               Annuler
-            </Button> */}
-          </Link>
-          <Link
-            to="/tableau-de-bord"
-            style={{ textDecoration: 'none' }}
-          >
-            <Button
-              type="submit"
-              variant="contained"
-              endIcon={<DoneOutlineOutlinedIcon />}
-            >
-              Valider
             </Button>
           </Link>
+          <Button
+            type="submit"
+            variant="contained"
+            endIcon={<DoneOutlineOutlinedIcon />}
+          >
+            Valider
+          </Button>
         </Grid>
       </Box>
     </Box>
