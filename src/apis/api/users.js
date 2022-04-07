@@ -5,29 +5,20 @@ import api from './axiosInstance';
  * @param {string} payload.email
  * @param {string} payload.password
  * @param {string} payload.pseudonym
- * @param {function({
- *   token: string,
- *   user: {
- *     id: number,
- *     pseudonym: string,
- *     avatar_img: string,
- *   }
- *   })} setData
- * @param {function(string)} setError
+ * @param {function(null)} onSuccess
+ * @param {function(string)} onError
  * @returns {Promise<void>}
  *
  */
-export const addUser = async (payload, setData, setError) => {
+export const addUser = async (payload, onSuccess, onError) => {
   try {
-    const response = await api.post('users', {
-      data: payload,
-    });
-    setData(response.data);
+    await api.post('users', payload);
+    onSuccess(null);
   } catch (error) {
     if (error.response.status === 400) {
-      setError(error.response.data);
+      onError(error.response.data.message);
     } else {
-      setError('Une erreur est survenue, veuillez réessayer plus tard');
+      onError('Une erreur est survenue, veuillez réessayer plus tard');
     }
   }
 };
@@ -42,20 +33,20 @@ export const addUser = async (payload, setData, setError) => {
  *   password: string,
  *   home_id: number,
  *   created_at: string,
- * })} setData
- * @param {function(string)} setError
+ * })} onSuccess
+ * @param {function(string)} onError
  * @returns {Promise<void>}
  *
  */
-export const getUser = async (userId, setData, setError) => {
+export const getUser = async (userId, onSuccess, onError) => {
   try {
     const response = await api.get(`users/${userId}`);
-    setData(response.data);
+    onSuccess(response.data);
   } catch (error) {
-    if (error.status === 400) {
-      setError(error.data);
+    if (error.response.status === 400 || error.response.status === 404) {
+      onError(error.response.data.message);
     } else {
-      setError('Une erreur est survenue, veuillez réessayer plus tard');
+      onError('Une erreur est survenue, veuillez réessayer plus tard');
     }
   }
 };

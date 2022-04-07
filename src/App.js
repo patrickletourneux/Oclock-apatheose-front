@@ -19,8 +19,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <AuthProvider>
-          <BrowserRouter>
+        <BrowserRouter>
+          <AuthProvider>
             <HeaderContainer />
             <Routes>
               {/* TODO make const file with urls */}
@@ -72,8 +72,8 @@ function App() {
               <Route path="*" element={<p>404</p>} />
             </Routes>
             <Footer />
-          </BrowserRouter>
-        </AuthProvider>
+          </AuthProvider>
+        </BrowserRouter>
       </div>
     </ThemeProvider>
   );

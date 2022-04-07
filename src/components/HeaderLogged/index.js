@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -10,16 +10,22 @@ import {
   Link,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link as RouterLink } from 'react-router-dom';
+
+import authContext from '../../contexts/authContext';
 
 export default function HeaderLogged() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const { logout } = useContext(authContext);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleClickLogout = () => {
+    logout();
   };
   return (
     <AppBar>
@@ -101,15 +107,11 @@ export default function HeaderLogged() {
             border: 1,
           }}
           variant="outlined"
-          href="/"
           size="small"
           color="secondary"
+          onClick={handleClickLogout}
         >
-          <RouterLink
-            to="/"
-            style={{ textDecoration: 'none', color: 'white' }}
-          >Déconnexion
-          </RouterLink>
+          Déconnexion
         </Button>
       </Toolbar>
     </AppBar>
