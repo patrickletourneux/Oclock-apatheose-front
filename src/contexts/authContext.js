@@ -15,13 +15,13 @@ export function AuthProvider({ children }) {
   const login = (authData) => {
     setAuthed(true);
     setUser(authData.user);
-    localStorage.setItem('JWT', authData.token);
+    setJwt(authData.token);
   };
 
   const logout = () => {
     setAuthed(false);
     setUser(null);
-    localStorage.removeItem('JWT');
+    removeJwt();
   };
 
   // TODO test performance difference without memo

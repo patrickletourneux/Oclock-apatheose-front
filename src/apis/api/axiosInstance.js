@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { getJwt } from '../../utils/jwt';
 
 const api = axios.create({
   baseURL: 'http://54.37.154.200:10000/api/v1/',
 });
 
 api.interceptors.request.use((config) => {
-  const jwt = localStorage.getItem('JWT');
+  const jwt = getJwt();
   if (jwt) {
     // suppress eslint rule because axios doc does not specify that config object is immutable
     // eslint-disable-next-line no-param-reassign
