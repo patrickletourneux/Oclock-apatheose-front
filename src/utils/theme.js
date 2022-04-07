@@ -3,7 +3,10 @@ import { createTheme } from '@mui/material';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1ba2ac',
+      light: '#33ab9f',
+      main: '#009688',
+      dark: '#00695f',
+      contrastText: '#fff',
     },
     secondary: {
       main: '#44d5bc',
@@ -12,28 +15,29 @@ const theme = createTheme({
   },
 
   typography: {
-    fontFamily: ['Roboto'].join(','),
+    fontFamily: ['helvetica'],
 
     h1: {
-      fontSize: 14,
-      fontWeight: 800,
+      fontSize: 30,
+      fontWeight: 1000,
     },
     h2: {
-      fontSize: 12,
+      fontSize: 16,
       fontWeight: 600,
     },
+
     h3: {
-      fontSize: 10,
+      fontSize: 14,
       fontWeight: 500,
     },
 
     body1: {
-      fontSize: 10,
+      fontSize: 16,
       fontWeight: 500,
     },
 
     button: {
-      fontSize: '1.5rem',
+      fontSize: '1rem',
     },
   },
 

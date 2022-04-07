@@ -24,8 +24,8 @@ export const addUser = async (payload, setData, setError) => {
     });
     setData(response.data);
   } catch (error) {
-    if (error.status === 400) {
-      setError(error.data);
+    if (error.response.status === 400) {
+      setError(error.response.data);
     } else {
       setError('Une erreur est survenue, veuillez réessayer plus tard');
     }
