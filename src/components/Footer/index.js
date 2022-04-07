@@ -1,10 +1,9 @@
 import {
   Stack,
   Divider,
-  Link,
   Box,
 } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -31,23 +30,15 @@ export default function Footer() {
       >
         <Link
           underline="hover"
-          color="secondary.light"
-        >
-          <RouterLink
-            to="/mentions-legales"
-            style={{ textDecoration: 'none', color: 'white' }}
-          >Mentions légales
-          </RouterLink>
+          to="/mentions-legales"
+          style={{ textDecoration: 'none', color: 'white' }}
+        >Mentions légales
         </Link>
         <Link
           underline="hover"
-          color="secondary.light"
-        >
-          <RouterLink
-            to="/contact"
-            style={{ textDecoration: 'none', color: 'white' }}
-          >Contact
-          </RouterLink>
+          to="/contact"
+          style={{ textDecoration: 'none', color: 'white' }}
+        >Contact
         </Link>
       </Stack>
     </Box>

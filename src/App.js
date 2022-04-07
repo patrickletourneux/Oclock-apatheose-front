@@ -1,5 +1,3 @@
-import SignUp from './components/SignupPage/index'
-
 import {
   BrowserRouter,
   Routes,
@@ -12,6 +10,9 @@ import theme from './utils/theme';
 import { AuthProvider } from './contexts/authContext';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
+import SignUp from './components/SignupPage/index';
+import Login from './components/LoginPage';
+
 import Footer from './components/Footer';
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
               <Route path="contact" element={<p>contact</p>} />
               <Route path="mentions-legales" element={<p>mentions-legales</p>} />
               <Route path="inscription" element={<SignUp />} />
-              <Route path="connexion" element={<p>connexion</p>} />
+              <Route path="connexion" element={<Login />} />
               <Route
                 path="tableau-de-bord"
                 element={(
