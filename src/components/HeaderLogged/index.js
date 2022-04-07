@@ -28,7 +28,9 @@ export default function HeaderLogged() {
     logout();
   };
   return (
-    <AppBar>
+    <AppBar
+      position="static"
+    >
       <Toolbar>
         <IconButton
           size="large"

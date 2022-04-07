@@ -9,7 +9,7 @@ import {
   Box,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import { addUser } from '../../apis/api/users';
 import bgclean from '../../assets/images/bgclean.jpg';
@@ -17,7 +17,7 @@ import bgclean from '../../assets/images/bgclean.jpg';
 const styles = {
   paperContainer: {
     backgroundImage:
-      `url(${bgclean})`,
+    `url(${bgclean})`,
     backgroundSize: 'cover',
     width: '100%',
   },
@@ -32,19 +32,21 @@ function SignUp() {
     confirmPassword: '',
   });
 
-  function createUser(resData) {
-    // TODO gerer le message et l'action post inscription
-    console.log(resData);
+  const navigate = useNavigate();
+
+  function successSignUp() {
+    navigate('/connexion');
+    // realiser modale if avec affichage "resError"
   }
 
-  function createUserError(resError) {
+  function errorSignUp(resError) {
     console.log(resError);
   }
 
   // MANAGE PSEUDO ERROR
   const [errorPseudonym, setErrorPseudonym] = useState('');
 
-  const validatePseudonym = (e) => {
+  const validatePseudonym = () => {
     const longueur = data.pseudonym.length;
 
     if (longueur <= 15) {
@@ -85,7 +87,7 @@ function SignUp() {
     setData(newData);
   }
 
-  function Submit(e) {
+  const submit = (e) => {
     e.preventDefault();
     addUser(
       {
@@ -93,20 +95,18 @@ function SignUp() {
         password: data.password,
         pseudonym: data.pseudonym,
       },
-      createUser,
-      createUserError,
+      successSignUp,
+      errorSignUp,
     );
+
     // si succes mettre une redirection sur connexion
-  }
+  };
 
   return (
-    <Box
-      style={styles.paperContainer}
-      sx={{ py: '40px' }}
-    >
+    <Box style={styles.paperContainer} sx={{ py: '40px' }}>
       <Box
         component="form"
-        onSubmit={Submit}
+        onSubmit={submit}
         sx={{
           bgcolor: 'white',
           border: 2,
@@ -131,7 +131,7 @@ function SignUp() {
           </Typography>
 
           <TextField
-            error={emailError}
+            error={!!emailError}
             onChange={(e) => handleFieldChange(e)}
             autoComplete="false"
             required
@@ -144,7 +144,7 @@ function SignUp() {
           />
 
           <TextField
-            error={errorPseudonym}
+            error={!!errorPseudonym}
             required
             onChange={(e) => handleFieldChange(e)}
             value={data.pseudonym}
@@ -168,7 +168,7 @@ function SignUp() {
 
           <TextField
             required
-            error={confirmPasswordError}
+            error={!!confirmPasswordError}
             autoComplete="false"
             onChange={(e) => handleFieldChange(e)}
             value={data.confirmPassword}
@@ -187,8 +187,10 @@ function SignUp() {
               label="j'accepte les conditions générales"
             />
           </FormGroup>
-
-          <Button type="submit" variant="contained">
+          <Button
+            type="submit"
+            variant="contained"
+          >
             valider
           </Button>
           <Link to="/">
