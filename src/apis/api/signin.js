@@ -11,20 +11,20 @@ import api from './axiosInstance';
  *     pseudonym: string,
  *     avatar_img: string,
  *   }
- *   })} setData
- * @param {function(string)} setError
+ *   })} onSuccess
+ * @param {function(string)} onError
  * @returns {Promise<void>}
  *
  */
-const signin = async (payload, setData, setError) => {
+const signin = async (payload, onSuccess, onError) => {
   try {
     const response = await api.post('signin', payload);
-    setData(response.data);
+    onSuccess(response.data);
   } catch (error) {
-    if (error.status === 400) {
-      setError(error.data);
+    if (error.response.status === 400 || error.response.status === 404) {
+      onError(error.response.data.message);
     } else {
-      setError('Une erreur est survenue, veuillez réessayer plus tard');
+      onError('Une erreur est survenue, veuillez réessayer plus tard');
     }
   }
 };

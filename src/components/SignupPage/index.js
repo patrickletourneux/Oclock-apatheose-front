@@ -16,7 +16,8 @@ import bgclean from '../../assets/images/bgclean.jpg';
 
 const styles = {
   paperContainer: {
-    backgroundImage: `url(${bgclean})`,
+    backgroundImage:
+    `url(${bgclean})`,
     backgroundSize: 'cover',
     width: '100%',
   },
@@ -128,7 +129,6 @@ function SignUp() {
 
           <TextField
             error={emailError}
-            type
             onChange={(e) => handleFieldChange(e)}
             autoComplete="false"
             required
