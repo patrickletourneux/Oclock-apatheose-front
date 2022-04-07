@@ -75,7 +75,7 @@ const SignUp = () => {
     var pwd = e.target.value;
 
     if (pwd != data.password) {
-      setConfirmPasswordError("Il faut le mêêême si tu un vrai GOAT");
+      setConfirmPasswordError("Il faut le mêêême si tu es un vrai GOAT");
     } else {
       setConfirmPasswordError("");
     }
