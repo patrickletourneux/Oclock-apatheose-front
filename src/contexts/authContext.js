@@ -5,6 +5,8 @@ import {
 } from 'react';
 import { PropTypes } from 'prop-types';
 
+import { removeJwt, setJwt } from '../utils/jwt';
+
 const authContext = createContext();
 
 export function AuthProvider({ children }) {
