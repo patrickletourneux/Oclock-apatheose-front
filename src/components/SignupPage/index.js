@@ -21,7 +21,6 @@ const styles = {
     backgroundImage: 
     `url(${bgclean})`,
     backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
     width:"100%"
   }
 };
@@ -36,6 +35,7 @@ const SignUp = () => {
   });
 
   function createUser(resData) {
+// TODO gerer le message et l'action post inscription 
     console.log(resData);
   }
 
@@ -49,10 +49,10 @@ const SignUp = () => {
   const validatePseudonym = (e) => {
     const longueur = data.pseudonym.length;
 
-    if (longueur <= 5) {
+    if (longueur <= 15) {
       setErrorPseudonym("");
     } else {
-      setErrorPseudonym("Vous avez un champs mal fait idiot !");
+      setErrorPseudonym("Axel attend toujours sa tasse @Etienne svp !");
     }
   };
 
@@ -75,13 +75,13 @@ const SignUp = () => {
     var pwd = e.target.value;
 
     if (pwd != data.password) {
-      setConfirmPasswordError("Il faut le mêêême");
+      setConfirmPasswordError("Il faut le mêêême si tu un vrai GOAT");
     } else {
       setConfirmPasswordError("");
     }
   };
 
-  function handle(e) {
+  function handleFieldChange(e) {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
     setData(newData);
@@ -105,7 +105,7 @@ const SignUp = () => {
     <>
       <Box
         style={styles.paperContainer}
-        sx={{ width: "100%", padding: "40px" }}
+        sx={{ py:"40px" }}
       >
         <Box
           component="form"
@@ -113,7 +113,7 @@ const SignUp = () => {
           sx={{
             bgcolor: "white",
             border: 2,
-            width: "500px",
+            width: "400px",
             borderColor: "#009688",
             margin: "auto ",
             padding: "30px",
@@ -135,7 +135,7 @@ const SignUp = () => {
 
             <TextField
               error={emailError}
-              onChange={(e) => handle(e)}
+              onChange={(e) => handleFieldChange(e)}
               autoComplete="false"
               required
               name="email"
@@ -149,7 +149,7 @@ const SignUp = () => {
             <TextField
               error={errorPseudonym}
               required
-              onChange={handle}
+              onChange={(e) => handleFieldChange(e)}
               value={data.pseudonym}
               name="pseudonym"
               label="Pseudo"
@@ -161,7 +161,7 @@ const SignUp = () => {
             <TextField
               required
               autoComplete="false"
-              onChange={(e) => handle(e)}
+              onChange={(e) => handleFieldChange(e)}
               value={data.password}
               name="password"
               type="password"
@@ -173,7 +173,7 @@ const SignUp = () => {
               required
               error={confirmPasswordError}
               autoComplete="false"
-              onChange={(e) => handle(e)}
+              onChange={(e) => handleFieldChange(e)}
               value={data.confirmPassword}
               type="password"
               name="confirmPassword"
