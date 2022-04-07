@@ -11,7 +11,7 @@ api.interceptors.request.use((config) => {
     // eslint-disable-next-line no-param-reassign
     config.headers = {
       ...config.headers,
-      Authorization: `bearer ${jwt}`,
+      Authorization: `Bearer ${jwt}`,
     };
   }
   return config;
