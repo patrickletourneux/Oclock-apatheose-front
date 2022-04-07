@@ -9,7 +9,7 @@ import {
   Box,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import { addUser } from '../../apis/api/users';
 import bgclean from '../../assets/images/bgclean.jpg';
@@ -32,11 +32,14 @@ function SignUp() {
     confirmPassword: '',
   });
 
-  function createUser(resda) {
-    console.log(resda);
+  const navigate = useNavigate();
+
+  function successSignUp() {
+    navigate('/connexion');
+    // realiser modale if avec affichage "resError"
   }
 
-  function createUserError(resError) {
+  function errorSignUp(resError) {
     console.log(resError);
   }
 
@@ -92,8 +95,8 @@ function SignUp() {
         password: data.password,
         pseudonym: data.pseudonym,
       },
-      createUser,
-      createUserError,
+      successSignUp,
+      errorSignUp,
     );
 
     // si succes mettre une redirection sur connexion
@@ -128,7 +131,7 @@ function SignUp() {
           </Typography>
 
           <TextField
-            error={emailError}
+            error={!!emailError}
             onChange={(e) => handleFieldChange(e)}
             autoComplete="false"
             required
@@ -141,7 +144,7 @@ function SignUp() {
           />
 
           <TextField
-            error={errorPseudonym}
+            error={!!errorPseudonym}
             required
             onChange={(e) => handleFieldChange(e)}
             value={data.pseudonym}
@@ -165,7 +168,7 @@ function SignUp() {
 
           <TextField
             required
-            error={confirmPasswordError}
+            error={!!confirmPasswordError}
             autoComplete="false"
             onChange={(e) => handleFieldChange(e)}
             value={data.confirmPassword}

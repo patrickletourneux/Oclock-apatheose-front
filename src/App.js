@@ -13,6 +13,8 @@ import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
 import SignUp from './components/SignupPage/index';
 import Login from './components/LoginPage';
 
+import DashboardPage from './components/DashboardPage';
+
 import Footer from './components/Footer';
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
                 path="tableau-de-bord"
                 element={(
                   <RequireAuth>
-                    <p>tableau-de-bord</p>
+                    <DashboardPage />
                   </RequireAuth>
                 )}
               />
