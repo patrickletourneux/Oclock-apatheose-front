@@ -10,9 +10,7 @@ import {
   Box,
 } from '@mui/material';
 import DoneOutlineOutlinedIcon from '@mui/icons-material/DoneOutlineOutlined';
-import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import { Link } from 'react-router-dom';
-import validator from 'validator';
 import signin from '../../apis/api/signin';
 import bgclean from '../../assets/images/bgclean.jpg';
 import authContext from '../../contexts/authContext';
@@ -27,10 +25,6 @@ const styles = {
 };
 
 export default function Login() {
-  // const { user, setUser } = useContext(authContext);
-  const context = useContext(authContext);
-  console.log(context);
-
   const { login } = useContext(authContext);
 
   const [data, setData] = useState({
@@ -109,10 +103,11 @@ export default function Login() {
             </Link>
           </Typography>
           <TextField
-            onChange={(e) => handleFieldChange(e)}
-            autoComplete="false"
             required
+            autoComplete="false"
+            onChange={(e) => handleFieldChange(e)}
             name="email"
+            type="email"
             label="email"
             value={data.email}
             variant="outlined"
@@ -121,10 +116,10 @@ export default function Login() {
             required
             autoComplete="false"
             onChange={(e) => handleFieldChange(e)}
-            value={data.password}
             name="password"
             type="password"
             label="Mot de passe"
+            value={data.password}
             variant="outlined"
           />
           <Button
