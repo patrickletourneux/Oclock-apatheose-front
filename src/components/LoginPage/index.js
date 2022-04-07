@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 // import * as React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import {
   TextField,
@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import validator from 'validator';
 import signin from '../../apis/api/signin';
 import bgclean from '../../assets/images/bgclean.jpg';
+import authContext from '../../contexts/authContext';
 
 const styles = {
   paperContainer: {
@@ -26,25 +27,24 @@ const styles = {
 };
 
 export default function Login() {
+  // const { user, setUser } = useContext(authContext);
+  const context = useContext(authContext);
+  console.log(context);
+
+  const { login } = useContext(authContext);
+
   const [data, setData] = useState({
     email: '',
     password: '',
   });
 
-  function loginFormUser(resDataUser) {
-    console.log(resDataUser);
+  function onSigninSuccess(resData) {
+    login(resData);
   }
-  // MANAGE EMAIL ERROR
-  const [emailError, setEmailError] = useState('');
-  const validateEmail = (e) => {
-    const email = e.target.value;
 
-    if (validator.isEmail(email)) {
-      setEmailError('');
-    } else {
-      setEmailError('Fais un effort svp :) ');
-    }
-  };
+  function onSigninError(resErrorMessage) {
+    console.log(resErrorMessage);
+  }
   function handleFieldChange(e) {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
@@ -59,7 +59,9 @@ export default function Login() {
         email: data.email,
         password: data.password,
       },
-      loginFormUser,
+      onSigninSuccess,
+      onSigninError,
+
     );
   }
 
@@ -107,7 +109,6 @@ export default function Login() {
             </Link>
           </Typography>
           <TextField
-            error={emailError}
             onChange={(e) => handleFieldChange(e)}
             autoComplete="false"
             required
@@ -115,8 +116,6 @@ export default function Login() {
             label="email"
             value={data.email}
             variant="outlined"
-            helperText={emailError}
-            onBlur={validateEmail}
           />
           <TextField
             required
@@ -128,18 +127,6 @@ export default function Login() {
             label="Mot de passe"
             variant="outlined"
           />
-          <Link
-            to="/"
-            style={{ textDecoration: 'none' }}
-          >
-            <Button
-              type="submit"
-              variant="contained"
-              endIcon={<ClearOutlinedIcon />}
-            >
-              Annuler
-            </Button>
-          </Link>
           <Button
             type="submit"
             variant="contained"
@@ -147,6 +134,12 @@ export default function Login() {
           >
             Valider
           </Button>
+          <Link to="/">
+            <Button color="secondary" size="small">
+              Revenir à la page d'accueil
+            </Button>
+          </Link>
+
         </Grid>
       </Box>
     </Box>
