@@ -129,7 +129,10 @@ export default function Login() {
           >
             Valider
           </Button>
-          <Link to="/">
+          <Link
+            to="/"
+            style={{ textDecoration: 'none', color: '#1ba2ac' }}
+          >
             <Button color="secondary" size="small">
               Revenir à la page d'accueil
             </Button>
