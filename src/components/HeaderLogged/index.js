@@ -11,6 +11,8 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import { Link as LinkRouter } from 'react-router-dom';
+
 import authContext from '../../contexts/authContext';
 
 export default function HeaderLogged() {
@@ -53,53 +55,60 @@ export default function HeaderLogged() {
         >
           <MenuItem onClick={handleClose}>
             <Link
-              href="/"
-              component="button"
+              to="/"
+              component={LinkRouter}
               variant="body1"
-              underline="none"
+              style={{ textDecoration: 'none', color: '#009688' }}
+
             >
               Accueil
             </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <Link
-              href="/tableau-de-bord"
-              component="button"
+              to="/tableau-de-bord"
+              component={LinkRouter}
               variant="body1"
-              underline="none"
+              style={{ textDecoration: 'none', color: '#009688' }}
             >
               Tableau de bord
             </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <Link
-              href="/mes-taches"
-              component="button"
+              to="/mes-taches"
+              component={LinkRouter}
               variant="body1"
-              underline="none"
+              style={{ textDecoration: 'none', color: '#009688' }}
             >
               Mes taĉhes
             </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <Link
-              href="/classement"
-              component="button"
+              to="/classement"
+              component={LinkRouter}
               variant="body1"
-              underline="none"
+              style={{ textDecoration: 'none', color: '#009688' }}
             >
               Classement
             </Link>
           </MenuItem>
         </Menu>
         <Typography
+          variant="h6"
+          component="h1"
           sx={{
             flexGrow: 1,
             textAlign: 'center',
           }}
-          variant="h6"
         >
-          C du Prop's
+          <Link
+            to="/"
+            component={LinkRouter}
+            style={{ textDecoration: 'none', color: 'white' }}
+          >C du Prop's
+          </Link>
         </Typography>
         <Button
           sx={{
