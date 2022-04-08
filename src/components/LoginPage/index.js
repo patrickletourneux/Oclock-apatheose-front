@@ -33,7 +33,7 @@ export default function Login() {
   });
 
   function onSigninSuccess(resData) {
-    login(resData);
+    login(resData.user, resData.token);
   }
 
   function onSigninError(resErrorMessage) {
