@@ -12,42 +12,46 @@ const theme = createTheme({
       main: '#44d5bc',
       light: '#fff',
     },
+
+    background: {
+      default: '#f3f7f6',
+    },
   },
 
   typography: {
     fontFamily: ['helvetica'],
 
     h1: {
-      fontSize: 30,
+      fontSize: '2.5rem',
       fontWeight: 1000,
     },
     h2: {
-      fontSize: 16,
+      fontSize: '2rem',
       fontWeight: 600,
     },
 
     h3: {
-      fontSize: 14,
+      fontSize: '1rem',
       fontWeight: 500,
     },
 
     body1: {
-      fontSize: 16,
+      fontSize: '1rem',
       fontWeight: 500,
     },
 
     button: {
-      fontSize: '1rem',
+      fontSize: '0.8rem',
+      fontWeight: '700',
     },
   },
 
   breakpoints: {
     values: {
       xs: 0,
-      sm: 640,
-      md: 800,
-      lg: 1024,
-      xl: 1200,
+      sm: 380,
+      md: 750,
+      xl: 1280,
     },
   },
 });

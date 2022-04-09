@@ -46,7 +46,7 @@ export default function Login() {
     console.log(newData);
   }
 
-  function Submit(e) {
+  const submit = (e) => {
     e.preventDefault();
     signin(
       {
@@ -57,7 +57,7 @@ export default function Login() {
       onSigninError,
 
     );
-  }
+  };
 
   return (
     <Box
@@ -69,7 +69,7 @@ export default function Login() {
     >
       <Box
         component="form"
-        onSubmit={Submit}
+        onSubmit={submit}
         sx={{
           bgcolor: 'white',
           border: 2,

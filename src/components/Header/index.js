@@ -5,8 +5,9 @@ import {
   Typography,
   ButtonGroup,
   Button,
+  Link,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link as LinkRouter } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -25,6 +26,7 @@ export default function Header() {
         >
           <Link
             to="/"
+            component={LinkRouter}
             style={{ textDecoration: 'none', color: 'white' }}
           >C du Prop's
           </Link>
@@ -48,6 +50,7 @@ export default function Header() {
             <Button>
               <Link
                 to="/inscription"
+                component={LinkRouter}
                 style={{ textDecoration: 'none', color: 'white' }}
               >S'inscrire
               </Link>
@@ -55,6 +58,7 @@ export default function Header() {
             <Button>
               <Link
                 to="/connexion"
+                component={LinkRouter}
                 style={{ textDecoration: 'none', color: 'white' }}
               >Se connecter
               </Link>
