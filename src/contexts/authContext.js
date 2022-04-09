@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
     setAuthed(true);
     setUser(authData.user);
     setJwt(authData.token);
-    navigate('tableau-de-bord');
+    navigate('classement');
   };
 
   const logout = () => {

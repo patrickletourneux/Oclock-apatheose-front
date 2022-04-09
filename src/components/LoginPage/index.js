@@ -130,7 +130,7 @@ export default function Login() {
             Valider
           </Button>
           <Link
-            to="/"
+            to="/classement"
             style={{ textDecoration: 'none', color: '#1ba2ac' }}
           >
             <Button color="secondary" size="small">

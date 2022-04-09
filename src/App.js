@@ -12,6 +12,7 @@ import RequireAuth from './components/RequireAuth/RequireAuth';
 import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
 import SignUp from './components/SignupPage/index';
 import Login from './components/LoginPage';
+import LeaderboardPage from './components/LeaderboardPage';
 
 import DashboardPage from './components/DashboardPage';
 
@@ -58,9 +59,9 @@ function App() {
               <Route
                 path="classement"
                 element={(
-                  <RequireAuth>
-                    <p>classement</p>
-                  </RequireAuth>
+                  // <RequireAuth>
+                  <LeaderboardPage />
+                  // </RequireAuth>
                 )}
               />
               <Route
