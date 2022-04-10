@@ -8,7 +8,10 @@ export default function RequireAuth({ children }) {
   const { authed } = useContext(authContext);
   const location = useLocation();
 
-  // TODO use navigation state in login component to redirect to the previous page once connected
+  if (authed === null) {
+    // auth is not initialized yet
+    return '';
+  }
   return authed === true
     ? children
     : <Navigate to="/connexion" replace state={{ path: location.pathname }} />;

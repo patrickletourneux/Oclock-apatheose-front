@@ -3,7 +3,6 @@ import {
   useState,
   useEffect,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import {
   getJwt,
@@ -11,28 +10,26 @@ import {
   setJwt,
   verifyDecodeJwt,
 } from '../utils/jwt';
-import { getUser } from '../apis/api/users';
 import { setupAuthInterceptors } from '../apis/api/axiosInstance';
 
 const authContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [authed, setAuthed] = useState(false);
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  // null is used for auth to detect that it is not initialized yet
+  const [authed, setAuthed] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-  const login = ({ id, pseudonym, avatar_img }, token = '') => {
+  const login = (newUserId, token = '') => {
     setAuthed(true);
-    setUser({ id, pseudonym, avatar_img });
+    setUserId(newUserId);
     if (token) {
       setJwt(token);
     }
-    navigate('tableau-de-bord');
   };
 
   const logout = () => {
     setAuthed(false);
-    setUser(null);
+    setUserId(null);
     removeJwt();
   };
 
@@ -43,23 +40,13 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const checkCurrentJwt = () => {
       const jwt = getJwt();
-
-      const onVerifySuccess = async (claims) => {
-        if (authed === false) {
-          await getUser(
-            claims.user.id,
-            login,
-            console.error,
-          );
-        }
-      };
-
       verifyDecodeJwt(
         jwt,
-        onVerifySuccess,
+        (claims) => login(claims.id),
         logout,
       );
     };
+
     checkCurrentJwt();
     const intervalId = setInterval(checkCurrentJwt, 1000 * 60);
 
@@ -81,7 +68,7 @@ export function AuthProvider({ children }) {
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const auth = {
     authed,
-    user,
+    userId,
     login,
     logout,
   };
