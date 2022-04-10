@@ -12,6 +12,7 @@ import {
   verifyDecodeJwt,
 } from '../utils/jwt';
 import { getUser } from '../apis/api/users';
+import { setupAuthInterceptors } from '../apis/api/axiosInstance';
 
 const authContext = createContext();
 
@@ -34,6 +35,10 @@ export function AuthProvider({ children }) {
     setUser(null);
     removeJwt();
   };
+
+  // On component mount, setup auth interceptors. Remove them on component unmount
+  useEffect(() => setupAuthInterceptors(logout), []);
+
   // check jwt token on mount and every minute. login/logout the user if needed
   useEffect(() => {
     const checkCurrentJwt = () => {
