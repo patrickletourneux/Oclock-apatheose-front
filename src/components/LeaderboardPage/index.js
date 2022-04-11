@@ -33,9 +33,21 @@ function LeaderboardPage() {
             'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
         }}
       >
-        <Typography variant="h1" textAlign="center" padding="10px" color="primary">Classement</Typography>
+        <Typography
+          variant="h1"
+          textAlign="center"
+          padding="10px"
+          color="primary"
+        >
+          Classement
+        </Typography>
 
-        <Typography variant="h3" textAlign="center" padding="10px" color="secondary">
+        <Typography
+          variant="h3"
+          textAlign="center"
+          padding="10px"
+          color="secondary"
+        >
           il vous reste [nb de jours concours] afin de tenter le [titre reward]
         </Typography>
       </Box>
@@ -140,14 +152,28 @@ function LeaderboardPage() {
             Reward
           </Typography>
         </Grid>
-        <Box sx={{ typography: 'h2' }} textAlign="center" padding="20px">[Nom du Reward]</Box>
-        <Box typography="h3" color="secondary" margin="20px" textAlign="center" sx={{ border: '1px solid grey', padding: '12px' }}>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <Box sx={{ typography: 'h2' }} textAlign="center" padding="20px">
+          [Nom du Reward]
         </Box>
-        <Box sx={{
-          textAlign: 'center',
-          margin: '40px',
-        }}
+        <Box
+          typography="h3"
+          color="secondary"
+          margin="20px"
+          textAlign="center"
+          sx={{ border: '1px solid grey', padding: '12px' }}
+        >
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </p>
+        </Box>
+        <Box
+          sx={{
+            textAlign: 'center',
+            margin: '40px',
+          }}
         >
           <Button type="Submit" variant="contained" size="small">
             Modifier
