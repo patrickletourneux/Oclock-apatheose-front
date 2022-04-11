@@ -35,7 +35,7 @@ export default function Login() {
   const location = useLocation();
 
   function onSigninSuccess(resData) {
-    login(resData.user, resData.token);
+    login(resData.user.id, resData.token);
     // redirect to previous url if there is one. Dashboard by default
     navigate(location.state?.path || '/tableau-de-bord');
   }
