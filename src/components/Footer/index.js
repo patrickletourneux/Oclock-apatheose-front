@@ -16,7 +16,7 @@ export default function Footer() {
         alignItems: 'center',
         bottom: '0px',
         width: '100%',
-        position: 'absolute',
+        // position: 'absolute',
 
       }}
       bgcolor="primary.main"
