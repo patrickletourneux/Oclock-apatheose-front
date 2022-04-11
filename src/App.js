@@ -1,8 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import './App.css';
 import theme from './utils/theme';
@@ -29,7 +25,10 @@ function App() {
               {/* TODO make const file with urls */}
               <Route path="/" element={<p>accueil</p>} />
               <Route path="contact" element={<p>contact</p>} />
-              <Route path="mentions-legales" element={<p>mentions-legales</p>} />
+              <Route
+                path="mentions-legales"
+                element={<p>mentions-legales</p>}
+              />
               <Route path="inscription" element={<SignUp />} />
               <Route path="connexion" element={<Login />} />
               <Route
@@ -59,9 +58,10 @@ function App() {
               <Route
                 path="classement"
                 element={(
-                  // <RequireAuth>
-                  <LeaderboardPage />
-                  // </RequireAuth>
+                  <RequireAuth>
+                    <LeaderboardPage />
+                    //{' '}
+                  </RequireAuth>
                 )}
               />
               <Route

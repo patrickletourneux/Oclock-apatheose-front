@@ -1,8 +1,31 @@
 import {
-  Typography, Grid, Button, Box, Avatar,
+  Typography, Grid, Button, Box,
 } from '@mui/material';
+import { useContext, useEffect, useState } from 'react';
+
+import authContext from '../../contexts/authContext';
+
+import getRankingPage from '../../apis/api/ranking';
+
+import ListItem from './ListItem';
 
 function LeaderboardPage() {
+  const [data, setData] = useState(null);
+  const { userData } = useContext(authContext);
+  useEffect(() => {
+    if (userData) {
+      getRankingPage(
+        userData.id,
+        (newData) => setData(newData),
+        (newError) => console.error(newError),
+      );
+    }
+    // Pour le premier rendu, on met vide, ici a chaque chgt de userData
+  }, [userData]);
+
+  console.log('render leaderboard');
+  console.log('userData: ', userData);
+
   return (
     <Box
       sx={{
@@ -13,7 +36,6 @@ function LeaderboardPage() {
       }}
     >
       <Box
-        xs={8}
         sx={{
           bgcolor: 'white',
           border: 1,
@@ -27,87 +49,37 @@ function LeaderboardPage() {
         <Typography
           variant="h1"
           textAlign="center"
-          padding="10px"
+          padding="20px"
+          color="primary"
+        >
+          Classement & Reward
+        </Typography>
+
+        <Typography variant="h3" textAlign="center" padding="20px">
+          il vous reste [nb de jours concours] afin de tenter le [titre reward]
+        </Typography>
+
+        <Typography
+          variant="h2"
+          textAlign="center"
+          padding="20px"
           color="primary"
         >
           Classement
         </Typography>
 
-        <Typography
-          variant="h3"
-          textAlign="center"
-          padding="10px"
-          color="secondary"
-        >
-          il vous reste [nb de jours concours] afin de tenter le [titre reward]
-        </Typography>
+        {data?.users?.map((user) => (
+          <ListItem key={user.id} {...user} />
+        ))}
 
         <Grid
           sx={{
-            margin: '20px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            typography: 'body1',
+            padding: '10px',
           }}
         />
-        <Grid
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            typography: 'h3',
-            padding: '10px',
-          }}
-        >
-          <Grid>#1</Grid>
-          <Avatar sx={{ width: 30, height: 30 }}>img Avatar</Avatar>
-          <Grid>Pseudo</Grid>
-          <Grid>501 points</Grid>
-        </Grid>
-
-        <Grid
-          sx={{
-            borderBottom: 0.5,
-            borderColor: '#009688',
-            borderStyle: 'dotted',
-            margin: '20px 5px',
-          }}
-        />
-        <Grid
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            typography: 'body1',
-            padding: '10px',
-          }}
-        >
-          <Grid>#4</Grid>
-          <Avatar sx={{ width: 24, height: 24 }}>img Avatar</Avatar>
-          <Grid>Pseudo</Grid>
-          <Grid>501 points</Grid>
-        </Grid>
-        <Grid
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            typography: 'body1',
-            padding: '10px',
-          }}
-        >
-          <Grid>#5</Grid>
-          <Avatar sx={{ width: 24, height: 24 }}>img Avatar</Avatar>
-          <Grid>Pseudo</Grid>
-          <Grid>501 points</Grid>
-        </Grid>
-        <Grid
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            typography: 'body1',
-            padding: '10px',
-          }}
-        >
-          <Grid>#6</Grid>
-          <Avatar sx={{ width: 24, height: 24 }}>img Avatar</Avatar>
-          <Grid>Pseudo</Grid>
-          <Grid>501 points</Grid>
-        </Grid>
       </Box>
 
       <Grid
@@ -122,12 +94,8 @@ function LeaderboardPage() {
           alignContent: 'space-between',
         }}
       >
-        <Grid
-          sx={{
-            margin: '10px',
-          }}
-        >
-          <Typography variant="h1" color="primary" textAlign="center">
+        <Grid>
+          <Typography variant="h2" color="primary" textAlign="center">
             Reward
           </Typography>
         </Grid>
