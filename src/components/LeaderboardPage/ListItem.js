@@ -16,7 +16,7 @@ function ListItem({
       }}
     >
       <Grid>{rank}</Grid>
-      <Avatar alt="Remy Sharp" src={avatar_img} sx={{ width: 30, height: 30 }} />
+      <Avatar alt="{users.pseudonym}" src={avatar_img} sx={{ width: 30, height: 30 }} />
       <Grid>{pseudonym}</Grid>
       <Grid>{score}</Grid>
     </Grid>

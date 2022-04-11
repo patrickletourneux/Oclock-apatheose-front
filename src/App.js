@@ -60,7 +60,6 @@ function App() {
                 element={(
                   <RequireAuth>
                     <LeaderboardPage />
-                    //{' '}
                   </RequireAuth>
                 )}
               />

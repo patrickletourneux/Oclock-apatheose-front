@@ -18,7 +18,7 @@ const styles = {
   paperContainer: {
     backgroundImage: `url(${bgclean})`,
     backgroundSize: 'cover',
-    width: '100vw',
+    width: '100%',
     minHeight: '90vh',
     // height: '100%',
     // position: 'fixed',
