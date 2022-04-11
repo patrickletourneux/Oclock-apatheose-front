@@ -23,8 +23,8 @@ export const getJwt = () => localStorage.getItem('JWT');
 
 /**
  * @param {string} jwt
- * @param {Function} onSuccess
- * @param {Function} onError
+ * @param {function(object)} onSuccess(claims)
+ * @param {function(void)} onError
  */
 export const verifyDecodeJwt = (jwt, onSuccess, onError) => {
   try {
