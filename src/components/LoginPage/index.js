@@ -10,7 +10,7 @@ import {
   Box,
 } from '@mui/material';
 import DoneOutlineOutlinedIcon from '@mui/icons-material/DoneOutlineOutlined';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signin from '../../apis/api/signin';
 import bgclean from '../../assets/images/bgclean.jpg';
 import authContext from '../../contexts/authContext';
@@ -31,9 +31,13 @@ export default function Login() {
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function onSigninSuccess(resData) {
-    login(resData);
+    login(resData.user, resData.token);
+    // redirect to previous url if there is one. Dashboard by default
+    navigate(location.state?.path || '/tableau-de-bord');
   }
 
   function onSigninError(resErrorMessage) {

@@ -1,33 +1,58 @@
 import {
   createContext,
   useState,
+  useEffect,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-
-import { removeJwt, setJwt } from '../utils/jwt';
+import {
+  getJwt,
+  removeJwt,
+  setJwt,
+  verifyDecodeJwt,
+} from '../utils/jwt';
+import { setupAuthInterceptors } from '../apis/api/axiosInstance';
 
 const authContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [authed, setAuthed] = useState(false);
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  // null is used for auth to detect that it is not initialized yet
+  const [authed, setAuthed] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-  const login = (authData) => {
+  const login = (newUserId, token = '') => {
     setAuthed(true);
-    setUser(authData.user);
-    setJwt(authData.token);
-    navigate('classement');
+    setUserId(newUserId);
+    if (token) {
+      setJwt(token);
+    }
   };
 
   const logout = () => {
     setAuthed(false);
-    setUser(null);
+    setUserId(null);
     removeJwt();
   };
 
+  // On component mount, setup auth interceptors. Remove them on component unmount
+  useEffect(() => setupAuthInterceptors(logout), []);
+
+  // check jwt token on mount and every minute. login/logout the user if needed
+  useEffect(() => {
+    const checkCurrentJwt = () => {
+      const jwt = getJwt();
+      verifyDecodeJwt(
+        jwt,
+        (claims) => login(claims.id),
+        logout,
+      );
+    };
+
+    checkCurrentJwt();
+  // eslint-disable-next-line  react-hooks/exhaustive-deps
+  }, []);
+
   // TODO test performance difference without memo
+  // It will fix the eslint error below
   // const auth = useMemo(() => ({
   //   authed,
   //   user,
@@ -38,7 +63,7 @@ export function AuthProvider({ children }) {
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const auth = {
     authed,
-    user,
+    userId,
     login,
     logout,
   };
