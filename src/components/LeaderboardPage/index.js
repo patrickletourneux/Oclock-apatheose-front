@@ -1,15 +1,10 @@
 import {
-  TextField,
   Typography,
   Grid,
   Button,
-  FormGroup,
-  FormControlLabel,
   Box,
   Avatar,
-  TextareaAutosize,
 } from '@mui/material';
-import { padding } from '@mui/system';
 
 function LeaderboardPage() {
   return (
