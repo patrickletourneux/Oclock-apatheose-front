@@ -6,44 +6,46 @@ import {
   FormGroup,
   FormControlLabel,
   Box,
-} from "@mui/material";
+} from '@mui/material';
+import { typography } from '@mui/system';
 
 function LeaderboardPage() {
   return (
     <Box
       sx={{
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "primary",
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        height: '100vh',
+        bgcolor: '#f3f7f6',
       }}
     >
-      <Grid
-        item
+      <Box
         xs={8}
         sx={{
-          bgcolor: "white",
+          bgcolor: 'white',
           border: 1,
-          borderColor: "#009688",
-          margin: "20px 20px",
-          padding: "10px",
+          borderColor: '#009688',
+          margin: '20px 20px',
+          padding: '10px',
           boxShadow:
-            "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+            'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
         }}
       >
         <Typography variant="h1">Classement</Typography>
-      </Grid>
+      </Box>
 
       <Grid
         item
         columns={16}
         sx={{
-          bgcolor: "white",
+          bgcolor: 'white',
           border: 1,
-          borderColor: "#009688",
-          margin: "20px 20px",
-          padding: "10px",
+          borderColor: '#009688',
+          margin: '20px 20px',
+          padding: '10px',
           boxShadow:
-            "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+            'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
         }}
       >
         <Typography variant="body1">
@@ -52,24 +54,30 @@ function LeaderboardPage() {
       </Grid>
 
       <Grid
-        spacing={2}
         sx={{
-          bgcolor: "white",
+          bgcolor: 'white',
           border: 1,
-          borderColor: "#009688",
-          margin: "20px 20px",
-          padding: "10px",
+          borderColor: '#009688',
+          margin: '20px',
+          padding: '10px',
           boxShadow:
-            "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+            'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
+          alignContent: 'space-between',
         }}
       >
-        <Grid direction="row">
-          <Typography variant="h3">Classement</Typography>
+        <Grid
+          sx={{
+            margin: '10px',
+          }}
+        >
+          <Typography variant="h3" color="primary">Classement</Typography>
         </Grid>
-
-        <Grid>Avatar</Grid>
-        <Grid>Avatar</Grid>
-
+        <Grid sx={{ display: 'flex', justifyContent: 'space-between', typography: 'body1' }}>
+          <Grid>#1</Grid>
+          <Grid>img Avatar</Grid>
+          <Grid>Pseudo</Grid>
+          <Grid>501 points</Grid>
+        </Grid>
       </Grid>
     </Box>
   );

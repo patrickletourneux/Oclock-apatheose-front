@@ -6,14 +6,12 @@ import {
   ButtonGroup,
   Button,
   Link,
-} from '@mui/material';
-import { Link as LinkRouter } from 'react-router-dom';
+} from "@mui/material";
+import { Link as LinkRouter } from "react-router-dom";
 
 export default function Header() {
   return (
-    <AppBar
-      position="static"
-    >
+    <AppBar position="static">
       <Toolbar>
         <Typography
           variant="h6"
@@ -21,21 +19,22 @@ export default function Header() {
           href="/"
           sx={{
             flexGrow: 1,
-            color: 'white',
+            color: "white",
           }}
         >
           <Link
             to="/"
             component={LinkRouter}
-            style={{ textDecoration: 'none', color: 'white' }}
-          >C du Prop's
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            C du Prop's
           </Link>
         </Typography>
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
           <ButtonGroup
@@ -43,7 +42,7 @@ export default function Header() {
             variant="contained"
             orientation="horizontal"
             sx={{
-              color: 'white',
+              color: "white",
               border: 1,
             }}
           >
@@ -51,16 +50,18 @@ export default function Header() {
               <Link
                 to="/inscription"
                 component={LinkRouter}
-                style={{ textDecoration: 'none', color: 'white' }}
-              >S'inscrire
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                S'inscrire
               </Link>
             </Button>
             <Button>
               <Link
                 to="/connexion"
                 component={LinkRouter}
-                style={{ textDecoration: 'none', color: 'white' }}
-              >Se connecter
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                Se connecter
               </Link>
             </Button>
           </ButtonGroup>
