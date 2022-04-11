@@ -7,8 +7,9 @@ import {
   FormControlLabel,
   Box,
   Avatar,
+  TextareaAutosize,
 } from '@mui/material';
-import { margin, typography } from '@mui/system';
+import { padding } from '@mui/system';
 
 function LeaderboardPage() {
   return (
@@ -17,7 +18,6 @@ function LeaderboardPage() {
         display: 'flex',
         flexDirection: 'column',
         width: '100vw',
-        height: '100vh',
         bgcolor: '#f3f7f6',
       }}
     >
@@ -33,26 +33,12 @@ function LeaderboardPage() {
             'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
         }}
       >
-        <Typography variant="h1">Classement</Typography>
-      </Box>
+        <Typography variant="h1" textAlign="center" padding="10px" color="primary">Classement</Typography>
 
-      <Grid
-        item
-        columns={16}
-        sx={{
-          bgcolor: 'white',
-          border: 1,
-          borderColor: '#009688',
-          margin: '20px 20px',
-          padding: '10px',
-          boxShadow:
-            'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
-        }}
-      >
-        <Typography variant="body1">
+        <Typography variant="h3" textAlign="center" padding="10px" color="secondary">
           il vous reste [nb de jours concours] afin de tenter le [titre reward]
         </Typography>
-      </Grid>
+      </Box>
 
       <Grid
         sx={{
@@ -70,11 +56,7 @@ function LeaderboardPage() {
           sx={{
             margin: '20px',
           }}
-        >
-          <Typography variant="h2" color="primary">
-            Classement
-          </Typography>
-        </Grid>
+        />
         <Grid
           sx={{
             display: 'flex',
@@ -151,15 +133,26 @@ function LeaderboardPage() {
       >
         <Grid
           sx={{
-            margin: '20px',
+            margin: '10px',
           }}
         >
-          <Typography variant="h2" color="primary">
+          <Typography variant="h1" color="primary" textAlign="center">
             Reward
           </Typography>
         </Grid>
-        <Box />
-
+        <Box sx={{ typography: 'h2' }} textAlign="center" padding="20px">[Nom du Reward]</Box>
+        <Box typography="h3" color="secondary" margin="20px" textAlign="center" sx={{ border: '1px solid grey', padding: '12px' }}>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </Box>
+        <Box sx={{
+          textAlign: 'center',
+          margin: '40px',
+        }}
+        >
+          <Button type="Submit" variant="contained" size="small">
+            Modifier
+          </Button>
+        </Box>
       </Grid>
     </Box>
   );
