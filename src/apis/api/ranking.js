@@ -39,8 +39,9 @@ const responseDataMock = {
  */
 const getRankingPage = async (userId, onSuccess, onError) => {
   try {
-    const response = await api.get(`ranking/${userId}`);
-    onSuccess(response.data);
+    try {
+      onSuccess(responseDataMock);
+    }
   } catch (error) {
     if (error.response.status === 400 || error.response.status === 404) {
       onError(error.response.data.message);

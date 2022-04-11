@@ -1,9 +1,5 @@
 import {
-  Typography,
-  Grid,
-  Button,
-  Box,
-  Avatar,
+  Typography, Grid, Button, Box, Avatar,
 } from '@mui/material';
 
 function LeaderboardPage() {
@@ -45,20 +41,7 @@ function LeaderboardPage() {
         >
           il vous reste [nb de jours concours] afin de tenter le [titre reward]
         </Typography>
-      </Box>
 
-      <Grid
-        sx={{
-          bgcolor: 'white',
-          border: 1,
-          borderColor: '#009688',
-          margin: '20px',
-          padding: '10px',
-          boxShadow:
-            'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
-          alignContent: 'space-between',
-        }}
-      >
         <Grid
           sx={{
             margin: '20px',
@@ -125,7 +108,8 @@ function LeaderboardPage() {
           <Grid>Pseudo</Grid>
           <Grid>501 points</Grid>
         </Grid>
-      </Grid>
+      </Box>
+
       <Grid
         sx={{
           bgcolor: 'white',
