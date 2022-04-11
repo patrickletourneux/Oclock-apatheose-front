@@ -42,7 +42,7 @@ export function AuthProvider({ children }) {
       const jwt = getJwt();
       verifyDecodeJwt(
         jwt,
-        (claims) => login(claims.id),
+        (claims) => login(claims.user.id),
         logout,
       );
     };
