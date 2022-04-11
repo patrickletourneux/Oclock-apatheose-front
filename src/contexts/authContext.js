@@ -11,32 +11,37 @@ import {
   verifyDecodeJwt,
 } from '../utils/jwt';
 import { setupAuthInterceptors } from '../apis/api/axiosInstance';
+import { getUser } from '../apis/api/users';
 
 const authContext = createContext();
 
 export function AuthProvider({ children }) {
   // null is used for auth to detect that it is not initialized yet
   const [authed, setAuthed] = useState(null);
-  const [userId, setUserId] = useState(null);
+  const [userData, setUserData] = useState(null);
 
-  const login = (newUserId, token = '') => {
+  const login = (userId, token = '') => {
     setAuthed(true);
-    setUserId(newUserId);
     if (token) {
       setJwt(token);
     }
+    getUser(
+      userId,
+      (data) => setUserData(data),
+      (error) => console.error(error),
+    );
   };
 
   const logout = () => {
     setAuthed(false);
-    setUserId(null);
+    setUserData(null);
     removeJwt();
   };
 
   // On component mount, setup auth interceptors. Remove them on component unmount
   useEffect(() => setupAuthInterceptors(logout), []);
 
-  // check jwt token on mount and every minute. login/logout the user if needed
+  // check jwt token on mount. login/logout the user if needed
   useEffect(() => {
     const checkCurrentJwt = () => {
       const jwt = getJwt();
@@ -63,7 +68,7 @@ export function AuthProvider({ children }) {
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const auth = {
     authed,
-    userId,
+    userData,
     login,
     logout,
   };
