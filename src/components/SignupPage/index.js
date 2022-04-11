@@ -103,7 +103,13 @@ function SignUp() {
   };
 
   return (
-    <Box style={styles.paperContainer} sx={{ py: '20px' }}>
+    <Box
+      style={styles.paperContainer}
+      sx={{
+        py: '40px',
+        height: '90vh',
+      }}
+    >
       <Box
         component="form"
         onSubmit={submit}
@@ -120,24 +126,23 @@ function SignUp() {
       >
         <Grid
           container
-          gap={3}
+          gap={2}
           direction="column"
           justifyContent="center"
           alignItems="center"
           variant="outlined"
         >
-          <Typography sx={{ padding: '20px' }} variant="h1">
+          <Typography sx={{ padding: '50px' }} variant="h1">
             Inscription
           </Typography>
 
-          <Typography
-            variant="h3"
-          >
+          <Typography variant="body1">
             Vous avez déjà un compte ?&nbsp;
             <Link
               to="/inscription"
               style={{ textDecoration: 'none', color: '#1ba2ac' }}
-            >Inscrivez-vous
+            >
+              Inscrivez-vous
             </Link>
           </Typography>
 
@@ -194,23 +199,22 @@ function SignUp() {
           <FormGroup>
             <FormControlLabel
               required
-              control={(
-                <Checkbox />
-)}
-              label={<Typography variant="h3" color="grey">j'accepte les conditions générales</Typography>}
+              control={<Checkbox />}
+              label={(
+                <Typography variant="body1" color="grey">
+                  j'accepte les conditions générales
+                </Typography>
+              )}
             />
           </FormGroup>
+
           <Button type="submit" variant="contained">
             valider
           </Button>
-          <Link
-            to="/"
-            style={{ textDecoration: 'none', color: '#1ba2ac' }}
-          >
+
+          <Link to="/" style={{ textDecoration: 'none', color: '#1ba2ac' }}>
             <Button color="secondary" size="small">
-              <Typography variant="h3">
-                Revenir à la page d'accueil
-              </Typography>
+              Revenir à la page d'accueil
             </Button>
           </Link>
         </Grid>

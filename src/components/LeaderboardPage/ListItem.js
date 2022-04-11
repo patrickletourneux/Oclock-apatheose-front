@@ -3,20 +3,6 @@ import {
   Grid, Avatar,
 } from '@mui/material';
 
-
-
-// const users: [
-//     {
-//       id: 1,
-//       pseudonym: 'Axel',
-//       avatar_img:
-//         'https://img.freepik.com/free-vector/mysterious-mafia-man-wearing-hat_52683-34829.jpg',
-//       // score from 0 to ++
-//       score: 512,
-//       // rank from 1 to ++
-//       rank: 2,
-//     },
-
 function ListItem({
   pseudonym, avatar_img, score, rank,
 }) {

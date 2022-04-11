@@ -1,13 +1,11 @@
-import {
-  Typography, Grid, Button, Box,
-} from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
+import { Typography, Grid, Button, Box } from "@mui/material";
 
-import authContext from '../../contexts/authContext';
+import { useContext, useEffect, useState } from "react";
+import FormDialog from "./modalButton";
 
-import getRankingPage from '../../apis/api/ranking';
-
-import ListItem from './ListItem';
+import authContext from "../../contexts/authContext";
+import getRankingPage from "../../apis/api/ranking";
+import ListItem from "./ListItem";
 
 function LeaderboardPage() {
   const [data, setData] = useState(null);
@@ -17,33 +15,33 @@ function LeaderboardPage() {
       getRankingPage(
         userData.id,
         (newData) => setData(newData),
-        (newError) => console.error(newError),
+        (newError) => console.error(newError)
       );
     }
     // Pour le premier rendu, on met vide, ici a chaque chgt de userData
   }, [userData]);
 
-  console.log('render leaderboard');
-  console.log('userData: ', userData);
+  console.log("render leaderboard");
+  console.log("userData: ", userData);
 
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100vw',
-        bgcolor: '#f3f7f6',
+        display: "flex",
+        flexDirection: "column",
+        width: "100vw",
+        bgcolor: "#f3f7f6",
       }}
     >
       <Box
         sx={{
-          bgcolor: 'white',
+          bgcolor: "white",
           border: 1,
-          borderColor: '#009688',
-          margin: '20px 20px',
-          padding: '10px',
+          borderColor: "#009688",
+          margin: "20px 20px",
+          padding: "10px",
           boxShadow:
-            'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
+            "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
         }}
       >
         <Typography
@@ -74,24 +72,24 @@ function LeaderboardPage() {
 
         <Grid
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            typography: 'body1',
-            padding: '10px',
+            display: "flex",
+            justifyContent: "space-between",
+            typography: "body1",
+            padding: "10px",
           }}
         />
       </Box>
 
       <Grid
         sx={{
-          bgcolor: 'white',
+          bgcolor: "white",
           border: 1,
-          borderColor: '#009688',
-          margin: '20px',
-          padding: '10px',
+          borderColor: "#009688",
+          margin: "20px",
+          padding: "10px",
           boxShadow:
-            'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
-          alignContent: 'space-between',
+            "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+          alignContent: "space-between",
         }}
       >
         <Grid>
@@ -99,7 +97,7 @@ function LeaderboardPage() {
             Reward
           </Typography>
         </Grid>
-        <Box sx={{ typography: 'h2' }} textAlign="center" padding="20px">
+        <Box sx={{ typography: "h2" }} textAlign="center" padding="20px">
           [Nom du Reward]
         </Box>
         <Box
@@ -107,7 +105,7 @@ function LeaderboardPage() {
           color="secondary"
           margin="20px"
           textAlign="center"
-          sx={{ border: '1px solid grey', padding: '12px' }}
+          sx={{ border: "1px solid grey", padding: "12px" }}
         >
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -118,13 +116,15 @@ function LeaderboardPage() {
         </Box>
         <Box
           sx={{
-            textAlign: 'center',
-            margin: '40px',
+            textAlign: "center",
+            margin: "40px",
           }}
         >
-          <Button type="Submit" variant="contained" size="small">
-            Modifier
-          </Button>
+          {/* <Button variant="outlined">
+              Modifier
+            </Button> */}
+
+          <FormDialog />
         </Box>
       </Grid>
     </Box>
