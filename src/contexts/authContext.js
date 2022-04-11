@@ -48,11 +48,6 @@ export function AuthProvider({ children }) {
     };
 
     checkCurrentJwt();
-    const intervalId = setInterval(checkCurrentJwt, 1000 * 60);
-
-    return (() => {
-      clearInterval(intervalId);
-    });
   // eslint-disable-next-line  react-hooks/exhaustive-deps
   }, []);
 
