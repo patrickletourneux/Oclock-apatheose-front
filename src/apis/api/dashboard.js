@@ -13,8 +13,8 @@ const oneHomeDataMock = {
     end_at: '2022-04-08 15:09:14.538557+02',
   },
   tasks: {
-    attributed_tasks_count: 3,
-    done_tasks_count: 5,
+    user_attributed_tasks_count: 3,
+    user_done_tasks_count: 5,
   },
   ranking: {
     first_user: {
@@ -47,12 +47,8 @@ const getDashboardPage = async (userId, onSuccess, onError) => {
   try {
     const response = await api.get(`dashboard/${userId}`);
     onSuccess(response.data);
-  } catch (error) {
-    if (error.response.status === 400 || error.response.status === 404) {
-      onError(error.response.data.message);
-    } else {
-      onError('Une erreur est survenue, veuillez réessayer plus tard');
-    }
+  } catch {
+    onError('Une erreur est survenue, veuillez réessayer plus tard');
   }
 };
 
