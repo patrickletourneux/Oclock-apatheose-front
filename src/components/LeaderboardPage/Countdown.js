@@ -1,16 +1,8 @@
 import { Typography } from '@mui/material';
 
-// reward: {
-//     id: 5,
-//     title: 'Massage Californien',
-//     description: 'Un massage californien',
-//     // pour recuperer la date: new Date(end_at)
-//     end_at: '2022-04-08 15:09:14.538557+02',
-//   },
-// };
 
 function Countdown({
-  title
+  title, end_at,
 }) {
   return (
     <Typography
@@ -21,7 +13,7 @@ function Countdown({
       border="1px solid"
       borderRadius={2}
     >
-      il vous reste [nb de jours concours] afin de tenter le { title }
+      Vous avez jusqu'au {end_at} afin de remporter le <Typography variant="h2" color="blue">{ title }</Typography>
     </Typography>
   );
 }

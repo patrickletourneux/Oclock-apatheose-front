@@ -12,7 +12,7 @@ const Transition = React.forwardRef((props, ref) => (
   <Slide direction="up" ref={ref} {...props} />
 ));
 
-export default function FormDialog() {
+export default function ModalButton() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

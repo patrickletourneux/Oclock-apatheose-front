@@ -1,9 +1,7 @@
-import {
-  Typography, Grid, Box,
-} from '@mui/material';
+import { Typography, Grid, Box } from '@mui/material';
 
 import { useContext, useEffect, useState } from 'react';
-import FormDialog from './modalButton';
+import ModalButton from './ModalButton';
 
 import authContext from '../../contexts/authContext';
 
@@ -26,18 +24,7 @@ function LeaderboardPage() {
     // Pour le premier rendu, on met vide, ici a chaque chgt de userData
   }, [userData]);
 
-  const [rewards, setRewards] = useState(null);
-  useEffect(() => {
-    if (rewards) {
-      getRankingPage(
-        rewards.id,
-        (newReward) => setRewards(newReward),
-        (newError) => console.error(newError),
-      );
-    }
-    // Pour le premier rendu, on met vide, ici a chaque chgt de userData
-  }, [rewards]);
-
+  console.log(data);
   return (
     <Box>
       <Box
@@ -61,10 +48,7 @@ function LeaderboardPage() {
         >
           Classement & Reward
         </Typography>
-
-        {rewards?.map((rew) => (
-          <Countdown key={rew.id} {...rew} />
-        ))}
+        <Countdown {...data?.reward} />
         <Typography
           variant="h2"
           textAlign="center"
@@ -106,14 +90,14 @@ function LeaderboardPage() {
             Reward
           </Typography>
         </Box>
-        <RewardTile />
+        <RewardTile {...data?.reward} />
         <Box
           sx={{
             textAlign: 'center',
             margin: '40px',
           }}
         >
-          <FormDialog />
+          <ModalButton />
         </Box>
       </Box>
     </Box>
