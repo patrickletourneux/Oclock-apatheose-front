@@ -195,7 +195,7 @@ function SignUp() {
               required
               control={(
                 <Checkbox />
-)}
+                )}
               label={<Typography variant="h3" color="grey">j'accepte les conditions générales</Typography>}
             />
           </FormGroup>
