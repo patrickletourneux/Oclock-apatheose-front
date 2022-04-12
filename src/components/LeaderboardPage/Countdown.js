@@ -5,7 +5,7 @@ import CountDays from './CountDays';
 function Countdown({
   title,
 }) {
-  const nbOfDays = CountDays(new Date('2022,03,15'), new Date('2022,03,19'));
+  const nbOfDays = CountDays(new Date(), new Date('2022,04,19'));
   console.log(nbOfDays);
 
   return (
@@ -17,7 +17,7 @@ function Countdown({
       border="1px solid"
       borderRadius={2}
     >
-      Vous avez encore {nbOfDays} jours afin de remporter le <Typography variant="h3" color="secondary">{ title }</Typography>
+      Vous avez encore <Typography variant="h2" color="secondary">{nbOfDays} jours</Typography>  afin de remporter le <Typography variant="h2" color="secondary">{ title }</Typography>
     </Typography>
   );
 }

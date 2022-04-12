@@ -1,3 +1,3 @@
 export default function CountDays(start, end) {
-  return (end - start) / (1000 * 60 * 60 * 24);
+  return Math.ceil(Math.abs(end - start) / (1000 * 60 * 60 * 24));
 }
