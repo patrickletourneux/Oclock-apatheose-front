@@ -11,7 +11,10 @@ function ListItems({
 }) {
   return (
     <>
-      <List sx={{ width: '100%', maxWidth: 350, bgcolor: 'background.paper' }}>
+      <List sx={{
+        width: '100%', maxWidth: 600, bgcolor: 'background.paper',
+      }}
+      >
         <ListItem>
           <ListItemText primary={rank} variant="body1" />
           <ListItemAvatar>
