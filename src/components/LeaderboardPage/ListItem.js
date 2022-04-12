@@ -11,37 +11,25 @@ function ListItems({
   pseudonym, avatar_img, score, rank,
 }) {
   return (
-    // <Grid
-    //   sx={{
-    //     display: 'flex',
-    //     justifyContent: 'space-between',
-    //     typography: 'h3',
-    //     padding: '10px',
-    //   }}
-    // >
-    //   <Grid>{rank}</Grid>
-    //   <Avatar alt="{users.pseudonym}" src={avatar_img} sx={{ width: 30, height: 30 }} />
-    //   <Grid>{pseudonym}</Grid>
-    //   <Grid>{score}</Grid>
-    // </Grid>
-    <List sx={{ width: '100%', maxWidth: 350, bgcolor: 'background.paper' }}>
-      <ListItem alignItems="flex-end">
-        <ListItemText primary={rank} />
-        <ListItemAvatar>
-          <Avatar alt="{users.pseudonym}" src={avatar_img} size="small" />
-        </ListItemAvatar>
-        <ListItemText
-          sx={{ width: '200px' }}
-          primary={pseudonym}
-        />
-        <ListItemText
-          sx={{ width: '30px' }}
-          color="orange"
-          primary={score}
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-    </List>
+    <>
+      <List sx={{ width: '100%', maxWidth: 350, bgcolor: 'background.paper' }}>
+        <ListItem>
+          <ListItemText primary={rank} variant="body1" />
+          <ListItemAvatar>
+            <Avatar alt="{users.pseudonym}" src={avatar_img} size="small" />
+          </ListItemAvatar>
+          <ListItemText
+            sx={{ width: '150px' }}
+            primary={pseudonym}
+          />
+          <ListItemText
+            sx={{ width: '30px', color: 'orange' }}
+            primary={score}
+          />
+        </ListItem>
+      </List>
+      <Divider variant="fullwidth" />
+    </>
   );
 }
 

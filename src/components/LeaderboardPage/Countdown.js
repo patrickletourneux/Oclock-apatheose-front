@@ -1,9 +1,13 @@
 import { Typography } from '@mui/material';
-
+// eslint-disable-next-line import/no-named-as-default
+import CountDays from './CountDays';
 
 function Countdown({
-  title, end_at,
+  title,
 }) {
+  const nbOfDays = CountDays(new Date('2022,03,15'), new Date('2022,03,19'));
+  console.log(nbOfDays);
+
   return (
     <Typography
       variant="h3"
@@ -13,7 +17,7 @@ function Countdown({
       border="1px solid"
       borderRadius={2}
     >
-      Vous avez jusqu'au {end_at} afin de remporter le <Typography variant="h2" color="blue">{ title }</Typography>
+      Vous avez encore {nbOfDays} jours afin de remporter le <Typography variant="h3" color="secondary">{ title }</Typography>
     </Typography>
   );
 }

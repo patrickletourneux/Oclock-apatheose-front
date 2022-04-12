@@ -23,8 +23,6 @@ function LeaderboardPage() {
     }
     // Pour le premier rendu, on met vide, ici a chaque chgt de userData
   }, [userData]);
-
-  console.log(data);
   return (
     <Box>
       <Box
