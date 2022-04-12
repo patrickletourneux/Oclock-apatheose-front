@@ -15,7 +15,8 @@ export const addUser = async (payload, onSuccess, onError) => {
     await api.post('users', payload);
     onSuccess(null);
   } catch (error) {
-    if (error.response && (error.response.status === 400 || error.response.status === 404)) {
+    const status = error.response?.status;
+    if (status === 400 || status === 404 || status === 409) {
       onError(error.response.data.message);
     } else {
       onError('Une erreur est survenue, veuillez réessayer plus tard');
