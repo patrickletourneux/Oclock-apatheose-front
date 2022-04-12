@@ -1,42 +1,7 @@
 import api from './axiosInstance';
 
 // eslint-disable-next-line no-unused-vars
-const responseDataMockV1 = {
-  attributed_tasks: [
-    {
-      id: 10,
-      name: 'Mettre sa biere vide a la poubelle',
-      value: 40,
-    },
-    {
-      id: 23,
-      name: 'Boire une biere',
-      value: 350,
-    },
-  ],
-  home_tasks: [
-    {
-      id: 4,
-      name: 'Passer l\'aspirateur',
-      value: 20,
-    },
-    {
-      id: 63,
-      name: 'Faire la vaisselle',
-      value: 30,
-    },
-  ],
-  done_tasks: [
-    {
-      id: 42,
-      name: 'Tondre la pelouse',
-      value: 50,
-    },
-  ],
-};
-
-// eslint-disable-next-line no-unused-vars
-const responseDataMockV2 = {
+const responseDataMock = {
   home_tasks: [
     {
       id: 10,
