@@ -1,4 +1,9 @@
-import { Box, Button, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 import { Link as LinkRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -20,7 +25,7 @@ function HomeTile({ data, hasHome }) {
       <Typography textAlign="right">
         {`Il y a ${data.home.userCount} inscrit${data.home.userCount > 1 ? 's' : ''}`}
       </Typography>
-      <Box textAlign="center" marginTop="1rem">
+      <Box textAlign="center" marginTop="1.5rem">
         <Button
           component={LinkRouter}
           variant="contained"
@@ -29,19 +34,33 @@ function HomeTile({ data, hasHome }) {
           Paramétrer
         </Button>
       </Box>
-      <Box marginTop="1rem" display="flex" justifyContent="space-between">
-        <Button
-          variant="contained"
-          disabled
+      <Box marginTop="1.5rem" display="flex" justifyContent="center" gap="1rem 2rem" flexWrap="wrap">
+        <Tooltip
+          title="Pour ajouter une maison, il vous faut au préalable quitter la maison actuelle"
+          placement="top"
         >
-          Ajouter une maison
-        </Button>
-        <Button
-          variant="contained"
-          disabled
+          <span>
+            <Button
+              variant="contained"
+              disabled
+            >
+              Ajouter
+            </Button>
+          </span>
+        </Tooltip>
+        <Tooltip
+          title="Pour rejoindre une maison, il vous faut au préalable quitter la maison actuelle"
+          placement="top"
         >
-          Rejoindre une maison
-        </Button>
+          <span>
+            <Button
+              variant="contained"
+              disabled
+            >
+              Rejoindre
+            </Button>
+          </span>
+        </Tooltip>
       </Box>
     </>
   );
@@ -52,18 +71,18 @@ function HomeTile({ data, hasHome }) {
       <Typography variant="h3" color="error" textAlign="center" marginTop="2rem">
         Vous n'avez pas encore de maison
       </Typography>
-      <Box marginTop="2rem" display="flex" justifyContent="space-between">
+      <Box marginTop="2rem" display="flex" justifyContent="center" gap="1rem 2rem" flexWrap="wrap">
         <Button
           variant="contained"
           onClick={addHomeClick}
         >
-          Ajouter une maison
+          Ajouter
         </Button>
         <Button
           variant="contained"
           onClick={joinHomeClick}
         >
-          Rejoindre une maison
+          Rejoindre
         </Button>
       </Box>
     </>
