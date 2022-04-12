@@ -1,8 +1,6 @@
 import {
   Button,
-  CircularProgress,
   Container,
-  Grid,
   Typography,
 } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
@@ -10,6 +8,12 @@ import { Link as LinkRouter } from 'react-router-dom';
 
 import getDashboardPage from '../../apis/api/dashboard';
 import authContext from '../../contexts/authContext';
+import TileContainer from '../Tile/TileContainer';
+import Tile from '../Tile/Tile';
+import PageTitle from '../PageTitle/PageTitle';
+import PageLoader from '../PageLoader/PageLoader';
+import PageError from '../PageError/PageError';
+import TileTitle from '../Tile/TileTitle';
 
 function DashboardPage() {
   const { userData } = useContext(authContext);
@@ -18,6 +22,7 @@ function DashboardPage() {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    // TODO home_id et user_id ???
     if (userData?.home_id) {
       setLoading(true);
       setError('');
@@ -37,27 +42,13 @@ function DashboardPage() {
 
   return (
     <Container>
-      <Typography variant="h1" textAlign="center" margin="1rem 0">
-        Tableau de Bord
-      </Typography>
-      {loading && <Typography textAlign="center"><CircularProgress /></Typography>}
-      {error && <Typography textAlign="center" color="error">{error}</Typography>}
+      <PageTitle>Tableau de Bord</PageTitle>
+      <PageLoader isDisplayed={loading} />
+      <PageError error={error} />
       {!loading && data && (
-        <Grid container justifyContent="space-evenly">
-          <Grid
-            item
-            xs={12}
-            md={10}
-            xl={4}
-            sx={{
-              bgcolor: 'white',
-              boxShadow: '0 1px 3px black',
-              padding: '1rem',
-            }}
-          >
-            <Typography variant="h2" textAlign="center">
-              {data.home.name}
-            </Typography>
+        <TileContainer>
+          <Tile>
+            <TileTitle>{data.home.name}</TileTitle>
             <Typography textAlign="right">
               {`Il y a ${data?.home.userCount} inscrit${data?.home.userCount > 1 ? 's' : ''}`}
             </Typography>
@@ -68,8 +59,8 @@ function DashboardPage() {
             >
               Paramétrer
             </Button>
-          </Grid>
-        </Grid>
+          </Tile>
+        </TileContainer>
       )}
     </Container>
   );
