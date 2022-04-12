@@ -10,6 +10,7 @@ import PageTitle from '../PageTitle/PageTitle';
 import PageLoader from '../PageLoader/PageLoader';
 import PageError from '../PageError/PageError';
 import HomeTile from './HomeTile';
+import TasksTile from './TasksTile';
 
 function DashboardPage() {
   const { userData } = useContext(authContext);
@@ -36,7 +37,7 @@ function DashboardPage() {
           setLoading(false);
         },
       );
-    } else {
+    } else if (!hasHome && userData) {
       setLoading(false);
     }
   }, [userData, hasHome]);
@@ -49,6 +50,7 @@ function DashboardPage() {
       {!loading && (
         <TileContainer>
           <HomeTile data={data} hasHome={hasHome} />
+          <TasksTile data={data?.tasks} hasHome={hasHome} />
         </TileContainer>
       )}
     </Container>
