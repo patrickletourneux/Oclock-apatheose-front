@@ -45,7 +45,7 @@ const responseDataMock = {
     },
   ],
   reward: {
-    id: 5,
+    id: 6,
     title: 'Massage Californien',
     description: 'Un massage californien',
     // pour recuperer la date: new Date(end_at)
