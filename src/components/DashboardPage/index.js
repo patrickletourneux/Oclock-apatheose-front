@@ -1,10 +1,12 @@
 import {
+  Button,
   CircularProgress,
   Container,
   Grid,
   Typography,
 } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
+import { Link as LinkRouter } from 'react-router-dom';
 
 import getDashboardPage from '../../apis/api/dashboard';
 import authContext from '../../contexts/authContext';
@@ -56,6 +58,16 @@ function DashboardPage() {
             <Typography variant="h2" textAlign="center">
               {data.home.name}
             </Typography>
+            <Typography textAlign="right">
+              {`Il y a ${data?.home.userCount} inscrit${data?.home.userCount > 1 ? 's' : ''}`}
+            </Typography>
+            <Button
+              component={LinkRouter}
+              variant="contained"
+              to="/ma-maison"
+            >
+              Paramétrer
+            </Button>
           </Grid>
         </Grid>
       )}
