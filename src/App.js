@@ -4,7 +4,7 @@ import {
   Route,
 } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
-
+import './App.css';
 import theme from './utils/theme';
 
 import { AuthProvider } from './contexts/authContext';

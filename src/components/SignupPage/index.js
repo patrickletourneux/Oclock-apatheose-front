@@ -16,10 +16,11 @@ import bgclean from '../../assets/images/bgclean.jpg';
 
 const styles = {
   paperContainer: {
-    backgroundImage:
-    `url(${bgclean})`,
+    backgroundImage: `url(${bgclean})`,
     backgroundSize: 'cover',
-    width: '100%',
+    width: '100vw',
+    height: '100%',
+    position: 'fixed',
   },
 };
 
@@ -49,7 +50,7 @@ function SignUp() {
   const validatePseudonym = () => {
     const longueur = data.pseudonym.length;
 
-    if (longueur <= 15) {
+    if (longueur <= 10) {
       setErrorPseudonym('');
     } else {
       setErrorPseudonym('Axel attend toujours sa tasse @Etienne svp !');
@@ -98,36 +99,45 @@ function SignUp() {
       successSignUp,
       errorSignUp,
     );
-
-    // si succes mettre une redirection sur connexion
   };
 
   return (
-    <Box style={styles.paperContainer} sx={{ py: '40px' }}>
+    <Box style={styles.paperContainer} sx={{ py: '20px' }}>
       <Box
         component="form"
         onSubmit={submit}
         sx={{
           bgcolor: 'white',
-          border: 2,
-          width: '400px',
+          border: 1,
+          width: '340px',
           borderColor: '#009688',
-          margin: 'auto ',
-          padding: '30px',
+          margin: 'auto',
+          padding: '10px',
           boxShadow:
-              'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
+            'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
         }}
       >
         <Grid
           container
-          gap={4}
+          gap={3}
           direction="column"
           justifyContent="center"
           alignItems="center"
           variant="outlined"
         >
-          <Typography sx={{ padding: '50px' }} variant="h1">
+          <Typography sx={{ padding: '20px' }} variant="h1">
             Inscription
+          </Typography>
+
+          <Typography
+            variant="h3"
+          >
+            Vous avez déjà un compte ?&nbsp;
+            <Link
+              to="/inscription"
+              style={{ textDecoration: 'none', color: '#1ba2ac' }}
+            >Inscrivez-vous
+            </Link>
           </Typography>
 
           <TextField
@@ -183,19 +193,23 @@ function SignUp() {
           <FormGroup>
             <FormControlLabel
               required
-              control={<Checkbox />}
-              label="j'accepte les conditions générales"
+              control={(
+                <Checkbox />
+                )}
+              label={<Typography variant="h3" color="grey">j'accepte les conditions générales</Typography>}
             />
           </FormGroup>
-          <Button
-            type="submit"
-            variant="contained"
-          >
+          <Button type="submit" variant="contained">
             valider
           </Button>
-          <Link to="/">
+          <Link
+            to="/"
+            style={{ textDecoration: 'none', color: '#1ba2ac' }}
+          >
             <Button color="secondary" size="small">
-              Revenir à la page d'accueil
+              <Typography variant="h3">
+                Revenir à la page d'accueil
+              </Typography>
             </Button>
           </Link>
         </Grid>

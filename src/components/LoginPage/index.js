@@ -21,6 +21,8 @@ const styles = {
       `url(${bgclean})`,
     backgroundSize: 'cover',
     width: '100%',
+    height: '100%',
+    position: 'fixed',
   },
 };
 
@@ -77,23 +79,23 @@ export default function Login() {
         sx={{
           bgcolor: 'white',
           border: 2,
-          width: '400px',
+          width: '340px',
           borderColor: '#009688',
           margin: 'auto ',
-          padding: '30px',
+          padding: '10px',
           boxShadow:
             'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
         }}
       >
         <Grid
           container
-          gap={4}
+          gap={3}
           direction="column"
           justifyContent="center"
           alignItems="center"
           variant="outlined"
         >
-          <Typography sx={{ padding: '50px' }} variant="h1">
+          <Typography sx={{ padding: '20px' }} variant="h1">
             Connexion
           </Typography>
           <Typography
@@ -133,7 +135,10 @@ export default function Login() {
           >
             Valider
           </Button>
-          <Link to="/">
+          <Link
+            to="/"
+            style={{ textDecoration: 'none', color: '#1ba2ac' }}
+          >
             <Button color="secondary" size="small">
               Revenir à la page d'accueil
             </Button>
