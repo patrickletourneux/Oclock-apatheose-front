@@ -1,29 +1,28 @@
 import {
-  Button,
   Container,
-  Typography,
 } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { Link as LinkRouter } from 'react-router-dom';
 
 import getDashboardPage from '../../apis/api/dashboard';
 import authContext from '../../contexts/authContext';
 import TileContainer from '../Tile/TileContainer';
-import Tile from '../Tile/Tile';
 import PageTitle from '../PageTitle/PageTitle';
 import PageLoader from '../PageLoader/PageLoader';
 import PageError from '../PageError/PageError';
-import TileTitle from '../Tile/TileTitle';
+import HomeTile from './HomeTile';
 
 function DashboardPage() {
   const { userData } = useContext(authContext);
+  // TODO is null ok as initial value ?
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
+
   useEffect(() => {
     // TODO home_id et user_id ???
-    if (userData?.home_id) {
+    if (hasHome) {
       setLoading(true);
       setError('');
       getDashboardPage(
@@ -37,29 +36,19 @@ function DashboardPage() {
           setLoading(false);
         },
       );
+    } else {
+      setLoading(false);
     }
-  }, [userData]);
+  }, [userData, hasHome]);
 
   return (
     <Container>
       <PageTitle>Tableau de Bord</PageTitle>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
-      {!loading && data && (
+      {!loading && (
         <TileContainer>
-          <Tile>
-            <TileTitle>{data.home.name}</TileTitle>
-            <Typography textAlign="right">
-              {`Il y a ${data?.home.userCount} inscrit${data?.home.userCount > 1 ? 's' : ''}`}
-            </Typography>
-            <Button
-              component={LinkRouter}
-              variant="contained"
-              to="/ma-maison"
-            >
-              Paramétrer
-            </Button>
-          </Tile>
+          <HomeTile data={data} hasHome={hasHome} />
         </TileContainer>
       )}
     </Container>
