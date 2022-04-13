@@ -60,7 +60,8 @@ export function AuthProvider({ children }) {
   // It will fix the eslint error below
   // const auth = useMemo(() => ({
   //   authed,
-  //   user,
+  //   userData,
+  //   setUserData,
   //   login,
   //   logout,
   // }), [authed, user]);
@@ -69,6 +70,7 @@ export function AuthProvider({ children }) {
   const auth = {
     authed,
     userData,
+    setUserData,
     login,
     logout,
   };

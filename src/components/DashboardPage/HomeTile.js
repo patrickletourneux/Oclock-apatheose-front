@@ -9,14 +9,11 @@ import PropTypes from 'prop-types';
 
 import TileTitle from '../Tile/TileTitle';
 import Tile from '../Tile/Tile';
+import ModalJoinHome from './ModalJoinHome';
 
 function HomeTile({ data, hasHome }) {
   const addHomeClick = () => {
     console.log('add home');
-  };
-
-  const joinHomeClick = () => {
-    console.log('join home');
   };
 
   const displayWithHome = () => (
@@ -78,12 +75,7 @@ function HomeTile({ data, hasHome }) {
         >
           Ajouter
         </Button>
-        <Button
-          variant="contained"
-          onClick={joinHomeClick}
-        >
-          Rejoindre
-        </Button>
+        <ModalJoinHome />
       </Box>
     </>
   );
