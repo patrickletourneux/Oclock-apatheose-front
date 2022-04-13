@@ -8,6 +8,7 @@ import PageLoader from '../PageLoader/PageLoader';
 import PageError from '../PageError/PageError';
 import HomeTile from './HomeTile';
 import TasksTile from './TasksTile';
+import RankingTile from './RankingTile';
 import PageContainer from '../PageContainer/PageContainer';
 
 function DashboardPage() {
@@ -49,6 +50,7 @@ function DashboardPage() {
         <TileContainer>
           <HomeTile data={data} hasHome={hasHome} />
           <TasksTile data={data?.tasks} hasHome={hasHome} />
+          <RankingTile data={data?.ranking} hasHome={hasHome} />
         </TileContainer>
       )}
     </PageContainer>
