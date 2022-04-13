@@ -8,18 +8,18 @@ const responseDataMock = {
       pseudonym: 'Axel',
       avatar_img: null,
       // score from 0 to ++
-      score: '512',
+      score: 512,
       // rank from 1 to ++
-      rank: '2',
+      rank: 2,
     },
     {
       id: 45,
       pseudonym: 'Patrick',
       avatar_img: 'https://img.freepik.com/free-vector/cute-cat-gaming-cartoon_138676-2969.jpg',
       // score from 0 to ++
-      score: '603',
+      score: 603,
       // rank from 1 to ++
-      rank: '1',
+      rank: 1,
     },
   ],
   reward: {

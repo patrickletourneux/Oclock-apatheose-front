@@ -6,25 +6,25 @@ const responseDataMock = {
     {
       id: 10,
       name: 'Mettre sa biere vide a la poubelle',
-      value: '40',
+      value: 40,
       attributed: true,
     },
     {
       id: 23,
       name: 'Boire une biere',
-      value: '350',
+      value: 350,
       attributed: true,
     },
     {
       id: 4,
       name: 'Passer l\'aspirateur',
-      value: '20',
+      value: 20,
       attributed: false,
     },
     {
       id: 63,
       name: 'Faire la vaisselle',
-      value: '30',
+      value: 30,
       attributed: false,
     },
   ],
@@ -32,7 +32,7 @@ const responseDataMock = {
     {
       id: 42,
       name: 'Tondre la pelouse',
-      value: '50',
+      value: 50,
     },
   ],
 };
