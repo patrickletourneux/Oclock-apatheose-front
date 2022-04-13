@@ -9,7 +9,6 @@ import {
   Button,
   Box,
 } from '@mui/material';
-import DoneOutlineOutlinedIcon from '@mui/icons-material/DoneOutlineOutlined';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signin from '../../apis/api/signin';
 import bgclean from '../../assets/images/bgclean.jpg';
@@ -87,7 +86,7 @@ export default function Login() {
       >
         <Grid
           container
-          gap={3}
+          gap={2}
           direction="column"
           justifyContent="center"
           alignItems="center"
@@ -129,7 +128,6 @@ export default function Login() {
           <Button
             type="submit"
             variant="contained"
-            endIcon={<DoneOutlineOutlinedIcon />}
           >
             Valider
           </Button>

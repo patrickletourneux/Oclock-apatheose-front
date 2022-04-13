@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import { green } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
@@ -27,12 +28,12 @@ const theme = createTheme({
     },
     h2: {
       fontSize: '2rem',
-      fontWeight: 600,
+      fontWeight: 700,
     },
 
     h3: {
-      fontSize: '1rem',
-      fontWeight: 500,
+      fontSize: '1.2rem',
+      fontWeight: 700,
     },
 
     body1: {
@@ -49,7 +50,6 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 380,
       md: 750,
       xl: 1280,
     },
