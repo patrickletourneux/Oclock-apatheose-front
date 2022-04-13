@@ -14,6 +14,7 @@ const Transition = React.forwardRef((props, ref) => (
   <Slide direction="up" ref={ref} {...props} />
 ));
 
+// eslint-disable-next-line no-unused-vars
 export default function ModalReward(rewardId) {
   const [open, setOpen] = React.useState(false);
 
@@ -30,6 +31,14 @@ export default function ModalReward(rewardId) {
     setOpen(false);
   };
 
+  function successUpdateReward(resSuccess) {
+    console.log(resSuccess);
+  }
+
+  function errorUpdateReward(resError) {
+    console.log(resError);
+  }
+
   function handleFieldChange(e) {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
@@ -38,10 +47,14 @@ export default function ModalReward(rewardId) {
 
   const submit = (e) => {
     e.preventDefault();
-    updateReward({
-      title: data.title,
-      description: data.description,
-    });
+    updateReward(
+      {
+        title: data.title,
+        description: data.description,
+      },
+      successUpdateReward,
+      errorUpdateReward,
+    );
     handleClose();
   };
 

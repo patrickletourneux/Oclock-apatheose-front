@@ -12,7 +12,7 @@ import api from './axiosInstance';
  */
 export const updateReward = async (payload, onSuccess, onError) => {
   try {
-    await api.patch('reward', payload);
+    await api.patch('rewards/1/1', payload);
     onSuccess(null);
   } catch (error) {
     const status = error.response?.status;

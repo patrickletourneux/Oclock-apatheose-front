@@ -25,7 +25,7 @@ function LeaderboardPage() {
       setLoading(true);
       setError('');
       getRankingPage(
-        userData.id,
+        userData.home_id,
         (newData) => {
           setData(newData);
           setLoading(false);
