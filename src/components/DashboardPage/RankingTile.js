@@ -11,7 +11,7 @@ import FirstRankingSecondaryTile from './FirstRankingSecondaryTile';
 import UserRankingSecondaryTile from './UserRankingSecondaryTile';
 
 function RankingTile({ data, hasHome }) {
-  const isCurrentUserFirst = data.firstUser.id === data.currentUser.id;
+  const isCurrentUserFirst = hasHome && data.firstUser.id === data.currentUser.id;
 
   const displayWithHome = () => (
     <Tile>
