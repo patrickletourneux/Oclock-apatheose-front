@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import TileTitle from '../Tile/TileTitle';
 import Tile from '../Tile/Tile';
 import ModalJoinHome from './ModalJoinHome';
+import Countdown from '../Countdown/Countdown';
 
 function HomeTile({ data, hasHome }) {
   const addHomeClick = () => {
@@ -22,6 +23,7 @@ function HomeTile({ data, hasHome }) {
       <Typography textAlign="right">
         {`Il y a ${data.home.userCount} inscrit${data.home.userCount > 1 ? 's' : ''}`}
       </Typography>
+      <Countdown title={data.reward.title} end_at={data.reward.end_at} />
       <Box marginTop="1.5rem" display="flex" justifyContent="center" gap="1rem 2rem" flexWrap="wrap">
         <Tooltip
           title="Pour ajouter une maison, il vous faut au préalable quitter la maison actuelle"
