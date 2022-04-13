@@ -14,7 +14,7 @@ const Transition = React.forwardRef((props, ref) => (
   <Slide direction="up" ref={ref} {...props} />
 ));
 
-export default function ModalReward() {
+export default function ModalReward(rewardId) {
   const [open, setOpen] = React.useState(false);
 
   const [data, setData] = React.useState({
@@ -46,12 +46,14 @@ export default function ModalReward() {
   };
 
   return (
-    <Box>
+    <Box
+      textAlign="center"
+    >
       <Button
         type="Submit"
-        textalign="center"
         variant="outlined"
         onClick={handleClickOpen}
+        alignItems="center"
       >
         Modifier
       </Button>
