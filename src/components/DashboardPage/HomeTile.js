@@ -25,15 +25,6 @@ function HomeTile({ data, hasHome }) {
       <Typography textAlign="right">
         {`Il y a ${data.home.userCount} inscrit${data.home.userCount > 1 ? 's' : ''}`}
       </Typography>
-      <Box textAlign="center" marginTop="1.5rem">
-        <Button
-          component={LinkRouter}
-          variant="contained"
-          to="/ma-maison"
-        >
-          Paramétrer
-        </Button>
-      </Box>
       <Box marginTop="1.5rem" display="flex" justifyContent="center" gap="1rem 2rem" flexWrap="wrap">
         <Tooltip
           title="Pour ajouter une maison, il vous faut au préalable quitter la maison actuelle"
@@ -61,6 +52,15 @@ function HomeTile({ data, hasHome }) {
             </Button>
           </span>
         </Tooltip>
+      </Box>
+      <Box marginTop="1.5rem" textAlign="center">
+        <Button
+          component={LinkRouter}
+          variant="contained"
+          to="/ma-maison"
+        >
+          Paramétrer
+        </Button>
       </Box>
     </>
   );

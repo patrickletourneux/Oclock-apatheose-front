@@ -13,20 +13,20 @@ const oneHomeDataMock = {
     end_at: '2022-04-08 15:09:14.538557+02',
   },
   tasks: {
-    user_attributed_tasks_count: 3,
-    user_done_tasks_count: 5,
+    user_attributed_task_count: 3,
+    user_done_task_count: 5,
   },
   ranking: {
-    first_user: {
+    firstUser: {
       id: 45,
       pseudonym: 'Patrick',
       avatar_img: 'https://img.freepik.com/free-vector/cute-cat-gaming-cartoon_138676-2969.jpg',
       score: 603,
     },
-    current_user: {
+    currentUser: {
       id: 1,
       pseudonym: 'Axel',
-      avatar_img: 'https://img.freepik.com/free-vector/mysterious-mafia-man-wearing-hat_52683-34829.jpg',
+      avatar_img: null,
       score: 512,
       rank: 2,
     },
@@ -47,7 +47,7 @@ const getDashboardPage = async (userId, onSuccess, onError) => {
   try {
     // eslint-disable-next-line no-unused-vars
     const response = await api.get(`dashboard/${userId}`);
-    onSuccess(oneHomeDataMock);
+    onSuccess(response.data);
   } catch {
     onError('Une erreur est survenue, veuillez réessayer plus tard');
   }
