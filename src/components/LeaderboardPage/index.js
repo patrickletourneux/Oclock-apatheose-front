@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import authContext from '../../contexts/authContext';
 import getRankingPage from '../../apis/api/ranking';
 import ListItem from './ListItem';
-import Countdown from './Countdown';
+import Countdown from '../Countdown/Countdown';
 import RewardTile from './RewardTile';
 import PageTitle from '../PageTitle/PageTitle';
 import PageLoader from '../PageLoader/PageLoader';
