@@ -8,17 +8,17 @@ const responseDataMock = {
     {
       id: 5,
       name: 'Sortir les poubelles',
-      value: 10,
+      value: '10',
     },
     {
       id: 12,
       name: 'Sortir le chien',
-      value: 20,
+      value: '20',
     },
     {
       id: 45,
       name: 'Passer le balai dans la chambre',
-      value: 20,
+      value: '20',
     },
   ],
   users: [
