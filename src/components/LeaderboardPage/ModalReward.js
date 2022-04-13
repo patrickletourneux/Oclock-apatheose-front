@@ -38,18 +38,21 @@ export default function ModalReward() {
 
   const submit = (e) => {
     e.preventDefault();
-    updateReward(
-      {
-        title: data.title,
-        description: data.description,
-      },
-    );
+    updateReward({
+      title: data.title,
+      description: data.description,
+    });
     handleClose();
   };
 
   return (
     <Box>
-      <Button type="Submit" textalign="center" variant="outlined" onClick={handleClickOpen}>
+      <Button
+        type="Submit"
+        textalign="center"
+        variant="outlined"
+        onClick={handleClickOpen}
+      >
         Modifier
       </Button>
       <Dialog

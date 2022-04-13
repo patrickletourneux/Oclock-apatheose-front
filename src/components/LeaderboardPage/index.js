@@ -44,21 +44,19 @@ function LeaderboardPage() {
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && (
-      <TileContainer>
-        <Tile>
-          <Countdown {...data?.reward} />
-          {data?.users?.map((user) => (
-            <ListItem key={user.id} {...user} />
-          ))}
-        </Tile>
-      </TileContainer>
+        <TileContainer>
+          <Tile>
+            <Countdown {...data?.reward} />
+            {data?.users?.map((user) => (
+              <ListItem key={user.id} {...user} />
+            ))}
+          </Tile>
+        </TileContainer>
       )}
 
       <TileContainer>
         <Tile>
-          <TileTitle>
-            Reward
-          </TileTitle>
+          <TileTitle>Reward</TileTitle>
           <RewardTile {...data?.reward} />
           <ModalReward rewardId={data?.reward.id} />
         </Tile>

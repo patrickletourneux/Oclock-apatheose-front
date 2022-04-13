@@ -4,7 +4,9 @@ import CountDays from './CountDays';
 
 function Countdown({
   // eslint-disable-next-line react/prop-types
-  title, end_at,
+  title,
+  // eslint-disable-next-line react/prop-types
+  end_at,
 }) {
   const nbOfDays = CountDays(new Date(), new Date(end_at));
   return (
@@ -16,7 +18,14 @@ function Countdown({
       border="1px solid"
       borderRadius={2}
     >
-      Vous avez encore <Typography variant="body1" color="secondary">{nbOfDays} jours</Typography>  afin de remporter le <Typography variant="body1" color="secondary">{ title }</Typography>
+      Vous avez encore{' '}
+      <Typography variant="body1" color="secondary">
+        {nbOfDays} jours
+      </Typography>{' '}
+      afin de remporter le{' '}
+      <Typography variant="body1" color="secondary">
+        {title}
+      </Typography>
     </Typography>
   );
 }
