@@ -1,6 +1,3 @@
-import {
-  Container,
-} from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 
 import getDashboardPage from '../../apis/api/dashboard';
@@ -11,6 +8,7 @@ import PageLoader from '../PageLoader/PageLoader';
 import PageError from '../PageError/PageError';
 import HomeTile from './HomeTile';
 import TasksTile from './TasksTile';
+import PageContainer from '../PageContainer/PageContainer';
 
 function DashboardPage() {
   const { userData } = useContext(authContext);
@@ -43,7 +41,7 @@ function DashboardPage() {
   }, [userData, hasHome]);
 
   return (
-    <Container>
+    <PageContainer>
       <PageTitle>Tableau de Bord</PageTitle>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
@@ -53,7 +51,7 @@ function DashboardPage() {
           <TasksTile data={data?.tasks} hasHome={hasHome} />
         </TileContainer>
       )}
-    </Container>
+    </PageContainer>
   );
 }
 
