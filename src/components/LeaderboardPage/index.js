@@ -1,5 +1,5 @@
 import {
-  Typography, Grid, Box, Container,
+  Container,
 } from '@mui/material';
 
 import { useContext, useEffect, useState } from 'react';

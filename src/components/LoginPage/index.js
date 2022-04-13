@@ -68,10 +68,6 @@ export default function Login() {
       style={styles.paperContainer}
       sx={{
         py: '40px',
-<<<<<<< HEAD
-        height: '90vh',
-=======
->>>>>>> dev
       }}
     >
       <Box
