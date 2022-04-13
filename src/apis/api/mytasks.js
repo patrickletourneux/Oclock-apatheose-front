@@ -49,7 +49,7 @@ const getMytasksPage = async (userId, onSuccess, onError) => {
     const response = await api.get(`mytasks/${userId}`);
     onSuccess(response.data);
   } catch (error) {
-    if (error.response.status === 400 || error.response.status === 404) {
+    if (error.response && (error.response.status === 400 || error.response.status === 404)) {
       onError(error.response.data.message);
     } else {
       onError('Une erreur est survenue, veuillez réessayer plus tard');
