@@ -51,16 +51,13 @@ function LeaderboardPage() {
               <ListItem key={user.id} {...user} />
             ))}
           </Tile>
+          <Tile>
+            <TileTitle>Reward</TileTitle>
+            <RewardTile {...data?.reward} />
+            <ModalReward rewardId={data?.reward.id} />
+          </Tile>
         </TileContainer>
       )}
-
-      <TileContainer>
-        <Tile>
-          <TileTitle>Reward</TileTitle>
-          <RewardTile {...data?.reward} />
-          <ModalReward rewardId={data?.reward.id} />
-        </Tile>
-      </TileContainer>
     </PageContainer>
   );
 }
