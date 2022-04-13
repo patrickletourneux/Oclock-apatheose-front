@@ -17,6 +17,7 @@ import PageError from '../PageError/PageError';
 import TileContainer from '../Tile/TileContainer';
 import Tile from '../Tile/Tile';
 import TileTitle from '../Tile/TileTitle';
+import PageContainer from '../PageContainer/PageContainer';
 
 function LeaderboardPage() {
   const [data, setData] = useState(null);
@@ -44,10 +45,11 @@ function LeaderboardPage() {
     // Pour le premier rendu, on met vide, ici a chaque chgt de userData
   }, [userData]);
   return (
-    <Container>
+    <PageContainer>
       <PageTitle>Classement & Reward</PageTitle>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
+      {!loading && (
       <TileContainer>
         <Tile>
           <Countdown {...data?.reward} />
@@ -56,6 +58,7 @@ function LeaderboardPage() {
           ))}
         </Tile>
       </TileContainer>
+      )}
 
       <TileContainer>
         <Tile>
@@ -66,7 +69,7 @@ function LeaderboardPage() {
           <ModalButton />
         </Tile>
       </TileContainer>
-    </Container>
+    </PageContainer>
   );
 }
 
