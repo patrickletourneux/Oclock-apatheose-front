@@ -64,7 +64,7 @@ const getRankingPage = async (userId, onSuccess, onError) => {
   try {
     onSuccess(responseDataMock);
   } catch (error) {
-    if (error.response.status === 400 || error.response.status === 404) {
+    if (error.response && (error.response.status === 400 || error.response.status === 404)) {
       onError(error.response.data.message);
     } else {
       onError('Une erreur est survenue, veuillez réessayer plus tard');

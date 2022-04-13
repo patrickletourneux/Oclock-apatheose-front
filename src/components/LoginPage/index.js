@@ -13,6 +13,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signin from '../../apis/api/signin';
 import bgclean from '../../assets/images/bgclean.jpg';
 import authContext from '../../contexts/authContext';
+import PageContainer from '../PageContainer/PageContainer';
 
 const styles = {
   paperContainer: {
@@ -20,8 +21,6 @@ const styles = {
       `url(${bgclean})`,
     backgroundSize: 'cover',
     width: '100%',
-    height: '100%',
-    position: 'fixed',
   },
 };
 
@@ -65,11 +64,14 @@ export default function Login() {
   };
 
   return (
-    <Box
+    <PageContainer
       style={styles.paperContainer}
       sx={{
         py: '40px',
+<<<<<<< HEAD
         height: '90vh',
+=======
+>>>>>>> dev
       }}
     >
       <Box
@@ -144,6 +146,6 @@ export default function Login() {
 
         </Grid>
       </Box>
-    </Box>
+    </PageContainer>
   );
 }

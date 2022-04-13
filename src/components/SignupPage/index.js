@@ -13,15 +13,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import { addUser } from '../../apis/api/users';
 import bgclean from '../../assets/images/bgclean.jpg';
+import PageContainer from '../PageContainer/PageContainer';
 
 const styles = {
   paperContainer: {
     backgroundImage: `url(${bgclean})`,
     backgroundSize: 'cover',
-    width: '100%',
-    minHeight: '90vh',
-    // height: '100%',
-    // position: 'fixed',
+    width: '100vw',
   },
 };
 
@@ -103,13 +101,7 @@ function SignUp() {
   };
 
   return (
-    <Box
-      style={styles.paperContainer}
-      sx={{
-        py: '40px',
-        height: '90vh',
-      }}
-    >
+    <PageContainer style={styles.paperContainer} sx={{ py: '20px' }}>
       <Box
         component="form"
         onSubmit={submit}
@@ -219,7 +211,7 @@ function SignUp() {
           </Link>
         </Grid>
       </Box>
-    </Box>
+    </PageContainer>
   );
 }
 

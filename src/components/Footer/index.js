@@ -14,9 +14,7 @@ export default function Footer() {
         display: 'flex',
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        bottom: '0px',
         width: '100%',
-        // position: 'absolute',
 
       }}
       bgcolor="primary.main"
