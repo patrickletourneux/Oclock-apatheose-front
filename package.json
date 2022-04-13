@@ -58,7 +58,8 @@
           "react/jsx-uses-react": "off",
           "react/react-in-jsx-scope": "off",
           "nonblock-statement-body-position": "off",
-          "no-console": "off"
+          "no-console": "off",
+          "camelcase": "off"
         }
       }
     ]

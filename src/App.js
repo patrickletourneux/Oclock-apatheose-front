@@ -1,8 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import './App.css';
 import theme from './utils/theme';
@@ -12,6 +8,7 @@ import RequireAuth from './components/RequireAuth/RequireAuth';
 import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
 import SignUp from './components/SignupPage/index';
 import Login from './components/LoginPage';
+import LeaderboardPage from './components/LeaderboardPage';
 
 import DashboardPage from './components/DashboardPage';
 
@@ -28,7 +25,10 @@ function App() {
               {/* TODO make const file with urls */}
               <Route path="/" element={<p>accueil</p>} />
               <Route path="contact" element={<p>contact</p>} />
-              <Route path="mentions-legales" element={<p>mentions-legales</p>} />
+              <Route
+                path="mentions-legales"
+                element={<p>mentions-legales</p>}
+              />
               <Route path="inscription" element={<SignUp />} />
               <Route path="connexion" element={<Login />} />
               <Route
@@ -59,7 +59,7 @@ function App() {
                 path="classement"
                 element={(
                   <RequireAuth>
-                    <p>classement</p>
+                    <LeaderboardPage />
                   </RequireAuth>
                 )}
               />

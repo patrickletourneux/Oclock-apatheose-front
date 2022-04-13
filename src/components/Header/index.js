@@ -11,9 +11,7 @@ import { Link as LinkRouter } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <AppBar
-      position="static"
-    >
+    <AppBar position="static">
       <Toolbar>
         <Typography
           variant="h6"
@@ -28,7 +26,8 @@ export default function Header() {
             to="/"
             component={LinkRouter}
             style={{ textDecoration: 'none', color: 'white' }}
-          >C du Prop's
+          >
+            C du Prop's
           </Link>
         </Typography>
         <Box
@@ -52,7 +51,8 @@ export default function Header() {
                 to="/inscription"
                 component={LinkRouter}
                 style={{ textDecoration: 'none', color: 'white' }}
-              >S'inscrire
+              >
+                S'inscrire
               </Link>
             </Button>
             <Button>
@@ -60,7 +60,8 @@ export default function Header() {
                 to="/connexion"
                 component={LinkRouter}
                 style={{ textDecoration: 'none', color: 'white' }}
-              >Se connecter
+              >
+                Se connecter
               </Link>
             </Button>
           </ButtonGroup>
