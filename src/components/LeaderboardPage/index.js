@@ -1,12 +1,5 @@
-import {
-  Container,
-} from '@mui/material';
-
 import { useContext, useEffect, useState } from 'react';
-import ModalButton from './ModalButton';
-
 import authContext from '../../contexts/authContext';
-
 import getRankingPage from '../../apis/api/ranking';
 import ListItem from './ListItem';
 import Countdown from './Countdown';
@@ -18,6 +11,7 @@ import TileContainer from '../Tile/TileContainer';
 import Tile from '../Tile/Tile';
 import TileTitle from '../Tile/TileTitle';
 import PageContainer from '../PageContainer/PageContainer';
+import ModalReward from './ModalReward';
 
 function LeaderboardPage() {
   const [data, setData] = useState(null);
@@ -66,7 +60,7 @@ function LeaderboardPage() {
             Reward
           </TileTitle>
           <RewardTile {...data?.reward} />
-          <ModalButton />
+          <ModalReward rewardId={data?.reward.id} />
         </Tile>
       </TileContainer>
     </PageContainer>

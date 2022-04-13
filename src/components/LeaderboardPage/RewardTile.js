@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
-import React from 'react';
 
+// eslint-disable-next-line react/prop-types
 function RewardTile({ title, description }) {
   return (
     <>
       <Box
         sx={{
-          typography: 'h2',
+          typography: 'body1',
         }}
         textAlign="center"
         padding="10px"

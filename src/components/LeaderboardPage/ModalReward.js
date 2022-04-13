@@ -7,13 +7,20 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import { Box } from '@mui/material';
+import { updateReward } from '../../apis/api/reward';
 
 const Transition = React.forwardRef((props, ref) => (
   <Slide direction="up" ref={ref} {...props} />
 ));
 
-export default function ModalButton() {
+export default function ModalReward() {
   const [open, setOpen] = React.useState(false);
+
+  const [data, setData] = React.useState({
+    title: '',
+    description: '',
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,9 +30,26 @@ export default function ModalButton() {
     setOpen(false);
   };
 
+  function handleFieldChange(e) {
+    const newData = { ...data };
+    newData[e.target.name] = e.target.value;
+    setData(newData);
+  }
+
+  const submit = (e) => {
+    e.preventDefault();
+    updateReward(
+      {
+        title: data.title,
+        description: data.description,
+      },
+    );
+    handleClose();
+  };
+
   return (
-    <div>
-      <Button type="Submit" variant="outlined" onClick={handleClickOpen}>
+    <Box>
+      <Button type="Submit" textalign="center" variant="outlined" onClick={handleClickOpen}>
         Modifier
       </Button>
       <Dialog
@@ -41,6 +65,9 @@ export default function ModalButton() {
           </DialogContentText>
           <TextField
             autoFocus
+            onChange={(e) => handleFieldChange(e)}
+            name="title"
+            value={data.title}
             margin="normal"
             id="name"
             label="Titre de Reward"
@@ -50,18 +77,20 @@ export default function ModalButton() {
           <TextField
             id="outlined-multiline-static"
             margin="normal"
+            name="description"
             label="Description"
+            onChange={(e) => handleFieldChange(e)}
+            value={data.description}
             multiline
             rows={6}
             fullWidth
-            defaultValue="Description de la récompense"
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Annuler</Button>
-          <Button onClick={handleClose}>Enregistrer</Button>
+          <Button onClick={submit}>Enregistrer</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Box>
   );
 }

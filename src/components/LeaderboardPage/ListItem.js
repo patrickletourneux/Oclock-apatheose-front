@@ -16,7 +16,7 @@ function ListItems({
       }}
       >
         <ListItem>
-          {/* <ListItemText primary={rank} variant="body1" /> */}
+          <ListItemText primary={rank} variant="body1" />
           <ListItemAvatar>
             <Avatar alt="{users.pseudonym}" src={avatar_img} size="small" />
           </ListItemAvatar>

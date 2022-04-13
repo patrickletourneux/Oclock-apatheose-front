@@ -29,10 +29,10 @@ function TaskTile({ data, hasHome }) {
     <>
       <TileTitle>Mes Tâches</TileTitle>
       <Typography textAlign="center" marginTop="2rem">
-        { getDoneTasksCountString(data.user_done_tasks_count) }
+        { getDoneTasksCountString(data.user_done_task_count) }
       </Typography>
       <Typography textAlign="center" marginTop="2rem">
-        { getAttributedTasksCountString(data.user_attributed_tasks_count) }
+        { getAttributedTasksCountString(data.user_attributed_task_count) }
       </Typography>
       <Box textAlign="center" marginTop="1.5rem">
         <Button
@@ -64,8 +64,8 @@ function TaskTile({ data, hasHome }) {
 
 TaskTile.propTypes = {
   data: PropTypes.shape({
-    user_done_tasks_count: PropTypes.number.isRequired,
-    user_attributed_tasks_count: PropTypes.number.isRequired,
+    user_done_task_count: PropTypes.number.isRequired,
+    user_attributed_task_count: PropTypes.number.isRequired,
   }),
   hasHome: PropTypes.bool,
 };

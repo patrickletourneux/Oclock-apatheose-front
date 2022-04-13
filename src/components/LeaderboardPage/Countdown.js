@@ -3,11 +3,10 @@ import { Typography } from '@mui/material';
 import CountDays from './CountDays';
 
 function Countdown({
-  title,
+  // eslint-disable-next-line react/prop-types
+  title, end_at,
 }) {
-  const nbOfDays = CountDays(new Date(), new Date('2022,04,19'));
-  console.log(nbOfDays);
-
+  const nbOfDays = CountDays(new Date(), new Date(end_at));
   return (
     <Typography
       variant="h3"
@@ -17,7 +16,7 @@ function Countdown({
       border="1px solid"
       borderRadius={2}
     >
-      Vous avez encore <Typography variant="h2" color="secondary">{nbOfDays} jours</Typography>  afin de remporter le <Typography variant="h2" color="secondary">{ title }</Typography>
+      Vous avez encore <Typography variant="body1" color="secondary">{nbOfDays} jours</Typography>  afin de remporter le <Typography variant="body1" color="secondary">{ title }</Typography>
     </Typography>
   );
 }
