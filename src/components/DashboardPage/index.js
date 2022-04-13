@@ -13,7 +13,6 @@ import PageContainer from '../PageContainer/PageContainer';
 
 function DashboardPage() {
   const { userData } = useContext(authContext);
-  // TODO is null ok as initial value ?
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -21,7 +20,6 @@ function DashboardPage() {
   const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
 
   useEffect(() => {
-    // TODO home_id et user_id ???
     if (hasHome) {
       setLoading(true);
       setError('');
