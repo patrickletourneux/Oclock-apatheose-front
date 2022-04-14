@@ -1,12 +1,14 @@
+/* eslint-disable react/no-array-index-key */
 import { useContext, useEffect, useState } from 'react';
 import {
   Box,
-  Button, Checkbox,
+  Button, IconButton, Checkbox,
   Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
   List, ListItem, ListItemButton, ListItemIcon, ListItemText,
   TextField, Tooltip,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import AddIcon from '@mui/icons-material/Add';
 
 import addHome from '../../../apis/api/homes';
 import authContext from '../../../contexts/authContext';
@@ -16,7 +18,7 @@ const defaultFormData = {
   user_id: null,
   name: '',
   tasks: [],
-  invitations: [],
+  invitations: [''],
   reward: {
     title: '',
     description: '',
@@ -46,7 +48,7 @@ function ModalCreateHome() {
   useEffect(() => {
     getGenericTasks(
       (resData) => {
-        setGenericTasks(initGenericTasks(resData.generic_tasks));
+        setGenericTasks(initGenericTasks(resData));
       },
       () => {},
     );
@@ -99,6 +101,32 @@ function ModalCreateHome() {
     }));
   };
 
+  const handleInvitationChange = (modifiedIndex) => (e) => {
+    const newInvite = e.target.value;
+    const newData = {
+      ...data,
+      // returns a new invitations array containing the invit just modified by the user
+      invitations: data.invitations.map(
+        (prevInvite, index) => (modifiedIndex === index ? newInvite : prevInvite),
+      ),
+    };
+    setData(newData);
+  };
+
+  const onAddInviteClick = () => {
+    const newData = {
+      ...data,
+      invitations: [...data.invitations, ''],
+    };
+    setData(newData);
+  };
+
+  function handleRewardFieldChange(e) {
+    const newData = { ...data };
+    newData.reward[e.target.name] = e.target.value;
+    setData(newData);
+  }
+
   return (
     <div>
       <Button variant="contained" onClick={handleClickOpen}>
@@ -131,7 +159,12 @@ function ModalCreateHome() {
             </DialogContentText>
             <List>
               {genericTasks.map((genTask) => (
-                <ListItem key={genTask.id} disablePadding secondaryAction={genTask.value}>
+                <ListItem
+                  key={genTask.id}
+                  disablePadding
+                  divider
+                  secondaryAction={genTask.value}
+                >
                   <ListItemButton dense role={undefined} onClick={onSelectTaskHandler(genTask)}>
                     <ListItemIcon>
                       <Checkbox
@@ -157,7 +190,7 @@ function ModalCreateHome() {
               >
                 <span>
                   <Button
-                    variant="contained"
+                    variant="text"
                     disabled
                   >
                     Créer une tâche
@@ -165,6 +198,47 @@ function ModalCreateHome() {
                 </span>
               </Tooltip>
             </Box>
+            <DialogContentText marginTop="3rem">
+              3. Invites tes proches !
+            </DialogContentText>
+            {data.invitations.map((invit, index) => (
+              <TextField
+                key={index}
+                name={`invitations[${index}]`}
+                label={`Invité ${index + 1}`}
+                value={invit}
+                type="email"
+                onChange={handleInvitationChange(index)}
+                fullWidth
+                sx={{ marginTop: '1rem' }}
+              />
+            ))}
+            <IconButton
+              variant="contained"
+              onClick={onAddInviteClick}
+            >
+              <AddIcon />
+            </IconButton>
+            <DialogContentText marginTop="3rem">
+              4. Définis une récompense si tu le souhaites !
+            </DialogContentText>
+            <TextField
+              name="title"
+              label="Nom de la récompense"
+              value={data.reward.title}
+              onChange={(e) => handleRewardFieldChange(e)}
+              fullWidth
+              sx={{ marginTop: '1rem' }}
+            />
+            <TextField
+              name="description"
+              label="Description de la récompense"
+              value={data.reward.description}
+              onChange={(e) => handleRewardFieldChange(e)}
+              fullWidth
+              multiline
+              sx={{ marginTop: '1rem' }}
+            />
             <DialogContentText color="error" marginTop="1rem">
               {error}
             </DialogContentText>

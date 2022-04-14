@@ -39,7 +39,7 @@ const responseDataMock = {
 const getGenericTasks = async (onSuccess, onError) => {
   try {
     const response = await api.get('generic_tasks');
-    onSuccess(response);
+    onSuccess(response.data);
   } catch (error) {
     if (error.response && error.response.status === 400) {
       onError(error.response.data.message);
