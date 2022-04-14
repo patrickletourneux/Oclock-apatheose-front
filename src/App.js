@@ -12,6 +12,10 @@ import LeaderboardPage from './components/LeaderboardPage';
 
 import DashboardPage from './components/DashboardPage';
 
+import HomePage from './components/HomePage/index';
+
+import MySpacePage from './components/MyspacePage';
+
 import Footer from './components/Footer';
 
 function App() {
@@ -23,7 +27,7 @@ function App() {
             <HeaderContainer />
             <Routes>
               {/* TODO make const file with urls */}
-              <Route path="/" element={<p>accueil</p>} />
+              <Route path="/" element={<HomePage />} />
               <Route path="contact" element={<p>contact</p>} />
               <Route
                 path="mentions-legales"
@@ -67,7 +71,7 @@ function App() {
                 path="mon-compte"
                 element={(
                   <RequireAuth>
-                    <p>mon-compte</p>
+                    <MySpacePage />
                   </RequireAuth>
                 )}
               />
