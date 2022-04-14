@@ -1,16 +1,13 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {
-  TextField,
-  Typography,
-  Grid,
-  Button,
-  Box,
+  Typography, Grid, Button, Box,
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
-import validator from 'validator';
-import { addUser } from '../../apis/api/users';
+import { Link } from 'react-router-dom';
+import authContext from '../../contexts/authContext';
+import { getUser } from '../../apis/api/users';
 import bgclean from '../../assets/images/bgclean.jpg';
 import PageContainer from '../PageContainer/PageContainer';
+import DisplayUserInfo from './DisplayUserInfo';
 
 const styles = {
   paperContainer: {
@@ -21,77 +18,43 @@ const styles = {
 };
 
 function MySpacePage() {
-  // quid de gerer un state par champs?
-  const [data, setData] = useState({
-    email: '',
-    pseudonym: '',
-    password: '',
-    confirmPassword: '',
-  });
+  const [data, setData] = useState(null);
+  const { userData } = useContext(authContext);
 
-  const navigate = useNavigate();
+  const [error, setError] = useState('');
 
-  function successSignUp() {
-    navigate('/connexion');
-    // realiser modale if avec affichage "resError"
-  }
-
-  function errorSignUp(resError) {
-    console.log(resError);
-  }
-
-  // MANAGE PSEUDO ERROR
-  const [errorPseudonym, setErrorPseudonym] = useState('');
-
-  const validatePseudonym = () => {
-    const longueur = data.pseudonym.length;
-
-    if (longueur <= 10) {
-      setErrorPseudonym('');
-    } else {
-      setErrorPseudonym('Axel attend toujours sa tasse @Etienne svp !');
+  useEffect(() => {
+    if (userData) {
+      setError('');
+      getUser(
+        userData.home_id,
+        (newData) => {
+          setData(newData);
+        },
+        (err) => {
+          setError(err);
+        },
+      );
     }
-  };
+  }, [userData]);
 
-  // MANAGE EMAIL ERROR
-
-  const [emailError, setEmailError] = useState('');
-  const validateEmail = (e) => {
-    const email = e.target.value;
-
-    if (validator.isEmail(email)) {
-      setEmailError('');
-    } else {
-      setEmailError('Fais un effort svp :) ');
-    }
-  };
-
-  // CONST CONFIRMPASSWORD ERROR
-
-  function handleFieldChange(e) {
-    const newData = { ...data };
-    newData[e.target.name] = e.target.value;
-    setData(newData);
-  }
-
-  const submit = (e) => {
-    e.preventDefault();
-    addUser(
-      {
-        email: data.email,
-        password: data.password,
-        pseudonym: data.pseudonym,
-      },
-      successSignUp,
-      errorSignUp,
-    );
-  };
+  // const submit = (e) => {
+  //   e.preventDefault();
+  //   UpdateUser(
+  //     {
+  //       email: data.email,
+  //       password: data.password,
+  //       pseudonym: data.pseudonym,
+  //       avatar_img: data.avatar_img,
+  //     },
+  //     successSignUp,
+  //     errorSignUp,
+  //   );
+  // };
 
   return (
     <PageContainer style={styles.paperContainer} sx={{ py: '20px' }}>
       <Box
-        component="form"
-        onSubmit={submit}
         sx={{
           bgcolor: 'white',
           border: 1,
@@ -111,7 +74,7 @@ function MySpacePage() {
           alignItems="center"
           variant="outlined"
         >
-          <Typography textAlign="center" padding= '20px' variant="h1">
+          <Typography textAlign="center" padding="20px" variant="h1">
             Mon espace personnel
           </Typography>
 
@@ -119,56 +82,20 @@ function MySpacePage() {
             Vous pouvez modifier vos données personnelles
           </Typography>
 
-          <TextField
-            error={!!emailError}
-            onChange={(e) => handleFieldChange(e)}
-            autoComplete="false"
-            required
-            name="email"
-            label="email"
-            value={data.email}
-            variant="outlined"
-            helperText={emailError}
-            onBlur={validateEmail}
-          />
+          <DisplayUserInfo {...data?.user} />
 
-          <TextField
-            error={!!errorPseudonym}
-            required
-            onChange={(e) => handleFieldChange(e)}
-            value={data.pseudonym}
-            name="pseudonym"
-            label="Pseudo"
-            variant="outlined"
-            helperText={errorPseudonym}
-            onBlur={validatePseudonym}
-          />
-
-          <TextField
-            required
-            autoComplete="false"
-            onChange={(e) => handleFieldChange(e)}
-            value={data.password}
-            name="password"
-            type="password"
-            label="Mot de passe"
-            variant="outlined"
-          />
-
-          <Button type="submit" variant="contained">
+          {/* <Button type="submit" variant="contained">
             valider
-          </Button>
+          </Button> */}
 
-          <Button
-            fullwidth
-            type="submit"
-            variant="contained"
-            color="error"
-          >
+          {/* <Button type="submit" variant="contained" color="error">
             Supprimer mon compte
-          </Button>
+          </Button> */}
 
-          <Link to="/tableau-de-bord" style={{ textDecoration: 'none', color: '#1ba2ac' }}>
+          <Link
+            to="/tableau-de-bord"
+            style={{ textDecoration: 'none', color: '#1ba2ac' }}
+          >
             <Button color="secondary" size="small">
               Revenir à mon tableau de bord
             </Button>
