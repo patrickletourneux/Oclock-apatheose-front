@@ -1,6 +1,4 @@
-import { Image } from '@mui/icons-material';
-import { Box, Container, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Typography } from '@mui/material';
 import nettoyeur from '../../assets/images/nettoyeur.jpg';
 import PageContainer from '../PageContainer/PageContainer';
 
