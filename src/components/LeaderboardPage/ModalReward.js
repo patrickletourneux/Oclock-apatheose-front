@@ -14,7 +14,10 @@ const Transition = React.forwardRef((props, ref) => (
   <Slide direction="up" ref={ref} {...props} />
 ));
 
-export default function ModalReward() {
+// eslint-disable-next-line no-unused-vars
+export default function ModalReward({ rewardId }) {
+  window.location.reload();
+
   const [open, setOpen] = React.useState(false);
 
   const [data, setData] = React.useState({
@@ -30,6 +33,15 @@ export default function ModalReward() {
     setOpen(false);
   };
 
+  function successUpdateReward(resSuccess) {
+    window.location.reload();
+    console.log(resSuccess);
+  }
+
+  function errorUpdateReward(resError) {
+    console.log(resError);
+  }
+
   function handleFieldChange(e) {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
@@ -38,18 +50,24 @@ export default function ModalReward() {
 
   const submit = (e) => {
     e.preventDefault();
-    updateReward({
-      title: data.title,
-      description: data.description,
-    });
+    updateReward(
+      rewardId,
+      {
+        title: data.title,
+        description: data.description,
+      },
+      successUpdateReward,
+      errorUpdateReward,
+    );
     handleClose();
   };
 
   return (
-    <Box>
+    <Box
+      textAlign="center"
+    >
       <Button
         type="Submit"
-        textalign="center"
         variant="outlined"
         onClick={handleClickOpen}
       >
