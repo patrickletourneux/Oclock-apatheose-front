@@ -16,6 +16,8 @@ const Transition = React.forwardRef((props, ref) => (
 
 // eslint-disable-next-line no-unused-vars
 export default function ModalReward(rewardId) {
+  const reload = () => window.location.reload();
+
   const [open, setOpen] = React.useState(false);
 
   const [data, setData] = React.useState({
@@ -29,9 +31,11 @@ export default function ModalReward(rewardId) {
 
   const handleClose = () => {
     setOpen(false);
+  
   };
 
   function successUpdateReward(resSuccess) {
+    window.location.reload();
     console.log(resSuccess);
   }
 
@@ -106,7 +110,7 @@ export default function ModalReward(rewardId) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Annuler</Button>
-          <Button onClick={submit}>Enregistrer</Button>
+          <Button onClick={submit}>Enregistrer</Button >
         </DialogActions>
       </Dialog>
     </Box>
