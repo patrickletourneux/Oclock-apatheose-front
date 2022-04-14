@@ -1,17 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
+  Button, Checkbox,
+  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+  List, ListItem, ListItemButton, ListItemIcon, ListItemText,
   TextField,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 import addHome from '../../../apis/api/homes';
 import authContext from '../../../contexts/authContext';
+import getGenericTasks from '../../../apis/api/generic_tasks';
 
 const defaultFormData = {
   user_id: null,
@@ -24,18 +22,34 @@ const defaultFormData = {
   },
 };
 
-function ModalJoinHome() {
+const initGenericTasks = (genericTasks) => (
+  genericTasks.map((genTask, index) => ({ ...genTask, checked: index === 0 }))
+);
+
+function ModalCreateHome() {
   const { userData, setUserData } = useContext(authContext);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [data, setData] = useState(defaultFormData);
+  const [genericTasks, setGenericTasks] = useState([]);
 
+  // Add user_id to data
   useEffect(() => {
     if (userData) {
       setData((oldData) => ({ ...oldData, user_id: userData.id }));
     }
   }, [userData]);
+
+  // Fetch genericTasks collection
+  useEffect(() => {
+    getGenericTasks(
+      (resData) => {
+        setGenericTasks(initGenericTasks(resData.generic_tasks));
+      },
+      () => {},
+    );
+  }, []);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -47,6 +61,7 @@ function ModalJoinHome() {
     }
     setOpen(false);
     setData({ ...defaultFormData, user_id: userData.id });
+    setGenericTasks(initGenericTasks(genericTasks));
     setError('');
   };
 
@@ -74,6 +89,15 @@ function ModalJoinHome() {
     );
   };
 
+  const onSelectTaskHandler = (selectedTask) => () => {
+    setGenericTasks(genericTasks.map((genTask) => {
+      if (genTask.id === selectedTask.id) {
+        return ({ ...genTask, checked: !genTask.checked });
+      }
+      return genTask;
+    }));
+  };
+
   return (
     <div>
       <Button variant="contained" onClick={handleClickOpen}>
@@ -88,7 +112,7 @@ function ModalJoinHome() {
             Création de votre maison
           </DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText marginTop="1rem">
               1. Donnes un nom à ta maison
             </DialogContentText>
             <TextField
@@ -101,6 +125,29 @@ function ModalJoinHome() {
               sx={{ marginTop: '1rem' }}
               required
             />
+            <DialogContentText marginTop="3rem">
+              2. Définis la liste de tâches disponible pour tout le monde
+            </DialogContentText>
+            <List>
+              {genericTasks.map((genTask) => (
+                <ListItem key={genTask.id} disablePadding secondaryAction={genTask.value}>
+                  <ListItemButton dense role={undefined} onClick={onSelectTaskHandler(genTask)}>
+                    <ListItemIcon>
+                      <Checkbox
+                        edge="start"
+                        checked={genTask.checked}
+                        tabIndex={-1}
+                        inputProps={{ 'aria-labelledby': genTask.id }}
+                      />
+                    </ListItemIcon>
+                    <ListItemText
+                      id={genTask.id}
+                      primary={`${genTask.name}`}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
             <DialogContentText color="error" marginTop="1rem">
               {error}
             </DialogContentText>
@@ -119,4 +166,4 @@ function ModalJoinHome() {
   );
 }
 
-export default ModalJoinHome;
+export default ModalCreateHome;
