@@ -13,7 +13,7 @@ function UserAvatar({ url, pseudonym, ...otherProps }) {
   }
   return (
     <Avatar {...otherProps}>
-      {pseudonym.charAt(0)}
+      {pseudonym.charAt(0).toUpperCase()}
     </Avatar>
   );
 }

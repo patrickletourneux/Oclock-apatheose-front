@@ -50,7 +50,7 @@ function TaskTile({ data, hasHome }) {
     <>
       <TileTitle>Mes Tâches</TileTitle>
       <Typography variant="h3" color="error" textAlign="center" marginTop="2rem">
-        Vous n'avez pas encore de tâches attribuées
+        Vous n'avez pas encore de maison associée, vous n'avez pas de tâches pour le moment
       </Typography>
     </>
   );

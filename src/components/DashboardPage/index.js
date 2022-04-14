@@ -8,11 +8,11 @@ import PageLoader from '../PageLoader/PageLoader';
 import PageError from '../PageError/PageError';
 import HomeTile from './HomeTile';
 import TasksTile from './TasksTile';
+import RankingTile from './RankingTile';
 import PageContainer from '../PageContainer/PageContainer';
 
 function DashboardPage() {
   const { userData } = useContext(authContext);
-  // TODO is null ok as initial value ?
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -20,7 +20,6 @@ function DashboardPage() {
   const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
 
   useEffect(() => {
-    // TODO home_id et user_id ???
     if (hasHome) {
       setLoading(true);
       setError('');
@@ -49,6 +48,7 @@ function DashboardPage() {
         <TileContainer>
           <HomeTile data={data} hasHome={hasHome} />
           <TasksTile data={data?.tasks} hasHome={hasHome} />
+          <RankingTile data={data?.ranking} hasHome={hasHome} />
         </TileContainer>
       )}
     </PageContainer>
