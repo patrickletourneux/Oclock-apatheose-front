@@ -111,12 +111,12 @@ function MySpacePage() {
           alignItems="center"
           variant="outlined"
         >
-          <Typography sx={{ padding: '50px' }} variant="h1">
+          <Typography textAlign="center" padding= '20px' variant="h1">
             Mon espace personnel
           </Typography>
 
-          <Typography variant="body1">
-            Vous pouvez modifier vos données personnelles ?&nbsp;
+          <Typography textAlign="center" padding="20px" variant="body1">
+            Vous pouvez modifier vos données personnelles
           </Typography>
 
           <TextField
