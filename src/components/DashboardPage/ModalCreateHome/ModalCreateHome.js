@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import {
+  Box,
   Button, Checkbox,
   Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
   List, ListItem, ListItemButton, ListItemIcon, ListItemText,
-  TextField,
+  TextField, Tooltip,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
@@ -148,6 +149,22 @@ function ModalCreateHome() {
                 </ListItem>
               ))}
             </List>
+            <Box textAlign="center">
+              <Tooltip
+                title="Vous pourrez en créer plus tard"
+                placement="top"
+                enterTouchDelay={1}
+              >
+                <span>
+                  <Button
+                    variant="contained"
+                    disabled
+                  >
+                    Créer une tâche
+                  </Button>
+                </span>
+              </Tooltip>
+            </Box>
             <DialogContentText color="error" marginTop="1rem">
               {error}
             </DialogContentText>
