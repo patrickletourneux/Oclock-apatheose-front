@@ -15,8 +15,8 @@ const Transition = React.forwardRef((props, ref) => (
 ));
 
 // eslint-disable-next-line no-unused-vars
-export default function ModalReward({ rewardId }) {
-  window.location.reload();
+export default function ModalReward({ rewardId, getRankingInfo }) {
+  // window.location.reload();
 
   const [open, setOpen] = React.useState(false);
 
@@ -34,7 +34,7 @@ export default function ModalReward({ rewardId }) {
   };
 
   function successUpdateReward(resSuccess) {
-    window.location.reload();
+    getRankingInfo();
     console.log(resSuccess);
   }
 

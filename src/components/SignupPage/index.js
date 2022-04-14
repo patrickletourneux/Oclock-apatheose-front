@@ -52,7 +52,7 @@ function SignUp() {
     if (longueur <= 10) {
       setErrorPseudonym('');
     } else {
-      setErrorPseudonym('Axel attend toujours sa tasse @Etienne svp !');
+      setErrorPseudonym('MaJ "à VeraCruz" - Gauthier: 2 tasses / Axel: 0');
     }
   };
 
@@ -65,7 +65,7 @@ function SignUp() {
     if (validator.isEmail(email)) {
       setEmailError('');
     } else {
-      setEmailError('Fais un effort svp :) ');
+      setEmailError('«@», signe indispensable et désormais universel, est une clef qui ouvre toutes les portes. Placé entre un nom et un «gmail.com», il nous permet de communiquer avec nimporte qui pourvu que nous ayons la bonne adresse.');
     }
   };
 

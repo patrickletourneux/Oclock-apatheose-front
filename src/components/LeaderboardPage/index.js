@@ -20,7 +20,7 @@ function LeaderboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
+  const getRankingInfo = () => {
     if (userData) {
       setLoading(true);
       setError('');
@@ -36,7 +36,12 @@ function LeaderboardPage() {
         },
       );
     }
-    // Pour le premier rendu, on met vide, ici a chaque chgt de userData
+  }
+
+  useEffect(() => {
+    getRankingInfo();
+// tant que la variable userData n'est pas modifié le useEffect ne senclenche
+//  pas et la fonction n'est pas execute
   }, [userData]);
   return (
     <PageContainer>
@@ -54,7 +59,7 @@ function LeaderboardPage() {
           <Tile>
             <TileTitle>Reward</TileTitle>
             <RewardTile {...data?.reward} />
-            <ModalReward rewardId={data?.reward.id} />
+            <ModalReward getRankingInfo={getRankingInfo} rewardId={data?.reward.id} />
           </Tile>
         </TileContainer>
       )}

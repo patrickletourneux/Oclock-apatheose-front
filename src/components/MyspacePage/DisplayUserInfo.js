@@ -1,9 +1,6 @@
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import PropTypes from 'prop-types';
+import { Grid, TextField } from '@mui/material';
+import Tile from '../Tile/Tile';
 
 function DisplayUserInfo({
   pseudonym,
@@ -12,32 +9,49 @@ function DisplayUserInfo({
   password,
 }) {
   return (
-    <List
-      sx={{
-	    width: '50%',
-	    maxWidth: 600,
-        margin: 'auto',
-	  }}
-    >
-      <ListItemText primary={email} variant="body1" />
+    <Tile>
+      <Grid
+        container
+        gap={3}
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        variant="outlined"
+      >
+        <TextField
+          autoComplete="false"
+          required
+          name="email"
+          value={email}
+          variant="outlined"
+        />
 
-      <ListItemText
-        sx={{ width: '150px' }}
-        primary={pseudonym}
-      />
+        <TextField
+          autoComplete="false"
+          required
+          name=""
+          label=""
+          value={pseudonym}
+          variant="outlined"
+        />
 
-      <ListItemText
-        sx={{ width: '30px', color: 'orange' }}
-        primary={password}
-      />
-      {/* listAvatar */}
-      <Avatar
-        alt="{users.pseudonym}"
-        src={avatar_img}
-        size="small"
-      />
+        <TextField
+          autoComplete="false"
+          required
+          name=""
+          label=""
+          value={password}
+          variant="outlined"
+        />
 
-    </List>
+        {/* listAvatar */}
+        <Avatar
+          alt="{users.pseudonym}"
+          src={avatar_img}
+          size="small"
+        />
+      </Grid>
+    </Tile>
   );
 }
 
