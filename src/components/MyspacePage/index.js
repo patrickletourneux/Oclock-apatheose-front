@@ -82,7 +82,7 @@ function MySpacePage() {
             Vous pouvez modifier vos données personnelles
           </Typography>
 
-          <DisplayUserInfo {...data?.user} />
+          <DisplayUserInfo {...userData} />
 
           {/* <Button type="submit" variant="contained">
             valider

@@ -31,7 +31,6 @@ export default function ModalReward(rewardId) {
 
   const handleClose = () => {
     setOpen(false);
-  
   };
 
   function successUpdateReward(resSuccess) {
@@ -110,7 +109,7 @@ export default function ModalReward(rewardId) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Annuler</Button>
-          <Button onClick={submit}>Enregistrer</Button >
+          <Button onClick={submit}>Enregistrer</Button>
         </DialogActions>
       </Dialog>
     </Box>

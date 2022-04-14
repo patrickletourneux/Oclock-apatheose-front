@@ -18,6 +18,7 @@ function ListItems({
           bgcolor: 'background.paper',
         }}
       >
+        {/* Utiliser ListAvatar */}
         <ListItem>
           <ListItemText primary={rank} variant="body1" />
           <ListItemAvatar>
