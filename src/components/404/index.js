@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import nettoyeur from '../../assets/images/nettoyeur.jpg';
+import oclock from '../../assets/images/oclock.jpg';
 import PageContainer from '../PageContainer/PageContainer';
 
 function Page404() {
@@ -12,20 +12,32 @@ function Page404() {
         textAlign="center"
         margin="50px"
 
-      >404 WORK IN PROGRESS
-      </Typography>
+      > PENDANT CE TEMPS LA...
+      </Typography>      <Typography
+        variant="h1"
+        textAlign="center"
+        margin="50px"
 
+      >🥳 EN APOTHEOSE  🚢
+      </Typography>
       <Box
         component="img"
         sx={{
-          height: 800,
+          height: 550,
           width: 800,
           maxHeight: { xs: 400, md: 900 },
           maxWidth: { xs: 400, md: 900 },
         }}
         alt="nettoyeur"
-        src={nettoyeur}
+        src={oclock}
       />
+      <Typography
+        variant="h3"
+        textAlign="center"
+        margin="50px"
+
+      > PS: @Axel n'en a toujours pas...😈
+      </Typography>
     </PageContainer>
   );
 }
