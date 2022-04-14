@@ -25,6 +25,7 @@ function HomeTile({ data, hasHome }) {
         <Tooltip
           title="Pour ajouter une maison, il vous faut au préalable quitter la maison actuelle"
           placement="top"
+          enterTouchDelay={1}
         >
           <span>
             <Button
@@ -38,6 +39,7 @@ function HomeTile({ data, hasHome }) {
         <Tooltip
           title="Pour rejoindre une maison, il vous faut au préalable quitter la maison actuelle"
           placement="top"
+          enterTouchDelay={1}
         >
           <span>
             <Button
