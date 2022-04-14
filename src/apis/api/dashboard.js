@@ -45,7 +45,6 @@ const noHomeDataMock = {};
  */
 const getDashboardPage = async (userId, onSuccess, onError) => {
   try {
-    // eslint-disable-next-line no-unused-vars
     const response = await api.get(`dashboard/${userId}`);
     onSuccess(response.data);
   } catch {
