@@ -10,9 +10,9 @@ import api from './axiosInstance';
  * @returns {Promise<void>}
  *
  */
-export const updateReward = async (payload, onSuccess, onError) => {
+export const updateReward = async (rewardId, payload, onSuccess, onError) => {
   try {
-    await api.patch('rewards/2', payload);
+    await api.patch(`rewards/${rewardId}`, payload);
     onSuccess(null);
   } catch (error) {
     const status = error.response?.status;

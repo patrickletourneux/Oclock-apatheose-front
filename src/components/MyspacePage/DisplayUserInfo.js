@@ -5,38 +5,38 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import PropTypes from 'prop-types';
 
-
 function DisplayUserInfo({
   pseudonym,
   avatar_img,
   email,
+  password,
 }) {
   return (
     <List
       sx={{
-	    width: '100%',
+	    width: '50%',
 	    maxWidth: 600,
-	    bgcolor: 'background.paper',
+        margin: 'auto',
 	  }}
     >
-      <ListItem>
-        <ListItemText primary={email} variant="body1" />
-      </ListItem>
+      <ListItemText primary={email} variant="body1" />
 
-      <ListItemAvatar>
-        <Avatar alt="{users.pseudonym}" src={avatar_img} size="small" />
-      </ListItemAvatar>
+      <ListItemText
+        sx={{ width: '150px' }}
+        primary={pseudonym}
+      />
 
-      <ListItem>
-        <ListItemText sx={{ width: '150px' }} primary={pseudonym} />
-      </ListItem>
+      <ListItemText
+        sx={{ width: '30px', color: 'orange' }}
+        primary={password}
+      />
+      {/* listAvatar */}
+      <Avatar
+        alt="{users.pseudonym}"
+        src={avatar_img}
+        size="small"
+      />
 
-      <ListItem>
-        {/* <ListItemText
-          sx={{ width: '30px', color: 'orange' }}
-          primary={password}
-        /> */}
-      </ListItem>
     </List>
   );
 }

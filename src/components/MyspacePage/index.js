@@ -71,7 +71,6 @@ function MySpacePage() {
           gap={2}
           direction="column"
           justifyContent="center"
-          alignItems="center"
           variant="outlined"
         >
           <Typography textAlign="center" padding="20px" variant="h1">

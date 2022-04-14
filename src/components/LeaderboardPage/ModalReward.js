@@ -15,7 +15,7 @@ const Transition = React.forwardRef((props, ref) => (
 ));
 
 // eslint-disable-next-line no-unused-vars
-export default function ModalReward(rewardId) {
+export default function ModalReward({ rewardId }) {
   const reload = () => window.location.reload();
 
   const [open, setOpen] = React.useState(false);
@@ -51,6 +51,7 @@ export default function ModalReward(rewardId) {
   const submit = (e) => {
     e.preventDefault();
     updateReward(
+      rewardId,
       {
         title: data.title,
         description: data.description,
@@ -69,7 +70,6 @@ export default function ModalReward(rewardId) {
         type="Submit"
         variant="outlined"
         onClick={handleClickOpen}
-        alignItems="center"
       >
         Modifier
       </Button>
