@@ -18,6 +18,8 @@ import MySpacePage from './components/MyspacePage';
 
 import Footer from './components/Footer';
 
+import Page404 from './components/404';
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -75,7 +77,7 @@ function App() {
                   </RequireAuth>
                 )}
               />
-              <Route path="*" element={<p>404</p>} />
+              <Route path="*" element={<Page404 />} />
             </Routes>
             <Footer />
           </AuthProvider>
