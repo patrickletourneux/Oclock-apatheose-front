@@ -40,19 +40,19 @@ function MySpacePage() {
     }
   }, [userData]);
 
-  // const submit = (e) => {
-  //   e.preventDefault();
-  //   UpdateUser(
-  //     {
-  //       email: data.email,
-  //       password: data.password,
-  //       pseudonym: data.pseudonym,
-  //       avatar_img: data.avatar_img,
-  //     },
-  //     successSignUp,
-  //     errorSignUp,
-  //   );
-  // };
+  const submit = (e) => {
+    e.preventDefault();
+    UpdateUser(
+      {
+        email: data.email,
+        password: data.password,
+        pseudonym: data.pseudonym,
+        avatar_img: data.avatar_img,
+      },
+      successSignUp,
+      errorSignUp,
+    );
+  };
 
   return (
     <PageContainer style={styles.paperContainer} sx={{ py: '20px' }}>
@@ -64,14 +64,25 @@ function MySpacePage() {
       </Tile>
       <DisplayUserInfo {...userData} />
 
-      {/* <Button type="submit" variant="contained">
-            valider
-          </Button> */}
-
-      {/* <Button type="submit" variant="contained" color="error">
+      {/* <UserAvatar src={userData?.avatar_img} pseudonym={userData?.pseudonym} /> */}
+      <Tile textAlign="center">
+        <Grid
+          container
+          gap={3}
+          direction="column"
+          alignItems="center"
+          variant="outlined"
+        >
+          <Button type="submit" variant="contained">
+            enregistrer
+          </Button>
+          <Button type="submit" variant="contained" color="error">
             Supprimer mon compte
-          </Button> */}
-      <Tile>
+          </Button>
+        </Grid>
+
+      </Tile>
+      <Tile textAlign="center">
 
         <Link
           to="/tableau-de-bord"

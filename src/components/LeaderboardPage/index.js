@@ -36,13 +36,14 @@ function LeaderboardPage() {
         },
       );
     }
-  }
+  };
 
   useEffect(() => {
     getRankingInfo();
-// tant que la variable userData n'est pas modifié le useEffect ne senclenche
-//  pas et la fonction n'est pas execute
+    // tant que la variable userData n'est pas modifié le useEffect ne senclenche
+    //  pas et la fonction n'est pas executee
   }, [userData]);
+
   return (
     <PageContainer>
       <PageTitle>Classement & Reward</PageTitle>

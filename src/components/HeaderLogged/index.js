@@ -11,6 +11,8 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import CloseIcon from '@mui/icons-material/Close';
+
 import { Link as LinkRouter } from 'react-router-dom';
 
 import authContext from '../../contexts/authContext';
@@ -112,7 +114,7 @@ export default function HeaderLogged() {
           >C du Prop's
           </Link>
         </Typography>
-        <Button
+        {/* <Button
           sx={{
             color: 'white',
             border: 1,
@@ -123,7 +125,31 @@ export default function HeaderLogged() {
           onClick={handleClickLogout}
         >
           Déconnexion
-        </Button>
+        </Button> */}
+        <IconButton
+          aria-label="close"
+          size="small"
+          onClick={handleClickLogout}
+          sx={{
+            color: 'white',
+            // color: (theme) => theme.palette.secondary.light[900],
+            border: 2,
+            borderColor: 'white',
+            position: 'relative',
+            right: -10,
+            top: 0,
+            bgcolor: 'grey',
+            '&:hover': {
+              backgroundColor: 'white',
+              color: 'black',
+              
+
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+
       </Toolbar>
     </AppBar>
   );

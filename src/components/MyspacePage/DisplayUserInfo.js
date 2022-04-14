@@ -1,6 +1,6 @@
-import Avatar from '@mui/material/Avatar';
-import { Grid, TextField } from '@mui/material';
+import { Avatar, Grid, TextField } from '@mui/material';
 import Tile from '../Tile/Tile';
+import UserAvatar from '../UserAvatar/UserAvatar';
 
 function DisplayUserInfo({
   pseudonym,
@@ -14,13 +14,11 @@ function DisplayUserInfo({
         container
         gap={3}
         direction="column"
-        justifyContent="center"
         alignItems="center"
         variant="outlined"
       >
         <TextField
           autoComplete="false"
-          required
           name="email"
           value={email}
           variant="outlined"
@@ -28,7 +26,6 @@ function DisplayUserInfo({
 
         <TextField
           autoComplete="false"
-          required
           name=""
           label=""
           value={pseudonym}
@@ -36,20 +33,16 @@ function DisplayUserInfo({
         />
 
         <TextField
-          autoComplete="false"
-          required
-          name=""
-          label=""
+          label="Password"
+          type="password"
+          autoComplete="current-password"
           value={password}
           variant="outlined"
         />
 
         {/* listAvatar */}
-        <Avatar
-          alt="{users.pseudonym}"
-          src={avatar_img}
-          size="small"
-        />
+        <Avatar alt="{users.pseudonym}" src={avatar_img} size="small" />
+        {/* <UserAvatar src={users.avatar_img} pseudonym={users.pseudonym}/> */}
       </Grid>
     </Tile>
   );
