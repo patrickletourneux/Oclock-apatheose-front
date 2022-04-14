@@ -2,14 +2,15 @@ import api from './axiosInstance';
 
 /**
  * @param {Object} payload
- * @param {string} payload.user_id
  * @param {string} payload.name
+ * @param {number} payload.value
+ * @param {number} homeId
  * @returns {Promise<Object>}
  *
  */
-const addHome = async (payload) => {
+const addHomeTask = async (payload, homeId) => {
   try {
-    const response = await api.post('homes', payload);
+    const response = await api.post('home_tasks', { ...payload, home_id: homeId });
     return response.data;
   } catch (error) {
     let errorMessage;
@@ -22,4 +23,4 @@ const addHome = async (payload) => {
   }
 };
 
-export default addHome;
+export default addHomeTask;

@@ -13,11 +13,13 @@ import AddIcon from '@mui/icons-material/Add';
 import addHome from '../../../apis/api/homes';
 import authContext from '../../../contexts/authContext';
 import getGenericTasks from '../../../apis/api/generic_tasks';
+import addHomeTask from '../../../apis/api/home_tasks';
+import addInvitation from '../../../apis/api/invitation';
+import addReward from '../../../apis/api/rewards';
 
 const defaultFormData = {
   user_id: null,
   name: '',
-  tasks: [],
   invitations: [''],
   reward: {
     title: '',
@@ -36,13 +38,6 @@ function ModalCreateHome() {
   const [error, setError] = useState('');
   const [data, setData] = useState(defaultFormData);
   const [genericTasks, setGenericTasks] = useState([]);
-
-  // Add user_id to data
-  useEffect(() => {
-    if (userData) {
-      setData((oldData) => ({ ...oldData, user_id: userData.id }));
-    }
-  }, [userData]);
 
   // Fetch genericTasks collection
   useEffect(() => {
@@ -63,7 +58,7 @@ function ModalCreateHome() {
       return;
     }
     setOpen(false);
-    setData({ ...defaultFormData, user_id: userData.id });
+    setData({ ...defaultFormData });
     setGenericTasks(initGenericTasks(genericTasks));
     setError('');
   };
@@ -74,22 +69,33 @@ function ModalCreateHome() {
     setData(newData);
   }
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
-    addHome(
-      data,
-      (response) => {
-        setUserData({ ...userData, home_id: response.home_id });
-        setLoading(false);
-        setOpen(false);
-      },
-      (errorMessage) => {
-        setLoading(false);
-        setError(errorMessage);
-      },
-    );
+    try {
+      // wait for home creation
+      const { id: homeId } = await addHome({ user_id: userData.id, name: data.name });
+      // post each task to api and store an array of promises
+      const tasksPromises = genericTasks
+        .filter((task) => task.checked)
+        .map((task) => addHomeTask({ name: task.name, value: task.value }, homeId));
+      // post each invite to api and store an array of promises
+      const invitesPromises = data.invitations
+        .filter((email) => !!email)
+        .map((email) => addInvitation({ email: email }, homeId));
+      // TODO Handle empty reward title or description
+      // post reward data and store a promise
+      const rewardPromise = addReward(data.reward, homeId);
+      // wait all promises to be resolved
+      await Promise.all([...tasksPromises, ...invitesPromises, rewardPromise]);
+      setUserData({ ...userData, home_id: homeId });
+      setLoading(false);
+      setOpen(false);
+    } catch (err) {
+      setLoading(false);
+      setError(err.message);
+    }
   };
 
   const onSelectTaskHandler = (selectedTask) => () => {
@@ -152,6 +158,7 @@ function ModalCreateHome() {
               onChange={(e) => handleFieldChange(e)}
               fullWidth
               sx={{ marginTop: '1rem' }}
+              autoComplete="off"
               required
             />
             <DialogContentText marginTop="3rem">
