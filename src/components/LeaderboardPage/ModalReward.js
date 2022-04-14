@@ -16,7 +16,7 @@ const Transition = React.forwardRef((props, ref) => (
 
 // eslint-disable-next-line no-unused-vars
 export default function ModalReward({ rewardId }) {
-  const reload = () => window.location.reload();
+  window.location.reload();
 
   const [open, setOpen] = React.useState(false);
 
