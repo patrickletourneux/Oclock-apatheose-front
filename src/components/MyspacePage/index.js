@@ -40,19 +40,20 @@ function MySpacePage() {
     }
   }, [userData]);
 
-  const submit = (e) => {
-    e.preventDefault();
-    UpdateUser(
-      {
-        email: data.email,
-        password: data.password,
-        pseudonym: data.pseudonym,
-        avatar_img: data.avatar_img,
-      },
-      successSignUp,
-      errorSignUp,
-    );
-  };
+  // requete update a faire
+  // const submit = (e) => {
+  //   e.preventDefault();
+  //   UpdateUser(
+  //     {
+  //       email: data.email,
+  //       password: data.password,
+  //       pseudonym: data.pseudonym,
+  //       avatar_img: data.avatar_img,
+  //     },
+  //     successSignUp,
+  //     errorSignUp,
+  //   );
+  // };
 
   return (
     <PageContainer style={styles.paperContainer} sx={{ py: '20px' }}>

@@ -60,7 +60,10 @@ function LeaderboardPage() {
           <Tile>
             <TileTitle>Reward</TileTitle>
             <RewardTile {...data?.reward} />
-            <ModalReward getRankingInfo={getRankingInfo} rewardId={data?.reward.id} />
+            <ModalReward
+              getRankingInfo={getRankingInfo}
+              rewardId={data?.reward.id}
+            />
           </Tile>
         </TileContainer>
       )}
