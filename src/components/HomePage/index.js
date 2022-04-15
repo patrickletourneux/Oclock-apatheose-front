@@ -1,11 +1,11 @@
-import { Box, Container } from '@mui/material';
+import ContainerWhat from './ContainerWhat';
+import ContainerWho from './ContainerWho';
+import HeroContainer from './HeroContainer';
 
 function HomePage() {
   return (
-    <Container>
-      <Box />
 
-    </Container>
+    <><HeroContainer /><ContainerWhat /><ContainerWho /></>
   );
 }
 

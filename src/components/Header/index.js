@@ -30,6 +30,7 @@ export default function Header() {
             C du Prop's
           </Link>
         </Typography>
+
         <Box
           sx={{
             display: 'flex',
