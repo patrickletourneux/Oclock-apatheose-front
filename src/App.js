@@ -19,6 +19,7 @@ import MySpacePage from './components/MyspacePage';
 import Footer from './components/Footer';
 
 import Page404 from './components/404';
+import MytasksPage from './components/MytasksPage';
 
 function App() {
   return (
@@ -57,7 +58,7 @@ function App() {
                 path="mes-taches"
                 element={(
                   <RequireAuth>
-                    <p>mes-taches</p>
+                    <MytasksPage />
                   </RequireAuth>
                 )}
               />

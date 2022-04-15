@@ -39,21 +39,15 @@ const responseDataMock = {
 
 /**
  * @param {number} userId
- * @param {function({object})} onSuccess
- * @param {function(string)} onError
- * @returns {Promise<void>}
+ * @returns {Promise<Object>}
  *
  */
-const getMytasksPage = async (userId, onSuccess, onError) => {
+const getMytasksPage = async (userId) => {
   try {
     const response = await api.get(`mytasks/${userId}`);
-    onSuccess(response.data);
-  } catch (error) {
-    if (error.response && (error.response.status === 400 || error.response.status === 404)) {
-      onError(error.response.data.message);
-    } else {
-      onError('Une erreur est survenue, veuillez réessayer plus tard');
-    }
+    return response.data;
+  } catch {
+    throw new Error('Une erreur est survenue, veuillez réessayer plus tard');
   }
 };
 
