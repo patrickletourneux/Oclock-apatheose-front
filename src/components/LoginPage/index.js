@@ -47,7 +47,6 @@ export default function Login() {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
     setData(newData);
-    console.log(newData);
   }
 
   const submit = (e) => {

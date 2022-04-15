@@ -20,9 +20,11 @@ const styles = {
 };
 
 function MySpacePage() {
+  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(null);
   const { userData } = useContext(authContext);
 
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState('');
 
   useEffect(() => {

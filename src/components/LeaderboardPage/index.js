@@ -42,6 +42,7 @@ function LeaderboardPage() {
     getRankingInfo();
     // tant que la variable userData n'est pas modifié le useEffect ne senclenche
     //  pas et la fonction n'est pas executee
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
 
   return (

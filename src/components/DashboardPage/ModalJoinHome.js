@@ -39,7 +39,7 @@ function ModalJoinHome() {
     setLoading(true);
     setError('');
     joinHome(
-      { user_id: userData.id, password: code },
+      { user_id: userData.id, home_password: code },
       (response) => {
         setUserData({ ...userData, home_id: response.home_id });
         setLoading(false);

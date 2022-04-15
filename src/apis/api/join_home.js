@@ -3,7 +3,7 @@ import api from './axiosInstance';
 /**
  * @param {Object} payload
  * @param {string} payload.user_id
- * @param {string} payload.password
+ * @param {string} payload.home_password
  * @param {function({
  *          home_id: number,
  *        })} onSuccess
