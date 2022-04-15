@@ -1,9 +1,7 @@
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import PropTypes from 'prop-types';
+import {
+  Avatar, Box, Grid, TextField, Typography,
+} from '@mui/material';
+import Tile from '../Tile/Tile';
 
 function DisplayUserInfo({
   pseudonym,
@@ -12,32 +10,60 @@ function DisplayUserInfo({
   password,
 }) {
   return (
-    <List
-      sx={{
-	    width: '50%',
-	    maxWidth: 600,
-        margin: 'auto',
-	  }}
-    >
-      <ListItemText primary={email} variant="body1" />
+    <Tile>
+      <Grid
+        container
+        gap={4}
+        direction="column"
+        alignItems="center"
+      >
+        <TextField
+          id="standard"
+          label="Votre email"
+          name="email"
+          value={email}
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
 
-      <ListItemText
-        sx={{ width: '150px' }}
-        primary={pseudonym}
-      />
+        <TextField
+          name=""
+          label="votre pseudo"
+          value={pseudonym}
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
 
-      <ListItemText
-        sx={{ width: '30px', color: 'orange' }}
-        primary={password}
-      />
-      {/* listAvatar */}
-      <Avatar
-        alt="{users.pseudonym}"
-        src={avatar_img}
-        size="small"
-      />
+        <TextField
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          value={password}
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
 
-    </List>
+        {/* listAvatar */}
+        <Box
+          textAlign="center"
+
+        >
+          <Typography variant="h3" padding="10px">Votre avatar</Typography>
+          <Avatar
+            alt="{users.pseudonym}"
+            src={avatar_img}
+            sx={{ margin: 'auto', width: 80, height: 80 }}
+          />
+          {/* <UserAvatar src={users.avatar_img} pseudonym={users.pseudonym}/> */}
+        </Box>
+      </Grid>
+    </Tile>
   );
 }
 

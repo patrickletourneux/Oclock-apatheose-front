@@ -4,12 +4,13 @@ import {
   Toolbar,
   Typography,
   IconButton,
-  Button,
   Menu,
   MenuItem,
   Link,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+
+import CloseIcon from '@mui/icons-material/Close';
 
 import { Link as LinkRouter } from 'react-router-dom';
 
@@ -30,9 +31,7 @@ export default function HeaderLogged() {
     logout();
   };
   return (
-    <AppBar
-      position="static"
-    >
+    <AppBar position="static">
       <Toolbar>
         <IconButton
           size="large"
@@ -42,9 +41,7 @@ export default function HeaderLogged() {
           sx={{ mr: 2 }}
           onClick={handleClick}
         >
-          <MenuIcon
-            color="secondary.light"
-          />
+          <MenuIcon color="secondary.light" />
         </IconButton>
         <Menu
           id="basic-menu"
@@ -61,7 +58,6 @@ export default function HeaderLogged() {
               component={LinkRouter}
               variant="body1"
               style={{ textDecoration: 'none', color: '#009688' }}
-
             >
               Accueil
             </Link>
@@ -109,21 +105,28 @@ export default function HeaderLogged() {
             to="/"
             component={LinkRouter}
             style={{ textDecoration: 'none', color: 'white' }}
-          >C du Prop's
+          >
+            C du Prop's
           </Link>
         </Typography>
-        <Button
+        <IconButton
+          aria-label="close"
+          size="small"
+          onClick={handleClickLogout}
           sx={{
             color: 'white',
-            border: 1,
+            border: 2,
+            borderColor: 'white',
+            position: 'relative',
+            bgcolor: 'grey',
+            '&:hover': {
+              backgroundColor: 'white',
+              color: 'black',
+            },
           }}
-          variant="outlined"
-          size="small"
-          color="secondary"
-          onClick={handleClickLogout}
         >
-          Déconnexion
-        </Button>
+          <CloseIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
