@@ -60,7 +60,6 @@ function ModalJoinHome() {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="draggable-dialog-title"
       >
         <form onSubmit={onSubmitHandler}>
           <DialogTitle>

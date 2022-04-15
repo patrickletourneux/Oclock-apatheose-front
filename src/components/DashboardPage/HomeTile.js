@@ -11,12 +11,9 @@ import TileTitle from '../Tile/TileTitle';
 import Tile from '../Tile/Tile';
 import ModalJoinHome from './ModalJoinHome';
 import Countdown from '../Countdown/Countdown';
+import ModalCreateHome from './ModalCreateHome/ModalCreateHome';
 
 function HomeTile({ data, hasHome }) {
-  const addHomeClick = () => {
-    console.log('add home');
-  };
-
   const displayWithHome = () => (
     <>
       <TileTitle>{data.home.name}</TileTitle>
@@ -28,6 +25,7 @@ function HomeTile({ data, hasHome }) {
         <Tooltip
           title="Pour ajouter une maison, il vous faut au préalable quitter la maison actuelle"
           placement="top"
+          enterTouchDelay={1}
         >
           <span>
             <Button
@@ -41,6 +39,7 @@ function HomeTile({ data, hasHome }) {
         <Tooltip
           title="Pour rejoindre une maison, il vous faut au préalable quitter la maison actuelle"
           placement="top"
+          enterTouchDelay={1}
         >
           <span>
             <Button
@@ -71,12 +70,7 @@ function HomeTile({ data, hasHome }) {
         Vous n'avez pas encore de maison
       </Typography>
       <Box marginTop="2rem" display="flex" justifyContent="center" gap="1rem 2rem" flexWrap="wrap">
-        <Button
-          variant="contained"
-          onClick={addHomeClick}
-        >
-          Ajouter
-        </Button>
+        <ModalCreateHome />
         <ModalJoinHome />
       </Box>
     </>

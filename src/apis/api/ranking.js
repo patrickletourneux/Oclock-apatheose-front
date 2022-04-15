@@ -31,15 +31,15 @@ const responseDataMock = {
 };
 
 /**
- * @param {number} userId
+ * @param {number} homeId
  * @param {function(object)} onSuccess
  * @param {function(string)} onError
  * @returns {Promise<void>}
  *
  */
-const getRankingPage = async (userId, onSuccess, onError) => {
+const getRankingPage = async (homeId, onSuccess, onError) => {
   try {
-    const response = await api.get(`ranking/${userId}`);
+    const response = await api.get(`ranking/${homeId}`);
     onSuccess(response.data);
   } catch (error) {
     if (error.response && (error.response.status === 400 || error.response.status === 404)) {

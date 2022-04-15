@@ -46,9 +46,9 @@ function DashboardPage() {
       <PageError error={error} />
       {!loading && (
         <TileContainer>
-          <HomeTile data={data} hasHome={hasHome} />
-          <TasksTile data={data?.tasks} hasHome={hasHome} />
-          <RankingTile data={data?.ranking} hasHome={hasHome} />
+          <HomeTile data={data} hasHome={hasHome && data} />
+          <TasksTile data={data?.tasks} hasHome={hasHome && data} />
+          <RankingTile data={data?.ranking} hasHome={hasHome && data} />
         </TileContainer>
       )}
     </PageContainer>
