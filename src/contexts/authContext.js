@@ -20,16 +20,20 @@ export function AuthProvider({ children }) {
   const [authed, setAuthed] = useState(null);
   const [userData, setUserData] = useState(null);
 
+  const updateAuthData = (userId) => {
+    getUser(
+      userId,
+      (data) => setUserData(data),
+      () => {},
+    );
+  };
+
   const login = (userId, token = '') => {
     setAuthed(true);
     if (token) {
       setJwt(token);
     }
-    getUser(
-      userId,
-      (data) => setUserData(data),
-      (error) => console.error(error),
-    );
+    updateAuthData(userId);
   };
 
   const logout = () => {
@@ -71,6 +75,7 @@ export function AuthProvider({ children }) {
     authed,
     userData,
     setUserData,
+    updateAuthData,
     login,
     logout,
   };

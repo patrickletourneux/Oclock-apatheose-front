@@ -9,6 +9,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { Box } from '@mui/material';
 import { updateUser } from '../../apis/api/users';
+import { useContext, useState } from 'react';
+import authContext from '../../contexts/authContext';
 
 const Transition = React.forwardRef((props, ref) => (
   <Slide direction="up" ref={ref} {...props} />
@@ -16,9 +18,9 @@ const Transition = React.forwardRef((props, ref) => (
 
 // eslint-disable-next-line no-unused-vars
 export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
-  const [open, setOpen] = React.useState(false);
-
-  const [data, setData] = React.useState({
+  const { updateAuthData } = useContext(authContext);
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState({
     email: '',
     pseudonym: '',
     password: '',
@@ -34,6 +36,7 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
 
   function successUpdateUser(resSuccess) {
     getUserInfo();
+    updateAuthData(userId);
     console.log(resSuccess);
   }
 
