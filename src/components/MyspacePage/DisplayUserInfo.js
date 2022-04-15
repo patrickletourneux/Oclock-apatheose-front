@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Avatar, Box, Grid, TextField, Typography,
 } from '@mui/material';

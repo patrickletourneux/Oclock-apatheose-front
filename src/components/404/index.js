@@ -13,7 +13,8 @@ function Page404() {
         margin="50px"
 
       > PENDANT CE TEMPS LA...
-      </Typography>      <Typography
+      </Typography>
+      <Typography
         variant="h1"
         textAlign="center"
         margin="50px"
