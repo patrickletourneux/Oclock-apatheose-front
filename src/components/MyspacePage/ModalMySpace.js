@@ -8,19 +8,20 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { Box } from '@mui/material';
-import { updateReward } from '../../apis/api/reward';
+import { updateUser } from '../../apis/api/users';
 
 const Transition = React.forwardRef((props, ref) => (
   <Slide direction="up" ref={ref} {...props} />
 ));
 
 // eslint-disable-next-line no-unused-vars
-export default function ModalReward({ rewardId, getRankingInfo }) {
+export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
   const [open, setOpen] = React.useState(false);
 
   const [data, setData] = React.useState({
-    title: '',
-    description: '',
+    email: '',
+    pseudonym: '',
+    password: '',
   });
 
   const handleClickOpen = () => {
@@ -31,12 +32,12 @@ export default function ModalReward({ rewardId, getRankingInfo }) {
     setOpen(false);
   };
 
-  function successUpdateReward(resSuccess) {
-    getRankingInfo();
+  function successUpdateUser(resSuccess) {
+    getUserInfo();
     console.log(resSuccess);
   }
 
-  function errorUpdateReward(resError) {
+  function errorUpdateUser(resError) {
     console.log(resError);
   }
 
@@ -48,14 +49,18 @@ export default function ModalReward({ rewardId, getRankingInfo }) {
 
   const submit = (e) => {
     e.preventDefault();
-    updateReward(
-      rewardId,
+    console.log('données d\'origine : ', userInfo);
+    console.log('nouvelles données : ', data);
+    updateUser(
+      userId,
       {
-        title: data.title,
-        description: data.description,
+        email: data.email,
+        pseudonym: data.pseudonym,
+        password: data.password,
+        avatar_img: 'url',
       },
-      successUpdateReward,
-      errorUpdateReward,
+      successUpdateUser,
+      errorUpdateUser,
     );
     handleClose();
   };
@@ -71,42 +76,50 @@ export default function ModalReward({ rewardId, getRankingInfo }) {
         TransitionComponent={Transition}
         keepMounted
       >
-        <DialogTitle textAlign="center">Modifier le Reward</DialogTitle>
+        <DialogTitle textAlign="center">Modifier vos informations</DialogTitle>
         <DialogContent>
           <DialogContentText textAlign="center" margin="20px">
-            Vous pouvez modifier la récompense avec les champs suivants:
+            Vous pouvez modifier les champs suivants:
           </DialogContentText>
           <Box
             component="form"
             onSubmit={submit}
           >
             <TextField
-              autoFocus
               onChange={(e) => handleFieldChange(e)}
-              name="title"
-              value={data.title}
+              name="email"
+              value={data.email}
               margin="normal"
-              id="name"
-              label="Titre de Reward"
-              fullWidth
+              label="Votre email"
               variant="outlined"
+              fullWidth
             />
             <TextField
-              id="outlined-multiline-static"
               margin="normal"
-              name="description"
-              label="Description"
+              autoComplete="false"
+              name="pseudonym"
+              label="Votre pseudonyme"
               onChange={(e) => handleFieldChange(e)}
-              value={data.description}
-              multiline
-              rows={6}
+              value={data.pseudonymnym}
+              variant="outlined"
+              fullWidth
+            />
+            <TextField
+              autoComplete="false"
+              margin="normal"
+              type="password"
+              name="password"
+              label="Votre password"
+              onChange={(e) => handleFieldChange(e)}
+              value={data.password}
+              variant="outlined"
               fullWidth
             />
           </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Annuler</Button>
-          <Button onClick={submit}>Enregistrer</Button>
+          <Button onClick={submit}>Valider</Button>
         </DialogActions>
       </Dialog>
     </Box>

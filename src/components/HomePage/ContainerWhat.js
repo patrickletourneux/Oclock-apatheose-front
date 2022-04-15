@@ -10,6 +10,7 @@ function ContainerWhat() {
       width: '100vw',
       backgroundImage: `url(${fer})`,
       backgroundSize: 'cover',
+      backgroundPosition: 'center',
       height: '65vh',
     },
   };

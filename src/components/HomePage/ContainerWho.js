@@ -10,6 +10,7 @@ function ContainerWho() {
       width: '100vw',
       backgroundImage: `url(${superclean})`,
       backgroundSize: 'cover',
+      backgroundPosition: 'center',
       height: '65vh',
     },
   };

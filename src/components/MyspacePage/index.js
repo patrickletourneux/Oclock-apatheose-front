@@ -10,6 +10,7 @@ import PageContainer from '../PageContainer/PageContainer';
 import DisplayUserInfo from './DisplayUserInfo';
 import TileTitle from '../Tile/TileTitle';
 import Tile from '../Tile/Tile';
+import ModalMySpace from './ModalMySpace';
 
 const styles = {
   paperContainer: {
@@ -21,15 +22,15 @@ const styles = {
 
 function MySpacePage() {
   const [data, setData] = useState(null);
-  const { userData } = useContext(authContext);
+  const { userData, setUserData } = useContext(authContext);
 
   const [error, setError] = useState('');
 
-  useEffect(() => {
+  const getUserInfo = () => {
     if (userData) {
       setError('');
       getUser(
-        userData.home_id,
+        userData.id,
         (newData) => {
           setData(newData);
         },
@@ -38,6 +39,10 @@ function MySpacePage() {
         },
       );
     }
+  };
+
+  useEffect(() => {
+    getUserInfo();
   }, [userData]);
 
   // requete update a faire
@@ -48,7 +53,6 @@ function MySpacePage() {
   //       email: data.email,
   //       password: data.password,
   //       pseudonym: data.pseudonym,
-  //       avatar_img: data.avatar_img,
   //     },
   //     successSignUp,
   //     errorSignUp,
@@ -63,7 +67,14 @@ function MySpacePage() {
           Vous pouvez modifier vos données personnelles
         </Typography>
       </Tile>
-      <DisplayUserInfo {...userData} />
+      <DisplayUserInfo {...data} />
+      <Tile>
+        <ModalMySpace
+          userInfo={data}
+          getUserInfo={getUserInfo}
+          userId={data?.id}
+        />
+      </Tile>
 
       {/* <UserAvatar src={userData?.avatar_img} pseudonym={userData?.pseudonym} /> */}
       <Tile textAlign="center">
@@ -74,9 +85,6 @@ function MySpacePage() {
           alignItems="center"
           variant="outlined"
         >
-          <Button type="submit" variant="contained">
-            enregistrer
-          </Button>
           <Button type="submit" variant="contained" color="error">
             Supprimer mon compte
           </Button>

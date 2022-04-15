@@ -1,13 +1,12 @@
 import {
-  Avatar, Box, Grid, TextField, Typography,
+  Grid, TextField,
 } from '@mui/material';
 import Tile from '../Tile/Tile';
 
 function DisplayUserInfo({
   pseudonym,
-  avatar_img,
   email,
-  password,
+  // password,
 }) {
   return (
     <Tile>
@@ -17,28 +16,11 @@ function DisplayUserInfo({
         direction="column"
         alignItems="center"
       >
-        <TextField
-          id="standard"
-          label="Votre email"
-          name="email"
-          value={email}
-          variant="filled"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
+        <p>{email}</p>
+        <p>{pseudonym}</p>
 
-        <TextField
-          name=""
-          label="votre pseudo"
-          value={pseudonym}
-          variant="filled"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-
-        <TextField
+        {/* <TextField
+          disabled
           label="Password"
           type="password"
           autoComplete="current-password"
@@ -46,24 +28,23 @@ function DisplayUserInfo({
           variant="filled"
           InputLabelProps={{
             shrink: true,
-          }}
-        />
+          }} /> */}
 
-        {/* listAvatar */}
-        <Box
-          textAlign="center"
+        {/* TODO Mettre en place ListAvatar au besoin */}
+        {/* <Box
+      textAlign="center"
 
-        >
-          <Typography variant="h3" padding="10px">Votre avatar</Typography>
-          <Avatar
-            alt="{users.pseudonym}"
-            src={avatar_img}
-            sx={{ margin: 'auto', width: 80, height: 80 }}
-          />
-          {/* <UserAvatar src={users.avatar_img} pseudonym={users.pseudonym}/> */}
-        </Box>
+    >
+      <Typography variant="h3" padding="10px">Votre avatar</Typography>
+      <Avatar
+        alt="{users.pseudonym}"
+        src={avatar_img}
+        sx={{ margin: 'auto', width: 80, height: 80 }}
+      />
+    </Box> */}
       </Grid>
     </Tile>
+
   );
 }
 
