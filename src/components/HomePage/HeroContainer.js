@@ -10,6 +10,7 @@ function HeroContainer() {
       width: '100vw',
       backgroundImage: `url(${phone5})`,
       backgroundSize: 'cover',
+      objectFit: 'cover',
       height: '65vh',
     },
   };

@@ -109,6 +109,18 @@ export default function HeaderLogged() {
             C du Prop's
           </Link>
         </Typography>
+        <Link
+          to="/mon-compte"
+          component={LinkRouter}
+          variant="body1"
+          style={{
+            // textDecoration: "none",
+            color: 'white',
+            padding: '10px 20px',
+          }}
+        >
+          Mon Compte
+        </Link>
         <IconButton
           aria-label="close"
           size="small"
