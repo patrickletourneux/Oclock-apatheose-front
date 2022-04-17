@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import {
-  List, ListItem, ListItemButton, ListItemText,
+  List, ListItem, ListItemButton, ListItemText, Typography,
 } from '@mui/material';
 
 function TaskList({ tasks, ...otherProps }) {
+  if (tasks.length === 0) {
+    return <Typography>Aucune tâches</Typography>;
+  }
   return (
     <List {...otherProps}>
       {tasks.map((task) => (
