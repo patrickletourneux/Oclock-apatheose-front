@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import { Button } from '@mui/material';
 
 import authContext from '../../contexts/authContext';
 import PageContainer from '../PageContainer/PageContainer';
@@ -11,6 +10,7 @@ import getMytasksPage from '../../apis/api/mytasks';
 import Tile from '../Tile/Tile';
 import TileTitle from '../Tile/TileTitle';
 import TaskList from './TaskList';
+import ModalCreateTask from './ModalCreateTask';
 
 const mapToFormData = (apiData) => {
   const formData = {};
@@ -34,24 +34,28 @@ const mapToFormData = (apiData) => {
 
 function MytasksPage() {
   const { userData } = useContext(authContext);
-  // eslint-disable-next-line no-unused-vars
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
 
+  const getPageData = () => {
+    setLoading(true);
+    setError('');
+    getMytasksPage(userData.id)
+      .then((apiData) => setFormData(mapToFormData(apiData)))
+      .catch((errorObj) => setError(errorObj.message))
+      .finally(() => setLoading(false));
+  };
+
   useEffect(() => {
     if (hasHome) {
-      setLoading(true);
-      setError('');
-      getMytasksPage(userData.id)
-        .then((apiData) => setFormData(mapToFormData(apiData)))
-        .catch((errorObj) => setError(errorObj.message))
-        .finally(() => setLoading(false));
+      getPageData();
     } else if (!hasHome && userData) {
       setLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData, hasHome]);
 
   return (
@@ -68,11 +72,7 @@ function MytasksPage() {
           <Tile>
             <TileTitle>Liste des tâches disponibles</TileTitle>
             <TaskList tasks={formData.homeTasks} />
-            <Button
-              variant="contained"
-            >
-              Créer une tâche
-            </Button>
+            <ModalCreateTask onModalValidation={getPageData} />
           </Tile>
           <Tile>
             <TileTitle>Mes tâches réalisées</TileTitle>
