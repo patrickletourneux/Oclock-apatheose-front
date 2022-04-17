@@ -1,12 +1,17 @@
 import { Button, Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import phone5 from '../../assets/images/phone5.jpg';
+import oclock from '../../assets/images/oclock.jpg';
+import useKonamiCode from '../KonamiCode/useKonamiCode';
 
 function HeroContainer() {
+  const konami = useKonamiCode();
+  const tasse = konami ? oclock : phone5;
+
   const styles = {
     paperContainer: {
       width: '100vw',
-      backgroundImage: `url(${phone5})`,
+      backgroundImage: `url(${tasse})`,
       backgroundSize: 'cover',
       height: '65vh',
     },
