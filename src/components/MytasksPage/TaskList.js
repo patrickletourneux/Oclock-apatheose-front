@@ -3,15 +3,15 @@ import {
   List, ListItem, ListItemButton, ListItemText, Typography,
 } from '@mui/material';
 
-function TaskList({ tasks, ...otherProps }) {
+function TaskList({ tasks, onTaskClick }) {
   if (tasks.length === 0) {
     return <Typography>Aucune tâches</Typography>;
   }
   return (
-    <List {...otherProps}>
+    <List>
       {tasks.map((task) => (
         <ListItem key={task.id} secondaryAction={task.value} disablePadding>
-          <ListItemButton dense role="button" onClick={() => console.log('click')}>
+          <ListItemButton dense role="button" onClick={() => onTaskClick(task)}>
             <ListItemText primary={task.name} />
           </ListItemButton>
         </ListItem>
@@ -28,6 +28,11 @@ TaskList.propTypes = {
       value: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
+  onTaskClick: PropTypes.func,
+};
+
+TaskList.defaultProps = {
+  onTaskClick: () => {},
 };
 
 export default TaskList;

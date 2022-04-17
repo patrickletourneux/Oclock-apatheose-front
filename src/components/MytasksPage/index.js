@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { Box } from '@mui/material';
 
 import authContext from '../../contexts/authContext';
 import PageContainer from '../PageContainer/PageContainer';
@@ -11,6 +12,7 @@ import Tile from '../Tile/Tile';
 import TileTitle from '../Tile/TileTitle';
 import TaskList from './TaskList';
 import ModalCreateTask from './ModalCreateTask';
+import addAttributedTask from '../../apis/api/attributed_tasks';
 
 const mapToFormData = (apiData) => {
   const formData = {};
@@ -58,6 +60,20 @@ function MytasksPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData, hasHome]);
 
+  const attributeTask = async (attributedTask) => {
+    try {
+      setError('');
+      await addAttributedTask({ home_task_id: attributedTask.id }, userData.id);
+      setFormData({
+        attributedTasks: formData.attributedTasks.concat([attributedTask]),
+        homeTasks: formData.homeTasks.filter((task) => task.id !== attributedTask.id),
+        doneTasks: formData.doneTasks,
+      });
+    } catch (e) {
+      setError(e.message);
+    }
+  };
+
   return (
     <PageContainer>
       <PageTitle>Mes Tâches</PageTitle>
@@ -71,8 +87,10 @@ function MytasksPage() {
           </Tile>
           <Tile>
             <TileTitle>Liste des tâches disponibles</TileTitle>
-            <TaskList tasks={formData.homeTasks} />
-            <ModalCreateTask onModalValidation={getPageData} />
+            <TaskList tasks={formData.homeTasks} onTaskClick={attributeTask} />
+            <Box marginTop="3rem">
+              <ModalCreateTask onModalValidation={getPageData} />
+            </Box>
           </Tile>
           <Tile>
             <TileTitle>Mes tâches réalisées</TileTitle>
