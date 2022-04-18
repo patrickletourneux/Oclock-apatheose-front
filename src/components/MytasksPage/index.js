@@ -15,6 +15,7 @@ import TaskList from './TaskList';
 import ModalCreateTask from './ModalCreateTask';
 import { addAttributedTask, removeAttributedTask } from '../../apis/api/attributed_tasks';
 import addDoneTask from '../../apis/api/done_tasks';
+import ModalActionTask from './ModalActionTask';
 
 const LIST_NAME = {
   ATTRIBUTED: 'attributedTasks',
@@ -48,6 +49,7 @@ function MytasksPage() {
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [modalTask, setModalTask] = useState(null);
 
   const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
 
@@ -120,6 +122,7 @@ function MytasksPage() {
       );
       getPageData();
     } catch (e) {
+      await getPageData();
       setError(e.message);
     }
   };
@@ -139,6 +142,20 @@ function MytasksPage() {
     }
   };
 
+  const onModalTaskDelete = () => {
+    unattributeTask(modalTask.id);
+    setModalTask(null);
+  };
+
+  const onModalTaskDone = () => {
+    doTask(modalTask.id);
+    setModalTask(null);
+  };
+
+  const onModalAbort = () => {
+    setModalTask(null);
+  };
+
   return (
     <PageContainer>
       <PageTitle>Mes Tâches</PageTitle>
@@ -152,6 +169,7 @@ function MytasksPage() {
               <TaskList
                 tasks={formData[LIST_NAME.ATTRIBUTED]}
                 droppableId="attributedTasks"
+                onTaskClick={setModalTask}
               />
             </Tile>
             <Tile>
@@ -160,6 +178,12 @@ function MytasksPage() {
                 tasks={formData[LIST_NAME.HOME]}
                 droppableId="homeTasks"
                 onTaskClick={(task) => attributeTask(task.id)}
+              />
+              <ModalActionTask
+                task={modalTask}
+                onTaskDelete={onModalTaskDelete}
+                onTaskDone={onModalTaskDone}
+                onAbort={onModalAbort}
               />
               <Box marginTop="3rem">
                 <ModalCreateTask onModalValidation={getPageData} />
