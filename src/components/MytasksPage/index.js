@@ -107,14 +107,11 @@ function MytasksPage() {
     }
   };
 
-  const doTask = async (doneTaskId) => {
+  const doTask = async (doneTaskId, originListName) => {
     try {
       setError('');
       setLoading(true);
-      const doneTask = (
-        formData[LIST_NAME.HOME].find((task) => task.id === doneTaskId)
-        || formData[LIST_NAME.ATTRIBUTED].find((task) => task.id === doneTaskId)
-      );
+      const doneTask = formData[originListName].find((task) => task.id === doneTaskId);
       await addDoneTask(
         { name: doneTask.name, value: doneTask.value },
         userData.id,
@@ -128,7 +125,6 @@ function MytasksPage() {
   };
 
   const onDragEnd = (e) => {
-    console.log(e);
     if (!e.destination) return;
     if (e.source.droppableId === LIST_NAME.ATTRIBUTED
       && e.destination.droppableId === LIST_NAME.HOME) {
@@ -138,7 +134,7 @@ function MytasksPage() {
       attributeTask(Number(e.draggableId));
     } else if (e.source.droppableId !== LIST_NAME.DONE
       && e.destination.droppableId === LIST_NAME.DONE) {
-      doTask(Number(e.draggableId));
+      doTask(Number(e.draggableId), e.source.droppableId);
     }
   };
 
@@ -148,7 +144,7 @@ function MytasksPage() {
   };
 
   const onModalTaskDone = () => {
-    doTask(modalTask.id);
+    doTask(modalTask.id, LIST_NAME.ATTRIBUTED);
     setModalTask(null);
   };
 
