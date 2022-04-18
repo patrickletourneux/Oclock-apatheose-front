@@ -11,7 +11,7 @@ import TileTitle from '../Tile/TileTitle';
 import Tile from '../Tile/Tile';
 import ModalJoinHome from './ModalJoinHome';
 import Countdown from '../Countdown/Countdown';
-import ModalCreateHome from './ModalCreateHome/ModalCreateHome';
+import ModalCreateHome from './ModalCreateHome';
 
 function HomeTile({ data, hasHome }) {
   const displayWithHome = () => (
