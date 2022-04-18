@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { autocompleteClasses, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import PageContainer from '../PageContainer/PageContainer';
 import PageTitle from '../PageTitle/PageTitle';
 import Tile from '../Tile/Tile';

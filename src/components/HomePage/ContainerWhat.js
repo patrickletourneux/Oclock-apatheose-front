@@ -42,7 +42,7 @@ function ContainerWhat() {
                 INSCRIPTION FACILE EN 1 CLIC
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Plus rapide et facile que la mise en place 
+                Plus rapide et facile que la mise en place
                 de Redux, l'inscription se gère grace à un formulaire simplifiée
               </Typography>
             </CardContent>
@@ -61,7 +61,9 @@ function ContainerWhat() {
                 INVITEZ ET JOUER AVEC QUI VOUS VOULEZ
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Faites participer Papy aux tâches ménagères en lui envoyant simplement un mail d'invitation. Verifier au préalable qu'il en ait une quand même...
+                Faites participer Papy aux tâches ménagères
+                en lui envoyant simplement un mail d'invitation.
+                Verifier au préalable qu'il en ait une quand même...
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -79,7 +81,7 @@ function ContainerWhat() {
                 CHOISISSEZ LA RECOMPENSE DU VAINQUEUR !
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Massages, Restaurants gastronomiques, 
+                Massages, Restaurants gastronomiques,
                 choix du Film pendant la semaine, on laisse votre imagination décider...
               </Typography>
             </CardContent>

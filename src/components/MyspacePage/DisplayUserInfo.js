@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import {
-  Grid, TextField,
+  Grid,
 } from '@mui/material';
 import Tile from '../Tile/Tile';
 

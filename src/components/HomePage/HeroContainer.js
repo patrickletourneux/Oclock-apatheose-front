@@ -1,4 +1,9 @@
-import { Box, Button, Container, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Typography,
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 import iphone from '../../assets/images/iphone.jpg';
 import oclock from '../../assets/images/oclock.jpg';

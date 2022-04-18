@@ -23,7 +23,7 @@ const styles = {
 function MySpacePage() {
   // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(null);
-  const { userData, setUserData } = useContext(authContext);
+  const { userData } = useContext(authContext);
 
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState('');
@@ -45,6 +45,7 @@ function MySpacePage() {
 
   useEffect(() => {
     getUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
 
   // requete update a faire

@@ -7,17 +7,16 @@ import {
   Box,
   TextareaAutosize,
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import validator from 'validator';
 import PageContainer from '../PageContainer/PageContainer';
 
-function contact() {
+function Contact() {
   // quid de gerer un state par champs?
   const [data, setData] = useState({
     email: '',
     pseudonym: '',
   });
-
 
   // MANAGE PSEUDO ERROR
   const [errorPseudonym, setErrorPseudonym] = useState('');
@@ -143,4 +142,4 @@ function contact() {
   );
 }
 
-export default contact;
+export default Contact;
