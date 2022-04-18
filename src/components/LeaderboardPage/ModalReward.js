@@ -14,7 +14,7 @@ const Transition = React.forwardRef((props, ref) => (
   <Slide direction="up" ref={ref} {...props} />
 ));
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line react/prop-types
 export default function ModalReward({ rewardId, getRankingInfo }) {
   const [open, setOpen] = React.useState(false);
 

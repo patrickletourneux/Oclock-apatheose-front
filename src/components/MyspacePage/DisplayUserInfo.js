@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Grid, TextField,
 } from '@mui/material';
