@@ -51,10 +51,10 @@ function MytasksPage() {
 
   const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
 
-  const getPageData = () => {
+  const getPageData = async () => {
     setLoading(true);
     setError('');
-    getMytasksPage(userData.id)
+    await getMytasksPage(userData.id)
       .then((apiData) => setFormData(mapToFormData(apiData)))
       .catch((errorObj) => setError(errorObj.message))
       .finally(() => setLoading(false));
@@ -74,13 +74,14 @@ function MytasksPage() {
       setError('');
       const attributedTask = formData[LIST_NAME.HOME]
         .find((task) => task.id === attributedTaskId);
-      await addAttributedTask({ home_task_id: attributedTask.id }, userData.id);
+      addAttributedTask({ home_task_id: attributedTask.id }, userData.id);
       setFormData({
         attributedTasks: formData[LIST_NAME.ATTRIBUTED].concat([attributedTask]),
         homeTasks: formData[LIST_NAME.HOME].filter((task) => task.id !== attributedTask.id),
         doneTasks: formData[LIST_NAME.DONE],
       });
     } catch (e) {
+      await getPageData();
       setError(e.message);
     }
   };
@@ -90,7 +91,7 @@ function MytasksPage() {
       setError('');
       const unattributedTask = formData[LIST_NAME.ATTRIBUTED]
         .find((task) => task.id === unattributedTaskId);
-      await removeAttributedTask(unattributedTask.id);
+      removeAttributedTask(unattributedTask.id);
       setFormData({
         attributedTasks: formData[LIST_NAME.ATTRIBUTED]
           .filter((task) => task.id !== unattributedTask.id),
@@ -99,6 +100,7 @@ function MytasksPage() {
         doneTasks: formData[LIST_NAME.DONE],
       });
     } catch (e) {
+      await getPageData();
       setError(e.message);
     }
   };
@@ -106,6 +108,7 @@ function MytasksPage() {
   const doTask = async (doneTaskId) => {
     try {
       setError('');
+      setLoading(true);
       const doneTask = (
         formData[LIST_NAME.HOME].find((task) => task.id === doneTaskId)
         || formData[LIST_NAME.ATTRIBUTED].find((task) => task.id === doneTaskId)
@@ -115,11 +118,7 @@ function MytasksPage() {
         userData.id,
         userData.home_id,
       );
-      setFormData({
-        attributedTasks: formData[LIST_NAME.ATTRIBUTED].filter((task) => task.id !== doneTask.id),
-        homeTasks: formData[LIST_NAME.HOME].filter((task) => task.id !== doneTask.id),
-        doneTasks: formData[LIST_NAME.DONE].concat([doneTask]),
-      });
+      getPageData();
     } catch (e) {
       setError(e.message);
     }
@@ -150,7 +149,10 @@ function MytasksPage() {
           <DragDropContext onDragEnd={onDragEnd}>
             <Tile>
               <TileTitle>Mes tâches attribuées</TileTitle>
-              <TaskList tasks={formData[LIST_NAME.ATTRIBUTED]} droppableId="attributedTasks" />
+              <TaskList
+                tasks={formData[LIST_NAME.ATTRIBUTED]}
+                droppableId="attributedTasks"
+              />
             </Tile>
             <Tile>
               <TileTitle>Liste des tâches disponibles</TileTitle>
@@ -165,7 +167,11 @@ function MytasksPage() {
             </Tile>
             <Tile>
               <TileTitle>Mes tâches réalisées</TileTitle>
-              <TaskList tasks={formData[LIST_NAME.DONE]} droppableId="doneTasks" isDragDisabled />
+              <TaskList
+                tasks={formData[LIST_NAME.DONE]}
+                droppableId="doneTasks"
+                isDragDisabled
+              />
             </Tile>
           </DragDropContext>
         </TileContainer>
