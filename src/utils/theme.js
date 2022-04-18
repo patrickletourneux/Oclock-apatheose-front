@@ -1,11 +1,14 @@
 import { createTheme } from '@mui/material';
 
+const font = "'Nunito', sans-serif";
+
 const theme = createTheme({
   palette: {
     primary: {
       light: '#33ab9f',
-      main: '#009688',
+      main: '#44d5bc',
       dark: '#00695f',
+      gradient: 'linear-gradient(90deg, #21C2CF, #49D7BB)',
       contrastText: '#fff',
     },
     secondary: {
@@ -19,7 +22,7 @@ const theme = createTheme({
   },
 
   typography: {
-    fontFamily: ['helvetica'],
+    fontFamily: font,
 
     h1: {
       fontSize: '2.5rem',

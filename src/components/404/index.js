@@ -18,7 +18,6 @@ function Page404() {
         variant="h1"
         textAlign="center"
         margin="50px"
-
       >🥳 EN APOTHEOSE  🚢
       </Typography>
       <Box
@@ -28,6 +27,7 @@ function Page404() {
           width: 800,
           maxHeight: { xs: 400, md: 900 },
           maxWidth: { xs: 400, md: 900 },
+          objectFit: 'cover',
         }}
         alt="nettoyeur"
         src={oclock}

@@ -31,7 +31,7 @@ export default function HeaderLogged() {
     logout();
   };
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}>
       <Toolbar>
         <IconButton
           size="large"
@@ -40,6 +40,7 @@ export default function HeaderLogged() {
           aria-label="menu"
           sx={{ mr: 2 }}
           onClick={handleClick}
+          backgroundColor="#333"
         >
           <MenuIcon color="secondary.light" />
         </IconButton>
@@ -109,6 +110,18 @@ export default function HeaderLogged() {
             C du Prop's
           </Link>
         </Typography>
+        <Link
+          to="/mon-compte"
+          component={LinkRouter}
+          variant="body1"
+          style={{
+            // textDecoration: "none",
+            color: 'white',
+            padding: '10px 20px',
+          }}
+        >
+          Mon Compte
+        </Link>
         <IconButton
           aria-label="close"
           size="small"

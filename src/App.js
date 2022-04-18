@@ -21,6 +21,10 @@ import Footer from './components/Footer';
 import Page404 from './components/404';
 import MytasksPage from './components/MytasksPage';
 
+import Legals from './components/Legals';
+
+import Contact from './components/Contact';
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -31,10 +35,10 @@ function App() {
             <Routes>
               {/* TODO make const file with urls */}
               <Route path="/" element={<HomePage />} />
-              <Route path="contact" element={<p>contact</p>} />
+              <Route path="contact" element={<Contact />} />
               <Route
                 path="mentions-legales"
-                element={<p>mentions-legales</p>}
+                element={<Legals />}
               />
               <Route path="inscription" element={<SignUp />} />
               <Route path="connexion" element={<Login />} />
