@@ -31,7 +31,7 @@ export default function HeaderLogged() {
     logout();
   };
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}>
       <Toolbar>
         <IconButton
           size="large"
@@ -40,6 +40,7 @@ export default function HeaderLogged() {
           aria-label="menu"
           sx={{ mr: 2 }}
           onClick={handleClick}
+          backgroundColor="#333"
         >
           <MenuIcon color="secondary.light" />
         </IconButton>

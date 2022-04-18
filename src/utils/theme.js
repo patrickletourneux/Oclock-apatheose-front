@@ -8,6 +8,7 @@ const theme = createTheme({
       light: '#33ab9f',
       main: '#44d5bc',
       dark: '#00695f',
+      gradient: 'linear-gradient(90deg, #21C2CF, #49D7BB)',
       contrastText: '#fff',
     },
     secondary: {
@@ -19,9 +20,6 @@ const theme = createTheme({
       default: '#f3f7f6',
     },
   },
-
-  // typography: {
-  //   fontFamily: ['helvetica'],
 
   typography: {
     fontFamily: font,
