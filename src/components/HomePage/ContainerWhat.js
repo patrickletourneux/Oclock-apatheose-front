@@ -1,44 +1,105 @@
 import {
-  Button, Container, Typography,
+  Box,
+  Button, Card, CardActionArea, CardContent, CardMedia, Container, Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import fer from '../../assets/images/fer.jpg';
+import gamin from '../../assets/images/gamin.jpg';
+import darkswiper from '../../assets/images/darkswiper.jpg';
 
 function ContainerWhat() {
   const styles = {
     paperContainer: {
-      width: '100vw',
-      backgroundImage: `url(${fer})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      height: '65vh',
+      maxwidth: 1440,
+      minWidth: 400,
+      // backgroundImage: `url(${fer})`,
+
     },
   };
 
   return (
-    <Container style={styles.paperContainer}>
-      <Typography
-        position="absolute"
-        padding="30px"
-        variant="h1"
-        sx={{ margin: 'auto' }}
-        textAlign="center"
-      >
-        C POUR QUOI?
-      </Typography>
-      <Link
-        to="/inscription"
-        style={{ textDecoration: 'none', color: '#1ba2ac' }}
-      >
-        <Button
-          color="primary"
-          variant="contained"
-          size="large"
-          sx={{ marginTop: '55vh', marginLeft: '40vw' }}
+    <Container style={styles.paperContainer} sx={{ background: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}>
+      <Box textAlign="center">
+        <Typography
+          padding="60px"
+          variant="h1"
         >
-          Inscrivez vous!
-        </Button>
-      </Link>
+          POURQUOI UTILISER
+          "C DU PROP'S"?
+        </Typography>
+      </Box>
+      <Box display="flex" gap={3} flexDirection="row" margin={10} sx={{ justifyContent: 'space-evenly' }}>
+        <Card sx={{ maxWidth: 370, minHeight: 400 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="200"
+              image={fer}
+              alt="fer"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                INSCRIPTION FACILE EN 1 CLIC
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Plus rapide et facile que la mise en place 
+                de Redux, l'inscription se gère grace à un formulaire simplifiée
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        <Card sx={{ maxWidth: 370, minHeight: 400 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="200"
+              image={gamin}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                INVITEZ ET JOUER AVEC QUI VOUS VOULEZ
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Faites participer Papy aux tâches ménagères en lui envoyant simplement un mail d'invitation. Verifier au préalable qu'il en ait une quand même...
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        <Card sx={{ maxWidth: 370, minHeight: 400 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="200"
+              image={darkswiper}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                CHOISISSEZ LA RECOMPENSE DU VAINQUEUR !
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Massages, Restaurants gastronomiques, 
+                choix du Film pendant la semaine, on laisse votre imagination décider...
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Box>
+      <Box margin="30px" textAlign="center">
+        <Link
+          to="/inscription"
+          style={{ textDecoration: 'none', color: '#1ba2ac' }}
+        >
+          <Button
+            color="primary"
+            variant="contained"
+            size="large"
+          >
+            Inscrivez vous!
+          </Button>
+        </Link>
+      </Box>
     </Container>
   );
 }

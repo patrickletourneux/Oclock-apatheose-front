@@ -2,16 +2,15 @@ import {
   Button, Container, Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import superclean from '../../assets/images/superclean.jpg';
+import couple from '../../assets/images/couple.jpg';
 
 function ContainerWho() {
   const styles = {
     paperContainer: {
       width: '100vw',
-      backgroundImage: `url(${superclean})`,
+      backgroundImage: `url(${couple})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      height: '65vh',
     },
   };
   return (

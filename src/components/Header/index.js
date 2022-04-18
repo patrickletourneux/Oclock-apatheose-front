@@ -6,12 +6,15 @@ import {
   ButtonGroup,
   Button,
   Link,
+  Icon,
 } from '@mui/material';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import { Link as LinkRouter } from 'react-router-dom';
+import { Image } from '@mui/icons-material';
 
 export default function Header() {
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ height: '70px' }}>
       <Toolbar>
         <Typography
           variant="h6"
@@ -20,6 +23,7 @@ export default function Header() {
           sx={{
             flexGrow: 1,
             color: 'white',
+            padding: '20px',
           }}
         >
           <Link
@@ -27,7 +31,7 @@ export default function Header() {
             component={LinkRouter}
             style={{ textDecoration: 'none', color: 'white' }}
           >
-            C du Prop's
+            <CleaningServicesIcon /> C du Prop's
           </Link>
         </Typography>
 
@@ -45,6 +49,7 @@ export default function Header() {
             sx={{
               color: 'white',
               border: 1,
+              margin: '10px',
             }}
           >
             <Button>
