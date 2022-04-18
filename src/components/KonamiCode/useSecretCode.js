@@ -1,4 +1,6 @@
+import { display } from '@mui/system';
 import { useEffect, useState } from 'react';
+import Sound from './Sound';
 import useInputEvent from './useInputEvent';
 
 const useSecretCode = (secretCode) => {
@@ -27,7 +29,9 @@ const useSecretCode = (secretCode) => {
   }, [key]);
 
   // eslint-disable-next-line no-alert
-  if (success) alert('Ca marche!)');
+  if (success) {
+    return <Sound />;
+  }
 
   return success;
 };

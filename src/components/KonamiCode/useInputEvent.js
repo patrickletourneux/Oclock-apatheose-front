@@ -15,8 +15,6 @@ const useInputEvent = () => {
       global.removeEventListener('keyup', keyUpHandler);
     };
   }, []);
-
-  console.log(key);
   return key;
 };
 

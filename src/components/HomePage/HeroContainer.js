@@ -1,4 +1,3 @@
-import { Image } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -9,12 +8,15 @@ import { Link } from 'react-router-dom';
 import oclock from '../../assets/images/oclock.jpg';
 import useKonamiCode from '../KonamiCode/useKonamiCode';
 import logoclean from '../../assets/images/logoclean.jpg';
-// import upup from '../../assets/sounds'
+import Sound from '../KonamiCode/Sound';
 
 function HeroContainer() {
   const konami = useKonamiCode();
-  const tasse = konami ? oclock : logoclean;
-  // const 1up = new Audio (upup)
+  // const tasse = konami ? oclock : logoclean;
+
+  if (konami) {
+    return <Sound />;
+  }
 
   const styles = {
     paperContainer: {
@@ -73,7 +75,7 @@ function HeroContainer() {
             textAlign: 'center',
           }}
           alt="logo"
-          src={tasse}
+          src={logoclean}
         />
       </Box>
       <Box
