@@ -6,11 +6,9 @@ import {
   ButtonGroup,
   Button,
   Link,
-  Icon,
 } from '@mui/material';
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import { Link as LinkRouter } from 'react-router-dom';
-import { Image } from '@mui/icons-material';
 
 export default function Header() {
   return (
