@@ -4,7 +4,12 @@ import {
 } from '@mui/material';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
-function TaskList({ tasks, onTaskClick, droppableId }) {
+function TaskList({
+  tasks,
+  onTaskClick,
+  droppableId,
+  isDragDisabled,
+}) {
   if (tasks.length === 0) {
     return (
       <Droppable droppableId={droppableId}>
@@ -24,7 +29,12 @@ function TaskList({ tasks, onTaskClick, droppableId }) {
       {(provided) => (
         <List ref={provided.innerRef} {...provided.droppableProps}>
           {tasks.map((task, index) => (
-            <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
+            <Draggable
+              key={task.id}
+              draggableId={task.id.toString()}
+              index={index}
+              isDragDisabled={isDragDisabled}
+            >
               {(dragProvided) => (
                 <ListItem
                   ref={dragProvided.innerRef}
@@ -33,9 +43,16 @@ function TaskList({ tasks, onTaskClick, droppableId }) {
                   secondaryAction={task.value}
                   disablePadding
                 >
-                  <ListItemButton dense role="button" onClick={() => onTaskClick(task)}>
-                    <ListItemText primary={task.name} />
-                  </ListItemButton>
+                  {
+                    onTaskClick === null
+                      ? (<ListItemText primary={task.name} />)
+                      : (
+                        <ListItemButton dense role="button" onClick={() => onTaskClick(task)} disabled={onTaskClick === null}>
+                          <ListItemText primary={task.name} />
+                        </ListItemButton>
+                      )
+                  }
+
                 </ListItem>
               )}
             </Draggable>
@@ -57,11 +74,13 @@ TaskList.propTypes = {
   ).isRequired,
   onTaskClick: PropTypes.func,
   droppableId: PropTypes.string,
+  isDragDisabled: PropTypes.bool,
 };
 
 TaskList.defaultProps = {
-  onTaskClick: () => {},
+  onTaskClick: null,
   droppableId: '',
+  isDragDisabled: false,
 };
 
 export default TaskList;

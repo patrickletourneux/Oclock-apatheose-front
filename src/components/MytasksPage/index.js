@@ -165,7 +165,7 @@ function MytasksPage() {
             </Tile>
             <Tile>
               <TileTitle>Mes tâches réalisées</TileTitle>
-              <TaskList tasks={formData[LIST_NAME.DONE]} droppableId="doneTasks" />
+              <TaskList tasks={formData[LIST_NAME.DONE]} droppableId="doneTasks" isDragDisabled />
             </Tile>
           </DragDropContext>
         </TileContainer>
