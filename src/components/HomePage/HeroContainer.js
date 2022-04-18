@@ -1,3 +1,4 @@
+import { Image } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -5,37 +6,81 @@ import {
   Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import iphone from '../../assets/images/iphone.jpg';
 import oclock from '../../assets/images/oclock.jpg';
 import useKonamiCode from '../KonamiCode/useKonamiCode';
+import logoclean from '../../assets/images/logoclean.jpg';
 // import upup from '../../assets/sounds'
 
 function HeroContainer() {
   const konami = useKonamiCode();
-  const tasse = konami ? oclock : iphone;
+  const tasse = konami ? oclock : logoclean;
   // const 1up = new Audio (upup)
 
   const styles = {
     paperContainer: {
       width: '100vw',
       minHeight: '60vh',
-      backgroundImage: `url(${tasse})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      // backgroundImage: `url(${tasse})`,
+      // backgroundSize: 'cover',
+      // backgroundPosition: 'center',
+      // filter: 'opacity(0.8)',
     },
   };
   return (
     <Container style={styles.paperContainer}>
-      <Typography
-        position="absolute"
-        padding="30px"
-        variant="h1"
-        sx={{ margin: 'auto' }}
-        textAlign="center"
+      <Box textAlign="center">
+        <Typography
+          paddingTop={10}
+          variant="h1"
+          sx={{
+            fontSize: { xs: '35px' },
+          }}
+        >
+          LE MENAGE DEVIENT UN JEU
+        </Typography>
+      </Box>
+      <Box
+        display="flex"
+        flexDirection="row"
+        flexWrap="wrap"
+        justifyContent="center"
+        alignItems="center"
+        alignContent="space-between"
+        padding={5}
       >
-        LE MENAGE N'ATTEND PAS
-      </Typography>
-      <Box marginTop={80} marginBottom={10} marginRight={10} textAlign="right">
+        <Box
+          width={300}
+          padding={5}
+          textAlign="center"
+        >
+          <Typography
+            variant="h2"
+            sx={{
+              fontSize: { xs: '20px', md: '25px' },
+            }}
+          >
+            CduProps organise un jeu en famille, en couple
+            ou en colocation pour s'affronter
+            autour des tâches ménagères et mieux les répartir.
+          </Typography>
+        </Box>
+        <Box
+          component="img"
+          padding={5}
+          sx={{
+            maxHeight: { xs: 150, md: 250 },
+            maxWidth: { xs: 150, md: 250 },
+            textAlign: 'center',
+          }}
+          alt="logo"
+          src={tasse}
+        />
+      </Box>
+      <Box
+        margin="20px"
+        textAlign="center"
+        paddingBottom={5}
+      >
         <Link
           to="/inscription"
           style={{ textDecoration: 'none', color: '#1ba2ac' }}
