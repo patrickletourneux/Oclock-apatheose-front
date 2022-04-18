@@ -9,9 +9,8 @@ const konamiCode = [
   'ArrowRight',
   'ArrowLeft',
   'ArrowRight',
-//   check sur le target , les touches prises en compte
-//   'KeyB',
-//   'KeyA',
+  // 'KeyB',
+  // 'KeyA',
 ];
 
 const useKonamiCode = () => {

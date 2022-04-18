@@ -1,14 +1,14 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import { Box } from '@mui/material';
-import { updateReward } from '../../apis/api/reward';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
+import { Box } from "@mui/material";
+import { updateReward } from "../../apis/api/reward";
 
 const Transition = React.forwardRef((props, ref) => (
   <Slide direction="up" ref={ref} {...props} />
@@ -19,8 +19,8 @@ export default function ModalReward({ rewardId, getRankingInfo }) {
   const [open, setOpen] = React.useState(false);
 
   const [data, setData] = React.useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
   });
 
   const handleClickOpen = () => {
@@ -76,10 +76,7 @@ export default function ModalReward({ rewardId, getRankingInfo }) {
           <DialogContentText textAlign="center" margin="20px">
             Vous pouvez modifier la récompense avec les champs suivants:
           </DialogContentText>
-          <Box
-            component="form"
-            onSubmit={submit}
-          >
+          <Box component="form" onSubmit={submit}>
             <TextField
               autoFocus
               onChange={(e) => handleFieldChange(e)}

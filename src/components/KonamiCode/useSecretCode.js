@@ -25,7 +25,7 @@ const useSecretCode = (secretCode) => {
     }
   }, [key]);
 
-  if (success) prompt('Ca marche!)');
+  if (success) alert('Ca marche!)');
 
   return success;
 };

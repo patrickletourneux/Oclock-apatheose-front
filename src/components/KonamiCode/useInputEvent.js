@@ -16,6 +16,7 @@ const useInputEvent = () => {
     };
   }, []);
 
+  console.log(key);
   return key;
 };
 
