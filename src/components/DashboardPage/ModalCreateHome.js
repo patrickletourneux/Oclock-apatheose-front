@@ -10,12 +10,12 @@ import {
 import { LoadingButton } from '@mui/lab';
 import AddIcon from '@mui/icons-material/Add';
 
-import addHome from '../../../apis/api/homes';
-import authContext from '../../../contexts/authContext';
-import getGenericTasks from '../../../apis/api/generic_tasks';
-import addHomeTask from '../../../apis/api/home_tasks';
-import addInvitation from '../../../apis/api/invitation';
-import addReward from '../../../apis/api/rewards';
+import addHome from '../../apis/api/homes';
+import authContext from '../../contexts/authContext';
+import getGenericTasks from '../../apis/api/generic_tasks';
+import addHomeTask from '../../apis/api/home_tasks';
+import addInvitation from '../../apis/api/invitation';
+import addReward from '../../apis/api/rewards';
 
 const defaultFormData = {
   user_id: null,
