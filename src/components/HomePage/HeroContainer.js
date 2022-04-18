@@ -5,7 +5,6 @@ import {
   Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import oclock from '../../assets/images/oclock.jpg';
 import useKonamiCode from '../KonamiCode/useKonamiCode';
 import logoclean from '../../assets/images/logoclean.jpg';
 import Sound from '../KonamiCode/Sound';
