@@ -40,7 +40,7 @@ export default function HeaderLogged() {
           aria-label="menu"
           sx={{ mr: 2 }}
           onClick={handleClick}
-          backgroundColor="#333"
+          // backgroundColor="#333"
         >
           <MenuIcon color="secondary.light" />
         </IconButton>

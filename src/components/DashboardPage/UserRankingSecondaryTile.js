@@ -33,7 +33,7 @@ function UserRankingSecondaryTile({
       }}
       {...otherProps}
     >
-      <UserAvatar url={data.avatar_img} pseudonym={data.pseudonym} />
+      <UserAvatar pseudonym={data.pseudonym} />
       <Typography>{getRankString(data.rank, isCurrentUserFirst)}</Typography>
       {!isCurrentUserFirst && (
         <Typography>{getScoreString(scoreDifference)}</Typography>

@@ -12,7 +12,7 @@ import getMytasksPage from '../../apis/api/mytasks';
 import Tile from '../Tile/Tile';
 import TileTitle from '../Tile/TileTitle';
 import TaskList from './TaskList';
-import ModalCreateTask from './ModalCreateTask';
+import ModalCreateTask from '../ModalCreateTask/ModalCreateTask';
 import { addAttributedTask, removeAttributedTask } from '../../apis/api/attributed_tasks';
 import addDoneTask from '../../apis/api/done_tasks';
 import ModalActionTask from './ModalActionTask';

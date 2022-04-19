@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import {
-  Button, TextField,
+  Button, TextField, Box,
   Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
@@ -14,7 +14,7 @@ const getDefaultFormData = () => ({
   value: 10,
 });
 
-function ModalCreateTask({ onModalValidation }) {
+function ModalCreateTask({ onModalValidation, ...otherProps }) {
   const { userData } = useContext(authContext);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -53,7 +53,7 @@ function ModalCreateTask({ onModalValidation }) {
   };
 
   return (
-    <div>
+    <Box {...otherProps}>
       <Button variant="contained" onClick={handleClickOpen}>
         Créer une tâche
       </Button>
@@ -66,7 +66,7 @@ function ModalCreateTask({ onModalValidation }) {
             Créer une tâche
           </DialogTitle>
           <DialogContent>
-            <DialogContentText marginTop="1rem">
+            <DialogContentText sx={{ marginTop: '1rem' }}>
               Donnez lui un nom
             </DialogContentText>
             <TextField
@@ -79,7 +79,7 @@ function ModalCreateTask({ onModalValidation }) {
               sx={{ marginTop: '1rem' }}
               required
             />
-            <DialogContentText marginTop="3rem">
+            <DialogContentText sx={{ marginTop: '3rem' }}>
               Attribuez lui un nombre de points
             </DialogContentText>
             <TextField
@@ -92,7 +92,7 @@ function ModalCreateTask({ onModalValidation }) {
               required
               type="number"
             />
-            <DialogContentText color="error" marginTop="1rem">
+            <DialogContentText color="error" sx={{ marginTop: '1rem' }}>
               {error}
             </DialogContentText>
           </DialogContent>
@@ -106,7 +106,7 @@ function ModalCreateTask({ onModalValidation }) {
           </DialogActions>
         </form>
       </Dialog>
-    </div>
+    </Box>
   );
 }
 
