@@ -16,6 +16,7 @@ import Login from './components/LoginPage';
 import DashboardPage from './components/DashboardPage';
 
 import Footer from './components/Footer';
+import './App.css';
 
 function App() {
   return (
