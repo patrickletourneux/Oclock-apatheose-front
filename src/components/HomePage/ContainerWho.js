@@ -11,7 +11,7 @@ import family from '../../assets/images/family.jpg';
 function ContainerWho() {
   const styles = {
     paperContainer: {
-      width: '100vw',
+      // width: '100vw',
       backgroundImage: `url(${couple})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
