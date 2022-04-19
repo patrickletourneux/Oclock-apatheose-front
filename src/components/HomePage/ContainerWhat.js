@@ -1,6 +1,12 @@
 import {
   Box,
-  Button, Card, CardActionArea, CardContent, CardMedia, Container, Typography,
+  Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Container,
+  Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import fer from '../../assets/images/fer.jpg';
@@ -11,25 +17,35 @@ function ContainerWhat() {
   const styles = {
     paperContainer: {
       maxwidth: 1440,
-      minWidth: 400,
       // backgroundImage: `url(${fer})`,
-
     },
   };
 
   return (
-    <Container style={styles.paperContainer} sx={{ background: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}>
+    <Container
+      style={styles.paperContainer}
+      sx={{ background: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}
+    >
       <Box textAlign="center">
-        <Typography
-          padding="60px"
-          variant="h1"
-        >
-          POURQUOI UTILISER
-          "C DU PROP'S"?
+        <Typography padding="30px" variant="h1">
+          POURQUOI UTILISER "C DU PROP'S"?
         </Typography>
       </Box>
-      <Box display="flex" gap={3} flexDirection="row" margin={10} sx={{ justifyContent: 'space-evenly' }}>
-        <Card sx={{ maxWidth: 370, minHeight: 400 }}>
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        gap={2}
+        flexDirection="row"
+        margin={10}
+        sx={{
+          justifyContent: 'space-between',
+        }}
+      >
+        <Card
+          sx={{
+            width: { xs: '350px', md: '500px' },
+          }}
+        >
           <CardActionArea>
             <CardMedia
               component="img"
@@ -38,57 +54,83 @@ function ContainerWhat() {
               alt="fer"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
                 INSCRIPTION FACILE EN 1 CLIC
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Plus rapide et facile que la mise en place
-                de Redux, l'inscription se gère grace à un formulaire simplifiée
+              <Typography
+                variant="body2"
+                color="text.secondary"
+              >
+                Plus rapide et facile que la mise en place de Redux,
+                l'inscription se gère grace à un formulaire simplifiée
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
-        <Card sx={{ maxWidth: 370, minHeight: 400 }}>
+        <Card
+          sx={{
+            width: { xs: '350px', md: '500px' },
+          }}
+        >
           <CardActionArea>
             <CardMedia
               component="img"
               height="200"
               image={gamin}
-              alt="green iguana"
+              alt="enfant qui joue"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
                 INVITEZ ET JOUER AVEC QUI VOUS VOULEZ
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Faites participer Papy aux tâches ménagères
-                en lui envoyant simplement un mail d'invitation.
-                Verifier au préalable qu'il en ait une quand même...
+              <Typography
+                variant="body2"
+                color="text.secondary"
+              >
+                Faites participer Papy aux tâches ménagères en lui envoyant
+                simplement un mail d'invitation. Verifier au préalable qu'il en
+                ait une quand même...
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
-        <Card sx={{ maxWidth: 370, minHeight: 400 }}>
+        <Card
+          sx={{
+            width: { xs: '350px', md: '500px' },
+          }}
+        >
           <CardActionArea>
             <CardMedia
               component="img"
               height="200"
               image={darkswiper}
-              alt="green iguana"
+              alt="balai noir"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 CHOISISSEZ LA RECOMPENSE DU VAINQUEUR !
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Massages, Restaurants gastronomiques,
-                choix du Film pendant la semaine, on laisse votre imagination décider...
+                Massages, Restaurants gastronomiques, choix du Film pendant la
+                semaine, on laisse votre imagination décider...
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
       </Box>
-      <Box margin="30px" textAlign="center">
+
+      <Box
+        margin="30px"
+        textAlign="center"
+      >
         <Link
           to="/inscription"
           style={{ textDecoration: 'none', color: '#1ba2ac' }}
