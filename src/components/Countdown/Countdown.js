@@ -22,7 +22,7 @@ function Countdown({
       <Typography variant="body1" color="secondary">
         {nbOfDays} jours
       </Typography>{' '}
-      afin de remporter le{' '}
+      afin de remporter{' '}
       <Typography variant="body1" color="secondary">
         {title}
       </Typography>
