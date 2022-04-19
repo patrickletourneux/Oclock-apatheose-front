@@ -54,7 +54,7 @@ function ModalModifyHomeName({ onModalValidation }) {
   return (
     <div>
       <Button variant="contained" onClick={handleClickOpen}>
-        Modifier
+        Modifier le nom
       </Button>
       <Dialog
         open={open}

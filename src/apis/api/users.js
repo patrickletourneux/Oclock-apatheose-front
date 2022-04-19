@@ -53,6 +53,20 @@ export const getUser = async (userId, onSuccess, onError) => {
 };
 
 /**
+ * @param {number} userId
+ * @returns {Promise<Object>}
+ */
+export const getUserWithPromise = async (userId) => {
+  try {
+    const response = await api.get(`users/${userId}`);
+    return response.data;
+  } catch (error) {
+    const errorMessage = 'Une erreur est survenue, veuillez réessayer plus tard';
+    throw new Error(errorMessage);
+  }
+};
+
+/**
  * @param {Object} payload
  * @param {number} payload.id
  * @param {string} payload.pseudonym
@@ -74,5 +88,20 @@ export const updateUser = async (userId, payload, onSuccess, onError) => {
     } else {
       onError('Une erreur est survenue, veuillez réessayer plus tard');
     }
+  }
+};
+
+/**
+ * @param {number} userId
+ * @param {Object} payload
+ * @returns {Promise<Object>}
+ */
+export const updateUserWithPromise = async (userId, payload) => {
+  try {
+    const response = await api.patch(`users/${userId}`, payload);
+    return response.data;
+  } catch (error) {
+    const errorMessage = 'Une erreur est survenue, veuillez réessayer plus tard';
+    throw new Error(errorMessage);
   }
 };

@@ -1,10 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import {
-  Box,
-  Button, List,
-  ListItem, ListItemIcon,
-  ListItemText,
-  Typography,
+  Box, Button, Typography,
+  List, ListItem, ListItemIcon, ListItemText,
 } from '@mui/material';
 
 import authContext from '../../contexts/authContext';
@@ -18,12 +15,23 @@ import getMyhousePage from '../../apis/api/myhome';
 import ModalCreateTask from '../ModalCreateTask/ModalCreateTask';
 import UserAvatar from '../UserAvatar/UserAvatar';
 import ModalModifyHomeName from './ModalModifyHomeName';
+import TileTitle from '../Tile/TileTitle';
+import ModalConfirmation from './ModalConfirmation';
+import { getUserWithPromise, updateUserWithPromise } from '../../apis/api/users';
+
+const getLeavingConfirmationMessage = (usersCount, homeName) => {
+  if (usersCount > 1) {
+    return `Souhaitez-vous quitter '${homeName}' ?`;
+  }
+  return `Souhaitez-vous supprimer '${homeName}' ?`;
+};
 
 function MyhousePage() {
   const { userData } = useContext(authContext);
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [openLeaveHomeModal, setOpenLeaveHomeModal] = useState(false);
 
   const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
 
@@ -45,6 +53,22 @@ function MyhousePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData, hasHome]);
 
+  const leaveHome = async () => {
+    setOpenLeaveHomeModal(false);
+    setLoading(true);
+    setError('');
+    try {
+      const user = await getUserWithPromise(userData.id);
+      delete user.id;
+      await updateUserWithPromise(userData.id, { ...user, home_id: null });
+      await getPageData();
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setError(err.message);
+    }
+  };
+
   return (
     <PageContainer>
       <PageTitle>Ma Maison</PageTitle>
@@ -53,14 +77,27 @@ function MyhousePage() {
       {!loading && formData && (
         <TileContainer>
           <Tile textAlign="center">
-            <Typography>Nom</Typography>
-            <Typography>{formData.name}</Typography>
-            <Box marginTop="3rem">
+            <TileTitle>{formData.name}</TileTitle>
+            <Box marginTop="3rem" display="flex" flexDirection="column" gap="1rem">
               <ModalModifyHomeName onModalValidation={getPageData} />
+              <div>
+                <Button variant="outlined" color="error" onClick={() => setOpenLeaveHomeModal(true)}>
+                  Quitter la maison
+                </Button>
+                <ModalConfirmation
+                  open={openLeaveHomeModal}
+                  message={getLeavingConfirmationMessage(formData.users.length, formData.name)}
+                  onConfirm={leaveHome}
+                  onAbort={() => setOpenLeaveHomeModal(false)}
+                />
+              </div>
             </Box>
-            <Typography>Tâches disponibles</Typography>
+          </Tile>
+          <Tile textAlign="center">
+            <TileTitle>Tâches disponibles</TileTitle>
+            {!formData.home_tasks[0] && <Typography>Aucune tâches</Typography>}
             <List>
-              {formData.home_tasks.map((task) => (
+              {formData.home_tasks[0] && formData.home_tasks.map((task) => (
                 <ListItem
                   key={task.id}
                   secondaryAction={task.value}
@@ -71,7 +108,9 @@ function MyhousePage() {
               ))}
             </List>
             <ModalCreateTask onModalValidation={getPageData} />
-            <Typography>List des participants</Typography>
+          </Tile>
+          <Tile textAlign="center">
+            <TileTitle>List des participants</TileTitle>
             <List>
               {formData.users.map((user) => (
                 <ListItem key={user.id} sx={{ maxWidth: '20rem', margin: '0 auto' }}>
@@ -81,7 +120,6 @@ function MyhousePage() {
               ))}
             </List>
             <Button variant="contained">Inviter de nouveaux participants</Button>
-            <Button variant="contained">Quitter la maison</Button>
           </Tile>
         </TileContainer>
       )}
