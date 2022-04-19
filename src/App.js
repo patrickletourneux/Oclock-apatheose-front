@@ -24,6 +24,7 @@ import MytasksPage from './components/MytasksPage';
 import Legals from './components/Legals';
 
 import Contact from './components/Contact';
+import MyhousePage from './components/MyhousePage';
 
 function App() {
   return (
@@ -54,7 +55,7 @@ function App() {
                 path="ma-maison"
                 element={(
                   <RequireAuth>
-                    <p>ma-maison</p>
+                    <MyhousePage />
                   </RequireAuth>
                 )}
               />
