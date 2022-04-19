@@ -32,7 +32,7 @@ export default function HeaderLogged() {
     logout();
   };
   return (
-    <AppBar position="static" sx={{ height: '70px', background: 'linear-gradient(90deg, #21C2CF, #49D7BB)', justifyContent:'center'}}>
+    <AppBar position="static" sx={{ height: '70px', background: 'linear-gradient(90deg, #21C2CF, #49D7BB)', justifyContent: 'center' }}>
       <Toolbar>
         <IconButton
           size="large"
@@ -119,8 +119,8 @@ export default function HeaderLogged() {
             // flexGrow: 1,
             textAlign: 'center',
             fontSize: { xs: '14px', md: '20px' },
-            paddingTop: {xs: "10px", md:'0px'},
-            paddingRight: {xs: "10px", md:'10px'}
+            paddingTop: { xs: '10px', md: '0px' },
+            paddingRight: { xs: '10px', md: '10px' },
           }}
         >
           <Link
