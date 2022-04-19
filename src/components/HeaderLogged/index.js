@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { Link as LinkRouter } from 'react-router-dom';
@@ -31,7 +32,7 @@ export default function HeaderLogged() {
     logout();
   };
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}>
+    <AppBar position="static" sx={{ height: '70px', background: 'linear-gradient(90deg, #21C2CF, #49D7BB)', justifyContent:'center'}}>
       <Toolbar>
         <IconButton
           size="large"
@@ -100,6 +101,7 @@ export default function HeaderLogged() {
           sx={{
             flexGrow: 1,
             textAlign: 'center',
+            fontSize: { xs: '14px', md: '20px' },
           }}
         >
           <Link
@@ -107,21 +109,31 @@ export default function HeaderLogged() {
             component={LinkRouter}
             style={{ textDecoration: 'none', color: 'white' }}
           >
-            C du Prop's
+            <CleaningServicesIcon />C du Prop's
           </Link>
         </Typography>
-        <Link
-          to="/mon-compte"
-          component={LinkRouter}
-          variant="body1"
-          style={{
-            // textDecoration: "none",
-            color: 'white',
-            padding: '10px 20px',
+        <Typography
+          variant="h6"
+          component="h1"
+          sx={{
+            // flexGrow: 1,
+            textAlign: 'center',
+            fontSize: { xs: '14px', md: '20px' },
+            paddingTop: {xs: "10px", md:'0px'},
+            paddingRight: {xs: "10px", md:'10px'}
           }}
         >
-          Mon Compte
-        </Link>
+          <Link
+            to="/mon-compte"
+            component={LinkRouter}
+            style={{
+              textDecoration: 'none',
+              color: 'white',
+            }}
+          >
+            Mon Compte
+          </Link>
+        </Typography>
         <IconButton
           aria-label="close"
           size="small"

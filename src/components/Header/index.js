@@ -12,7 +12,7 @@ import { Link as LinkRouter } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <AppBar position="static" sx={{ height: '70px' }}>
+    <AppBar position="static" sx={{ height: '70px', background: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}>
       <Toolbar>
         <Typography
           variant="h6"

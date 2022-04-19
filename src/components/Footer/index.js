@@ -10,14 +10,14 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        height: '50px',
+        height: '70px',
         display: 'flex',
         justifyContent: 'space-evenly',
         alignItems: 'center',
         width: '100%',
+        background: 'linear-gradient(90deg, #21C2CF, #49D7BB)',
 
       }}
-      bgcolor="primary.main"
     >
       <Stack
         direction="row"
