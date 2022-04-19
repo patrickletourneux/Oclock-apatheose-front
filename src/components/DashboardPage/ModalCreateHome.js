@@ -182,7 +182,6 @@ function ModalCreateHome() {
                       />
                     </ListItemIcon>
                     <ListItemText
-                      id={genTask.id}
                       primary={`${genTask.name}`}
                     />
                   </ListItemButton>

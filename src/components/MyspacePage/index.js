@@ -79,7 +79,7 @@ function MySpacePage() {
         />
       </Tile>
 
-      {/* <UserAvatar src={userData?.avatar_img} pseudonym={userData?.pseudonym} /> */}
+      {/* <UserAvatar pseudonym={userData?.pseudonym} /> */}
       <Tile textAlign="center">
         <Grid
           container
