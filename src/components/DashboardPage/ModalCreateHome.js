@@ -108,7 +108,7 @@ function ModalCreateHome() {
     const newInvite = e.target.value;
     const newData = {
       ...data,
-      // returns a new invitations array containing the invit just modified by the user
+      // returns a new invitations array containing the invite just modified by the user
       invitations: data.invitations.map(
         (prevInvite, index) => (modifiedIndex === index ? newInvite : prevInvite),
       ),
@@ -204,12 +204,12 @@ function ModalCreateHome() {
             <DialogContentText marginTop="3rem">
               3. Invites tes proches !
             </DialogContentText>
-            {data.invitations.map((invit, index) => (
+            {data.invitations.map((invite, index) => (
               <TextField
                 key={index}
                 name={`invitations[${index}]`}
-                label={`Invité ${index + 1}`}
-                value={invit}
+                label={`Email ${index + 1}`}
+                value={invite}
                 type="email"
                 onChange={handleInvitationChange(index)}
                 fullWidth

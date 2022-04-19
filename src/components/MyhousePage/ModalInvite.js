@@ -2,7 +2,8 @@
 import { useContext, useState } from 'react';
 import {
   Button, TextField,
-  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Box,
+  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+  IconButton, Box, ListItem, List,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import AddIcon from '@mui/icons-material/Add';
@@ -71,21 +72,24 @@ function ModalInvite({ onModalValidation, ...otherProps }) {
       >
         <form onSubmit={onSubmitHandler}>
           <DialogTitle>
-            Invites tes proches
+            Invites de nouveaux participants
           </DialogTitle>
           <DialogContent>
-            {formData.map((invit, index) => (
-              <TextField
-                key={index}
-                name={`invitations[${index}]`}
-                label={`Invité ${index + 1}`}
-                value={invit}
-                type="email"
-                onChange={handleInvitationChange(index)}
-                fullWidth
-                sx={{ marginTop: '1rem' }}
-              />
-            ))}
+            <List>
+              {formData.map((invite, index) => (
+                <ListItem key={index} disablePadding>
+                  <TextField
+                    name={`invitations[${index}]`}
+                    label={`Email ${index + 1}`}
+                    value={invite}
+                    type="email"
+                    onChange={handleInvitationChange(index)}
+                    fullWidth
+                    sx={{ marginTop: '1rem' }}
+                  />
+                </ListItem>
+              ))}
+            </List>
             <IconButton
               variant="contained"
               onClick={onAddInviteClick}
