@@ -10,7 +10,7 @@ import {
 import { LoadingButton } from '@mui/lab';
 import AddIcon from '@mui/icons-material/Add';
 
-import addHome from '../../apis/api/homes';
+import { addHome } from '../../apis/api/homes';
 import authContext from '../../contexts/authContext';
 import getGenericTasks from '../../apis/api/generic_tasks';
 import addHomeTask from '../../apis/api/home_tasks';
@@ -53,21 +53,18 @@ function ModalCreateHome() {
     setOpen(true);
   };
 
-  const handleClose = (e, reason) => {
-    if (reason === 'backdropClick') {
-      return;
-    }
+  const handleClose = () => {
     setOpen(false);
     setData({ ...defaultFormData });
     setGenericTasks(initGenericTasks(genericTasks));
     setError('');
   };
 
-  function handleFieldChange(e) {
+  const handleFieldChange = (e) => {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
     setData(newData);
-  }
+  };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();

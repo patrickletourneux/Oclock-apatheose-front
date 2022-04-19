@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import {
+  Box,
   Button, List,
   ListItem, ListItemIcon,
   ListItemText,
@@ -16,6 +17,7 @@ import Tile from '../Tile/Tile';
 import getMyhousePage from '../../apis/api/myhome';
 import ModalCreateTask from '../ModalCreateTask/ModalCreateTask';
 import UserAvatar from '../UserAvatar/UserAvatar';
+import ModalModifyHomeName from './ModalModifyHomeName';
 
 function MyhousePage() {
   const { userData } = useContext(authContext);
@@ -25,12 +27,10 @@ function MyhousePage() {
 
   const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
 
-  console.log(formData);
-
   const getPageData = async () => {
     setLoading(true);
     setError('');
-    await getMyhousePage(userData.id)
+    await getMyhousePage(userData.home_id)
       .then((apiData) => setFormData(apiData))
       .catch((errorObj) => setError(errorObj.message))
       .finally(() => setLoading(false));
@@ -55,7 +55,9 @@ function MyhousePage() {
           <Tile textAlign="center">
             <Typography>Nom</Typography>
             <Typography>{formData.name}</Typography>
-            <Button variant="contained">Modifier</Button>
+            <Box marginTop="3rem">
+              <ModalModifyHomeName onModalValidation={getPageData} />
+            </Box>
             <Typography>Tâches disponibles</Typography>
             <List>
               {formData.home_tasks.map((task) => (
