@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import {
-  Button, TextField,
+  Button, TextField, Box,
   Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
@@ -13,7 +13,7 @@ const getDefaultFormData = () => ({
   name: '',
 });
 
-function ModalModifyHomeName({ onModalValidation }) {
+function ModalModifyHomeName({ onModalValidation, ...otherProps }) {
   const { userData } = useContext(authContext);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -52,7 +52,7 @@ function ModalModifyHomeName({ onModalValidation }) {
   };
 
   return (
-    <div>
+    <Box {...otherProps}>
       <Button variant="contained" onClick={handleClickOpen}>
         Modifier le nom
       </Button>
@@ -75,7 +75,7 @@ function ModalModifyHomeName({ onModalValidation }) {
               sx={{ marginTop: '1rem' }}
               required
             />
-            <DialogContentText color="error" marginTop="1rem">
+            <DialogContentText color="error" sx={{ marginTop: '1rem' }}>
               {error}
             </DialogContentText>
           </DialogContent>
@@ -89,7 +89,7 @@ function ModalModifyHomeName({ onModalValidation }) {
           </DialogActions>
         </form>
       </Dialog>
-    </div>
+    </Box>
   );
 }
 

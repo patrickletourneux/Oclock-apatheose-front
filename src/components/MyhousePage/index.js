@@ -18,6 +18,7 @@ import ModalModifyHomeName from './ModalModifyHomeName';
 import TileTitle from '../Tile/TileTitle';
 import ModalConfirmation from './ModalConfirmation';
 import { getUserWithPromise, updateUserWithPromise } from '../../apis/api/users';
+import ModalInvite from './ModalInvite';
 
 const getLeavingConfirmationMessage = (usersCount, homeName) => {
   if (usersCount > 1) {
@@ -78,8 +79,8 @@ function MyhousePage() {
         <TileContainer>
           <Tile textAlign="center">
             <TileTitle>{formData.name}</TileTitle>
-            <Box marginTop="3rem" display="flex" flexDirection="column" gap="1rem">
-              <ModalModifyHomeName onModalValidation={getPageData} />
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <ModalModifyHomeName onModalValidation={getPageData} sx={{ marginTop: '2rem' }} />
               <div>
                 <Button variant="outlined" color="error" onClick={() => setOpenLeaveHomeModal(true)}>
                   Quitter la maison
@@ -95,8 +96,8 @@ function MyhousePage() {
           </Tile>
           <Tile textAlign="center">
             <TileTitle>Tâches disponibles</TileTitle>
-            {!formData.home_tasks[0] && <Typography>Aucune tâches</Typography>}
-            <List>
+            {!formData.home_tasks[0] && <Typography sx={{ marginTop: '2rem' }}>Aucune tâches</Typography>}
+            <List sx={{ marginTop: '1rem' }}>
               {formData.home_tasks[0] && formData.home_tasks.map((task) => (
                 <ListItem
                   key={task.id}
@@ -107,11 +108,11 @@ function MyhousePage() {
                 </ListItem>
               ))}
             </List>
-            <ModalCreateTask onModalValidation={getPageData} />
+            <ModalCreateTask onModalValidation={getPageData} sx={{ marginTop: '1rem' }} />
           </Tile>
           <Tile textAlign="center">
             <TileTitle>List des participants</TileTitle>
-            <List>
+            <List sx={{ marginTop: '2rem' }}>
               {formData.users.map((user) => (
                 <ListItem key={user.id} sx={{ maxWidth: '20rem', margin: '0 auto' }}>
                   <ListItemIcon><UserAvatar pseudonym={user.pseudonym} /></ListItemIcon>
@@ -119,7 +120,10 @@ function MyhousePage() {
                 </ListItem>
               ))}
             </List>
-            <Button variant="contained">Inviter de nouveaux participants</Button>
+            <ModalInvite sx={{ marginTop: '2rem' }} />
+            <Typography sx={{ marginTop: '1rem' }}>
+              {`Code d'invitation dans la maison : ${formData.password}`}
+            </Typography>
           </Tile>
         </TileContainer>
       )}

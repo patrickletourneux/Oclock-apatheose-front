@@ -1,20 +1,19 @@
+/* eslint-disable react/no-array-index-key */
 import { useContext, useState } from 'react';
 import {
-  Button, TextField, Box,
-  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+  Button, TextField,
+  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Box,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import AddIcon from '@mui/icons-material/Add';
 import PropTypes from 'prop-types';
 
-import addHomeTask from '../../apis/api/home_tasks';
 import authContext from '../../contexts/authContext';
+import addInvitation from '../../apis/api/invitation';
 
-const getDefaultFormData = () => ({
-  name: '',
-  value: 10,
-});
+const getDefaultFormData = () => (['']);
 
-function ModalCreateTask({ onModalValidation, ...otherProps }) {
+function ModalInvite({ onModalValidation, ...otherProps }) {
   const { userData } = useContext(authContext);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -31,10 +30,16 @@ function ModalCreateTask({ onModalValidation, ...otherProps }) {
     setError('');
   };
 
-  const handleFieldChange = (e) => {
-    const newFormData = { ...formData };
-    newFormData[e.target.name] = e.target.value;
+  const handleInvitationChange = (modifiedIndex) => (e) => {
+    const newInvite = e.target.value;
+    const newFormData = formData.map(
+      (prevInvite, index) => (modifiedIndex === index ? newInvite : prevInvite),
+    );
     setFormData(newFormData);
+  };
+
+  const onAddInviteClick = () => {
+    setFormData([...formData, '']);
   };
 
   const onSubmitHandler = async (e) => {
@@ -42,7 +47,10 @@ function ModalCreateTask({ onModalValidation, ...otherProps }) {
     setLoading(true);
     setError('');
     try {
-      await addHomeTask(formData, userData.home_id);
+      const promises = formData
+        .filter((email) => !!email)
+        .map((email) => addInvitation({ email: email }, userData.home_id));
+      await Promise.all(promises);
       setLoading(false);
       setOpen(false);
       onModalValidation();
@@ -55,7 +63,7 @@ function ModalCreateTask({ onModalValidation, ...otherProps }) {
   return (
     <Box {...otherProps}>
       <Button variant="contained" onClick={handleClickOpen}>
-        Créer une tâche
+        Inviter de nouveaux participants
       </Button>
       <Dialog
         open={open}
@@ -63,35 +71,27 @@ function ModalCreateTask({ onModalValidation, ...otherProps }) {
       >
         <form onSubmit={onSubmitHandler}>
           <DialogTitle>
-            Créer une tâche
+            Invites tes proches
           </DialogTitle>
           <DialogContent>
-            <DialogContentText sx={{ marginTop: '1rem' }}>
-              Donnez lui un nom
-            </DialogContentText>
-            <TextField
-              autoFocus
-              name="name"
-              label="Nom"
-              value={formData.name}
-              onChange={handleFieldChange}
-              fullWidth
-              sx={{ marginTop: '1rem' }}
-              required
-            />
-            <DialogContentText sx={{ marginTop: '3rem' }}>
-              Attribuez lui un nombre de points
-            </DialogContentText>
-            <TextField
-              name="value"
-              label="Points"
-              value={formData.value}
-              onChange={handleFieldChange}
-              fullWidth
-              sx={{ marginTop: '1rem' }}
-              required
-              type="number"
-            />
+            {formData.map((invit, index) => (
+              <TextField
+                key={index}
+                name={`invitations[${index}]`}
+                label={`Invité ${index + 1}`}
+                value={invit}
+                type="email"
+                onChange={handleInvitationChange(index)}
+                fullWidth
+                sx={{ marginTop: '1rem' }}
+              />
+            ))}
+            <IconButton
+              variant="contained"
+              onClick={onAddInviteClick}
+            >
+              <AddIcon />
+            </IconButton>
             <DialogContentText color="error" sx={{ marginTop: '1rem' }}>
               {error}
             </DialogContentText>
@@ -101,7 +101,7 @@ function ModalCreateTask({ onModalValidation, ...otherProps }) {
               Annuler
             </Button>
             <LoadingButton loading={loading} type="submit">
-              Valider
+              Envoyer les invitations
             </LoadingButton>
           </DialogActions>
         </form>
@@ -110,12 +110,12 @@ function ModalCreateTask({ onModalValidation, ...otherProps }) {
   );
 }
 
-ModalCreateTask.propTypes = {
+ModalInvite.propTypes = {
   onModalValidation: PropTypes.func,
 };
 
-ModalCreateTask.defaultProps = {
+ModalInvite.defaultProps = {
   onModalValidation: () => {},
 };
 
-export default ModalCreateTask;
+export default ModalInvite;
