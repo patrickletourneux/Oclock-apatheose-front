@@ -79,6 +79,9 @@ function MyhousePage() {
         <TileContainer>
           <Tile textAlign="center">
             <TileTitle>{formData.name}</TileTitle>
+            <Typography sx={{ marginTop: '1rem' }}>
+              {`Code d'invitation dans la maison : ${formData.password}`}
+            </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <ModalModifyHomeName onModalValidation={getPageData} sx={{ marginTop: '2rem' }} />
               <div>
@@ -121,9 +124,6 @@ function MyhousePage() {
               ))}
             </List>
             <ModalInvite sx={{ marginTop: '2rem' }} />
-            <Typography sx={{ marginTop: '1rem' }}>
-              {`Code d'invitation dans la maison : ${formData.password}`}
-            </Typography>
           </Tile>
         </TileContainer>
       )}
