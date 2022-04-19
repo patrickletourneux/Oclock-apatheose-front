@@ -1,12 +1,12 @@
-import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import { Alert } from '@mui/material';
 
 function PageError({ error, ...otherProps }) {
   if (!error) return '';
   return (
-    <Typography textAlign="center" color="error" {...otherProps}>
+    <Alert severity="error" marginBottom="3rem" {...otherProps}>
       {error}
-    </Typography>
+    </Alert>
   );
 }
 
