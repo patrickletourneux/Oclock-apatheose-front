@@ -22,6 +22,7 @@ export default function Header() {
             flexGrow: 1,
             color: 'white',
             padding: '20px',
+            fontSize: { xs: '14px', md: '20px' },
           }}
         >
           <Link
@@ -32,7 +33,6 @@ export default function Header() {
             <CleaningServicesIcon /> C du Prop's
           </Link>
         </Typography>
-
         <Box
           sx={{
             display: 'flex',
@@ -41,13 +41,14 @@ export default function Header() {
           }}
         >
           <ButtonGroup
-            size="small"
+          size='small'
             variant="contained"
             orientation="horizontal"
             sx={{
               color: 'white',
               border: 1,
               margin: '10px',
+              // padding: 0.8,
             }}
           >
             <Button>
@@ -55,6 +56,9 @@ export default function Header() {
                 to="/inscription"
                 component={LinkRouter}
                 style={{ textDecoration: 'none', color: 'white' }}
+                sx={{
+                  fontSize: { xs: '11px', md: '15px' },
+                }}
               >
                 S'inscrire
               </Link>
@@ -64,6 +68,9 @@ export default function Header() {
                 to="/connexion"
                 component={LinkRouter}
                 style={{ textDecoration: 'none', color: 'white' }}
+                sx={{
+                  fontSize: { xs: '11px', md: '15px' },
+                }}
               >
                 Se connecter
               </Link>
