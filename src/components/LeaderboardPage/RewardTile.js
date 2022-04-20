@@ -6,7 +6,7 @@ function RewardTile({ title, description }) {
     <>
       <Box
         sx={{
-          typography: 'body1',
+          typography: 'h2',
         }}
         textAlign="center"
         padding="10px"
@@ -17,7 +17,6 @@ function RewardTile({ title, description }) {
 
       <Box
         typography="body1"
-        color="secondary"
         margin="20px auto"
         textAlign="center"
         maxWidth="600px"

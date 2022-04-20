@@ -51,22 +51,30 @@ function LeaderboardPage() {
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && (
-        <TileContainer>
-          <Tile>
+        <>
+          <Tile
+            width="100vw"
+            minHeight="200px"
+            sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
+          >
             <Countdown {...data?.reward} />
-            {data?.users?.map((user) => (
-              <ListItem key={user.id} {...user} />
-            ))}
           </Tile>
-          <Tile>
-            <TileTitle>Reward</TileTitle>
-            <RewardTile {...data?.reward} />
-            <ModalReward
-              getRankingInfo={getRankingInfo}
-              rewardId={data?.reward.id}
-            />
-          </Tile>
-        </TileContainer>
+          <TileContainer>
+            <Tile>
+              {data?.users?.map((user) => (
+                <ListItem key={user.id} {...user} />
+              ))}
+            </Tile>
+            <Tile>
+              <TileTitle>Reward</TileTitle>
+              <RewardTile {...data?.reward} />
+              <ModalReward
+                getRankingInfo={getRankingInfo}
+                rewardId={data?.reward.id}
+              />
+            </Tile>
+          </TileContainer>
+        </>
       )}
     </PageContainer>
   );
