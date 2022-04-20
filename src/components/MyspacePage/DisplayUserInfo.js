@@ -1,51 +1,42 @@
 /* eslint-disable react/prop-types */
-import {
-  Grid,
-} from '@mui/material';
-import Tile from '../Tile/Tile';
+import { Grid, Box, Typography } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import UserAvatar from '../UserAvatar/UserAvatar';
 
-function DisplayUserInfo({
-  pseudonym,
-  email,
-  // password,
-}) {
+function DisplayUserInfo({ pseudonym, email }) {
   return (
-    <Tile>
-      <Grid
-        container
-        gap={4}
-        direction="column"
-        alignItems="center"
-      >
-        <p>{email}</p>
-        <p>{pseudonym}</p>
-
-        {/* <TextField
-          disabled
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          value={password}
-          variant="filled"
-          InputLabelProps={{
-            shrink: true,
-          }} /> */}
-
-        {/* TODO Mettre en place ListAvatar au besoin */}
-        {/* <Box
-      textAlign="center"
-
-    >
-      <Typography variant="h3" padding="10px">Votre avatar</Typography>
-      <Avatar
-        alt="{users.pseudonym}"
-        src={avatar_img}
-        sx={{ margin: 'auto', width: 80, height: 80 }}
-      />
-    </Box> */}
-      </Grid>
-    </Tile>
-
+    <Grid container gap={2} direction="column" alignItems="center">
+      <Box display="flex" flexDirection="row" justifyContent="center">
+        <EmailIcon sx={{ padding: '10px', fontSize: '30px' }} />
+        <Typography
+          fontSize="20px"
+          color="black"
+          fontWeight="400"
+          padding="10px"
+        >
+          {email}
+        </Typography>
+      </Box>
+      <Box display="flex" flexDirection="row" justifyContent="center">
+        <UserAvatar
+          pseudonym={pseudonym}
+          sx={{
+            mr: '10px',
+            fontSize: '20px',
+            color: 'white',
+            bgcolor: 'black',
+          }}
+        />
+        <Typography
+          fontSize="20px"
+          color="black"
+          fontWeight="400"
+          padding="10px"
+        >
+          {pseudonym}
+        </Typography>
+      </Box>
+    </Grid>
   );
 }
 

@@ -8,6 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { Box } from '@mui/material';
+
 import { useContext, useState } from 'react';
 
 import { updateUser } from '../../apis/api/users';
@@ -53,8 +54,6 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
 
   const submit = (e) => {
     e.preventDefault();
-    console.log('données d\'origine : ', userInfo);
-    console.log('nouvelles données : ', data);
     updateUser(
       userId,
       {
@@ -70,8 +69,8 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
   };
 
   return (
-    <Box textAlign="center">
-      <Button type="Submit" variant="outlined" onClick={handleClickOpen}>
+    <Box sx={{ padding: '30px' }} textAlign="center">
+      <Button type="Submit" variant="contained" onClick={handleClickOpen}>
         Modifier
       </Button>
       <Dialog
@@ -85,10 +84,7 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
           <DialogContentText textAlign="center" margin="20px">
             Vous pouvez modifier les champs suivants:
           </DialogContentText>
-          <Box
-            component="form"
-            onSubmit={submit}
-          >
+          <Box component="form" onSubmit={submit}>
             <TextField
               onChange={(e) => handleFieldChange(e)}
               name="email"
