@@ -4,7 +4,7 @@ import { Alert } from '@mui/material';
 function PageError({ error, ...otherProps }) {
   if (!error) return '';
   return (
-    <Alert severity="error" marginBottom="3rem" {...otherProps}>
+    <Alert severity="error" sx={{ marginBottom: '3rem' }} {...otherProps}>
       {error}
     </Alert>
   );

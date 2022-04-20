@@ -11,7 +11,7 @@ import api from './axiosInstance';
  * @returns {Promise<void>}
  *
  */
-const joinHome = async (payload, onSuccess, onError) => {
+export const joinHome = async (payload, onSuccess, onError) => {
   try {
     const response = await api.post('join_home', payload);
     onSuccess(response.data);
@@ -24,4 +24,18 @@ const joinHome = async (payload, onSuccess, onError) => {
   }
 };
 
-export default joinHome;
+/**
+ * @param {number} userId
+ * @param {number} homeId
+ * @returns {Promise<Object>}
+ *
+ */
+export const leaveHome = async (userId, homeId) => {
+  try {
+    const response = await api.delete(`join_home/${homeId}`, { data: { user_id: userId } });
+    return response.data;
+  } catch (error) {
+    const errorMessage = 'Une erreur est survenue, veuillez réessayer plus tard';
+    throw new Error(errorMessage);
+  }
+};

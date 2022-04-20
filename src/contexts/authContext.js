@@ -11,7 +11,7 @@ import {
   verifyDecodeJwt,
 } from '../utils/jwt';
 import { setupAuthInterceptors } from '../apis/api/axiosInstance';
-import { getUser } from '../apis/api/users';
+import { getUserWithPromise } from '../apis/api/users';
 
 const authContext = createContext();
 
@@ -20,14 +20,10 @@ export function AuthProvider({ children }) {
   const [authed, setAuthed] = useState(null);
   const [userData, setUserData] = useState(null);
 
-  const updateAuthData = (userId) => {
-    getUser(
-      userId,
-      (data) => setUserData(data),
-      () => {},
-    );
-  };
-
+  const updateAuthData = async (userId) => (
+    getUserWithPromise(userId)
+      .then(setUserData)
+  );
   const login = (userId, token = '') => {
     setAuthed(true);
     if (token) {
