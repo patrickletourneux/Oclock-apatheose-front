@@ -26,21 +26,24 @@ const LIST_NAME = {
 const mapToFormData = (apiData) => {
   const formData = {};
 
-  const mapToFormTask = (apiTask) => ({
+  // eslint-disable-next-line react/function-component-definition
+  const mapToFormTask = (listName) => (apiTask) => ({
     id: apiTask.id,
+    attributedTaskId: apiTask.attributedTaskId,
     name: apiTask.name,
     value: apiTask.value,
+    draggableId: listName === LIST_NAME.DONE ? `done${apiTask.id}` : null,
   });
 
   formData[LIST_NAME.DONE] = apiData.done_tasks.done_task
-    ? apiData.done_tasks.done_task.map(mapToFormTask)
+    ? apiData.done_tasks.done_task.map(mapToFormTask(LIST_NAME.DONE))
     : [];
   formData[LIST_NAME.HOME] = apiData.home_tasks
-    .filter((task) => task.attributed === false)
-    .map(mapToFormTask);
+    .filter((task) => task.attributedTaskId === 0)
+    .map(mapToFormTask(LIST_NAME.HOME));
   formData[LIST_NAME.ATTRIBUTED] = apiData.home_tasks
-    .filter((task) => task.attributed === true)
-    .map(mapToFormTask);
+    .filter((task) => task.attributedTaskId > 0)
+    .map(mapToFormTask(LIST_NAME.ATTRIBUTED));
   return formData;
 };
 
@@ -76,12 +79,21 @@ function MytasksPage() {
       setError('');
       const attributedTask = formData[LIST_NAME.HOME]
         .find((task) => task.id === attributedTaskId);
-      addAttributedTask({ home_task_id: attributedTask.id }, userData.id);
       setFormData({
-        attributedTasks: formData[LIST_NAME.ATTRIBUTED].concat([attributedTask]),
-        homeTasks: formData[LIST_NAME.HOME].filter((task) => task.id !== attributedTask.id),
-        doneTasks: formData[LIST_NAME.DONE],
+        [LIST_NAME.ATTRIBUTED]: formData[LIST_NAME.ATTRIBUTED].concat([attributedTask]),
+        [LIST_NAME.HOME]: formData[LIST_NAME.HOME].filter((task) => task.id !== attributedTask.id),
+        [LIST_NAME.DONE]: formData[LIST_NAME.DONE],
       });
+      const response = await addAttributedTask({ home_task_id: attributedTask.id }, userData.id);
+      setFormData((curFormData) => ({
+        ...curFormData,
+        [LIST_NAME.ATTRIBUTED]: curFormData[LIST_NAME.ATTRIBUTED].map(((task) => {
+          if (task.id === attributedTask.id) {
+            return { ...task, attributedTaskId: response.id };
+          }
+          return task;
+        })),
+      }));
     } catch (e) {
       await getPageData();
       setError(e.message);
@@ -93,13 +105,13 @@ function MytasksPage() {
       setError('');
       const unattributedTask = formData[LIST_NAME.ATTRIBUTED]
         .find((task) => task.id === unattributedTaskId);
-      removeAttributedTask(unattributedTask.id);
+      removeAttributedTask(unattributedTask.attributedTaskId);
       setFormData({
-        attributedTasks: formData[LIST_NAME.ATTRIBUTED]
+        [LIST_NAME.ATTRIBUTED]: formData[LIST_NAME.ATTRIBUTED]
           .filter((task) => task.id !== unattributedTask.id),
-        homeTasks: formData[LIST_NAME.HOME]
-          .concat([unattributedTask]),
-        doneTasks: formData[LIST_NAME.DONE],
+        [LIST_NAME.HOME]: formData[LIST_NAME.HOME]
+          .concat([{ ...unattributedTask, attributedTaskId: 0 }]),
+        [LIST_NAME.DONE]: formData[LIST_NAME.DONE],
       });
     } catch (e) {
       await getPageData();
@@ -110,14 +122,34 @@ function MytasksPage() {
   const doTask = async (doneTaskId, originListName) => {
     try {
       setError('');
-      setLoading(true);
       const doneTask = formData[originListName].find((task) => task.id === doneTaskId);
-      await addDoneTask(
+      if (originListName === LIST_NAME.HOME) {
+        setFormData({
+          ...formData,
+          [LIST_NAME.DONE]: formData[LIST_NAME.DONE].concat([{ ...doneTask, id: 0 }]),
+        });
+      } else if (originListName === LIST_NAME.ATTRIBUTED) {
+        setFormData({
+          [LIST_NAME.ATTRIBUTED]: formData[LIST_NAME.ATTRIBUTED]
+            .filter((task) => task.id !== doneTask.id),
+          [LIST_NAME.HOME]: formData[LIST_NAME.HOME].concat([{ ...doneTask, attributedTaskId: 0 }]),
+          [LIST_NAME.DONE]: formData[LIST_NAME.DONE].concat([{ ...doneTask, id: 0 }]),
+        });
+      }
+      const response = await addDoneTask(
         { name: doneTask.name, value: doneTask.value },
         userData.id,
         userData.home_id,
       );
-      getPageData();
+      setFormData((curFormData) => ({
+        ...curFormData,
+        [LIST_NAME.DONE]: curFormData[LIST_NAME.DONE].map(((task) => {
+          if (task.id === 0) {
+            return { ...task, id: response.id, draggableId: `done${response.id}` };
+          }
+          return task;
+        })),
+      }));
     } catch (e) {
       await getPageData();
       setError(e.message);
@@ -164,7 +196,7 @@ function MytasksPage() {
               <TileTitle>Mes tâches attribuées</TileTitle>
               <TaskList
                 tasks={formData[LIST_NAME.ATTRIBUTED]}
-                droppableId="attributedTasks"
+                droppableId={LIST_NAME.ATTRIBUTED}
                 onTaskClick={setModalTask}
               />
             </Tile>
@@ -172,7 +204,7 @@ function MytasksPage() {
               <TileTitle>Liste des tâches disponibles</TileTitle>
               <TaskList
                 tasks={formData[LIST_NAME.HOME]}
-                droppableId="homeTasks"
+                droppableId={LIST_NAME.HOME}
                 onTaskClick={(task) => attributeTask(task.id)}
               />
               <ModalActionTask
@@ -189,7 +221,7 @@ function MytasksPage() {
               <TileTitle>Mes tâches réalisées</TileTitle>
               <TaskList
                 tasks={formData[LIST_NAME.DONE]}
-                droppableId="doneTasks"
+                droppableId={LIST_NAME.DONE}
                 isDragDisabled
               />
             </Tile>

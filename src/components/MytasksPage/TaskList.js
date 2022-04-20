@@ -31,7 +31,7 @@ function TaskList({
           {tasks.map((task, index) => (
             <Draggable
               key={task.id}
-              draggableId={task.id.toString()}
+              draggableId={task.draggableId || task.id.toString()}
               index={index}
               isDragDisabled={isDragDisabled}
             >
