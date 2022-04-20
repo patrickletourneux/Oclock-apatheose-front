@@ -14,7 +14,7 @@ function Countdown({
   return (
     <Container>
       <Typography
-        variant="h2"
+        variant="h3"
         color="white"
         textAlign="center"
         padding="10px"
