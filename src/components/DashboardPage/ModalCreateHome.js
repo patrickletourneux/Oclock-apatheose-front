@@ -10,7 +10,7 @@ import {
 import { LoadingButton } from '@mui/lab';
 import AddIcon from '@mui/icons-material/Add';
 
-import addHome from '../../apis/api/homes';
+import { addHome } from '../../apis/api/homes';
 import authContext from '../../contexts/authContext';
 import getGenericTasks from '../../apis/api/generic_tasks';
 import addHomeTask from '../../apis/api/home_tasks';
@@ -53,21 +53,18 @@ function ModalCreateHome() {
     setOpen(true);
   };
 
-  const handleClose = (e, reason) => {
-    if (reason === 'backdropClick') {
-      return;
-    }
+  const handleClose = () => {
     setOpen(false);
     setData({ ...defaultFormData });
     setGenericTasks(initGenericTasks(genericTasks));
     setError('');
   };
 
-  function handleFieldChange(e) {
+  const handleFieldChange = (e) => {
     const newData = { ...data };
     newData[e.target.name] = e.target.value;
     setData(newData);
-  }
+  };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -111,7 +108,7 @@ function ModalCreateHome() {
     const newInvite = e.target.value;
     const newData = {
       ...data,
-      // returns a new invitations array containing the invit just modified by the user
+      // returns a new invitations array containing the invite just modified by the user
       invitations: data.invitations.map(
         (prevInvite, index) => (modifiedIndex === index ? newInvite : prevInvite),
       ),
@@ -182,7 +179,6 @@ function ModalCreateHome() {
                       />
                     </ListItemIcon>
                     <ListItemText
-                      id={genTask.id}
                       primary={`${genTask.name}`}
                     />
                   </ListItemButton>
@@ -208,12 +204,12 @@ function ModalCreateHome() {
             <DialogContentText marginTop="3rem">
               3. Invites tes proches !
             </DialogContentText>
-            {data.invitations.map((invit, index) => (
+            {data.invitations.map((invite, index) => (
               <TextField
                 key={index}
                 name={`invitations[${index}]`}
-                label={`Invité ${index + 1}`}
-                value={invit}
+                label={`Email ${index + 1}`}
+                value={invite}
                 type="email"
                 onChange={handleInvitationChange(index)}
                 fullWidth

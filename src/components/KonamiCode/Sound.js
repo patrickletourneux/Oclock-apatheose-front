@@ -1,5 +1,5 @@
 import {
-  Box, Button, Container, Typography,
+  Box, Container, Typography,
 } from '@mui/material';
 import up from '../../assets/sounds/upup.mp3';
 import oclock from '../../assets/images/oclock.jpg';
@@ -9,6 +9,7 @@ function Sound() {
   audio.loop = true;
 
   return (
+    // creation d'un player a activer apres success
     <Container>
       <Typography variant="h1" textAlign="center" padding={5}>La Montagne est derriere vous</Typography>
       <Box
@@ -20,18 +21,18 @@ function Sound() {
           maxHeight: { xs: 300, md: 400 },
           maxWidth: { xs: 300, md: 400 },
           textAlign: 'center',
-		  justifyContent: 'center',
+          justifyContent: 'center',
         }}
         alt="tasse"
         src={oclock}
         onMouseOver={() => {
-		    audio.loop = true;
-		    audio.play();
-		  }}
+          audio.loop = true;
+          audio.play();
+        }}
         onMouseOut={() => {
-		    audio.loop = false;
-		    // audio.stop();
-		  }}
+          audio.loop = false;
+          // audio.stop();
+        }}
       />
     </Container>
 

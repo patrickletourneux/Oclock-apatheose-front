@@ -1,4 +1,3 @@
-import { display } from '@mui/system';
 import { useEffect, useState } from 'react';
 import Sound from './Sound';
 import useInputEvent from './useInputEvent';

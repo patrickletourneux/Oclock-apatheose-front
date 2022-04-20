@@ -14,7 +14,7 @@ import { Link as LinkRouter } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <AppBar position="static" sx={{ background: 'linear-gradient(90deg, #21C2CF, #49D7BB)', height: '70px' }}>
+    <AppBar position="static" sx={{ height: '70px', background: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}>
       <Toolbar>
         <Typography
           variant="h6"
@@ -51,7 +51,6 @@ export default function Header() {
               border: 1,
               margin: '10px',
               // padding: 0.8,
-
             }}
           >
             <Button>
@@ -74,7 +73,6 @@ export default function Header() {
                 sx={{
                   fontSize: { xs: '11px', md: '15px' },
                 }}
-
               >
                 Se connecter
               </Link>

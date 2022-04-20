@@ -47,21 +47,21 @@ const responseDataMock = {
 
 /**
  * @param {number} homeId
- * @param {function(object)} onSuccess
- * @param {function(string)} onError
- * @returns {Promise<void>}
+ * @returns {Promise<Object>}
  *
  */
-const getMyhousePage = async (homeId, onSuccess, onError) => {
+const getMyhousePage = async (homeId) => {
   try {
     const response = await api.get(`myhome/${homeId}`);
-    onSuccess(response.data);
+    return response.data;
   } catch (error) {
-    if (error.response && (error.response.status === 400 || error.response.status === 404)) {
-      onError(error.response.data.message);
+    let errorMessage;
+    if (error.response && error.response.status === 400) {
+      errorMessage = error.response.data.message;
     } else {
-      onError('Une erreur est survenue, veuillez réessayer plus tard');
+      errorMessage = 'Une erreur est survenue, veuillez réessayer plus tard';
     }
+    throw new Error(errorMessage);
   }
 };
 

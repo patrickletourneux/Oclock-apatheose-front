@@ -21,7 +21,7 @@ function FirstRankingSecondaryTile({ data, isCurrentUserFirst, ...otherProps }) 
       }}
       {...otherProps}
     >
-      <UserAvatar url={data.avatar_img} pseudonym={data.pseudonym} />
+      <UserAvatar pseudonym={data.pseudonym} />
       <Typography>{getFirstUserString(data.pseudonym, data.score, isCurrentUserFirst)}</Typography>
     </Box>
   );

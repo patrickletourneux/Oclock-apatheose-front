@@ -40,6 +40,7 @@ function ContainerWhat() {
         sx={{
           justifyContent: 'space-around',
         }}
+
       >
         <Card
           sx={{

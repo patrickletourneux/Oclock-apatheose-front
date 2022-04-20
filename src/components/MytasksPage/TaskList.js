@@ -47,7 +47,7 @@ function TaskList({
                     onTaskClick === null
                       ? (<ListItemText primary={task.name} />)
                       : (
-                        <ListItemButton dense role="button" onClick={() => onTaskClick(task)} disabled={onTaskClick === null}>
+                        <ListItemButton dense role="button" onClick={() => onTaskClick(task)}>
                           <ListItemText primary={task.name} />
                         </ListItemButton>
                       )

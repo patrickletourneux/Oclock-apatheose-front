@@ -33,7 +33,7 @@ export default function HeaderLogged() {
     logout();
   };
   return (
-    <AppBar position="static" sx={{ background: 'linear-gradient(90deg, #21C2CF, #49D7BB)', height: '70px' }}>
+    <AppBar position="static" sx={{ height: '70px', background: 'linear-gradient(90deg, #21C2CF, #49D7BB)', justifyContent: 'center' }}>
       <Toolbar>
         <IconButton
           size="large"
@@ -42,7 +42,7 @@ export default function HeaderLogged() {
           aria-label="menu"
           sx={{ mr: 1 }}
           onClick={handleClick}
-          backgroundColor="#333"
+          // backgroundColor="#333"
         >
           <MenuIcon color="secondary.light" />
         </IconButton>
@@ -102,7 +102,6 @@ export default function HeaderLogged() {
           sx={{
             flexGrow: 1,
             textAlign: 'center',
-            padding: '20px',
             fontSize: { xs: '14px', md: '20px' },
           }}
         >
@@ -111,21 +110,27 @@ export default function HeaderLogged() {
             component={LinkRouter}
             style={{ textDecoration: 'none', color: 'white' }}
           >
-            <CleaningServicesIcon /> C du Prop's
+            <CleaningServicesIcon />C du Prop's
           </Link>
         </Typography>
         <Typography
+          variant="h6"
+          component="h1"
+          sx={{
+            // flexGrow: 1,
+            textAlign: 'center',
+            fontSize: { xs: '14px', md: '20px' },
+            paddingTop: { xs: '10px', md: '0px' },
+            paddingRight: { xs: '10px', md: '10px' },
+          }}
         >
           <Link
             to="/mon-compte"
             component={LinkRouter}
-            variant="body1"
             style={{
-              // textDecoration: "none",
+              textDecoration: 'none',
               color: 'white',
-              padding: '20px',
             }}
-            sx={{ fontSize: { xs: '14px', md: '20px' } }}
           >
             Mon Compte
           </Link>
@@ -149,6 +154,6 @@ export default function HeaderLogged() {
           <CloseIcon />
         </IconButton>
       </Toolbar>
-    </AppBar >
+    </AppBar>
   );
 }
