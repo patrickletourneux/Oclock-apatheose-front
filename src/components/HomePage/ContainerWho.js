@@ -3,7 +3,6 @@ import {
   Button, Card, CardActionArea, CardContent, CardMedia, Container, Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { Filter } from '@mui/icons-material';
 import couple from '../../assets/images/couple.jpg';
 import vacance from '../../assets/images/vacance.jpg';
 import colloc from '../../assets/images/colloc.jpg';
