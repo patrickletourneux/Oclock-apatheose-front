@@ -17,7 +17,7 @@ function Countdown({
         color="white"
         textAlign="center"
         padding="10px"
-        fontSize="30px"
+        fontSize="20px"
         fontWeight="500"
       >
         Plus que Jack Wilson il vous reste{' '}
@@ -26,22 +26,22 @@ function Countdown({
       <Box display="flex" flexDirection="row" justifyContent="center">
         <Box>
           <TimerIcon
-            sx={{ padding: '20px', color: 'white', fontSize: '45px' }}
+            sx={{ padding: '10px', color: 'white', fontSize: '35px' }}
           />
         </Box>
 
         <Typography
-          fontSize="45px"
+          fontSize="35px"
           color="white"
           fontWeight="800"
-          padding="10px"
+          padding="5px"
         >
           {nbOfDays} jours
         </Typography>
       </Box>
 
       <Typography
-        fontSize="30px"
+        fontSize="20px"
         color="white"
         textAlign="center"
         padding="10px"
@@ -52,13 +52,13 @@ function Countdown({
 
       <Box display="flex" flexDirection="row" justifyContent="center">
         <Box>
-          <EmojiEventsIcon sx={{ padding: '20px', color: 'white', fontSize: '45px' }} />
+          <EmojiEventsIcon sx={{ padding: '10px', color: 'white', fontSize: '35px' }} />
         </Box>
         <Typography
-          fontSize="45px"
+          fontSize="35px"
           color="white"
           fontWeight="800"
-          padding="10px"
+          padding="5px"
         >
           {title}
         </Typography>

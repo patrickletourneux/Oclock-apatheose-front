@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import { Box } from '@mui/material';
 import authContext from '../../contexts/authContext';
 import getRankingPage from '../../apis/api/ranking';
 import ListItem from './ListItem';
@@ -47,7 +49,22 @@ function LeaderboardPage() {
 
   return (
     <PageContainer>
-      <PageTitle>Classement & Reward</PageTitle>
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+        alignContent="stretch"
+      >
+        <Box>
+          <LeaderboardIcon
+            sx={{ fontSize: '40px', color:"#20c2cf" }}
+          />
+        </Box>
+        <Box>
+          <PageTitle color="#20c2cf">Classement & Reward</PageTitle>
+        </Box>
+      </Box>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && (
