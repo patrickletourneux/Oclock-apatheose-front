@@ -19,7 +19,7 @@ function HeroContainer() {
 
   const styles = {
     paperContainer: {
-      width: '100vw',
+      // width: '100vw',
       minHeight: '60vh',
       // backgroundImage: `url(${tasse})`,
       // backgroundSize: 'cover',

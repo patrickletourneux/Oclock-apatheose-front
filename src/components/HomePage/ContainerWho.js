@@ -11,10 +11,11 @@ import family from '../../assets/images/family.jpg';
 function ContainerWho() {
   const styles = {
     paperContainer: {
-      width: '100vw',
+      // width: '100vw',
       backgroundImage: `url(${couple})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
+      filter: 'opacity(0.8)',
     },
   };
   return (
@@ -28,7 +29,7 @@ function ContainerWho() {
             C POUR QUI?
           </Typography>
         </Box>
-        <Box display="flex" flexWrap="wrap" gap={3} flexDirection="row" margin={10} sx={{ justifyContent: 'space-evenly' }}>
+        <Box display="flex" flexWrap="wrap" gap={3} flexDirection="row" margin={2} sx={{ justifyContent: 'space-evenly' }}>
           <Card sx={{ maxWidth: 370, minHeight: 400 }}>
             <CardActionArea>
               <CardMedia

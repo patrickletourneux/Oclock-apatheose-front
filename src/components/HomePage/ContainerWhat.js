@@ -36,9 +36,9 @@ function ContainerWhat() {
         flexWrap="wrap"
         gap={2}
         flexDirection="row"
-        margin={10}
+        margin={2}
         sx={{
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
         }}
       >
         <Card

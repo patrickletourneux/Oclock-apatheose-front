@@ -8,6 +8,8 @@ import {
   MenuItem,
   Link,
 } from '@mui/material';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+
 import MenuIcon from '@mui/icons-material/Menu';
 
 import CloseIcon from '@mui/icons-material/Close';
@@ -31,14 +33,14 @@ export default function HeaderLogged() {
     logout();
   };
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}>
+    <AppBar position="static" sx={{ background: 'linear-gradient(90deg, #21C2CF, #49D7BB)', height: '70px' }}>
       <Toolbar>
         <IconButton
           size="large"
           edge="start"
           color="inherit"
           aria-label="menu"
-          sx={{ mr: 2 }}
+          sx={{ mr: 1 }}
           onClick={handleClick}
           backgroundColor="#333"
         >
@@ -100,6 +102,8 @@ export default function HeaderLogged() {
           sx={{
             flexGrow: 1,
             textAlign: 'center',
+            padding: '20px',
+            fontSize: { xs: '14px', md: '20px' },
           }}
         >
           <Link
@@ -107,21 +111,25 @@ export default function HeaderLogged() {
             component={LinkRouter}
             style={{ textDecoration: 'none', color: 'white' }}
           >
-            C du Prop's
+            <CleaningServicesIcon /> C du Prop's
           </Link>
         </Typography>
-        <Link
-          to="/mon-compte"
-          component={LinkRouter}
-          variant="body1"
-          style={{
-            // textDecoration: "none",
-            color: 'white',
-            padding: '10px 20px',
-          }}
+        <Typography
         >
-          Mon Compte
-        </Link>
+          <Link
+            to="/mon-compte"
+            component={LinkRouter}
+            variant="body1"
+            style={{
+              // textDecoration: "none",
+              color: 'white',
+              padding: '20px',
+            }}
+            sx={{ fontSize: { xs: '14px', md: '20px' } }}
+          >
+            Mon Compte
+          </Link>
+        </Typography>
         <IconButton
           aria-label="close"
           size="small"
@@ -141,6 +149,6 @@ export default function HeaderLogged() {
           <CloseIcon />
         </IconButton>
       </Toolbar>
-    </AppBar>
+    </AppBar >
   );
 }
