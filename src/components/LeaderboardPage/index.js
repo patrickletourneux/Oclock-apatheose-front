@@ -52,13 +52,18 @@ function LeaderboardPage() {
       <Box
         display="flex"
         flexDirection="row"
+        // flexWrap="wrap"
         justifyContent="center"
         alignItems="center"
-        alignContent="stretch"
+        sx={{ flexDirection: { xs: 'column', md: 'row' } }}
       >
         <Box>
           <LeaderboardIcon
-            sx={{ fontSize: '40px', color:"#20c2cf" }}
+            sx={{
+              fontSize: '40px',
+              color: '#20c2cf',
+              marginTop: { xs: '30px', md: '0px' },
+            }}
           />
         </Box>
         <Box>
@@ -78,6 +83,7 @@ function LeaderboardPage() {
           </Tile>
           <TileContainer>
             <Tile>
+              <TileTitle>Reward</TileTitle>
               {data?.users?.map((user) => (
                 <ListItem key={user.id} {...user} />
               ))}

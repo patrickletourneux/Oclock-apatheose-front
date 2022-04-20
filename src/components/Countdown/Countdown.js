@@ -50,15 +50,16 @@ function Countdown({
         afin de remporter
       </Typography>
 
-      <Box display="flex" flexDirection="row" justifyContent="center">
+      <Box display="flex" flexDirection="row" justifyContent="center" alignItems="center">
         <Box>
-          <EmojiEventsIcon sx={{ padding: '10px', color: 'white', fontSize: '35px' }} />
+          <EmojiEventsIcon sx={{ padding: '10px', color: 'white', fontSize: '35px'}} />
         </Box>
         <Typography
           fontSize="35px"
           color="white"
           fontWeight="800"
-          padding="5px"
+          // padding="5px"
+          textAlign="center"
         >
           {title}
         </Typography>

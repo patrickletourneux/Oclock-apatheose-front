@@ -1,16 +1,24 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
 function TileTitle({ children, ...otherProps }) {
   return (
-    <Typography
-      variant="h2"
-      textAlign="center"
-      {...otherProps}
-      padding="20px"
+    <Box sx={{
+      width: 'auto',
+      minHeight: '80px',
+      background: 'linear-gradient(90deg, #21C2CF, #49D7BB)',
+      color: 'white',
+    }}
     >
-      {children}
-    </Typography>
+      <Typography
+        variant="h2"
+        textAlign="center"
+        {...otherProps}
+        padding="20px"
+      >
+        {children}
+      </Typography>
+    </Box>
   );
 }
 
