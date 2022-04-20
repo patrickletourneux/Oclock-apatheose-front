@@ -1,18 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
-import {
-  Typography, Grid, Button,
-} from '@mui/material';
+import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import authContext from '../../contexts/authContext';
 import { getUser } from '../../apis/api/users';
 import bgclean from '../../assets/images/bgclean.jpg';
 import PageContainer from '../PageContainer/PageContainer';
-import DisplayUserInfo from './DisplayUserInfo';
-import TileTitle from '../Tile/TileTitle';
-import Tile from '../Tile/Tile';
 import PageTitle from '../PageTitle/PageTitle';
+import PageLoader from '../PageLoader/PageLoader';
+import PageError from '../PageError/PageError';
+import DisplayUserInfo from './DisplayUserInfo';
+import TileContainer from '../Tile/TileContainer';
+import Tile from '../Tile/Tile';
 import ModalMySpace from './ModalMySpace';
-import EmailIcon from '@mui/icons-material/Email';
 
 const styles = {
   paperContainer: {
@@ -28,18 +27,22 @@ function MySpacePage() {
   const { userData } = useContext(authContext);
 
   // eslint-disable-next-line no-unused-vars
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   const getUserInfo = () => {
     if (userData) {
+      setLoading(true);
       setError('');
       getUser(
         userData.id,
         (newData) => {
           setData(newData);
+          setLoading(false);
         },
         (err) => {
           setError(err);
+          setLoading(false);
         },
       );
     }
@@ -65,34 +68,29 @@ function MySpacePage() {
   // };
   return (
     <PageContainer style={styles.paperContainer} sx={{ py: '30px' }}>
-      <Tile>
-        <PageTitle>Mon espace personnel</PageTitle>
-        <Typography textAlign="center" padding="20px" variant="body1">
-          Vous pouvez modifier vos données personnelles
-        </Typography>
-      </Tile>
-      <DisplayUserInfo {...data} />
-      <Tile>
-        <ModalMySpace
-          userInfo={data}
-          getUserInfo={getUserInfo}
-          userId={data?.id}
-        />
-      </Tile>
-
-      {/* <UserAvatar pseudonym={userData?.pseudonym} /> */}
-      <Tile textAlign="center">
-
-        <Link
-          to="/tableau-de-bord"
-          style={{ textDecoration: 'none', color: '#1ba2ac' }}
-        >
-          <Button color="secondary" size="small">
-            Revenir à mon tableau de bord
-          </Button>
-          
-        </Link>
-      </Tile>
+      <PageTitle>Mon espace personnel</PageTitle>
+      <PageLoader isDisplayed={loading} />
+      <PageError error={error} />
+      {!loading && (
+        <TileContainer>
+          <Tile textAlign="center">
+            <DisplayUserInfo {...data} />
+            <ModalMySpace
+              userInfo={data}
+              getUserInfo={getUserInfo}
+              userId={data?.id}
+            />
+            <Link
+              to="/tableau-de-bord"
+              style={{ textDecoration: 'none', color: '#1ba2ac', textAlign: 'center' }}
+            >
+              <Button color="secondary" size="small" sx={{ padding: '10px' }}>
+                Revenir à mon tableau de bord
+              </Button>
+            </Link>
+          </Tile>
+        </TileContainer>
+      )}
     </PageContainer>
   );
 }

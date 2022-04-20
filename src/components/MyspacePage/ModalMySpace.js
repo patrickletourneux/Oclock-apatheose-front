@@ -8,6 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { Box } from '@mui/material';
+
 import { useContext, useState } from 'react';
 
 import { updateUser } from '../../apis/api/users';
@@ -70,7 +71,7 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
   };
 
   return (
-    <Box textAlign="center">
+    <Box sx={{ padding: '30px' }} textAlign="center">
       <Button type="Submit" variant="contained" onClick={handleClickOpen}>
         Modifier
       </Button>
