@@ -17,8 +17,8 @@ import UserAvatar from '../UserAvatar/UserAvatar';
 import ModalModifyHomeName from './ModalModifyHomeName';
 import TileTitle from '../Tile/TileTitle';
 import ModalConfirmation from './ModalConfirmation';
-import { getUserWithPromise, updateUserWithPromise } from '../../apis/api/users';
 import ModalInvite from './ModalInvite';
+import { leaveHome } from '../../apis/api/join_home';
 
 const getLeavingConfirmationMessage = (usersCount, homeName) => {
   if (usersCount > 1) {
@@ -28,7 +28,7 @@ const getLeavingConfirmationMessage = (usersCount, homeName) => {
 };
 
 function MyhousePage() {
-  const { userData } = useContext(authContext);
+  const { userData, updateAuthData } = useContext(authContext);
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -50,19 +50,18 @@ function MyhousePage() {
       getPageData();
     } else if (!hasHome && userData) {
       setLoading(false);
+      setFormData(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData, hasHome]);
 
-  const leaveHome = async () => {
+  const onLeaveHome = async () => {
     setOpenLeaveHomeModal(false);
     setLoading(true);
     setError('');
     try {
-      const user = await getUserWithPromise(userData.id);
-      delete user.id;
-      await updateUserWithPromise(userData.id, { ...user, home_id: null });
-      await getPageData();
+      await leaveHome(userData.id, userData.home_id);
+      await updateAuthData(userData.id);
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -91,7 +90,7 @@ function MyhousePage() {
                 <ModalConfirmation
                   open={openLeaveHomeModal}
                   message={getLeavingConfirmationMessage(formData.users.length, formData.name)}
-                  onConfirm={leaveHome}
+                  onConfirm={onLeaveHome}
                   onAbort={() => setOpenLeaveHomeModal(false)}
                 />
               </div>
