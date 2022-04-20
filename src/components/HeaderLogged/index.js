@@ -91,7 +91,7 @@ export default function HeaderLogged() {
               variant="body1"
               style={{ textDecoration: 'none', color: '#009688' }}
             >
-              Mes taĉhes
+              Mes tâches
             </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
