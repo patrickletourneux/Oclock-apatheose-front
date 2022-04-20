@@ -83,7 +83,7 @@ function LeaderboardPage() {
           </Tile>
           <TileContainer>
             <Tile>
-              <TileTitle>Reward</TileTitle>
+              <TileTitle>Classement</TileTitle>
               {data?.users?.map((user) => (
                 <ListItem key={user.id} {...user} />
               ))}

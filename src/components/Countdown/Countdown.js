@@ -52,7 +52,7 @@ function Countdown({
 
       <Box display="flex" flexDirection="row" justifyContent="center" alignItems="center">
         <Box>
-          <EmojiEventsIcon sx={{ padding: '10px', color: 'white', fontSize: '35px'}} />
+          <EmojiEventsIcon sx={{ padding: '10px', color: 'white', fontSize: '35px' }} />
         </Box>
         <Typography
           fontSize="35px"
