@@ -13,8 +13,6 @@ import TasksTile from './TasksTile';
 import RankingTile from './RankingTile';
 import PageContainer from '../PageContainer/PageContainer';
 import Tile from '../Tile/Tile';
-import bb from '../../assets/images/bb.svg';
-import { Image } from '@mui/icons-material';
 
 function DashboardPage() {
   const { userData } = useContext(authContext);

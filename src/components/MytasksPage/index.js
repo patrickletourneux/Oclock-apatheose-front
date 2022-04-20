@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { DragDropContext } from 'react-beautiful-dnd';
 
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import authContext from '../../contexts/authContext';
 import PageContainer from '../PageContainer/PageContainer';
 import PageTitle from '../PageTitle/PageTitle';
@@ -13,11 +14,12 @@ import Tile from '../Tile/Tile';
 import TileTitle from '../Tile/TileTitle';
 import TaskList from './TaskList';
 import ModalCreateTask from '../ModalCreateTask/ModalCreateTask';
-import { addAttributedTask, removeAttributedTask } from '../../apis/api/attributed_tasks';
+import {
+  addAttributedTask,
+  removeAttributedTask,
+} from '../../apis/api/attributed_tasks';
 import addDoneTask from '../../apis/api/done_tasks';
 import ModalActionTask from './ModalActionTask';
-import LeaderboardIcon from '@mui/icons-material/Leaderboard';
-
 
 const LIST_NAME = {
   ATTRIBUTED: 'attributedTasks',
@@ -53,7 +55,10 @@ function MytasksPage() {
   const [error, setError] = useState('');
   const [modalTask, setModalTask] = useState(null);
 
-  const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
+  const hasHome = !!(
+    userData
+    && (userData?.home_id || userData?.home_id === 0)
+  );
 
   const getPageData = async () => {
     setLoading(true);
@@ -76,12 +81,17 @@ function MytasksPage() {
   const attributeTask = async (attributedTaskId) => {
     try {
       setError('');
-      const attributedTask = formData[LIST_NAME.HOME]
-        .find((task) => task.id === attributedTaskId);
+      const attributedTask = formData[LIST_NAME.HOME].find(
+        (task) => task.id === attributedTaskId,
+      );
       addAttributedTask({ home_task_id: attributedTask.id }, userData.id);
       setFormData({
-        attributedTasks: formData[LIST_NAME.ATTRIBUTED].concat([attributedTask]),
-        homeTasks: formData[LIST_NAME.HOME].filter((task) => task.id !== attributedTask.id),
+        attributedTasks: formData[LIST_NAME.ATTRIBUTED].concat([
+          attributedTask,
+        ]),
+        homeTasks: formData[LIST_NAME.HOME].filter(
+          (task) => task.id !== attributedTask.id,
+        ),
         doneTasks: formData[LIST_NAME.DONE],
       });
     } catch (e) {
@@ -93,14 +103,15 @@ function MytasksPage() {
   const unattributeTask = async (unattributedTaskId) => {
     try {
       setError('');
-      const unattributedTask = formData[LIST_NAME.ATTRIBUTED]
-        .find((task) => task.id === unattributedTaskId);
+      const unattributedTask = formData[LIST_NAME.ATTRIBUTED].find(
+        (task) => task.id === unattributedTaskId,
+      );
       removeAttributedTask(unattributedTask.id);
       setFormData({
-        attributedTasks: formData[LIST_NAME.ATTRIBUTED]
-          .filter((task) => task.id !== unattributedTask.id),
-        homeTasks: formData[LIST_NAME.HOME]
-          .concat([unattributedTask]),
+        attributedTasks: formData[LIST_NAME.ATTRIBUTED].filter(
+          (task) => task.id !== unattributedTask.id,
+        ),
+        homeTasks: formData[LIST_NAME.HOME].concat([unattributedTask]),
         doneTasks: formData[LIST_NAME.DONE],
       });
     } catch (e) {
@@ -113,7 +124,9 @@ function MytasksPage() {
     try {
       setError('');
       setLoading(true);
-      const doneTask = formData[originListName].find((task) => task.id === doneTaskId);
+      const doneTask = formData[originListName].find(
+        (task) => task.id === doneTaskId,
+      );
       await addDoneTask(
         { name: doneTask.name, value: doneTask.value },
         userData.id,
@@ -128,14 +141,20 @@ function MytasksPage() {
 
   const onDragEnd = (e) => {
     if (!e.destination) return;
-    if (e.source.droppableId === LIST_NAME.ATTRIBUTED
-      && e.destination.droppableId === LIST_NAME.HOME) {
+    if (
+      e.source.droppableId === LIST_NAME.ATTRIBUTED
+      && e.destination.droppableId === LIST_NAME.HOME
+    ) {
       unattributeTask(Number(e.draggableId));
-    } else if (e.source.droppableId === LIST_NAME.HOME
-      && e.destination.droppableId === LIST_NAME.ATTRIBUTED) {
+    } else if (
+      e.source.droppableId === LIST_NAME.HOME
+      && e.destination.droppableId === LIST_NAME.ATTRIBUTED
+    ) {
       attributeTask(Number(e.draggableId));
-    } else if (e.source.droppableId !== LIST_NAME.DONE
-      && e.destination.droppableId === LIST_NAME.DONE) {
+    } else if (
+      e.source.droppableId !== LIST_NAME.DONE
+      && e.destination.droppableId === LIST_NAME.DONE
+    ) {
       doTask(Number(e.draggableId), e.source.droppableId);
     }
   };
@@ -156,7 +175,7 @@ function MytasksPage() {
 
   return (
     <PageContainer>
-           <Box
+      <Box
         display="flex"
         flexDirection="row"
         // flexWrap="wrap"
@@ -165,7 +184,7 @@ function MytasksPage() {
         sx={{ flexDirection: { xs: 'column', md: 'row' } }}
       >
         <Box>
-          <LeaderboardIcon
+          <PlaylistAddCheckIcon
             sx={{
               fontSize: '40px',
               color: '#20c2cf',
@@ -177,13 +196,19 @@ function MytasksPage() {
           <PageTitle color="#20c2cf">Mes tâches</PageTitle>
         </Box>
       </Box>
-          <Tile
-            width="100vw"
-            minHeight="70px"
-            sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
-          >
-            <Typography color="white" textAlign="center" padding="10px">“Rien ne tache et rien ne lave comme le sang.” ...Cercei Lannister <img src="https://img.icons8.com/ios/50/000000/targaryen-house.png" alt="lannister"/></Typography>
-          </Tile>
+      <Tile
+        width="100vw"
+        minHeight="70px"
+        sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
+      >
+        <Typography color="white" textAlign="center" padding="10px">
+          “Rien ne tache et rien ne lave comme le sang.” ...Cercei Lannister{' '}
+          <img
+            src="https://img.icons8.com/ios/50/000000/targaryen-house.png"
+            alt="lannister"
+          />
+        </Typography>
+      </Tile>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && formData && (

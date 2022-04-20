@@ -7,9 +7,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { Typography } from '@mui/material';
 import UserAvatar from '../UserAvatar/UserAvatar';
 
-function ListItems({
-  pseudonym, score, rank,
-}) {
+function ListItems({ pseudonym, score, rank }) {
   return (
     <>
       <List
@@ -21,7 +19,8 @@ function ListItems({
       >
         {/* Utiliser ListAvatar */}
         <ListItem>
-          <Typography fontWeight='700'>#</Typography><ListItemText primary={rank} variant="body1" />
+          <Typography fontWeight="700">#</Typography>
+          <ListItemText primary={rank} variant="body1" />
           <ListItemAvatar>
             <UserAvatar
               sx={{
@@ -44,7 +43,8 @@ function ListItems({
               textAlign: 'right',
             }}
             primary={score}
-          /><Typography sx={{ marginLeft: '2px' }}>points</Typography>
+          />
+          <Typography sx={{ marginLeft: '2px' }}>points</Typography>
         </ListItem>
       </List>
       <Divider variant="fullwidth" />
