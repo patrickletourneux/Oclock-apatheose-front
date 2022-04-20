@@ -41,7 +41,7 @@ export default function Header() {
           }}
         >
           <ButtonGroup
-          size='small'
+            size="small"
             variant="contained"
             orientation="horizontal"
             sx={{
