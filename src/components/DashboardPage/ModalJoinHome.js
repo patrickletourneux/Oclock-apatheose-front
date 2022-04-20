@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
-import joinHome from '../../apis/api/join_home';
+import { joinHome } from '../../apis/api/join_home';
 import authContext from '../../contexts/authContext';
 
 function ModalJoinHome() {
