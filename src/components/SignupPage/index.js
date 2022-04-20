@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   TextField,
   Typography,
@@ -14,6 +14,7 @@ import validator from 'validator';
 import { addUser } from '../../apis/api/users';
 import bgclean from '../../assets/images/bgclean.jpg';
 import PageContainer from '../PageContainer/PageContainer';
+import PageError from '../PageError/PageError';
 
 const styles = {
   paperContainer: {
@@ -31,7 +32,7 @@ function SignUp() {
     password: '',
     confirmPassword: '',
   });
-
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   function successSignUp() {
@@ -39,47 +40,56 @@ function SignUp() {
     // realiser modale if avec affichage "resError"
   }
 
-  function errorSignUp(resError) {
-    console.log(resError);
+  function errorSignUp(resErrorMessage) {
+    setError(resErrorMessage);
   }
 
   // MANAGE PSEUDO ERROR
   const [errorPseudonym, setErrorPseudonym] = useState('');
 
   const validatePseudonym = () => {
-    const longueur = data.pseudonym.length;
+    const { length } = data.pseudonym;
 
-    if (longueur <= 10) {
-      setErrorPseudonym('');
+    if (length > 10) {
+      setErrorPseudonym('Maximum 10 caractères');
     } else {
-      setErrorPseudonym('MaJ "à VeraCruz" - Gauthier: 2 tasses / Axel: 0');
+      setErrorPseudonym('');
     }
   };
 
   // MANAGE EMAIL ERROR
 
   const [emailError, setEmailError] = useState('');
-  const validateEmail = (e) => {
-    const email = e.target.value;
-
-    if (validator.isEmail(email)) {
-      setEmailError('');
+  const validateEmail = () => {
+    if (data.email !== '' && !validator.isEmail(data.email)) {
+      setEmailError('Format d\'email invalide');
     } else {
-      setEmailError('«@», signe indispensable et désormais universel, est une clef qui ouvre toutes les portes. Placé entre un nom et un «gmail.com», il nous permet de communiquer avec nimporte qui pourvu que nous ayons la bonne adresse.');
+      setEmailError('');
     }
   };
 
   // CONST CONFIRMPASSWORD ERROR
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
-  const validateConfirmPassword = (e) => {
-    const pwd = e.target.value;
-
-    if (pwd !== data.password) {
-      setConfirmPasswordError('Il faut le mêêême si tu es un vrai GOAT');
+  const validateConfirmPassword = () => {
+    if (data.confirmPassword !== '' && data.password !== '' && data.confirmPassword !== data.password) {
+      setConfirmPasswordError('Le mot de passe et sa confirmation doivent être identiques');
     } else {
       setConfirmPasswordError('');
     }
   };
+
+  useEffect(() => {
+    if (emailError) {
+      validateEmail();
+    }
+    if (errorPseudonym) {
+      validatePseudonym();
+    }
+    if (confirmPasswordError) {
+      validateConfirmPassword();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   function handleFieldChange(e) {
     const newData = { ...data };
@@ -89,6 +99,10 @@ function SignUp() {
 
   const submit = (e) => {
     e.preventDefault();
+    if (!!emailError || !!errorPseudonym || !!confirmPasswordError) {
+      return;
+    }
+    setError('');
     addUser(
       {
         email: data.email,
@@ -102,6 +116,7 @@ function SignUp() {
 
   return (
     <PageContainer style={styles.paperContainer} sx={{ py: '20px' }}>
+      <PageError error={error} />
       <Box
         component="form"
         onSubmit={submit}
@@ -131,18 +146,20 @@ function SignUp() {
           <Typography variant="body1">
             Vous avez déjà un compte ?&nbsp;
             <Link
-              to="/inscription"
+              to="/connexion"
               style={{ textDecoration: 'none', color: '#1ba2ac' }}
             >
-              Inscrivez-vous
+              Connectez-vous
             </Link>
           </Typography>
 
           <TextField
+            // sx={{ width: '100%', padding: '0 1rem' }}
+            fullWidth
+            required
             error={!!emailError}
             onChange={(e) => handleFieldChange(e)}
             autoComplete="false"
-            required
             name="email"
             label="email"
             value={data.email}
@@ -152,8 +169,9 @@ function SignUp() {
           />
 
           <TextField
-            error={!!errorPseudonym}
+            fullWidth
             required
+            error={!!errorPseudonym}
             onChange={(e) => handleFieldChange(e)}
             value={data.pseudonym}
             name="pseudonym"
@@ -164,7 +182,9 @@ function SignUp() {
           />
 
           <TextField
+            fullWidth
             required
+            error={!!confirmPasswordError}
             autoComplete="false"
             onChange={(e) => handleFieldChange(e)}
             value={data.password}
@@ -172,9 +192,12 @@ function SignUp() {
             type="password"
             label="Mot de passe"
             variant="outlined"
+            helperText={confirmPasswordError}
+            onBlur={validateConfirmPassword}
           />
 
           <TextField
+            fullWidth
             required
             error={!!confirmPasswordError}
             autoComplete="false"
@@ -190,8 +213,7 @@ function SignUp() {
 
           <FormGroup>
             <FormControlLabel
-              required
-              control={<Checkbox />}
+              control={<Checkbox required />}
               label={(
                 <Typography variant="body1" color="grey">
                   j'accepte les conditions générales
@@ -200,7 +222,7 @@ function SignUp() {
             />
           </FormGroup>
 
-          <Button type="submit" variant="contained">
+          <Button type="submit" variant="contained" disabled={!!emailError || !!errorPseudonym || !!confirmPasswordError}>
             valider
           </Button>
 
