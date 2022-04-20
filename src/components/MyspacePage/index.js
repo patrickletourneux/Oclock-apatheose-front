@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import PersonIcon from '@mui/icons-material/Person';
 import authContext from '../../contexts/authContext';
 import { getUser } from '../../apis/api/users';
 import bgclean from '../../assets/images/bgclean.jpg';
@@ -68,7 +69,26 @@ function MySpacePage() {
   // };
   return (
     <PageContainer style={styles.paperContainer} sx={{ py: '30px' }}>
-      <PageTitle>Mon espace personnel</PageTitle>
+      <Box
+        display="flex"
+        flexDirection="row"
+        // flexWrap="wrap"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ flexDirection: { xs: 'column', md: 'row' } }}
+      >
+        <Box>
+          <PersonIcon
+            sx={{
+              fontSize: '40px',
+              marginTop: { xs: '30px', md: '0px' },
+            }}
+          />
+        </Box>
+        <Box>
+          <PageTitle>Espace Personnel</PageTitle>
+        </Box>
+      </Box>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && (

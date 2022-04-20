@@ -1,9 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import {
-  Box, Button, Typography,
-  List, ListItem, ListItemIcon, ListItemText,
+  Box,
+  Button,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from '@mui/material';
 
+import HomeIcon from '@mui/icons-material/Home';
 import authContext from '../../contexts/authContext';
 import PageContainer from '../PageContainer/PageContainer';
 import PageTitle from '../PageTitle/PageTitle';
@@ -17,7 +23,10 @@ import UserAvatar from '../UserAvatar/UserAvatar';
 import ModalModifyHomeName from './ModalModifyHomeName';
 import TileTitle from '../Tile/TileTitle';
 import ModalConfirmation from './ModalConfirmation';
-import { getUserWithPromise, updateUserWithPromise } from '../../apis/api/users';
+import {
+  getUserWithPromise,
+  updateUserWithPromise,
+} from '../../apis/api/users';
 import ModalInvite from './ModalInvite';
 
 const getLeavingConfirmationMessage = (usersCount, homeName) => {
@@ -34,7 +43,10 @@ function MyhousePage() {
   const [error, setError] = useState('');
   const [openLeaveHomeModal, setOpenLeaveHomeModal] = useState(false);
 
-  const hasHome = !!(userData && (userData?.home_id || userData?.home_id === 0));
+  const hasHome = !!(
+    userData
+    && (userData?.home_id || userData?.home_id === 0)
+  );
 
   const getPageData = async () => {
     setLoading(true);
@@ -72,7 +84,42 @@ function MyhousePage() {
 
   return (
     <PageContainer>
-      <PageTitle>Ma Maison</PageTitle>
+      <Box
+        display="flex"
+        flexDirection="row"
+        // flexWrap="wrap"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ flexDirection: { xs: 'column', md: 'row' } }}
+      >
+        <Box>
+          <HomeIcon
+            sx={{
+              fontSize: '40px',
+              marginTop: { xs: '30px', md: '0px' },
+              color: '#20c2cf',
+            }}
+          />
+        </Box>
+        <Box>
+          <PageTitle color="#20c2cf">Ma maison</PageTitle>
+        </Box>
+      </Box>
+      <Tile
+        width="100vw"
+        minHeight="70px"
+        sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
+      >
+        <Typography color="white" textAlign="center" padding="10px">
+          “- Oui tu vas partir avec moi... (dans un sac poubelle).” ...Dexter{' '}
+          <img
+            sizes="small"
+            backgroundColor="white"
+            src="https://img.icons8.com/fluency-systems-regular/48/000000/murder.png"
+            alt="dexter"
+          />
+        </Typography>
+      </Tile>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && formData && (
@@ -83,14 +130,24 @@ function MyhousePage() {
               {`Code d'invitation dans la maison : ${formData.password}`}
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <ModalModifyHomeName onModalValidation={getPageData} sx={{ marginTop: '2rem' }} />
+              <ModalModifyHomeName
+                onModalValidation={getPageData}
+                sx={{ marginTop: '2rem' }}
+              />
               <div>
-                <Button variant="outlined" color="error" onClick={() => setOpenLeaveHomeModal(true)}>
+                <Button
+                  variant="outlined"
+                  color="error"
+                  onClick={() => setOpenLeaveHomeModal(true)}
+                >
                   Quitter la maison
                 </Button>
                 <ModalConfirmation
                   open={openLeaveHomeModal}
-                  message={getLeavingConfirmationMessage(formData.users.length, formData.name)}
+                  message={getLeavingConfirmationMessage(
+                    formData.users.length,
+                    formData.name,
+                  )}
                   onConfirm={leaveHome}
                   onAbort={() => setOpenLeaveHomeModal(false)}
                 />
@@ -99,26 +156,37 @@ function MyhousePage() {
           </Tile>
           <Tile textAlign="center">
             <TileTitle>Tâches disponibles</TileTitle>
-            {!formData.home_tasks[0] && <Typography sx={{ marginTop: '2rem' }}>Aucune tâches</Typography>}
+            {!formData.home_tasks[0] && (
+              <Typography sx={{ marginTop: '2rem' }}>Aucune tâches</Typography>
+            )}
             <List sx={{ marginTop: '1rem' }}>
-              {formData.home_tasks[0] && formData.home_tasks.map((task) => (
-                <ListItem
-                  key={task.id}
-                  secondaryAction={task.value}
-                  sx={{ maxWidth: '20rem', margin: '0 auto' }}
-                >
-                  <ListItemText primary={task.name} />
-                </ListItem>
-              ))}
+              {formData.home_tasks[0]
+                && formData.home_tasks.map((task) => (
+                  <ListItem
+                    key={task.id}
+                    secondaryAction={task.value}
+                    sx={{ maxWidth: '20rem', margin: '0 auto' }}
+                  >
+                    <ListItemText primary={task.name} />
+                  </ListItem>
+                ))}
             </List>
-            <ModalCreateTask onModalValidation={getPageData} sx={{ marginTop: '1rem' }} />
+            <ModalCreateTask
+              onModalValidation={getPageData}
+              sx={{ marginTop: '1rem' }}
+            />
           </Tile>
           <Tile textAlign="center">
             <TileTitle>List des participants</TileTitle>
             <List sx={{ marginTop: '2rem' }}>
               {formData.users.map((user) => (
-                <ListItem key={user.id} sx={{ maxWidth: '20rem', margin: '0 auto' }}>
-                  <ListItemIcon><UserAvatar pseudonym={user.pseudonym} /></ListItemIcon>
+                <ListItem
+                  key={user.id}
+                  sx={{ maxWidth: '20rem', margin: '0 auto' }}
+                >
+                  <ListItemIcon>
+                    <UserAvatar pseudonym={user.pseudonym} />
+                  </ListItemIcon>
                   <ListItemText primary={user.pseudonym} />
                 </ListItem>
               ))}

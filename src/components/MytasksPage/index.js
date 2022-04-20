@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import authContext from '../../contexts/authContext';
@@ -16,6 +16,8 @@ import ModalCreateTask from '../ModalCreateTask/ModalCreateTask';
 import { addAttributedTask, removeAttributedTask } from '../../apis/api/attributed_tasks';
 import addDoneTask from '../../apis/api/done_tasks';
 import ModalActionTask from './ModalActionTask';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+
 
 const LIST_NAME = {
   ATTRIBUTED: 'attributedTasks',
@@ -154,7 +156,34 @@ function MytasksPage() {
 
   return (
     <PageContainer>
-      <PageTitle>Mes Tâches</PageTitle>
+           <Box
+        display="flex"
+        flexDirection="row"
+        // flexWrap="wrap"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ flexDirection: { xs: 'column', md: 'row' } }}
+      >
+        <Box>
+          <LeaderboardIcon
+            sx={{
+              fontSize: '40px',
+              color: '#20c2cf',
+              marginTop: { xs: '30px', md: '0px' },
+            }}
+          />
+        </Box>
+        <Box>
+          <PageTitle color="#20c2cf">Mes tâches</PageTitle>
+        </Box>
+      </Box>
+          <Tile
+            width="100vw"
+            minHeight="70px"
+            sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
+          >
+            <Typography color="white" textAlign="center" padding="10px">“Rien ne tache et rien ne lave comme le sang.” ...Cercei Lannister <img src="https://img.icons8.com/ios/50/000000/targaryen-house.png" alt="lannister"/></Typography>
+          </Tile>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && formData && (

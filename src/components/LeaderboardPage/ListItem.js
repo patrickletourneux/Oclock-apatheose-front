@@ -21,17 +21,19 @@ function ListItems({
       >
         {/* Utiliser ListAvatar */}
         <ListItem>
-          <ListItemText primary={rank} variant="body1" />
+          <Typography fontWeight='700'>#</Typography><ListItemText primary={rank} variant="body1" />
           <ListItemAvatar>
-            <UserAvatar sx={{
-              textAlign:'center'
-            }}
-            pseudonym={pseudonym} />
+            <UserAvatar
+              sx={{
+                textAlign: 'center',
+              }}
+              pseudonym={pseudonym}
+            />
           </ListItemAvatar>
           <ListItemText
             sx={{
               width: '150px',
-              textAlign:'center'
+              textAlign: 'center',
             }}
             primary={pseudonym}
           />

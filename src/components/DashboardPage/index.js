@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
+import { Box, Typography } from '@mui/material';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import getDashboardPage from '../../apis/api/dashboard';
 import authContext from '../../contexts/authContext';
 import TileContainer from '../Tile/TileContainer';
@@ -10,6 +12,9 @@ import HomeTile from './HomeTile';
 import TasksTile from './TasksTile';
 import RankingTile from './RankingTile';
 import PageContainer from '../PageContainer/PageContainer';
+import Tile from '../Tile/Tile';
+import bb from '../../assets/images/bb.svg';
+import { Image } from '@mui/icons-material';
 
 function DashboardPage() {
   const { userData } = useContext(authContext);
@@ -41,7 +46,34 @@ function DashboardPage() {
 
   return (
     <PageContainer>
-      <PageTitle>Tableau de Bord</PageTitle>
+      <Box
+        display="flex"
+        flexDirection="row"
+        // flexWrap="wrap"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ flexDirection: { xs: 'column', md: 'row' } }}
+      >
+        <Box>
+          <LeaderboardIcon
+            sx={{
+              fontSize: '40px',
+              color: '#20c2cf',
+              marginTop: { xs: '30px', md: '0px' },
+            }}
+          />
+        </Box>
+        <Box>
+          <PageTitle color="#20c2cf">Tableau de bord</PageTitle>
+        </Box>
+      </Box>
+      <Tile
+        width="100vw"
+        minHeight="70px"
+        sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
+      >
+        <Typography color="white" textAlign="center" padding="20px">“Rien de mieux que le bicarbonate de Soude pour tout nettoyer.” ...Walter White <img backgroundColor="white" src="https://img.icons8.com/ios/50/000000/breaking-bad.png" alt="bb" /></Typography>
+      </Tile>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && (
