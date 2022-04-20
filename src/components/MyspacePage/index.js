@@ -10,7 +10,9 @@ import PageContainer from '../PageContainer/PageContainer';
 import DisplayUserInfo from './DisplayUserInfo';
 import TileTitle from '../Tile/TileTitle';
 import Tile from '../Tile/Tile';
+import PageTitle from '../PageTitle/PageTitle';
 import ModalMySpace from './ModalMySpace';
+import EmailIcon from '@mui/icons-material/Email';
 
 const styles = {
   paperContainer: {
@@ -61,11 +63,10 @@ function MySpacePage() {
   //     errorSignUp,
   //   );
   // };
-
   return (
-    <PageContainer style={styles.paperContainer} sx={{ py: '20px' }}>
+    <PageContainer style={styles.paperContainer} sx={{ py: '30px' }}>
       <Tile>
-        <TileTitle>Mon espace personnel</TileTitle>
+        <PageTitle>Mon espace personnel</PageTitle>
         <Typography textAlign="center" padding="20px" variant="body1">
           Vous pouvez modifier vos données personnelles
         </Typography>
@@ -81,20 +82,6 @@ function MySpacePage() {
 
       {/* <UserAvatar pseudonym={userData?.pseudonym} /> */}
       <Tile textAlign="center">
-        <Grid
-          container
-          gap={3}
-          direction="column"
-          alignItems="center"
-          variant="outlined"
-        >
-          <Button type="submit" variant="contained" color="error">
-            Supprimer mon compte
-          </Button>
-        </Grid>
-
-      </Tile>
-      <Tile textAlign="center">
 
         <Link
           to="/tableau-de-bord"
@@ -103,6 +90,7 @@ function MySpacePage() {
           <Button color="secondary" size="small">
             Revenir à mon tableau de bord
           </Button>
+          
         </Link>
       </Tile>
     </PageContainer>

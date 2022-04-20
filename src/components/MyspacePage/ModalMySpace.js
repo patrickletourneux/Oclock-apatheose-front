@@ -71,7 +71,7 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
 
   return (
     <Box textAlign="center">
-      <Button type="Submit" variant="outlined" onClick={handleClickOpen}>
+      <Button type="Submit" variant="contained" onClick={handleClickOpen}>
         Modifier
       </Button>
       <Dialog

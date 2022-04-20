@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import {
-  Grid,
+  Grid, Box, Typography,
 } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Tile from '../Tile/Tile';
 
 function DisplayUserInfo({
@@ -17,8 +19,30 @@ function DisplayUserInfo({
         direction="column"
         alignItems="center"
       >
-        <p>{email}</p>
-        <p>{pseudonym}</p>
+        <Box display="flex" flexDirection="row" justifyContent="center">
+          <EmailIcon sx={{ padding: '15px', fontSize: '20px' }} />
+          <Typography
+            fontSize="20px"
+            color="black"
+            fontWeight="400"
+            padding="10px"
+          >
+            {email}
+          </Typography>
+        </Box>
+        <Box display="flex" flexDirection="row" justifyContent="center">
+          <AccountCircleIcon sx={{ padding: '15px', fontSize: '20px' }} />
+          <Typography
+            fontSize="20px"
+            color="black"
+            fontWeight="400"
+            padding="10px"
+          >
+            {pseudonym}
+          </Typography>
+        </Box>
+
+        {/* <p>{pseudonym}</p> */}
 
         {/* <TextField
           disabled

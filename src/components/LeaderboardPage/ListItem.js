@@ -4,10 +4,10 @@ import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
+import UserAvatar from '../UserAvatar/UserAvatar';
 
 function ListItems({
-  pseudonym, avatar_img, score, rank,
+  pseudonym, score, rank,
 }) {
   return (
     <>
@@ -22,7 +22,7 @@ function ListItems({
         <ListItem>
           <ListItemText primary={rank} variant="body1" />
           <ListItemAvatar>
-            <Avatar alt="{users.pseudonym}" src={avatar_img} size="small" />
+            <UserAvatar pseudonym={pseudonym} />
           </ListItemAvatar>
           <ListItemText sx={{ width: '150px' }} primary={pseudonym} />
           <ListItemText
