@@ -16,7 +16,7 @@ function TaskList({
       <Droppable droppableId={droppableId}>
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
-            <Typography>Aucune tâches</Typography>
+            <Typography>Aucune tâche</Typography>
             {provided.placeholder}
           </div>
         )}
