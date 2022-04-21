@@ -7,23 +7,14 @@ import couple from '../../assets/images/couple.jpg';
 import vacance from '../../assets/images/vacance.jpg';
 import colloc from '../../assets/images/colloc.jpg';
 import family from '../../assets/images/family.jpg';
+import ordi from '../../assets/images/ordi.jpg';
+
 
 function ContainerWho() {
-  // comment permettre dappliquer des
-  // props blur opacity sur bg uniquement
-  // const styles = {
-  //   paperContainer: {
-  //     backgroundImage: `url(${couple})`,
-  //     backgroundSize: 'cover',
-  //     backgroundPosition: 'center',
-  //   },
-  // };
-
-  // style={styles.paperContainer}
   return (
     <Container style={{ position: 'relative', overflow: 'hidden' }}>
       <img
-        src={couple}
+        src={ordi}
         alt="couple"
         style={{
           position: 'absolute', zIndex: '-1', objectFit: 'cover', width: '100vw', height: '100%', top: '0', left: '50%', transform: 'translateX(-50%)', filter: 'blur(1px)', opacity: (0.5),
@@ -34,7 +25,7 @@ function ContainerWho() {
           padding="60px"
           variant="h1"
         >
-          C POUR QUI?
+          QUI PEUT JOUER ?
         </Typography>
       </Box>
       <Box
@@ -42,7 +33,7 @@ function ContainerWho() {
         flexWrap="wrap"
         gap={3}
         flexDirection="row"
-        margin={2}
+        margin={10}
         sx={{ justifyContent: 'space-evenly' }}
       >
 
@@ -124,7 +115,7 @@ function ContainerWho() {
           </CardActionArea>
         </Card>
       </Box>
-      <Box margin="30px" textAlign="center">
+      <Box margin="50px" textAlign="center">
         <Link
           to="/inscription"
           style={{ textDecoration: 'none', color: '#1ba2ac' }}

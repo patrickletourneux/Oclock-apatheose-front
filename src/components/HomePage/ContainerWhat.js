@@ -17,6 +17,7 @@ function ContainerWhat() {
   const styles = {
     paperContainer: {
       maxwidth: 1440,
+      minHeight: '100%',
       // backgroundImage: `url(${fer})`,
     },
   };
@@ -34,13 +35,13 @@ function ContainerWhat() {
       <Box
         display="flex"
         flexWrap="wrap"
-        gap={2}
+        gap={3}
         flexDirection="row"
-        margin={2}
+        margin={10}
         sx={{
           justifyContent: 'space-around',
+          alignContent: 'center',
         }}
-
       >
         <Card
           sx={{
@@ -48,24 +49,12 @@ function ContainerWhat() {
           }}
         >
           <CardActionArea>
-            <CardMedia
-              component="img"
-              height="200"
-              image={fer}
-              alt="fer"
-            />
+            <CardMedia component="img" height="300" image={fer} alt="fer" />
             <CardContent>
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="div"
-              >
+              <Typography gutterBottom variant="h5" component="div">
                 INSCRIPTION FACILE EN 1 CLIC
               </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-              >
+              <Typography variant="body2" color="text.secondary">
                 Plus rapide et facile que la mise en place de Redux,
                 l'inscription se gère grace à un formulaire simplifiée
               </Typography>
@@ -80,22 +69,15 @@ function ContainerWhat() {
           <CardActionArea>
             <CardMedia
               component="img"
-              height="200"
+              height="300"
               image={gamin}
               alt="enfant qui joue"
             />
             <CardContent>
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="div"
-              >
+              <Typography gutterBottom variant="h5" component="div">
                 INVITEZ ET JOUER AVEC QUI VOUS VOULEZ
               </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-              >
+              <Typography variant="body2" color="text.secondary">
                 Faites participer Papy aux tâches ménagères en lui envoyant
                 simplement un mail d'invitation. Verifier au préalable qu'il en
                 ait une quand même...
@@ -111,7 +93,7 @@ function ContainerWhat() {
           <CardActionArea>
             <CardMedia
               component="img"
-              height="200"
+              height="300"
               image={darkswiper}
               alt="balai noir"
             />
@@ -128,19 +110,13 @@ function ContainerWhat() {
         </Card>
       </Box>
 
-      <Box
-        margin="30px"
-        textAlign="center"
-      >
+      <Box margin="40px" textAlign="center">
         <Link
           to="/inscription"
           style={{ textDecoration: 'none', color: '#1ba2ac' }}
         >
-          <Button
-            color="primary"
-            variant="contained"
-            size="large"
-          >
+          <Button variant="contained" size="large" sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}>
+
             Inscrivez vous!
           </Button>
         </Link>

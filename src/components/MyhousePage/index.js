@@ -106,31 +106,39 @@ function MyhousePage() {
         minHeight="70px"
         sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
       >
-        <Typography color="white" textAlign="center" padding="10px">
-          “- Oui tu vas partir avec moi... (dans un sac poubelle).” ...Dexter{' '}
+        <Typography fontSize={20} color="white" textAlign="center" padding="10px">
+          “La poubelle...
+        </Typography>
+        <Typography fontSize={20} color="white" textAlign="center" padding="5px">
+          est le meilleur accessoire de rangement”
+        </Typography>
+        <Typography fontSize={15} color="white" textAlign="center">
           <img
-            sizes="small"
+            width={25}
             backgroundColor="white"
             src="https://img.icons8.com/fluency-systems-regular/48/000000/murder.png"
             alt="dexter"
-          />
+          />...Dexter
         </Typography>
       </Tile>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && formData && (
         <TileContainer>
-          <Tile textAlign="center">
+          <Tile textAlign="center" maxHeight="700px">
             <TileTitle>{formData.name}</TileTitle>
-            <Typography sx={{ marginTop: '1rem' }}>
-              {`Code d'invitation dans la maison : ${formData.password}`}
+            <Typography sx={{ marginTop: '1rem', fontSize: '2rem', fontWeight: '800' }}>
+              Code d'invitation dans la maison :
+            </Typography>
+            <Typography border="1px solid #36D1DC" borderRadius="3px" width="50%" margin="2rem auto" padding="1rem" sx={{ fontSize: '2rem', fontWeight: '800' }}>
+              {formData.password}
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <ModalModifyHomeName
                 onModalValidation={getPageData}
                 sx={{ marginTop: '2rem' }}
               />
-              <div>
+              <Box margin="30px">
                 <Button
                   variant="outlined"
                   color="error"
@@ -144,7 +152,7 @@ function MyhousePage() {
                   onConfirm={onLeaveHome}
                   onAbort={() => setOpenLeaveHomeModal(false)}
                 />
-              </div>
+              </Box>
             </Box>
           </Tile>
           <Tile textAlign="center">
@@ -158,7 +166,19 @@ function MyhousePage() {
                   <ListItem
                     key={task.id}
                     secondaryAction={task.value}
-                    sx={{ maxWidth: '20rem', margin: '0 auto' }}
+                    sx={{
+                      height: '60px',
+                      width: '95%',
+                      backgroundImage:
+                        'linear-gradient(to right, #36D1DC 0%, #5B86E5  71%);',
+                      borderRadius: '7px',
+                      margin: '10px auto',
+                      fontSize: '20px',
+                      fontWeight: '600',
+                      fontFamily: 'Nunito',
+                      color: 'white',
+                      boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;',
+                    }}
                   >
                     <ListItemText primary={task.name} />
                   </ListItem>

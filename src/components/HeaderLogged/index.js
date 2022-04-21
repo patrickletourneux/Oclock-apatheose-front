@@ -96,16 +96,6 @@ export default function HeaderLogged() {
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <Link
-              to="/"
-              component={LinkRouter}
-              variant="body1"
-              style={{ textDecoration: 'none', color: '#009688' }}
-            >
-              Ma Maison
-            </Link>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Link
               to="/classement"
               component={LinkRouter}
               variant="body1"

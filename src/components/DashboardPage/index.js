@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import { Box, Typography } from '@mui/material';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import { Image } from '@mui/icons-material';
 import getDashboardPage from '../../apis/api/dashboard';
 import authContext from '../../contexts/authContext';
 import TileContainer from '../Tile/TileContainer';
@@ -70,7 +71,9 @@ function DashboardPage() {
         minHeight="70px"
         sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
       >
-        <Typography color="white" textAlign="center" padding="20px">“Rien de mieux que le bicarbonate de Soude pour tout nettoyer.” ...Walter White <img backgroundColor="white" src="https://img.icons8.com/ios/50/000000/breaking-bad.png" alt="bb" /></Typography>
+        <Typography fontSize={20} color="white" textAlign="center" padding="20px">“Rien de mieux que le bicarbonate de Soude pour tout nettoyer.”  </Typography>
+        <Typography fontSize={15} color="white" textAlign="center"> <img width={35} backgroundColor="white" src="https://img.icons8.com/ios/50/000000/breaking-bad.png" alt="bb" />...Walter White</Typography>
+
       </Tile>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />

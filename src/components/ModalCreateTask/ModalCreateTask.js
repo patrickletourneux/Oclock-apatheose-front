@@ -1,7 +1,13 @@
 import { useContext, useState } from 'react';
 import {
-  Button, TextField, Box,
-  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+  Button,
+  TextField,
+  Box,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import PropTypes from 'prop-types';
@@ -53,18 +59,13 @@ function ModalCreateTask({ onModalValidation, ...otherProps }) {
   };
 
   return (
-    <Box {...otherProps}>
+    <Box {...otherProps} margin={3}>
       <Button variant="contained" onClick={handleClickOpen}>
         Créer une tâche
       </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-      >
+      <Dialog open={open} onClose={handleClose}>
         <form onSubmit={onSubmitHandler}>
-          <DialogTitle>
-            Créer une tâche
-          </DialogTitle>
+          <DialogTitle>Créer une tâche</DialogTitle>
           <DialogContent>
             <DialogContentText sx={{ marginTop: '1rem' }}>
               Donnez lui un nom
@@ -97,9 +98,7 @@ function ModalCreateTask({ onModalValidation, ...otherProps }) {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>
-              Annuler
-            </Button>
+            <Button onClick={handleClose}>Annuler</Button>
             <LoadingButton loading={loading} type="submit">
               Valider
             </LoadingButton>

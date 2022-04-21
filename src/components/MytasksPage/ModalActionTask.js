@@ -1,15 +1,15 @@
 import {
   Button,
-  Dialog, DialogActions, DialogContent, DialogTitle,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import DialogContentText from '@mui/material/DialogContentText';
 
 function ModalActionTask({
-  task,
-  onTaskDelete,
-  onTaskDone,
-  onAbort,
+  task, onTaskDelete, onTaskDone, onAbort,
 }) {
   const handleClose = () => {
     onAbort();
@@ -17,25 +17,14 @@ function ModalActionTask({
 
   return (
     <div>
-      <Dialog
-        open={!!task}
-        onClose={handleClose}
-      >
-        <DialogTitle>
-          {task?.name}
-        </DialogTitle>
+      <Dialog open={!!task} onClose={handleClose}>
+        <DialogTitle>{task?.name}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Que souhaitez-vous ?
-          </DialogContentText>
+          <DialogContentText>Que souhaitez-vous ?</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onTaskDone}>
-            J'ai fait la tâche
-          </Button>
-          <Button onClick={onTaskDelete}>
-            Je me désattribue la tâche
-          </Button>
+          <Button onClick={onTaskDone}>J'ai fait la tâche</Button>
+          <Button onClick={onTaskDelete}>Je me désattribue la tâche</Button>
         </DialogActions>
       </Dialog>
     </div>
