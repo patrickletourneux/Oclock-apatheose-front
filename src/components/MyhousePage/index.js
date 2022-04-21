@@ -128,7 +128,7 @@ function MyhousePage() {
         <TileContainer>
           <Tile textAlign="center" maxHeight="700px">
             <TileTitle>{formData.name}</TileTitle>
-            <Typography sx={{ marginTop: '1rem', fontSize: '2rem', fontWeight: '800' }}>
+            <Typography sx={{ marginTop: '1rem', fontSize: '1.5rem', fontWeight: '600' }}>
               Code d'invitation dans la maison :
             </Typography>
             <Typography border="1px solid #36D1DC" borderRadius="3px" width="50%" margin="2rem auto" padding="1rem" sx={{ fontSize: '2rem', fontWeight: '800' }}>
