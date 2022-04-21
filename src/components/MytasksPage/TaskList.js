@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import {
+  Box,
   List,
   ListItem,
   ListItemButton,
@@ -8,17 +9,35 @@ import {
 } from '@mui/material';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
+const getDroppableStyle = (isDragging) => {
+  if (isDragging) {
+    // return { backgroundColor: '#f68f8f', color: '#fff' };
+    return { backgroundColor: '#f1f1f1', color: '#000', border: 'solid 2px #aaa' };
+  }
+  return { backgroundColor: '#fff' };
+};
+
 function TaskList({
-  tasks, onTaskClick, droppableId, isDragDisabled,
+  tasks, onTaskClick, droppableId, isDragDisabled, isDragging,
 }) {
   if (tasks.length === 0) {
     return (
       <Droppable droppableId={droppableId}>
         {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
+          <Box
+            ref={provided.innerRef}
+            sx={{
+              minHeight: '4rem',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              ...getDroppableStyle(isDragging),
+            }}
+            {...provided.droppableProps}
+          >
             <Typography>Aucune tâche</Typography>
             {provided.placeholder}
-          </div>
+          </Box>
         )}
       </Droppable>
     );
@@ -28,6 +47,7 @@ function TaskList({
       {(provided) => (
         <List
           ref={provided.innerRef}
+          sx={getDroppableStyle(isDragging)}
           {...provided.droppableProps}
         >
           {tasks.map((task, index) => (
@@ -116,12 +136,14 @@ TaskList.propTypes = {
   onTaskClick: PropTypes.func,
   droppableId: PropTypes.string,
   isDragDisabled: PropTypes.bool,
+  isDragging: PropTypes.bool,
 };
 
 TaskList.defaultProps = {
   onTaskClick: null,
   droppableId: '',
   isDragDisabled: false,
+  isDragging: false,
 };
 
 export default TaskList;
