@@ -1,8 +1,5 @@
 import {
-  Box,
-  Button,
-  Container,
-  Typography,
+  Box, Button, Container, Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import useKonamiCode from '../KonamiCode/useKonamiCode';
@@ -20,10 +17,6 @@ function HeroContainer() {
   const styles = {
     paperContainer: {
       minHeight: '60vh',
-      // backgroundImage: `url(${tasse})`,
-      // backgroundSize: 'cover',
-      // backgroundPosition: 'center',
-      // filter: 'opacity(0.8)',
     },
   };
   return (
@@ -48,20 +41,15 @@ function HeroContainer() {
         alignContent="space-between"
         padding={5}
       >
-        <Box
-          width={300}
-          padding={5}
-          textAlign="center"
-        >
+        <Box width={300} padding={5} textAlign="center">
           <Typography
             variant="h2"
             sx={{
               fontSize: { xs: '20px', md: '25px' },
             }}
           >
-            CduProps organise un jeu en famille, en couple
-            ou en colocation pour s'affronter
-            autour des tâches ménagères et mieux les répartir.
+            CduProps organise un jeu en famille, en couple ou en colocation pour
+            s'affronter autour des tâches ménagères et mieux les répartir.
           </Typography>
         </Box>
         <Box
@@ -76,20 +64,12 @@ function HeroContainer() {
           src={logoclean}
         />
       </Box>
-      <Box
-        margin="20px"
-        textAlign="center"
-        paddingBottom={5}
-      >
+      <Box margin="20px" textAlign="center" paddingBottom={5}>
         <Link
           to="/inscription"
           style={{ textDecoration: 'none', color: '#1ba2ac' }}
         >
-          <Button
-            color="primary"
-            variant="contained"
-            size="large"
-          >
+          <Button color="primary" variant="contained" size="large">
             Inscrivez vous!
           </Button>
         </Link>
