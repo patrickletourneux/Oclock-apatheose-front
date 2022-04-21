@@ -3,13 +3,12 @@ import {
   Box,
   Button,
   Typography,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
+  List, ListItem, ListItemIcon, ListItemText,
+  Collapse, Alert, IconButton,
 } from '@mui/material';
-
 import HomeIcon from '@mui/icons-material/Home';
+import CloseIcon from '@mui/icons-material/Close';
+
 import authContext from '../../contexts/authContext';
 import PageContainer from '../PageContainer/PageContainer';
 import PageTitle from '../PageTitle/PageTitle';
@@ -40,6 +39,7 @@ function MyhousePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [openLeaveHomeModal, setOpenLeaveHomeModal] = useState(false);
+  const [displayInvitesConfirmed, setDisplayInvitesConfirmed] = useState(false);
 
   const hasHome = !!(
     userData
@@ -192,6 +192,23 @@ function MyhousePage() {
           </Tile>
           <Tile textAlign="center">
             <TileTitle>List des participants</TileTitle>
+            <Box sx={{ width: '100%' }}>
+              <Collapse in={displayInvitesConfirmed}>
+                <Alert
+                  action={(
+                    <IconButton
+                      aria-label="close"
+                      size="small"
+                      onClick={() => setDisplayInvitesConfirmed(false)}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  )}
+                >
+                  Les invitations ont bien été envoyées !
+                </Alert>
+              </Collapse>
+            </Box>
             <List sx={{ marginTop: '2rem' }}>
               {formData.users.map((user) => (
                 <ListItem
@@ -205,7 +222,7 @@ function MyhousePage() {
                 </ListItem>
               ))}
             </List>
-            <ModalInvite sx={{ marginTop: '2rem' }} />
+            <ModalInvite sx={{ marginTop: '2rem' }} onModalValidation={(nbOfInvites) => setDisplayInvitesConfirmed(!!nbOfInvites)} />
           </Tile>
         </TileContainer>
       )}
