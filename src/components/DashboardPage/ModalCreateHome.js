@@ -204,18 +204,23 @@ function ModalCreateHome() {
             <DialogContentText marginTop="3rem">
               3. Invites tes proches !
             </DialogContentText>
-            {data.invitations.map((invite, index) => (
-              <TextField
-                key={index}
-                name={`invitations[${index}]`}
-                label={`Email ${index + 1}`}
-                value={invite}
-                type="email"
-                onChange={handleInvitationChange(index)}
-                fullWidth
-                sx={{ marginTop: '1rem' }}
-              />
-            ))}
+            <List>
+              {data.invitations.map((invite, index) => (
+                <ListItem key={index} disablePadding>
+                  <TextField
+                    autoComplete="off"
+                    key={index}
+                    name={`invitations[${index}]`}
+                    label={`Email ${index + 1}`}
+                    value={invite}
+                    type="email"
+                    onChange={handleInvitationChange(index)}
+                    fullWidth
+                    sx={{ marginTop: '1rem' }}
+                  />
+                </ListItem>
+              ))}
+            </List>
             <IconButton
               variant="contained"
               onClick={onAddInviteClick}
@@ -226,6 +231,7 @@ function ModalCreateHome() {
               4. Définis une récompense si tu le souhaites !
             </DialogContentText>
             <TextField
+              required
               name="title"
               label="Nom de la récompense"
               value={data.reward.title}
@@ -234,6 +240,7 @@ function ModalCreateHome() {
               sx={{ marginTop: '1rem' }}
             />
             <TextField
+              required
               name="description"
               label="Description de la récompense"
               value={data.reward.description}

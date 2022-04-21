@@ -54,7 +54,7 @@ function ModalInvite({ onModalValidation, ...otherProps }) {
       await Promise.all(promises);
       setLoading(false);
       setOpen(false);
-      onModalValidation();
+      onModalValidation(promises.length);
     } catch (err) {
       setLoading(false);
       setError(err.message);

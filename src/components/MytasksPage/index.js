@@ -20,6 +20,7 @@ import {
 } from '../../apis/api/attributed_tasks';
 import addDoneTask from '../../apis/api/done_tasks';
 import ModalActionTask from './ModalActionTask';
+import PageNoHome from '../PageNoHome/PageNoHome';
 
 const LIST_NAME = {
   ATTRIBUTED: 'attributedTasks',
@@ -264,6 +265,7 @@ function MytasksPage() {
       </Tile>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
+      <PageNoHome hasHome={hasHome} />
       {!loading && formData && (
         <TileContainer textAlign="center">
           <DragDropContext onDragEnd={onDragEnd}>

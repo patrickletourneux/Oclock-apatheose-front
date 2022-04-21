@@ -14,6 +14,7 @@ import Tile from '../Tile/Tile';
 import TileTitle from '../Tile/TileTitle';
 import PageContainer from '../PageContainer/PageContainer';
 import ModalReward from './ModalReward';
+import PageNoHome from '../PageNoHome/PageNoHome';
 
 function LeaderboardPage() {
   const [data, setData] = useState(null);
@@ -21,6 +22,11 @@ function LeaderboardPage() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const hasHome = !!(
+    userData
+    && (userData?.home_id || userData?.home_id === 0)
+  );
 
   const getRankingInfo = () => {
     if (userData) {
@@ -41,11 +47,16 @@ function LeaderboardPage() {
   };
 
   useEffect(() => {
-    getRankingInfo();
-    // tant que la variable userData n'est pas modifié le useEffect ne senclenche
-    //  pas et la fonction n'est pas executee
+    if (hasHome) {
+      getRankingInfo();
+    } else if (!hasHome && userData) {
+      setLoading(false);
+      setData(null);
+    }
+    // tant que les variables userData et hasHome ne sont pas modifié
+    // le useEffect ne s'enclenche pas et la fonction n'est pas executee
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userData]);
+  }, [userData, hasHome]);
 
   return (
     <PageContainer>
@@ -72,7 +83,8 @@ function LeaderboardPage() {
       </Box>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
-      {!loading && (
+      <PageNoHome hasHome={hasHome} />
+      {!loading && data && (
         <>
           <Tile
             width="100vw"

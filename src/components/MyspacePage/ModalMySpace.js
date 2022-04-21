@@ -19,9 +19,10 @@ const Transition = React.forwardRef((props, ref) => (
 ));
 
 // eslint-disable-next-line no-unused-vars,react/prop-types
-export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
+export default function ModalMySpace({ userId }) {
   const { updateAuthData } = useContext(authContext);
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState('');
   const [data, setData] = useState({
     email: '',
     pseudonym: '',
@@ -36,14 +37,13 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
     setOpen(false);
   };
 
-  function successUpdateUser(resSuccess) {
-    getUserInfo();
+  function successUpdateUser() {
     updateAuthData(userId);
-    console.log(resSuccess);
+    handleClose();
   }
 
   function errorUpdateUser(resError) {
-    console.log(resError);
+    setError(resError);
   }
 
   function handleFieldChange(e) {
@@ -54,6 +54,7 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
 
   const submit = (e) => {
     e.preventDefault();
+    setError('');
     updateUser(
       userId,
       {
@@ -65,7 +66,6 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
       successUpdateUser,
       errorUpdateUser,
     );
-    handleClose();
   };
 
   return (
@@ -79,48 +79,56 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
         TransitionComponent={Transition}
         keepMounted
       >
-        <DialogTitle textAlign="center">Modifier vos informations</DialogTitle>
-        <DialogContent>
-          <DialogContentText textAlign="center" margin="20px">
-            Vous pouvez modifier les champs suivants:
-          </DialogContentText>
-          <Box component="form" onSubmit={submit}>
-            <TextField
-              onChange={(e) => handleFieldChange(e)}
-              name="email"
-              value={data.email}
-              margin="normal"
-              label="Votre email"
-              variant="outlined"
-              fullWidth
-            />
-            <TextField
-              margin="normal"
-              autoComplete="false"
-              name="pseudonym"
-              label="Votre pseudonyme"
-              onChange={(e) => handleFieldChange(e)}
-              value={data.pseudonymnym}
-              variant="outlined"
-              fullWidth
-            />
-            <TextField
-              autoComplete="false"
-              margin="normal"
-              type="password"
-              name="password"
-              label="Votre password"
-              onChange={(e) => handleFieldChange(e)}
-              value={data.password}
-              variant="outlined"
-              fullWidth
-            />
-          </Box>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Annuler</Button>
-          <Button onClick={submit}>Valider</Button>
-        </DialogActions>
+        <form onSubmit={submit}>
+          <DialogTitle textAlign="center">Modifier vos informations</DialogTitle>
+          <DialogContent>
+            <DialogContentText textAlign="center" margin="20px">
+              Vous pouvez modifier les champs suivants:
+            </DialogContentText>
+            <Box>
+              <TextField
+                required
+                onChange={(e) => handleFieldChange(e)}
+                name="email"
+                value={data.email}
+                margin="normal"
+                label="Votre email"
+                variant="outlined"
+                fullWidth
+              />
+              <TextField
+                required
+                margin="normal"
+                autoComplete="false"
+                name="pseudonym"
+                label="Votre pseudonyme"
+                onChange={(e) => handleFieldChange(e)}
+                value={data.pseudonym}
+                variant="outlined"
+                fullWidth
+              />
+              <TextField
+                required
+                autoComplete="false"
+                margin="normal"
+                type="password"
+                name="password"
+                label="Votre password"
+                onChange={(e) => handleFieldChange(e)}
+                value={data.password}
+                variant="outlined"
+                fullWidth
+              />
+            </Box>
+            <DialogContentText color="error" sx={{ marginTop: '1rem' }}>
+              {error}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Annuler</Button>
+            <Button type="submit">Valider</Button>
+          </DialogActions>
+        </form>
       </Dialog>
     </Box>
   );
