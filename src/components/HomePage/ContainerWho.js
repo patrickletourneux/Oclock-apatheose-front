@@ -64,7 +64,7 @@ function ContainerWho() {
                 COUPLE
               </Typography>
               <Typography variant="body2" color="text.secondary"><HeartBrokenIcon />
-                Parlez en à Johnny Depp , avec C DU PROP'S ,
+                Parlez en à Johnny Depp, avec C DU PROP'S,
                 il ne serait pas au tribunal aujourd'hui
               </Typography>
             </CardContent>
@@ -106,7 +106,7 @@ function ContainerWho() {
                 On a tous connu un Kevin couché sur le canapé,
                 a se servir dans le frigo, pendant que vous
                 nettoyiez les traces de la soirée d'hier pour récupérer la
-                caution...<br /><br />Avec C DU PROP'S , Kevin il va se lever....
+                caution...<br /><br />Avec C DU PROP'S, Kevin il va se lever...
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -125,9 +125,9 @@ function ContainerWho() {
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 On a tous connu un Kevin couché dans le hamac,
-                a se servir dans le frigo, pendant que vous nettoyiez
+                à se servir dans le frigo, pendant que vous nettoyiez
                 les traces de la soirée d'hier pour récupérer la caution...
-                <br /><br />Avec C DU PROP'S , Kevin il va se lever....
+                <br /><br />Avec C DU PROP'S, Kevin il va se lever...
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -144,7 +144,7 @@ function ContainerWho() {
             size="large"
             sx={{ marginTop: '30px' }}
           >
-            Inscrivez vous!
+            Inscrivez vous !
           </Button>
         </Link>
       </Box>

@@ -37,7 +37,7 @@ function ContainerWhat() {
           variant="h1"
           color="white"
         >
-          POURQUOI UTILISER "C DU PROP'S"?
+          POURQUOI UTILISER "C DU PROP'S" ?
         </Typography>
       </Box>
       <Box
@@ -129,7 +129,7 @@ function ContainerWhat() {
               marginTop: '30px',
             }}
           >
-            Inscrivez vous!
+            Inscrivez vous !
           </Button>
         </Link>
       </Box>

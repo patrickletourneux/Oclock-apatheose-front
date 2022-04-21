@@ -23,7 +23,7 @@ function HomeTile({ data, hasHome }) {
         paddingBottom="35px"
       >
         <Typography marginTop="10px" padding variant="h3" fontWeight={700}>
-          Nom de la maison:
+          Nom de la maison :
         </Typography>
         <Typography
           variant="h3"
@@ -39,7 +39,7 @@ function HomeTile({ data, hasHome }) {
 
       <Box textAlign="center" margin="2rem">
         <Typography margin padding variant="h3" fontWeight={700}>
-          Nombre de participants cette semaine:
+          Nombre de participants cette semaine :
         </Typography>
         <Typography textAlign="center" fontSize="2rem" color="#F78F8F">
           {`Il y a ${data.home.userCount} inscrit${

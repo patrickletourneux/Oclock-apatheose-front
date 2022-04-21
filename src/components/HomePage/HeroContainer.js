@@ -70,7 +70,7 @@ function HeroContainer() {
           style={{ textDecoration: 'none', color: '#1ba2ac' }}
         >
           <Button color="primary" variant="contained" size="large">
-            Inscrivez vous!
+            Inscrivez vous !
           </Button>
         </Link>
       </Box>
