@@ -36,7 +36,7 @@ function Page404() {
           maxWidth: { xs: 300, md: 900 },
           objectFit: 'cover',
           margin: '0px auto',
-          display:'flex',
+          display: 'flex',
         }}
         alt="nettoyeur"
         src={tasse}

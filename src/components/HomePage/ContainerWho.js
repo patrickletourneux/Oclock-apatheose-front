@@ -9,13 +9,12 @@ import {
   Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 import couple from '../../assets/images/couple.jpg';
 import vacance from '../../assets/images/vacance.jpg';
 import colloc from '../../assets/images/colloc.jpg';
-import family from '../../assets/images/family.jpg';
 import ordi from '../../assets/images/ordi.jpg';
-import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
-import kk from "../../assets/images/kk.jpg"
+import kk from '../../assets/images/kk.jpg';
 
 function ContainerWho() {
   return (
@@ -65,7 +64,8 @@ function ContainerWho() {
                 COUPLE
               </Typography>
               <Typography variant="body2" color="text.secondary"><HeartBrokenIcon />
-Parlez en à Johnny Depp , avec C DU PROP'S , il ne serait pas au tribunal aujourd'hui 
+                Parlez en à Johnny Depp , avec C DU PROP'S ,
+                il ne serait pas au tribunal aujourd'hui
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -83,7 +83,7 @@ Parlez en à Johnny Depp , avec C DU PROP'S , il ne serait pas au tribunal aujou
                 FAMILLE
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Vous vous demandez comment Kim fait pour avoir 
+                Vous vous demandez comment Kim fait pour avoir
                 une cuisine nickel avec 3 enfants ?<br /><br /><br />...
                 Elle utilise "C DU PROPS"
               </Typography>
@@ -103,7 +103,10 @@ Parlez en à Johnny Depp , avec C DU PROP'S , il ne serait pas au tribunal aujou
                 COLOCATION
               </Typography>
               <Typography variant="body2" color="text.secondary">
-On a tous connu un Kevin couché sur le canapé, a se servir dans le frigo, pendant que vous nettoyiez les traces de la soirée d'hier pour récupérer la caution...<br/><br/>Avec C DU PROP'S , Kevin il va se lever....
+                On a tous connu un Kevin couché sur le canapé,
+                a se servir dans le frigo, pendant que vous
+                nettoyiez les traces de la soirée d'hier pour récupérer la
+                caution...<br /><br />Avec C DU PROP'S , Kevin il va se lever....
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -121,7 +124,10 @@ On a tous connu un Kevin couché sur le canapé, a se servir dans le frigo, pend
                 VACANCES
               </Typography>
               <Typography variant="body2" color="text.secondary">
-              On a tous connu un Kevin couché dans le hamac, a se servir dans le frigo, pendant que vous nettoyiez les traces de la soirée d'hier pour récupérer la caution...<br/><br/>Avec C DU PROP'S , Kevin il va se lever....
+                On a tous connu un Kevin couché dans le hamac,
+                a se servir dans le frigo, pendant que vous nettoyiez
+                les traces de la soirée d'hier pour récupérer la caution...
+                <br /><br />Avec C DU PROP'S , Kevin il va se lever....
               </Typography>
             </CardContent>
           </CardActionArea>
