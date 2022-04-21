@@ -106,10 +106,20 @@ function MyhousePage() {
         minHeight="70px"
         sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
       >
-        <Typography fontSize={20} color="white" textAlign="center" padding="10px">
+        <Typography
+          fontSize={20}
+          color="white"
+          textAlign="center"
+          padding="10px"
+        >
           “La poubelle...
         </Typography>
-        <Typography fontSize={20} color="white" textAlign="center" padding="5px">
+        <Typography
+          fontSize={20}
+          color="white"
+          textAlign="center"
+          padding="5px"
+        >
           est le meilleur accessoire de rangement”
         </Typography>
         <Typography fontSize={15} color="white" textAlign="center">
@@ -118,7 +128,8 @@ function MyhousePage() {
             backgroundColor="white"
             src="https://img.icons8.com/fluency-systems-regular/48/000000/murder.png"
             alt="dexter"
-          />...Dexter
+          />
+          ...Dexter
         </Typography>
       </Tile>
       <PageLoader isDisplayed={loading} />
@@ -127,10 +138,19 @@ function MyhousePage() {
         <TileContainer>
           <Tile textAlign="center" maxHeight="700px">
             <TileTitle>{formData.name}</TileTitle>
-            <Typography sx={{ marginTop: '1rem', fontSize: '1.5rem', fontWeight: '600' }}>
+            <Typography
+              sx={{ marginTop: '1rem', fontSize: '1.5rem', fontWeight: '600' }}
+            >
               Code d'invitation dans la maison :
             </Typography>
-            <Typography border="1px solid #36D1DC" borderRadius="3px" width="50%" margin="2rem auto" padding="1rem" sx={{ fontSize: '2rem', fontWeight: '800' }}>
+            <Typography
+              border="1px solid #36D1DC"
+              borderRadius="3px"
+              width="50%"
+              margin="2rem auto"
+              padding="1rem"
+              sx={{ fontSize: '2rem', fontWeight: '800' }}
+            >
               {formData.password}
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -148,7 +168,10 @@ function MyhousePage() {
                 </Button>
                 <ModalConfirmation
                   open={openLeaveHomeModal}
-                  message={getLeavingConfirmationMessage(formData.users.length, formData.name)}
+                  message={getLeavingConfirmationMessage(
+                    formData.users.length,
+                    formData.name,
+                  )}
                   onConfirm={onLeaveHome}
                   onAbort={() => setOpenLeaveHomeModal(false)}
                 />
@@ -158,7 +181,7 @@ function MyhousePage() {
           <Tile textAlign="center">
             <TileTitle>Tâches disponibles</TileTitle>
             {!formData.home_tasks[0] && (
-              <Typography sx={{ marginTop: '2rem' }}>Aucune tâches</Typography>
+              <Typography sx={{ marginTop: '2rem' }}>Aucune tâche</Typography>
             )}
             <List sx={{ marginTop: '1rem' }}>
               {formData.home_tasks[0]
@@ -190,8 +213,8 @@ function MyhousePage() {
             />
           </Tile>
           <Tile textAlign="center">
-            <TileTitle>List des participants</TileTitle>
-            <List sx={{ marginTop: '2rem' }}>
+            <TileTitle>Liste des participants</TileTitle>
+            <List>
               {formData.users.map((user) => (
                 <ListItem
                   key={user.id}
@@ -200,7 +223,19 @@ function MyhousePage() {
                   <ListItemIcon>
                     <UserAvatar pseudonym={user.pseudonym} />
                   </ListItemIcon>
-                  <ListItemText primary={user.pseudonym} />
+                  <ListItemText
+                    primary={(
+                      <Typography
+                        sx={{
+                          fontWeight: '700',
+                          fontSize: '20px',
+                          padding: '5px',
+                        }}
+                      >
+                        {user.pseudonym}
+                      </Typography>
+                    )}
+                  />
                 </ListItem>
               ))}
             </List>

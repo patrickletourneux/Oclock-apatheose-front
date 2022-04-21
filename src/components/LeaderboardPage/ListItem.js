@@ -19,12 +19,15 @@ function ListItems({ pseudonym, score, rank }) {
       >
         {/* Utiliser ListAvatar */}
         <ListItem>
-          <Typography fontWeight="700">#</Typography>
+          <Typography fontWeight="600">#</Typography>
           <ListItemText primary={rank} variant="body1" />
           <ListItemAvatar>
             <UserAvatar
               sx={{
                 textAlign: 'center',
+                width: '25px',
+                height: '25px',
+                marginLeft: '5px',
               }}
               pseudonym={pseudonym}
             />
@@ -38,13 +41,13 @@ function ListItems({ pseudonym, score, rank }) {
           />
           <ListItemText
             sx={{
-              width: '30px',
+              width: '50px',
               color: 'orange',
               textAlign: 'right',
             }}
             primary={score}
           />
-          <Typography sx={{ marginLeft: '2px' }}>points</Typography>
+          <Typography sx={{ marginLeft: '5px' }}>points</Typography>
         </ListItem>
       </List>
       <Divider variant="fullwidth" />
