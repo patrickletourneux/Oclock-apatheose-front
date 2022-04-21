@@ -94,11 +94,13 @@ function HomeTile({ data, hasHome }) {
         color="error"
         textAlign="center"
         marginTop="2rem"
+        padding="0 1rem"
       >
         Vous n'avez pas encore de maison
       </Typography>
       <Box
         marginTop="2rem"
+        marginBottom="2rem"
         display="flex"
         justifyContent="center"
         gap="1rem 2rem"
