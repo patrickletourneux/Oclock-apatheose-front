@@ -3,13 +3,12 @@ import {
   Box,
   Button,
   Typography,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
+  List, ListItem, ListItemIcon, ListItemText,
+  Collapse, Alert, IconButton,
 } from '@mui/material';
-
 import HomeIcon from '@mui/icons-material/Home';
+import CloseIcon from '@mui/icons-material/Close';
+
 import authContext from '../../contexts/authContext';
 import PageContainer from '../PageContainer/PageContainer';
 import PageTitle from '../PageTitle/PageTitle';
@@ -25,6 +24,7 @@ import TileTitle from '../Tile/TileTitle';
 import ModalConfirmation from './ModalConfirmation';
 import ModalInvite from './ModalInvite';
 import { leaveHome } from '../../apis/api/join_home';
+import PageNoHome from '../PageNoHome/PageNoHome';
 
 const getLeavingConfirmationMessage = (usersCount, homeName) => {
   if (usersCount > 1) {
@@ -39,6 +39,7 @@ function MyhousePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [openLeaveHomeModal, setOpenLeaveHomeModal] = useState(false);
+  const [displayInvitesConfirmed, setDisplayInvitesConfirmed] = useState(false);
 
   const hasHome = !!(
     userData
@@ -125,7 +126,6 @@ function MyhousePage() {
         <Typography fontSize={15} color="white" textAlign="center">
           <img
             width={25}
-            backgroundColor="white"
             src="https://img.icons8.com/fluency-systems-regular/48/000000/murder.png"
             alt="dexter"
           />
@@ -134,6 +134,7 @@ function MyhousePage() {
       </Tile>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
+      <PageNoHome hasHome={hasHome} />
       {!loading && formData && (
         <TileContainer>
           <Tile textAlign="center" maxHeight="700px">
@@ -214,7 +215,24 @@ function MyhousePage() {
           </Tile>
           <Tile textAlign="center">
             <TileTitle>Liste des participants</TileTitle>
-            <List>
+            <Box sx={{ width: '100%' }}>
+              <Collapse in={displayInvitesConfirmed}>
+                <Alert
+                  action={(
+                    <IconButton
+                      aria-label="close"
+                      size="small"
+                      onClick={() => setDisplayInvitesConfirmed(false)}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  )}
+                >
+                  Les invitations ont bien été envoyées !
+                </Alert>
+              </Collapse>
+            </Box>
+            <List sx={{ marginTop: '2rem' }}>
               {formData.users.map((user) => (
                 <ListItem
                   key={user.id}
@@ -239,7 +257,7 @@ function MyhousePage() {
                 </ListItem>
               ))}
             </List>
-            <ModalInvite sx={{ marginTop: '2rem' }} />
+            <ModalInvite sx={{ marginTop: '2rem' }} onModalValidation={(nbOfInvites) => setDisplayInvitesConfirmed(!!nbOfInvites)} />
           </Tile>
         </TileContainer>
       )}

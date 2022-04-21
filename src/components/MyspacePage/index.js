@@ -91,13 +91,11 @@ function MySpacePage() {
       </Box>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
-      {!loading && (
+      {!loading && data && (
         <TileContainer>
           <Tile textAlign="center">
             <DisplayUserInfo {...data} />
             <ModalMySpace
-              userInfo={data}
-              getUserInfo={getUserInfo}
               userId={data?.id}
             />
             <Link
