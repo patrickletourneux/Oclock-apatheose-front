@@ -1,12 +1,13 @@
 import { Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import UserAvatar from '../UserAvatar/UserAvatar';
+import crowns from '../../assets/images/crowns.png'
 
 const getFirstUserString = (pseudonym, score, isCurrentUserFirst) => {
   if (isCurrentUserFirst) {
-    return `Vous êtes 1er avec ${score} point${score > 1 ? 's' : ''}`;
+    return `Vous êtes en tête avec ${score} point${score > 1 ? 's' : ''}`;
   }
-  return `${pseudonym} est 1er avec ${score} point${score > 1 ? 's' : ''}`;
+  return `${pseudonym} est en tête avec ${score} point${score > 1 ? 's' : ''}`;
 };
 
 function FirstRankingSecondaryTile({
@@ -31,8 +32,8 @@ function FirstRankingSecondaryTile({
       }}
       {...otherProps}
     >
-      <UserAvatar pseudonym={data.pseudonym} />
-      <Typography>
+      <img width="70px" src={crowns} alt="crowns" />
+      <Typography fontSize="1.7rem" textAlign="center">
         {getFirstUserString(data.pseudonym, data.score, isCurrentUserFirst)}
       </Typography>
     </Box>

@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import UserAvatar from '../UserAvatar/UserAvatar';
+import you from '../../assets/images/you.png';
 
 const getRankString = (rank, isCurrentUserFirst) => {
   if (isCurrentUserFirst) {
@@ -37,14 +38,17 @@ function UserRankingSecondaryTile({
         borderColor: '#36D1DC',
         // boxShadow: '0 1px 3px ',
         padding: '1rem',
-        margin: '.5rem',
+        width: '80%',
+        margin: '0 auto',
       }}
       {...otherProps}
     >
-      <UserAvatar pseudonym={data.pseudonym} />
-      <Typography>{getRankString(data.rank, isCurrentUserFirst)}</Typography>
+      <Box display="flex" flexDirection="row" gap={3}>
+        <UserAvatar pseudonym={data.pseudonym} /><img width="40px" src={you} alt="you" />
+      </Box>
+      <Typography fontSize="1.7rem" textAlign="center">{getRankString(data.rank, isCurrentUserFirst)}</Typography>
       {!isCurrentUserFirst && (
-        <Typography textAlign="center">{getScoreString(scoreDifference)}</Typography>
+        <Typography fontSize="1.7rem" textAlign="center">{getScoreString(scoreDifference)}</Typography>
       )}
     </Box>
   );

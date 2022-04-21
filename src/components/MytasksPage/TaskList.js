@@ -16,7 +16,7 @@ function TaskList({
       <Droppable droppableId={droppableId}>
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
-            <Typography>Aucune tâches</Typography>
+            <Typography>Aucune tâche</Typography>
             {provided.placeholder}
           </div>
         )}
@@ -26,7 +26,10 @@ function TaskList({
   return (
     <Droppable droppableId={droppableId}>
       {(provided) => (
-        <List ref={provided.innerRef} {...provided.droppableProps}>
+        <List
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+        >
           {tasks.map((task, index) => (
             <Draggable
               key={task.id}
@@ -44,7 +47,7 @@ function TaskList({
                     margin: '15px 15px',
                     padding: '15px',
                     fontSize: '20px',
-                    // fontWeight: '600',
+                    fontWeight: '600',
                     fontFamily: 'Nunito',
                     color: 'white',
                     boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;',
@@ -73,11 +76,22 @@ function TaskList({
                     />
                   ) : (
                     <ListItemButton
-                      // dense
                       role="button"
                       onClick={() => onTaskClick(task)}
                     >
-                      <ListItemText primary={task.name} />
+                      <ListItemText
+                        primary={(
+                          <Typography sx={{
+                            width: '80%',
+                            fontWeight: '700',
+                            color: 'white',
+                            fontSize: '20px',
+                            padding: '5px',
+                          }}
+                          >{task.name}
+                          </Typography>
+)}
+                      />
                     </ListItemButton>
                   )}
                 </ListItem>

@@ -17,7 +17,7 @@ function RankingTile({ data, hasHome }) {
         display="flex"
         // justifyContent="space-evenly"
         flexWrap="wrap"
-        gap="1rem"
+        gap="3rem"
         marginTop="2rem"
       >
         <FirstRankingSecondaryTile

@@ -20,7 +20,7 @@ function Countdown({
         fontSize="20px"
         fontWeight="500"
       >
-        Plus que Jack Wilson il vous reste{' '}
+        Plus que Jack Bauer il vous reste
       </Typography>
 
       <Box display="flex" flexDirection="row" justifyContent="center">

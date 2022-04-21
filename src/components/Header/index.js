@@ -12,17 +12,22 @@ import { Link as LinkRouter } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <AppBar position="static" sx={{ height: '70px', background: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}>
+    <AppBar
+      position="static"
+      sx={{
+        height: '70px',
+        background: 'linear-gradient(90deg, #21C2CF, #49D7BB)',
+        justifyContent: 'center',
+      }}
+    >
       <Toolbar>
         <Typography
           variant="h6"
           component="h1"
-          href="/"
           sx={{
             flexGrow: 1,
-            color: 'white',
-            padding: '20px',
-            fontSize: { xs: '14px', md: '20px' },
+            fontSize: { xs: '18px', md: '30px' },
+            fontWeight: '800',
           }}
         >
           <Link

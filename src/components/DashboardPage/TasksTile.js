@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { Box, Button, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { Link as LinkRouter } from 'react-router-dom';

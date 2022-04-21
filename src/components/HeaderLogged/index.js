@@ -111,7 +111,8 @@ export default function HeaderLogged() {
           sx={{
             flexGrow: 1,
             textAlign: 'center',
-            fontSize: { xs: '14px', md: '20px' },
+            fontSize: { xs: '18px', md: '30px' },
+            fontWeight: '800',
           }}
         >
           <Link
@@ -128,6 +129,7 @@ export default function HeaderLogged() {
           sx={{
             // flexGrow: 1,
             textAlign: 'center',
+            fontWeight: '700',
             fontSize: { xs: '14px', md: '20px' },
             paddingTop: { xs: '10px', md: '0px' },
             paddingRight: { xs: '10px', md: '10px' },
