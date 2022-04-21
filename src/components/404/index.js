@@ -1,8 +1,17 @@
 import { Box, Typography } from '@mui/material';
 import oclock from '../../assets/images/oclock.jpg';
 import PageContainer from '../PageContainer/PageContainer';
+import useKonamiCode from '../KonamiCode/useKonamiCode';
+import Sound from '../KonamiCode/Sound';
+import noe from '../../assets/images/noe.jpg';
 
 function Page404() {
+  const konami = useKonamiCode();
+  const tasse = konami ? noe : oclock;
+
+  if (konami) {
+    return <Sound />;
+  }
   return (
     <PageContainer
       margin="30px auto"
@@ -23,14 +32,14 @@ function Page404() {
       <Box
         component="img"
         sx={{
-          height: 550,
-          width: 800,
-          maxHeight: { xs: 400, md: 900 },
-          maxWidth: { xs: 400, md: 900 },
+          maxHeight: { xs: 300, md: 900 },
+          maxWidth: { xs: 300, md: 900 },
           objectFit: 'cover',
+          margin: '0px auto',
+          display:'flex',
         }}
         alt="nettoyeur"
-        src={oclock}
+        src={tasse}
       />
       <Typography
         variant="h3"
