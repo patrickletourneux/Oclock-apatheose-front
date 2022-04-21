@@ -5,7 +5,7 @@ function Tile({ children, ...otherProps }) {
   return (
     <Grid
       item
-      xs={9}
+      xs={10}
       md={7}
       xl={3}
       sx={{

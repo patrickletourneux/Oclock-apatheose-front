@@ -15,9 +15,18 @@ const getFirstUserString = (pseudonym, score, isCurrentUserFirst) => {
 function FirstRankingSecondaryTile({ data, isCurrentUserFirst, ...otherProps }) {
   return (
     <Box
+    display="flex"
+    flexDirection="column"
+    justifyContent='center'
+    alignItems="center"
+    gap={2}
       sx={{
-        boxShadow: '0 1px 3px black',
+        border: 1,
+        borderColor: '#36D1DC',
+        // boxShadow: '0 1px 3px ',
         padding: '1rem',
+        width: '80%',
+        margin: '0 auto',
       }}
       {...otherProps}
     >
