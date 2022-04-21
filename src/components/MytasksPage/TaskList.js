@@ -38,13 +38,13 @@ function TaskList({
                 <ListItem
                   sx={{
                     height: '60px',
-                    width: '95%',
-                    backgroundImage:
-                      'linear-gradient(to right, #36D1DC 0%, #5B86E5  71%);',
+                    width: 'auto',
+                    backgroundColor: '#46C2CF',
                     borderRadius: '7px',
-                    margin: '10px auto',
+                    margin: '15px 15px',
+                    padding: '15px',
                     fontSize: '20px',
-                    fontWeight: '600',
+                    // fontWeight: '600',
                     fontFamily: 'Nunito',
                     color: 'white',
                     boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;',
@@ -56,7 +56,21 @@ function TaskList({
                   disablePadding
                 >
                   {onTaskClick === null ? (
-                    <ListItemText primary={task.name} />
+                    <ListItemText
+                      primary={(
+                        <Typography
+                          sx={{
+                            width: '80%',
+                            fontWeight: '700',
+                            color: 'white',
+                            fontSize: '20px',
+                            padding: '5px',
+                          }}
+                        >
+                          {task.name}
+                        </Typography>
+                      )}
+                    />
                   ) : (
                     <ListItemButton
                       // dense
