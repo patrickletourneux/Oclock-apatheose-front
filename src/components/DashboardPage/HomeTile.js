@@ -1,22 +1,40 @@
-import { Box, Button, LinearProgress, Tooltip, Typography } from "@mui/material";
-import { Link as LinkRouter } from "react-router-dom";
-import PropTypes from "prop-types";
+import {
+  Box,
+  Button,
+  Tooltip,
+  Typography,
+} from '@mui/material';
+import { Link as LinkRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import TileTitle from "../Tile/TileTitle";
-import Tile from "../Tile/Tile";
-import ModalJoinHome from "./ModalJoinHome";
-import Countdown from "../Countdown/Countdown";
-import ModalCreateHome from "./ModalCreateHome";
-import { BorderBottom } from "@mui/icons-material";
+import TileTitle from '../Tile/TileTitle';
+import Tile from '../Tile/Tile';
+import ModalJoinHome from './ModalJoinHome';
+import ModalCreateHome from './ModalCreateHome';
 
 function HomeTile({ data, hasHome }) {
   const displayWithHome = () => (
     <>
       <TileTitle>Ma maison</TileTitle>
 
-      <Box textAlign="center" borderBottom="1px solid #36D1DC" paddingBottom="35px">
-        <Typography marginTop="10px" padding variant="h3" fontWeight={700}>Nom de la maison:</Typography>
-        <Typography variant="h3" maxWidth= "70%" border="1px solid #36D1DC" borderRadius="3px" margin="10px auto" padding="1rem">{data.home.name}</Typography>
+      <Box
+        textAlign="center"
+        borderBottom="1px solid #36D1DC"
+        paddingBottom="35px"
+      >
+        <Typography marginTop="10px" padding variant="h3" fontWeight={700}>
+          Nom de la maison:
+        </Typography>
+        <Typography
+          variant="h3"
+          maxWidth="70%"
+          border="1px solid #36D1DC"
+          borderRadius="3px"
+          margin="10px auto"
+          padding="1rem"
+        >
+          {data.home.name}
+        </Typography>
       </Box>
 
       <Box textAlign="center" margin="2rem">
@@ -25,7 +43,7 @@ function HomeTile({ data, hasHome }) {
         </Typography>
         <Typography textAlign="center" fontSize="2rem" color="#F78F8F">
           {`Il y a ${data.home.userCount} inscrit${
-            data.home.userCount > 1 ? "s" : ""
+            data.home.userCount > 1 ? 's' : ''
           }`}
         </Typography>
       </Box>

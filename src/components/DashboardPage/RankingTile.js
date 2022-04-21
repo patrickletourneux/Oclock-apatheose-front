@@ -31,11 +31,7 @@ function RankingTile({ data, hasHome }) {
           scoreDifference={data.firstUser.score - data.currentUser.score}
         />
       </Box>
-      <Box
-        textAlign="center"
-        marginTop="6rem"
-        marginBottom="2rem"
-      >
+      <Box textAlign="center" marginTop="6rem" marginBottom="2rem">
         <Button component={LinkRouter} variant="contained" to="/classement">
           Voir le classement
         </Button>

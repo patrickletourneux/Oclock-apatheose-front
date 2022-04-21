@@ -1,11 +1,11 @@
 import { Box, Typography } from '@mui/material';
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import oclock from '../../assets/images/oclock.jpg';
 import PageContainer from '../PageContainer/PageContainer';
 import useKonamiCode from '../KonamiCode/useKonamiCode';
 import Sound from '../KonamiCode/Sound';
 import noe from '../../assets/images/noe.jpg';
-import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 
 function Page404() {
   const konami = useKonamiCode();
@@ -15,27 +15,17 @@ function Page404() {
     return <Sound />;
   }
   return (
-    <PageContainer
-      margin="30px auto"
-    >
-      <Typography
-        variant="h2"
-        textAlign="center"
-        margin="50px"
-
-      > VOUS VENEZ "D'ECHOUER" EN 404 🚢 ?
+    <PageContainer margin="30px auto">
+      <Typography variant="h2" textAlign="center" margin="50px">
+        {' '}
+        VOUS VENEZ "D'ECHOUER" EN 404 🚢 ?
       </Typography>
-      <Typography
-        variant="h2"
-        textAlign="center"
-        margin="50px"
-      ><CleaningServicesIcon fontSize="70px" /> MAIS LA TEAM "C DU PROPS" NE CONNAIT PAS L'ECHEC
+      <Typography variant="h2" textAlign="center" margin="50px">
+        <CleaningServicesIcon fontSize="70px" /> MAIS LA TEAM "C DU PROPS" NE
+        CONNAIT PAS L'ECHEC
       </Typography>
-      <Typography
-        variant="h2"
-        textAlign="center"
-        margin="50px"
-      ><VideogameAssetIcon fontSize='3rem'/> ESSAYEZ "↑ ↑ ↓ ↓ ← → ← →"
+      <Typography variant="h2" textAlign="center" margin="50px">
+        <VideogameAssetIcon fontSize="3rem" /> ESSAYEZ "↑ ↑ ↓ ↓ ← → ← →"
       </Typography>
       <Box
         component="img"

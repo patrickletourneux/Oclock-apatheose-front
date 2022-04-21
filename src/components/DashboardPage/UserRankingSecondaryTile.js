@@ -27,19 +27,19 @@ function UserRankingSecondaryTile({
 }) {
   return (
     <Box
-    display="flex"
-    flexDirection="column"
-    justifyContent='center'
-    alignItems="center"
-    gap={2}
-    sx={{
-      border: 1,
-      borderColor: '#36D1DC',
-      // boxShadow: '0 1px 3px ',
-      padding: '1rem',
-      margin: '.5rem',
-    }}
-    {...otherProps}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      gap={2}
+      sx={{
+        border: 1,
+        borderColor: '#36D1DC',
+        // boxShadow: '0 1px 3px ',
+        padding: '1rem',
+        margin: '.5rem',
+      }}
+      {...otherProps}
     >
       <UserAvatar pseudonym={data.pseudonym} />
       <Typography>{getRankString(data.rank, isCurrentUserFirst)}</Typography>
