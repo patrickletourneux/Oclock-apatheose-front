@@ -1,15 +1,14 @@
-import { Box, Button, Typography } from "@mui/material";
-import PropTypes from "prop-types";
-import { Link as LinkRouter } from "react-router-dom";
+import { Box, Button, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
+import { Link as LinkRouter } from 'react-router-dom';
 
-import TileTitle from "../Tile/TileTitle";
-import Tile from "../Tile/Tile";
-import FirstRankingSecondaryTile from "./FirstRankingSecondaryTile";
-import UserRankingSecondaryTile from "./UserRankingSecondaryTile";
+import TileTitle from '../Tile/TileTitle';
+import Tile from '../Tile/Tile';
+import FirstRankingSecondaryTile from './FirstRankingSecondaryTile';
+import UserRankingSecondaryTile from './UserRankingSecondaryTile';
 
 function RankingTile({ data, hasHome }) {
-  const isCurrentUserFirst =
-    hasHome && data.firstUser.id === data.currentUser.id;
+  const isCurrentUserFirst = hasHome && data.firstUser.id === data.currentUser.id;
 
   const displayWithHome = () => (
     <Tile>

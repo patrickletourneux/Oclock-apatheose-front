@@ -17,6 +17,7 @@ const getDoneTasksCountString = (count) => {
     <>
       Félicitations, vous êtes productifs comme Jul !{' '}
       <img
+        alt="jul"
         src={main}
         width="32px"
       />

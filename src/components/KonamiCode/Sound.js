@@ -1,7 +1,5 @@
 import { Box, Container, Typography } from '@mui/material';
-import up from '../../assets/sounds/upup.mp3';
 import bebop from '../../assets/sounds/bebop.mp3';
-import oclock from '../../assets/images/oclock.jpg';
 import noe from '../../assets/images/noe.jpg';
 
 function Sound() {
