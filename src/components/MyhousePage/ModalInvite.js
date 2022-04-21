@@ -62,7 +62,7 @@ function ModalInvite({ onModalValidation, ...otherProps }) {
   };
 
   return (
-    <Box {...otherProps}>
+    <Box {...otherProps} margin="30px">
       <Button variant="contained" onClick={handleClickOpen}>
         Inviter de nouveaux participants
       </Button>

@@ -7,7 +7,7 @@ function TileContainer({ children, ...otherProps }) {
       container
       justifyContent="space-evenly"
       gap={3}
-      marginTop={5}
+      marginTop={7}
       marginBottom={5}
       {...otherProps}
     >

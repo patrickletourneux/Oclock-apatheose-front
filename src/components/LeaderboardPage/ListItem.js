@@ -4,11 +4,10 @@ import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
+import { Typography } from '@mui/material';
+import UserAvatar from '../UserAvatar/UserAvatar';
 
-function ListItems({
-  pseudonym, avatar_img, score, rank,
-}) {
+function ListItems({ pseudonym, score, rank }) {
   return (
     <>
       <List
@@ -20,15 +19,32 @@ function ListItems({
       >
         {/* Utiliser ListAvatar */}
         <ListItem>
+          <Typography fontWeight="700">#</Typography>
           <ListItemText primary={rank} variant="body1" />
           <ListItemAvatar>
-            <Avatar alt="{users.pseudonym}" src={avatar_img} size="small" />
+            <UserAvatar
+              sx={{
+                textAlign: 'center',
+              }}
+              pseudonym={pseudonym}
+            />
           </ListItemAvatar>
-          <ListItemText sx={{ width: '150px' }} primary={pseudonym} />
           <ListItemText
-            sx={{ width: '30px', color: 'orange' }}
+            sx={{
+              width: '150px',
+              textAlign: 'center',
+            }}
+            primary={pseudonym}
+          />
+          <ListItemText
+            sx={{
+              width: '30px',
+              color: 'orange',
+              textAlign: 'right',
+            }}
             primary={score}
           />
+          <Typography sx={{ marginLeft: '2px' }}>points</Typography>
         </ListItem>
       </List>
       <Divider variant="fullwidth" />
