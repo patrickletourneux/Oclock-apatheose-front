@@ -32,7 +32,7 @@ function legals() {
             <Typography variant="body1"><p>Numéro d’immatriculation au registre de commerce lichtensteinien : B 189 786</p></Typography>
           </Box>
           <Box margin={2}>
-            <Typography variant="body1"><p>Numéro d’identification à la TVA: LU32384563</p></Typography>
+            <Typography variant="body1"><p>Numéro d’identification à la TVA : LU32384563</p></Typography>
           </Box>
           <Box margin={2}>
             <Typography variant="h3"><p>Site réalisé par : de la Bienveillance et de l'amour</p></Typography>

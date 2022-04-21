@@ -68,6 +68,8 @@ function TaskTile({ data, hasHome }) {
         color="error"
         textAlign="center"
         marginTop="2rem"
+        marginBottom="2rem"
+        padding="0 1rem"
       >
         Vous n'avez pas encore de maison associée, vous n'avez pas de tâches
         pour le moment
