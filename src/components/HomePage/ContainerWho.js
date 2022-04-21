@@ -9,7 +9,6 @@ import colloc from '../../assets/images/colloc.jpg';
 import family from '../../assets/images/family.jpg';
 import ordi from '../../assets/images/ordi.jpg';
 
-
 function ContainerWho() {
   return (
     <Container style={{ position: 'relative', overflow: 'hidden' }}>

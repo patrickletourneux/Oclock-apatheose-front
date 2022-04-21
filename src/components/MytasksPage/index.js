@@ -254,11 +254,11 @@ function MytasksPage() {
         <Typography fontSize={20} color="white" textAlign="center" padding="20px">
           “Rien ne tache et rien ne lave comme le sang.” {' '}
           <Typography fontSize={15} color="white" textAlign="center">
-          <img
-          width={25}
-            src="https://img.icons8.com/ios/50/000000/targaryen-house.png"
-            alt="lannister"
-          />...Cercei Lannister
+            <img
+              width={25}
+              src="https://img.icons8.com/ios/50/000000/targaryen-house.png"
+              alt="lannister"
+            />...Cercei Lannister
           </Typography>
         </Typography>
       </Tile>

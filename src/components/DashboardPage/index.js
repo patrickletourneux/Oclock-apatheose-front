@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 
 import { Box, Typography } from '@mui/material';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
-import { Image } from '@mui/icons-material';
 import getDashboardPage from '../../apis/api/dashboard';
 import authContext from '../../contexts/authContext';
 import TileContainer from '../Tile/TileContainer';
