@@ -1,7 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
-import UserAvatar from '../UserAvatar/UserAvatar';
-import crowns from '../../assets/images/crowns.png'
+import crowns from '../../assets/images/crowns.png';
 
 const getFirstUserString = (pseudonym, score, isCurrentUserFirst) => {
   if (isCurrentUserFirst) {

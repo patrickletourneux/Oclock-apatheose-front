@@ -6,6 +6,7 @@ function TileContainer({ children, ...otherProps }) {
     <Grid
       container
       justifyContent="space-evenly"
+      alignItems="flex-start"
       gap={3}
       marginTop={7}
       marginBottom={5}

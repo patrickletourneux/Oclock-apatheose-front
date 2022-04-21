@@ -12,7 +12,6 @@ import TileContainer from '../Tile/TileContainer';
 import getMytasksPage from '../../apis/api/mytasks';
 import Tile from '../Tile/Tile';
 import TileTitle from '../Tile/TileTitle';
-import TaskList from './TaskList';
 import ModalCreateTask from '../ModalCreateTask/ModalCreateTask';
 import {
   addAttributedTask,
@@ -21,6 +20,7 @@ import {
 import addDoneTask from '../../apis/api/done_tasks';
 import ModalActionTask from './ModalActionTask';
 import PageNoHome from '../PageNoHome/PageNoHome';
+import TaskList from './TaskList';
 
 const LIST_NAME = {
   ATTRIBUTED: 'attributedTasks',
@@ -58,6 +58,7 @@ function MytasksPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [modalTask, setModalTask] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const hasHome = !!(
     userData
@@ -190,7 +191,12 @@ function MytasksPage() {
     }
   };
 
+  const onDragStart = () => {
+    setIsDragging(true);
+  };
+
   const onDragEnd = (e) => {
+    setIsDragging(false);
     if (!e.destination) return;
     if (
       e.source.droppableId === LIST_NAME.ATTRIBUTED
@@ -268,13 +274,14 @@ function MytasksPage() {
       <PageNoHome hasHome={hasHome} />
       {!loading && formData && (
         <TileContainer textAlign="center">
-          <DragDropContext onDragEnd={onDragEnd}>
+          <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
             <Tile>
               <TileTitle>Mes tâches attribuées</TileTitle>
               <TaskList
                 tasks={formData[LIST_NAME.ATTRIBUTED]}
                 droppableId={LIST_NAME.ATTRIBUTED}
                 onTaskClick={setModalTask}
+                isDragging={isDragging}
               />
             </Tile>
             <Tile>
@@ -283,6 +290,7 @@ function MytasksPage() {
                 tasks={formData[LIST_NAME.HOME]}
                 droppableId={LIST_NAME.HOME}
                 onTaskClick={(task) => attributeTask(task.id)}
+                isDragging={isDragging}
               />
               <ModalActionTask
                 task={modalTask}
@@ -300,6 +308,7 @@ function MytasksPage() {
                 tasks={formData[LIST_NAME.DONE]}
                 droppableId={LIST_NAME.DONE}
                 isDragDisabled
+                isDragging={isDragging}
               />
             </Tile>
           </DragDropContext>
