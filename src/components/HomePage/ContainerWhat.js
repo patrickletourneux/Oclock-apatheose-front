@@ -25,10 +25,18 @@ function ContainerWhat() {
   return (
     <Container
       style={styles.paperContainer}
-      sx={{ background: 'linear-gradient(90deg, #21C2CF, #49D7BB)' }}
+      sx={{
+        background: 'linear-gradient(90deg, #21C2CF, #49D7BB)',
+        padding: '50px',
+      }}
     >
       <Box textAlign="center">
-        <Typography padding="30px" variant="h1">
+        <Typography
+          paddingBottom="50px"
+          paddingTop="20px"
+          variant="h1"
+          color="white"
+        >
           POURQUOI UTILISER "C DU PROP'S"?
         </Typography>
       </Box>
@@ -37,11 +45,9 @@ function ContainerWhat() {
         flexWrap="wrap"
         gap={3}
         flexDirection="row"
-        margin={10}
-        sx={{
-          justifyContent: 'space-around',
-          alignContent: 'center',
-        }}
+        marginBottom="50px"
+        marginTop="20px"
+        sx={{ justifyContent: 'space-around', alignContent: 'center' }}
       >
         <Card
           sx={{
@@ -56,7 +62,7 @@ function ContainerWhat() {
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Plus rapide et facile que la mise en place de Redux,
-                l'inscription se gère grace à un formulaire simplifiée
+                l'inscription se gère grâce à un formulaire simplifié
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -75,12 +81,12 @@ function ContainerWhat() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                INVITEZ ET JOUER AVEC QUI VOUS VOULEZ
+                INVITEZ ET JOUEZ AVEC QUI VOUS VOULEZ
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Faites participer Papy aux tâches ménagères en lui envoyant
-                simplement un mail d'invitation. Verifier au préalable qu'il en
-                ait une quand même...
+                simplement un mail d'invitation. Vérifiez au préalable qu'il en
+                ait un quand même...
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -102,7 +108,7 @@ function ContainerWhat() {
                 CHOISISSEZ LA RECOMPENSE DU VAINQUEUR !
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Massages, Restaurants gastronomiques, choix du Film pendant la
+                Massages, restaurants gastronomiques, choix du film pendant la
                 semaine, on laisse votre imagination décider...
               </Typography>
             </CardContent>
@@ -115,8 +121,14 @@ function ContainerWhat() {
           to="/inscription"
           style={{ textDecoration: 'none', color: '#1ba2ac' }}
         >
-          <Button variant="contained" size="large" sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}>
-
+          <Button
+            variant="contained"
+            size="large"
+            sx={{
+              background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);',
+              marginTop: '30px',
+            }}
+          >
             Inscrivez vous!
           </Button>
         </Link>

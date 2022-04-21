@@ -1,29 +1,44 @@
 import {
   Box,
-  Button, Card, CardActionArea, CardContent, CardMedia, Container, Typography,
+  Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Container,
+  Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 import couple from '../../assets/images/couple.jpg';
 import vacance from '../../assets/images/vacance.jpg';
 import colloc from '../../assets/images/colloc.jpg';
-import family from '../../assets/images/family.jpg';
 import ordi from '../../assets/images/ordi.jpg';
+import kk from '../../assets/images/kk.jpg';
 
 function ContainerWho() {
   return (
-    <Container style={{ position: 'relative', overflow: 'hidden' }}>
+    <Container
+      style={{ position: 'relative', overflow: 'hidden', padding: '50px' }}
+    >
       <img
         src={ordi}
         alt="couple"
         style={{
-          position: 'absolute', zIndex: '-1', objectFit: 'cover', width: '100vw', height: '100%', top: '0', left: '50%', transform: 'translateX(-50%)', filter: 'blur(1px)', opacity: (0.5),
+          position: 'absolute',
+          zIndex: '-1',
+          objectFit: 'cover',
+          width: '100vw',
+          height: '100%',
+          top: '0',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          filter: 'blur(1px)',
+          opacity: 0.5,
         }}
       />
       <Box textAlign="center">
-        <Typography
-          padding="60px"
-          variant="h1"
-        >
+        <Typography paddingBottom="50px" paddingTop="20px" variant="h1">
           QUI PEUT JOUER ?
         </Typography>
       </Box>
@@ -32,25 +47,25 @@ function ContainerWho() {
         flexWrap="wrap"
         gap={3}
         flexDirection="row"
-        margin={10}
+        marginBottom="50px"
+        marginTop="20px"
         sx={{ justifyContent: 'space-evenly' }}
       >
-
-        <Card sx={{ maxWidth: 370, minHeight: 400 }}>
+        <Card
+          sx={{
+            maxWidth: 370,
+            minHeight: 400,
+          }}
+        >
           <CardActionArea>
-            <CardMedia
-              component="img"
-              height="200"
-              image={couple}
-              alt="fer"
-            />
+            <CardMedia component="img" height="200" image={couple} alt="fer" />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 COUPLE
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Plus rapide et facile que la mise en place
-                de Redux, l'inscription se gère grace à un formulaire simplifiée
+              <Typography variant="body2" color="text.secondary"><HeartBrokenIcon />
+                Parlez en à Johnny Depp , avec C DU PROP'S ,
+                il ne serait pas au tribunal aujourd'hui
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -60,7 +75,7 @@ function ContainerWho() {
             <CardMedia
               component="img"
               height="200"
-              image={family}
+              image={kk}
               alt="famille heureuse"
             />
             <CardContent>
@@ -68,9 +83,9 @@ function ContainerWho() {
                 FAMILLE
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Faites participer Papy aux tâches ménagères
-                en lui envoyant simplement un mail d'invitation.
-                Verifier au préalable qu'il en ait une quand même...
+                Vous vous demandez comment Kim fait pour avoir
+                une cuisine nickel avec 3 enfants ?<br /><br /><br />...
+                Elle utilise "C DU PROPS"
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -85,11 +100,13 @@ function ContainerWho() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                COLLOCATION
+                COLOCATION
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Massages, Restaurants gastronomiques,
-                choix du Film pendant la semaine, on laisse votre imagination décider...
+                On a tous connu un Kevin couché sur le canapé,
+                a se servir dans le frigo, pendant que vous
+                nettoyiez les traces de la soirée d'hier pour récupérer la
+                caution...<br /><br />Avec C DU PROP'S , Kevin il va se lever....
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -107,14 +124,16 @@ function ContainerWho() {
                 VACANCES
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Massages, Restaurants gastronomiques,
-                choix du Film pendant la semaine, on laisse votre imagination décider...
+                On a tous connu un Kevin couché dans le hamac,
+                a se servir dans le frigo, pendant que vous nettoyiez
+                les traces de la soirée d'hier pour récupérer la caution...
+                <br /><br />Avec C DU PROP'S , Kevin il va se lever....
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
       </Box>
-      <Box margin="50px" textAlign="center">
+      <Box margin="40px" textAlign="center">
         <Link
           to="/inscription"
           style={{ textDecoration: 'none', color: '#1ba2ac' }}
@@ -123,6 +142,7 @@ function ContainerWho() {
             color="primary"
             variant="contained"
             size="large"
+            sx={{ marginTop: '30px' }}
           >
             Inscrivez vous!
           </Button>

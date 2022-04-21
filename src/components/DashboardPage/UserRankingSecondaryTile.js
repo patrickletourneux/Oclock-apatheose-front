@@ -9,7 +9,7 @@ const getRankString = (rank, isCurrentUserFirst) => {
   if (isCurrentUserFirst) {
     return 'Vous êtes la reine des fées du logis, préparez-vous à vous envoler';
   }
-  return `vous êtes ${rank}${rank > 1 ? 'ème' : 'er'}`;
+  return `Vous êtes ${rank}${rank > 1 ? 'ème' : 'er'}`;
 };
 
 const getScoreString = (scoreDifference) => {
@@ -27,16 +27,24 @@ function UserRankingSecondaryTile({
 }) {
   return (
     <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      gap={2}
       sx={{
-        boxShadow: '0 1px 3px black',
+        border: 1,
+        borderColor: '#36D1DC',
+        // boxShadow: '0 1px 3px ',
         padding: '1rem',
+        margin: '.5rem',
       }}
       {...otherProps}
     >
       <UserAvatar pseudonym={data.pseudonym} />
       <Typography>{getRankString(data.rank, isCurrentUserFirst)}</Typography>
       {!isCurrentUserFirst && (
-        <Typography>{getScoreString(scoreDifference)}</Typography>
+        <Typography textAlign="center">{getScoreString(scoreDifference)}</Typography>
       )}
     </Box>
   );
