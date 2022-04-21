@@ -25,6 +25,7 @@ import TileTitle from '../Tile/TileTitle';
 import ModalConfirmation from './ModalConfirmation';
 import ModalInvite from './ModalInvite';
 import { leaveHome } from '../../apis/api/join_home';
+import PageNoHome from '../PageNoHome/PageNoHome';
 
 const getLeavingConfirmationMessage = (usersCount, homeName) => {
   if (usersCount > 1) {
@@ -115,7 +116,6 @@ function MyhousePage() {
         <Typography fontSize={15} color="white" textAlign="center">
           <img
             width={25}
-            backgroundColor="white"
             src="https://img.icons8.com/fluency-systems-regular/48/000000/murder.png"
             alt="dexter"
           />...Dexter
@@ -123,6 +123,7 @@ function MyhousePage() {
       </Tile>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
+      <PageNoHome hasHome={hasHome} />
       {!loading && formData && (
         <TileContainer>
           <Tile textAlign="center" maxHeight="700px">
