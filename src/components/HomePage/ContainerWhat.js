@@ -9,9 +9,9 @@ import {
   Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import fer from '../../assets/images/fer.jpg';
-import gamin from '../../assets/images/gamin.jpg';
-import darkswiper from '../../assets/images/darkswiper.jpg';
+import inscription from '../../assets/images/inscription.png';
+import inviter from '../../assets/images/inviter.png';
+import reward from '../../assets/images/reward.png';
 
 function ContainerWhat() {
   const styles = {
@@ -55,7 +55,7 @@ function ContainerWhat() {
           }}
         >
           <CardActionArea>
-            <CardMedia component="img" height="300" image={fer} alt="fer" />
+            <CardMedia component="img" height="300" image={inscription} alt="fer" />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 INSCRIPTION FACILE EN 1 CLIC
@@ -76,7 +76,7 @@ function ContainerWhat() {
             <CardMedia
               component="img"
               height="300"
-              image={gamin}
+              image={inviter}
               alt="enfant qui joue"
             />
             <CardContent>
@@ -100,7 +100,7 @@ function ContainerWhat() {
             <CardMedia
               component="img"
               height="300"
-              image={darkswiper}
+              image={reward}
               alt="balai noir"
             />
             <CardContent>

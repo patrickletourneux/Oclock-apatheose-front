@@ -40,7 +40,12 @@ function TaskTile({ data, hasHome }) {
   const displayWithHome = () => (
     <>
       <TileTitle>Mes Tâches</TileTitle>
-      <Typography fontSize="1.7rem" textAlign="center" marginTop="3rem">
+      <Typography
+        fontSize="1.7rem"
+        textAlign="center"
+        padding="1rem"
+        marginTop="3rem"
+      >
         {getDoneTasksCountString(data.user_done_task_count)}
       </Typography>
       <Typography
@@ -49,11 +54,21 @@ function TaskTile({ data, hasHome }) {
         paddingTop="2rem"
         marginTop="2rem"
         fontSize="2rem"
+        padding="1rem"
+
       >
         {getAttributedTasksCountString(data.user_attributed_task_count)}
       </Typography>
-      <Box textAlign="center" marginTop="4rem" marginBottom="2rem">
-        <Button component={LinkRouter} variant="contained" to="/mes-taches">
+      <Box
+        textAlign="center"
+        marginTop="4rem"
+        marginBottom="2rem"
+      >
+        <Button
+          component={LinkRouter}
+          variant="contained"
+          to="/mes-taches"
+        >
           Voir mes tâches
         </Button>
       </Box>

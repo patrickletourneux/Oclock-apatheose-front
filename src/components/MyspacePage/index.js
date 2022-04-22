@@ -53,51 +53,34 @@ function MySpacePage() {
     getUserInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
-
-  // requete update a faire
-  // const submit = (e) => {
-  //   e.preventDefault();
-  //   UpdateUser(
-  //     {
-  //       email: data.email,
-  //       password: data.password,
-  //       pseudonym: data.pseudonym,
-  //     },
-  //     successSignUp,
-  //     errorSignUp,
-  //   );
-  // };
   return (
     <PageContainer style={styles.paperContainer} sx={{ py: '30px' }}>
-      <Box
-        display="flex"
-        flexDirection="row"
-        // flexWrap="wrap"
-        justifyContent="center"
-        alignItems="center"
-        sx={{ flexDirection: { xs: 'column', md: 'row' } }}
-      >
-        <Box>
-          <PersonIcon
-            sx={{
-              fontSize: '40px',
-              marginTop: { xs: '30px', md: '0px' },
-            }}
-          />
-        </Box>
-        <Box>
-          <PageTitle>Espace Personnel</PageTitle>
-        </Box>
-      </Box>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && data && (
         <TileContainer>
-          <Tile textAlign="center">
+          <Tile textAlign="center" paddingBottom="20px">
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent="center"
+              alignItems="center"
+              sx={{ flexDirection: { xs: 'column', md: 'row' } }}
+            >
+              <Box>
+                <PersonIcon
+                  sx={{
+                    fontSize: '40px',
+                    marginTop: { xs: '30px', md: '0px' },
+                  }}
+                />
+              </Box>
+              <Box>
+                <PageTitle>Espace Personnel</PageTitle>
+              </Box>
+            </Box>
             <DisplayUserInfo {...data} />
-            <ModalMySpace
-              userId={data?.id}
-            />
+            <ModalMySpace userId={data?.id} />
             <Link
               to="/tableau-de-bord"
               style={{
