@@ -52,7 +52,7 @@ function ModalModifyHomeName({ onModalValidation, ...otherProps }) {
   };
 
   return (
-    <Box {...otherProps}>
+    <Box {...otherProps} margin="10px">
       <Button variant="contained" onClick={handleClickOpen}>
         Modifier le nom
       </Button>

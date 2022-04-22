@@ -54,8 +54,6 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
 
   const submit = (e) => {
     e.preventDefault();
-    console.log('données d\'origine : ', userInfo);
-    console.log('nouvelles données : ', data);
     updateUser(
       userId,
       {
@@ -86,10 +84,7 @@ export default function ModalMySpace({ userInfo, userId, getUserInfo }) {
           <DialogContentText textAlign="center" margin="20px">
             Vous pouvez modifier les champs suivants:
           </DialogContentText>
-          <Box
-            component="form"
-            onSubmit={submit}
-          >
+          <Box component="form" onSubmit={submit}>
             <TextField
               onChange={(e) => handleFieldChange(e)}
               name="email"

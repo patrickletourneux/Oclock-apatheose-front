@@ -5,8 +5,6 @@ import {
 import EmailIcon from '@mui/icons-material/Email';
 import UserAvatar from '../UserAvatar/UserAvatar';
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
 function DisplayUserInfo({
   pseudonym,
   email,

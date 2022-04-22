@@ -1,23 +1,22 @@
 import PropTypes from 'prop-types';
 import {
-  List, ListItem, ListItemButton, ListItemText, Typography,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Typography,
 } from '@mui/material';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 function TaskList({
-  tasks,
-  onTaskClick,
-  droppableId,
-  isDragDisabled,
+  tasks, onTaskClick, droppableId, isDragDisabled,
 }) {
   if (tasks.length === 0) {
     return (
       <Droppable droppableId={droppableId}>
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
-            <Typography>
-              Aucune tâches
-            </Typography>
+            <Typography>Aucune tâches</Typography>
             {provided.placeholder}
           </div>
         )}
@@ -31,28 +30,44 @@ function TaskList({
           {tasks.map((task, index) => (
             <Draggable
               key={task.id}
-              draggableId={task.id.toString()}
+              draggableId={task.draggableId || task.id.toString()}
               index={index}
               isDragDisabled={isDragDisabled}
             >
               {(dragProvided) => (
                 <ListItem
+                  sx={{
+                    height: '60px',
+                    width: '95%',
+                    backgroundImage:
+                      'linear-gradient(to right, #36D1DC 0%, #5B86E5  71%);',
+                    borderRadius: '7px',
+                    margin: '10px auto',
+                    fontSize: '30px',
+                    fontWeight: '700',
+                    fontFamily: 'Nunito',
+                    color: 'white',
+                    boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;',
+                  }}
                   ref={dragProvided.innerRef}
                   {...dragProvided.draggableProps}
                   {...dragProvided.dragHandleProps}
                   secondaryAction={task.value}
                   disablePadding
                 >
-                  {
-                    onTaskClick === null
-                      ? (<ListItemText primary={task.name} />)
-                      : (
-                        <ListItemButton dense role="button" onClick={() => onTaskClick(task)}>
-                          <ListItemText primary={task.name} />
-                        </ListItemButton>
-                      )
-                  }
-
+                  {onTaskClick === null ? (
+                    <ListItemText
+                      sx={{ pl: '10px', color: 'black', fontWeight: '700' }}
+                      primary={task.name} />
+                  ) : (
+                    <ListItemButton
+                      // dense
+                      role="button"
+                      onClick={() => onTaskClick(task)}
+                    >
+                      <ListItemText primary={task.name} />
+                    </ListItemButton>
+                  )}
                 </ListItem>
               )}
             </Draggable>

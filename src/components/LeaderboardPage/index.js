@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import { Box } from '@mui/material';
 import authContext from '../../contexts/authContext';
 import getRankingPage from '../../apis/api/ranking';
 import ListItem from './ListItem';
@@ -47,26 +49,55 @@ function LeaderboardPage() {
 
   return (
     <PageContainer>
-      <PageTitle>Classement & Reward</PageTitle>
+      <Box
+        display="flex"
+        flexDirection="row"
+        // flexWrap="wrap"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ flexDirection: { xs: 'column', md: 'row' } }}
+      >
+        <Box>
+          <LeaderboardIcon
+            sx={{
+              fontSize: '40px',
+              color: '#20c2cf',
+              marginTop: { xs: '30px', md: '0px' },
+            }}
+          />
+        </Box>
+        <Box>
+          <PageTitle color="#20c2cf">Classement & Reward</PageTitle>
+        </Box>
+      </Box>
       <PageLoader isDisplayed={loading} />
       <PageError error={error} />
       {!loading && (
-        <TileContainer>
-          <Tile>
+        <>
+          <Tile
+            width="100vw"
+            minHeight="200px"
+            sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
+          >
             <Countdown {...data?.reward} />
-            {data?.users?.map((user) => (
-              <ListItem key={user.id} {...user} />
-            ))}
           </Tile>
-          <Tile>
-            <TileTitle>Reward</TileTitle>
-            <RewardTile {...data?.reward} />
-            <ModalReward
-              getRankingInfo={getRankingInfo}
-              rewardId={data?.reward.id}
-            />
-          </Tile>
-        </TileContainer>
+          <TileContainer>
+            <Tile>
+              <TileTitle>Classement</TileTitle>
+              {data?.users?.map((user) => (
+                <ListItem key={user.id} {...user} />
+              ))}
+            </Tile>
+            <Tile>
+              <TileTitle>Reward</TileTitle>
+              <RewardTile {...data?.reward} />
+              <ModalReward
+                getRankingInfo={getRankingInfo}
+                rewardId={data?.reward.id}
+              />
+            </Tile>
+          </TileContainer>
+        </>
       )}
     </PageContainer>
   );

@@ -14,6 +14,7 @@ import signin from '../../apis/api/signin';
 import bgclean from '../../assets/images/bgclean.jpg';
 import authContext from '../../contexts/authContext';
 import PageContainer from '../PageContainer/PageContainer';
+import PageError from '../PageError/PageError';
 
 const styles = {
   paperContainer: {
@@ -26,6 +27,7 @@ const styles = {
 
 export default function Login() {
   const { login } = useContext(authContext);
+  const [error, setError] = useState('');
 
   const [data, setData] = useState({
     email: '',
@@ -41,7 +43,7 @@ export default function Login() {
   }
 
   function onSigninError(resErrorMessage) {
-    console.log(resErrorMessage);
+    setError(resErrorMessage);
   }
   function handleFieldChange(e) {
     const newData = { ...data };
@@ -51,6 +53,7 @@ export default function Login() {
 
   const submit = (e) => {
     e.preventDefault();
+    setError('');
     signin(
       {
         email: data.email,
@@ -69,6 +72,7 @@ export default function Login() {
         py: '40px',
       }}
     >
+      <PageError error={error} />
       <Box
         component="form"
         onSubmit={submit}
@@ -105,6 +109,7 @@ export default function Login() {
             </Link>
           </Typography>
           <TextField
+            fullWidth
             required
             autoComplete="false"
             onChange={(e) => handleFieldChange(e)}
@@ -115,6 +120,7 @@ export default function Login() {
             variant="outlined"
           />
           <TextField
+            fullWidth
             required
             autoComplete="false"
             onChange={(e) => handleFieldChange(e)}

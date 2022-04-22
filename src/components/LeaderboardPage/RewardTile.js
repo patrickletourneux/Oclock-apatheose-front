@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 // eslint-disable-next-line react/prop-types
 function RewardTile({ title, description }) {
@@ -6,7 +6,7 @@ function RewardTile({ title, description }) {
     <>
       <Box
         sx={{
-          typography: 'body1',
+          typography: 'h2',
         }}
         textAlign="center"
         padding="10px"
@@ -17,12 +17,11 @@ function RewardTile({ title, description }) {
 
       <Box
         typography="body1"
-        color="secondary"
         margin="20px auto"
         textAlign="center"
         maxWidth="600px"
-        sx={{ border: '1px solid grey', padding: '20px', borderRadius: 2 }}
       >
+        <Typography fontWeight={15}>Description:</Typography>
         <p>{description}</p>
       </Box>
     </>
