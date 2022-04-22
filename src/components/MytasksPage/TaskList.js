@@ -11,7 +11,6 @@ import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 const getDroppableStyle = (isDragging) => {
   if (isDragging) {
-    // return { backgroundColor: '#f68f8f', color: '#fff' };
     return { backgroundColor: '#f1f1f1', color: '#000', border: 'solid 2px #aaa' };
   }
   return { backgroundColor: '#fff' };
