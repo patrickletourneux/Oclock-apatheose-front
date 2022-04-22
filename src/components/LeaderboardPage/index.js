@@ -87,8 +87,8 @@ function LeaderboardPage() {
       {!loading && data && (
         <>
           <Tile
-            width="100vw"
-            minHeight="200px"
+        width="100%"
+        minHeight="200px"
             sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
           >
             <Countdown {...data?.reward} />

@@ -103,7 +103,7 @@ function MyhousePage() {
         </Box>
       </Box>
       <Tile
-        width="100vw"
+        width="100%"
         minHeight="70px"
         sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
       >
