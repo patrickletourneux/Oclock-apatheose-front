@@ -61,8 +61,8 @@ export default function ModalReward({ rewardId, getRankingInfo }) {
   };
 
   return (
-    <Box textAlign="center" margin="25px">
-      <Button margin="5px" type="Submit" variant="outlined" onClick={handleClickOpen}>
+    <Box textAlign="center" margin="25px" padding="25px">
+      <Button margin="5px" type="Submit" variant="contained" onClick={handleClickOpen}>
         Modifier
       </Button>
       <Dialog

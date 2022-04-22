@@ -2,18 +2,9 @@ import {
   Box, Button, Container, Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import useKonamiCode from '../KonamiCode/useKonamiCode';
 import logoclean from '../../assets/images/logoclean.jpg';
-import Sound from '../KonamiCode/Sound';
 
 function HeroContainer() {
-  const konami = useKonamiCode();
-  // const tasse = konami ? oclock : logoclean;
-
-  if (konami) {
-    return <Sound />;
-  }
-
   const styles = {
     paperContainer: {
       minHeight: '60vh',

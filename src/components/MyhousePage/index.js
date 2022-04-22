@@ -103,7 +103,7 @@ function MyhousePage() {
         </Box>
       </Box>
       <Tile
-        width="100vw"
+        width="100%"
         minHeight="70px"
         sx={{ background: 'linear-gradient(90deg, #F78F8F 40%, #E0547A);' }}
       >
@@ -154,12 +154,14 @@ function MyhousePage() {
             >
               {formData.password}
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <Box sx={{
+              display: 'flex', flexDirection: 'column', gap: '1rem', padding: '20px', marginTop: '2rem',
+            }}
+            >
               <ModalModifyHomeName
                 onModalValidation={getPageData}
-                sx={{ marginTop: '2rem' }}
               />
-              <Box margin="30px">
+              <Box>
                 <Button
                   variant="outlined"
                   color="error"
