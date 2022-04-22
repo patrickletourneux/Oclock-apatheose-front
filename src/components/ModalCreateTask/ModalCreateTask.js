@@ -79,6 +79,7 @@ function ModalCreateTask({ onModalValidation, ...otherProps }) {
               fullWidth
               sx={{ marginTop: '1rem' }}
               required
+              helperText="50 caracteres maximum svp"
             />
             <DialogContentText sx={{ marginTop: '3rem' }}>
               Attribuez lui un nombre de points

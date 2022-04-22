@@ -154,12 +154,14 @@ function MyhousePage() {
             >
               {formData.password}
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <Box sx={{
+              display: 'flex', flexDirection: 'column', gap: '1rem', padding: '20px', marginTop: '2rem',
+            }}
+            >
               <ModalModifyHomeName
                 onModalValidation={getPageData}
-                sx={{ marginTop: '2rem' }}
               />
-              <Box margin="30px">
+              <Box>
                 <Button
                   variant="outlined"
                   color="error"

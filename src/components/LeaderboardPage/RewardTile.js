@@ -21,8 +21,12 @@ function RewardTile({ title, description }) {
         textAlign="center"
         maxWidth="600px"
       >
-        <Typography fontWeight={15}>Description:</Typography>
-        <p>{description}</p>
+        <Typography
+          padding="20px"
+        >
+          <p>{description}</p>
+        </Typography>
+
       </Box>
     </>
   );
