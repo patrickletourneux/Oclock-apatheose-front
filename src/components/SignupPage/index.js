@@ -99,7 +99,7 @@ function SignUp() {
 
   const submit = (e) => {
     e.preventDefault();
-    if (!!emailError || !!errorPseudonym || !!confirmPasswordError) {
+    if (emailError || errorPseudonym || confirmPasswordError) {
       return;
     }
     setError('');

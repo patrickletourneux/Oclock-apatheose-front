@@ -12,7 +12,6 @@ import validator from 'validator';
 import PageContainer from '../PageContainer/PageContainer';
 
 function Contact() {
-  // quid de gerer un state par champs?
   const [data, setData] = useState({
     email: '',
     pseudonym: '',
@@ -20,7 +19,6 @@ function Contact() {
 
   // MANAGE PSEUDO ERROR
   const [errorPseudonym, setErrorPseudonym] = useState('');
-
   const validatePseudonym = () => {
     const longueur = data.pseudonym.length;
 
@@ -32,7 +30,6 @@ function Contact() {
   };
 
   // MANAGE EMAIL ERROR
-
   const [emailError, setEmailError] = useState('');
   const validateEmail = (e) => {
     const email = e.target.value;
@@ -52,15 +49,6 @@ function Contact() {
 
   const submit = (e) => {
     e.preventDefault();
-    // addUser(
-    //   {
-    //     email: data.email,
-    //     password: data.password,
-
-    //   },
-    //   successSignUp,
-    //   errorSignUp,
-    // );
   };
 
   return (
@@ -97,15 +85,15 @@ function Contact() {
 
           <TextField
             error={!!emailError}
-            onChange={(e) => handleFieldChange(e)}
-            autoComplete="false"
             required
+            onChange={(e) => handleFieldChange(e)}
+            value={data.email}
             name="email"
             label="Votre email"
-            value={data.email}
             variant="outlined"
             helperText={emailError}
             onBlur={validateEmail}
+            autoComplete="false"
           />
 
           <TextField

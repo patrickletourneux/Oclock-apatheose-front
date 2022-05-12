@@ -4,7 +4,11 @@ import HeroContainer from './HeroContainer';
 
 function HomePage() {
   return (
-    <><HeroContainer /><ContainerWhat /><ContainerWho /></>
+    <>
+      <HeroContainer />
+      <ContainerWhat />
+      <ContainerWho />
+    </>
   );
 }
 

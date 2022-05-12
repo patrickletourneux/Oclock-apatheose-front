@@ -6,25 +6,18 @@ import theme from './utils/theme';
 import { AuthProvider } from './contexts/authContext';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import HeaderContainer from './containers/HeaderContainer/HeaderContainer';
+import Footer from './components/Footer';
 import SignUp from './components/SignupPage/index';
 import Login from './components/LoginPage';
 import LeaderboardPage from './components/LeaderboardPage';
-
 import DashboardPage from './components/DashboardPage';
-
 import HomePage from './components/HomePage/index';
-
 import MySpacePage from './components/MyspacePage';
-
-import Footer from './components/Footer';
-
-import Page404 from './components/404';
 import MytasksPage from './components/MytasksPage';
-
-import Legals from './components/Legals';
-
-import Contact from './components/Contact';
 import MyhousePage from './components/MyhousePage';
+import Legals from './components/Legals';
+import Contact from './components/Contact';
+import Page404 from './components/404';
 
 function App() {
   return (
